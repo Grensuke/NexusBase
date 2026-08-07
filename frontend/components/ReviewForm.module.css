@@ -1,0 +1,41 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+}
+
+.heading {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.stars {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.star {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: color var(--t-fast), transform var(--t-fast);
+  line-height: 1;
+  padding: 0;
+}
+.star.active { color: #fbbf24; }
+.star:hover  { transform: scale(1.1); }
+
+.ratingLabel {
+  margin-left: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--brand-300);
+}
