@@ -23,17 +23,17 @@ INSERT INTO CATEGORIES (category_name) VALUES
 -- ----------------------------------------------------------------
 INSERT INTO USERS (name, email, password_hash, role, bio) VALUES
 -- Freelancers
-('Alex Rivera',   'alex@nexus.dev',    '$2b$10$rOzJqkLmN8vXpY2mK1dQBOqK9aE3fH7gI5jM6kN0pL4rS8tU2vW6e', 'freelancer', 'Full-stack developer with 5 years of experience in React and Node.js.'),
-('Sofia Chen',    'sofia@nexus.dev',   '$2b$10$rOzJqkLmN8vXpY2mK1dQBOqK9aE3fH7gI5jM6kN0pL4rS8tU2vW6e', 'freelancer', 'Creative UI/UX designer passionate about clean, minimal interfaces.'),
-('Marcus Johnson','marcus@nexus.dev',  '$2b$10$rOzJqkLmN8vXpY2mK1dQBOqK9aE3fH7gI5jM6kN0pL4rS8tU2vW6e', 'freelancer', 'Digital marketing specialist with expertise in SEO and content strategy.'),
-('Priya Patel',   'priya@nexus.dev',   '$2b$10$rOzJqkLmN8vXpY2mK1dQBOqK9aE3fH7gI5jM6kN0pL4rS8tU2vW6e', 'freelancer', 'Data scientist and ML engineer. Python, pandas, scikit-learn expert.'),
-('Liam O Brien',  'liam@nexus.dev',    '$2b$10$rOzJqkLmN8vXpY2mK1dQBOqK9aE3fH7gI5jM6kN0pL4rS8tU2vW6e', 'freelancer', 'Professional video editor and motion graphics designer.'),
+('Alex Rivera',   'alex@nexus.dev',    '$2b$10$hLZJBNhGx3dNW1HgTNEOp.FLPXsTgn3LdFW71RpBPByZHnCDyOE2S', 'freelancer', 'Full-stack developer with 5 years of experience in React and Node.js.'),
+('Sofia Chen',    'sofia@nexus.dev',   '$2b$10$hLZJBNhGx3dNW1HgTNEOp.FLPXsTgn3LdFW71RpBPByZHnCDyOE2S', 'freelancer', 'Creative UI/UX designer passionate about clean, minimal interfaces.'),
+('Marcus Johnson','marcus@nexus.dev',  '$2b$10$hLZJBNhGx3dNW1HgTNEOp.FLPXsTgn3LdFW71RpBPByZHnCDyOE2S', 'freelancer', 'Digital marketing specialist with expertise in SEO and content strategy.'),
+('Priya Patel',   'priya@nexus.dev',   '$2b$10$hLZJBNhGx3dNW1HgTNEOp.FLPXsTgn3LdFW71RpBPByZHnCDyOE2S', 'freelancer', 'Data scientist and ML engineer. Python, pandas, scikit-learn expert.'),
+('Liam O Brien',  'liam@nexus.dev',    '$2b$10$hLZJBNhGx3dNW1HgTNEOp.FLPXsTgn3LdFW71RpBPByZHnCDyOE2S', 'freelancer', 'Professional video editor and motion graphics designer.'),
 -- Clients
-('Emma Watson',   'emma@client.dev',   '$2b$10$rOzJqkLmN8vXpY2mK1dQBOqK9aE3fH7gI5jM6kN0pL4rS8tU2vW6e', 'client', NULL),
-('James Carter',  'james@client.dev',  '$2b$10$rOzJqkLmN8vXpY2mK1dQBOqK9aE3fH7gI5jM6kN0pL4rS8tU2vW6e', 'client', NULL),
-('Olivia Brown',  'olivia@client.dev', '$2b$10$rOzJqkLmN8vXpY2mK1dQBOqK9aE3fH7gI5jM6kN0pL4rS8tU2vW6e', 'client', NULL),
-('Noah Williams', 'noah@client.dev',   '$2b$10$rOzJqkLmN8vXpY2mK1dQBOqK9aE3fH7gI5jM6kN0pL4rS8tU2vW6e', 'client', NULL),
-('Ava Thompson',  'ava@client.dev',    '$2b$10$rOzJqkLmN8vXpY2mK1dQBOqK9aE3fH7gI5jM6kN0pL4rS8tU2vW6e', 'client', NULL);
+('Emma Watson',   'emma@client.dev',   '$2b$10$hLZJBNhGx3dNW1HgTNEOp.FLPXsTgn3LdFW71RpBPByZHnCDyOE2S', 'client', NULL),
+('James Carter',  'james@client.dev',  '$2b$10$hLZJBNhGx3dNW1HgTNEOp.FLPXsTgn3LdFW71RpBPByZHnCDyOE2S', 'client', NULL),
+('Olivia Brown',  'olivia@client.dev', '$2b$10$hLZJBNhGx3dNW1HgTNEOp.FLPXsTgn3LdFW71RpBPByZHnCDyOE2S', 'client', NULL),
+('Noah Williams', 'noah@client.dev',   '$2b$10$hLZJBNhGx3dNW1HgTNEOp.FLPXsTgn3LdFW71RpBPByZHnCDyOE2S', 'client', NULL),
+('Ava Thompson',  'ava@client.dev',    '$2b$10$hLZJBNhGx3dNW1HgTNEOp.FLPXsTgn3LdFW71RpBPByZHnCDyOE2S', 'client', NULL);
 
 -- ----------------------------------------------------------------
 -- USER_SKILLS (freelancer skill tags)
