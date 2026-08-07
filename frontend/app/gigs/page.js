@@ -6,6 +6,18 @@ import GigCard from '@/components/GigCard';
 import { getGigs, getCategories } from '@/lib/api';
 import styles from './gigs.module.css';
 
+const SORT_OPTIONS = [
+  { value: 'newest',    label: '🕐 Newest' },
+  { value: 'price_asc', label: '💰 Price: Low → High' },
+  { value: 'price_desc',label: '💎 Price: High → Low' },
+  { value: 'top_rated', label: '⭐ Top Rated' },
+];
+
+const CAT_ICONS = {
+  'Web Development':'💻','Graphic Design':'🎨','Digital Marketing':'📣',
+  'Writing & Translation':'✍️','Video & Animation':'🎬','Data Science':'📊',
+};
+
 export default function GigsPage() {
   const searchParams = useSearchParams();
   const router       = useRouter();
@@ -15,6 +27,8 @@ export default function GigsPage() {
   const [total,      setTotal]      = useState(0);
   const [pages,      setPages]      = useState(1);
   const [loading,    setLoading]    = useState(true);
+  const [viewMode,   setViewMode]   = useState('grid'); // 'grid' | 'list'
+  const [sort,       setSort]       = useState('newest');
 
   const search   = searchParams.get('search')   || '';
   const category = searchParams.get('category') || '';
@@ -25,7 +39,7 @@ export default function GigsPage() {
   const fetchGigs = useCallback(async () => {
     setLoading(true);
     try {
-      const params = { page, limit: 12 };
+      const params = { page, limit: 12, sort };
       if (search)   params.search   = search;
       if (category) params.category = category;
       const res = await getGigs(params);
@@ -37,15 +51,13 @@ export default function GigsPage() {
     } finally {
       setLoading(false);
     }
-  }, [search, category, page]);
+  }, [search, category, page, sort]);
 
   useEffect(() => {
     getCategories().then(r => setCategories(r.data || [])).catch(console.error);
   }, []);
 
-  useEffect(() => {
-    fetchGigs();
-  }, [fetchGigs]);
+  useEffect(() => { fetchGigs(); }, [fetchGigs]);
 
   const updateParams = (updates) => {
     const params = new URLSearchParams(searchParams.toString());
@@ -61,20 +73,26 @@ export default function GigsPage() {
     updateParams({ search: searchInput });
   };
 
+  const activeCategoryName = categories.find(c => String(c.category_id) === category)?.category_name;
+
   return (
     <div className={styles.page}>
       <div className="container">
+
         {/* Page header */}
-        <div className={styles.header}>
-          <h1 className="section-title">Browse Gigs</h1>
-          <p className={styles.headerSub}>
-            {total > 0 ? `${total} services available` : 'Find expert freelancers'}
-          </p>
+        <div className={`${styles.header} animate-fade-in-up`}>
+          <div>
+            <h1 className="section-title display-font">Browse Gigs</h1>
+            <p className={styles.headerSub}>
+              {loading ? 'Loading…' : total > 0 ? `${total} services available` : 'No services found'}
+            </p>
+          </div>
         </div>
 
-        {/* Search + Filters */}
-        <div className={styles.filters}>
+        {/* Search + filters row */}
+        <div className={`${styles.filtersRow} animate-fade-in-up stagger-2`}>
           <form onSubmit={handleSearch} className={styles.searchBar} id="gigs-search-form">
+            <span className={styles.searchIcon}>🔍</span>
             <input
               id="gigs-search-input"
               type="text"
@@ -83,67 +101,134 @@ export default function GigsPage() {
               value={searchInput}
               onChange={e => setSearchInput(e.target.value)}
             />
-            <button type="submit" className="btn btn-primary btn-sm" id="gigs-search-btn">
+            {searchInput && (
+              <button type="button" className={styles.clearBtn} onClick={() => { setSearchInput(''); updateParams({ search: '' }); }}>
+                ×
+              </button>
+            )}
+            <button type="submit" className={`btn btn-primary btn-sm ${styles.searchBtn}`} id="gigs-search-btn">
               Search
             </button>
           </form>
 
-          <div className={styles.categoryPills}>
-            <button
-              className={`${styles.pill} ${!category ? styles.pillActive : ''}`}
-              onClick={() => updateParams({ category: '', search: searchInput })}
-              id="filter-all"
+          {/* Sort + View toggle */}
+          <div className={styles.controls}>
+            <select
+              className={`form-select ${styles.sortSelect}`}
+              value={sort}
+              onChange={e => setSort(e.target.value)}
+              id="gigs-sort-select"
             >
-              All
-            </button>
-            {categories.map(c => (
+              {SORT_OPTIONS.map(o => (
+                <option key={o.value} value={o.value}>{o.label}</option>
+              ))}
+            </select>
+
+            <div className={styles.viewToggle}>
               <button
-                key={c.category_id}
-                className={`${styles.pill} ${category === String(c.category_id) ? styles.pillActive : ''}`}
-                onClick={() => updateParams({ category: c.category_id, search: searchInput })}
-                id={`filter-cat-${c.category_id}`}
-              >
-                {c.category_name}
-              </button>
-            ))}
+                className={`${styles.viewBtn} ${viewMode === 'grid' ? styles.viewBtnActive : ''}`}
+                onClick={() => setViewMode('grid')}
+                id="view-grid-btn"
+                title="Grid view"
+              >⊞</button>
+              <button
+                className={`${styles.viewBtn} ${viewMode === 'list' ? styles.viewBtnActive : ''}`}
+                onClick={() => setViewMode('list')}
+                id="view-list-btn"
+                title="List view"
+              >☰</button>
+            </div>
           </div>
         </div>
 
+        {/* Category pills */}
+        <div className={`${styles.categoryPills} animate-fade-in-up stagger-3`}>
+          <button
+            className={`${styles.pill} ${!category ? styles.pillActive : ''}`}
+            onClick={() => updateParams({ category: '', search: searchInput })}
+            id="filter-all"
+          >
+            🌐 All
+          </button>
+          {categories.map(c => (
+            <button
+              key={c.category_id}
+              className={`${styles.pill} ${category === String(c.category_id) ? styles.pillActive : ''}`}
+              onClick={() => updateParams({ category: c.category_id, search: searchInput })}
+              id={`filter-cat-${c.category_id}`}
+            >
+              {CAT_ICONS[c.category_name] || '🔷'} {c.category_name}
+            </button>
+          ))}
+        </div>
+
+        {/* Active filter chips */}
+        {(search || activeCategoryName) && (
+          <div className={styles.activeFilters}>
+            <span className={styles.filterLabel}>Active filters:</span>
+            {search && (
+              <button className={styles.filterChip} onClick={() => { setSearchInput(''); updateParams({ search: '' }); }}>
+                🔍 "{search}" ×
+              </button>
+            )}
+            {activeCategoryName && (
+              <button className={styles.filterChip} onClick={() => updateParams({ category: '' })}>
+                {CAT_ICONS[activeCategoryName] || '🔷'} {activeCategoryName} ×
+              </button>
+            )}
+            <button className={styles.clearAll} onClick={() => { setSearchInput(''); router.push('/gigs'); }}>
+              Clear all
+            </button>
+          </div>
+        )}
+
         {/* Results */}
         {loading ? (
-          <div className="grid-auto">
+          <div className={viewMode === 'grid' ? 'grid-auto' : styles.listView}>
             {[...Array(12)].map((_, i) => (
-              <div key={i} className="skeleton" style={{ height: 280 }} />
+              <div key={i} className="skeleton" style={{ height: viewMode === 'grid' ? 300 : 100 }} />
             ))}
           </div>
         ) : gigs.length === 0 ? (
           <div className={styles.empty}>
-            <span className={styles.emptyIcon}>🔍</span>
-            <h3>No gigs found</h3>
-            <p>Try adjusting your search or filter</p>
+            <div className={styles.emptyIcon}>🔍</div>
+            <h3 className={styles.emptyTitle}>No gigs found</h3>
+            <p className={styles.emptyText}>Try adjusting your search or removing filters</p>
+            <button className="btn btn-primary" onClick={() => { setSearchInput(''); router.push('/gigs'); }}>
+              Browse All Gigs
+            </button>
           </div>
         ) : (
-          <div className="grid-auto">
-            {gigs.map(g => <GigCard key={g.gig_id} gig={g} />)}
-          </div>
+          <>
+            <p className={styles.resultCount}>{total} result{total !== 1 ? 's' : ''}</p>
+            <div className={viewMode === 'grid' ? 'grid-auto' : styles.listView}>
+              {gigs.map(g => <GigCard key={g.gig_id} gig={g} listMode={viewMode === 'list'} />)}
+            </div>
+          </>
         )}
 
         {/* Pagination */}
         {pages > 1 && (
           <div className={styles.pagination}>
+            <button
+              className={`${styles.pageBtn} ${page === 1 ? styles.pageBtnDisabled : ''}`}
+              disabled={page === 1}
+              onClick={() => { const p = new URLSearchParams(searchParams.toString()); p.set('page', page-1); router.push(`/gigs?${p}`); }}
+            >← Prev</button>
             {[...Array(pages)].map((_, i) => (
               <button
                 key={i}
                 className={`${styles.pageBtn} ${page === i+1 ? styles.pageBtnActive : ''}`}
-                onClick={() => {
-                  const params = new URLSearchParams(searchParams.toString());
-                  params.set('page', i + 1);
-                  router.push(`/gigs?${params.toString()}`);
-                }}
+                onClick={() => { const p = new URLSearchParams(searchParams.toString()); p.set('page', i+1); router.push(`/gigs?${p}`); }}
               >
                 {i + 1}
               </button>
             ))}
+            <button
+              className={`${styles.pageBtn} ${page === pages ? styles.pageBtnDisabled : ''}`}
+              disabled={page === pages}
+              onClick={() => { const p = new URLSearchParams(searchParams.toString()); p.set('page', page+1); router.push(`/gigs?${p}`); }}
+            >Next →</button>
           </div>
         )}
       </div>

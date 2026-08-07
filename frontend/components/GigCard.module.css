@@ -2,89 +2,160 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  transition: transform var(--t-normal), box-shadow var(--t-normal);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
   cursor: pointer;
   text-decoration: none;
   color: inherit;
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
 }
-.card:hover { transform: translateY(-4px); }
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(139,92,246,0.4);
+  border-color: rgba(139,92,246,0.5);
+}
 
+/* ── Banner ── */
 .banner {
-  height: 120px;
-  background: linear-gradient(135deg, #3b1fa8 0%, #6d28d9 40%, #0e7490 100%);
+  position: relative;
+  height: 140px;
+  overflow: hidden;
   flex-shrink: 0;
 }
+.card:hover .banner {
+  transform: scale(1.03);
+  transition: transform 0.4s ease;
+}
 
+.bannerIcon {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 1rem;
+  font-size: 2rem;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
+  transition: transform 0.3s ease;
+}
+.card:hover .bannerIcon {
+  transform: scale(1.15) rotate(-6deg);
+}
+
+/* shimmer sweep on hover */
+.bannerShimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.12) 50%, transparent 100%);
+  transform: translateX(-100%);
+  transition: transform 0s;
+}
+.card:hover .bannerShimmer {
+  transform: translateX(100%);
+  transition: transform 0.5s ease;
+}
+
+/* ── Body ── */
 .body {
-  padding: 1.2rem 1.2rem 0.75rem;
+  padding: 1.1rem 1.2rem 0.6rem;
   flex: 1;
 }
 
 .category {
   display: inline-block;
-  background: rgba(139,92,246,0.2);
+  background: rgba(139,92,246,0.15);
   color: var(--brand-300);
   border: 1px solid rgba(139,92,246,0.3);
   border-radius: var(--r-full);
-  font-size: 0.72rem;
-  font-weight: 600;
+  font-size: 0.68rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: 0.15rem 0.6rem;
-  margin-bottom: 0.75rem;
+  letter-spacing: 0.07em;
+  padding: 0.12rem 0.65rem;
+  margin-bottom: 0.65rem;
 }
 
 .title {
-  font-size: 0.95rem;
+  font-size: 0.93rem;
   font-weight: 700;
   color: var(--text-primary);
-  line-height: 1.4;
+  line-height: 1.45;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   margin-bottom: 0.6rem;
+  transition: color 0.2s;
 }
+.card:hover .title { color: var(--brand-300); }
 
 .meta {
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.7rem;
 }
-.ratingText { font-size: 0.8rem; color: var(--text-secondary); font-weight: 500; }
+.ratingText { font-size: 0.78rem; color: var(--text-secondary); font-weight: 500; }
 .reviewCount { color: var(--text-muted); }
 
-.freelancer {
+/* ── Freelancer row ── */
+.freelancerRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1.5px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6rem;
+  font-weight: 800;
+  color: #fff;
+  flex-shrink: 0;
+  letter-spacing: 0;
+}
+.freelancerName {
   font-size: 0.8rem;
   color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
+/* ── Footer ── */
 .footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.75rem 1.2rem;
+  padding: 0.7rem 1.2rem;
   border-top: 1px solid var(--border);
-  margin-top: 0.75rem;
+  margin-top: 0.7rem;
+  background: rgba(255,255,255,0.02);
 }
 
 .delivery {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--text-muted);
 }
 
 .price {
-  font-size: 1.1rem;
-  font-weight: 800;
-  color: var(--text-primary);
   display: flex;
   align-items: baseline;
   gap: 0.25rem;
 }
 .from {
-  font-size: 0.7rem;
-  font-weight: 400;
+  font-size: 0.62rem;
+  font-weight: 600;
   color: var(--text-muted);
   text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.priceAmount {
+  font-size: 1.15rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--brand-300), #38bdf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
