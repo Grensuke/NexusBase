@@ -6,6 +6,9 @@ import { getGigs, getCategories, getTopFreelancers } from '@/lib/api';
 import GigCard from '@/components/GigCard';
 import styles from './page.module.css';
 
+
+
+
 const CATEGORY_THEMES = {
   'Web Development':       { icon: '💻', gradient: 'linear-gradient(135deg,#1e3a8a,#3b82f6,#06b6d4)', count: null },
   'Graphic Design':        { icon: '🎨', gradient: 'linear-gradient(135deg,#581c87,#a855f7,#ec4899)', count: null },
@@ -145,20 +148,33 @@ export default function HomePage() {
   return (
     <div className={styles.page}>
 
-      {/* ── Hero ── */}
-      <section className={styles.hero}>
-        {/* Floating particles */}
-        <div className={styles.particles}>
-          {[...Array(8)].map((_, i) => <div key={i} className={`${styles.particle} ${styles[`p${i+1}`]}`} />)}
-        </div>
+      {/* ── VIDEO HERO ── */}
+      <section className={`${styles.hero} hero-no-offset`}>
+        {/* Looping background video — local file */}
+        <video
+          className={styles.heroBgVideo}
+          autoPlay
+          muted
+          loop
+          playsInline
+          src="/spaceV.mp4"
+        />
 
-        <div className={`container ${styles.heroInner}`}>
+        {/* Deep overlay so text reads well */}
+        <div className={styles.heroOverlay} />
+
+        {/* Vignette edges */}
+        <div className={styles.heroVignette} />
+
+        {/* Content */}
+        <div className={styles.heroInner}>
           <div className={`${styles.heroBadge} animate-fade-in-up`}>
-            ✨ Trusted by 10,000+ clients worldwide
+            <span className={styles.heroBadgeDot} />
+            Trusted by 10,000+ clients worldwide
           </div>
 
-          <h1 className={`${styles.heroTitle} animate-fade-in-up stagger-2 display-font`}>
-            Find <span className="text-gradient">Expert Freelancers</span><br />
+          <h1 className={`${styles.heroTitle} animate-fade-in-up stagger-2`}>
+            Find <span className={styles.heroGradientText}>Expert Freelancers</span><br />
             for Any Project
           </h1>
 
@@ -181,19 +197,24 @@ export default function HomePage() {
                 <>{typingText}<span className={styles.cursor}>|</span></>
               )}
             </span>
-            <button type="submit" className={`btn btn-primary ${styles.searchBtn}`} id="hero-search-btn">
+            <button type="submit" className={styles.searchBtn} id="hero-search-btn">
               🔍 Search
             </button>
           </form>
 
           <div className={`${styles.heroPills} animate-fade-in-up stagger-5`}>
             <span className={styles.pillLabel}>Popular:</span>
-            {categories.slice(0, 4).map((c, i) => (
+            {categories.slice(0, 4).map((c) => (
               <Link key={c.category_id} href={`/gigs?category=${c.category_id}`} className={styles.pill}>
                 {CATEGORY_THEMES[c.category_name]?.icon || '🔷'} {c.category_name}
               </Link>
             ))}
           </div>
+
+          {/* Liquid-glass CTA */}
+          <a href="/gigs" className={`${styles.liquidGlassBtn} animate-fade-in-up stagger-6`}>
+            Explore All Services
+          </a>
         </div>
 
         {/* Scroll indicator */}
@@ -311,7 +332,10 @@ export default function HomePage() {
             <div className={styles.ctaOrb1} />
             <div className={styles.ctaOrb2} />
             <div className={styles.ctaContent}>
-              <div className={styles.heroBadge} style={{ marginBottom: '1rem' }}>🚀 Join the community</div>
+              <div className={styles.heroBadge} style={{ marginBottom: '1rem' }}>
+                <span className={styles.heroBadgeDot} />
+                🚀 Join the community
+              </div>
               <h2 className={`${styles.ctaTitle} display-font`}>Ready to get started?</h2>
               <p className={styles.ctaSub}>Join NexusBase today as a freelancer or find the perfect talent for your project.</p>
               <div className={styles.ctaActions}>

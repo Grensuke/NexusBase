@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
           <ToastProvider>
             <div className="page-wrapper">
               <Navbar />
-              <main style={{ paddingTop: '64px' }}>{children}</main>
+              <main>{children}</main>
             </div>
           </ToastProvider>
         </AuthProvider>
