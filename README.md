@@ -39,6 +39,7 @@ This project is built as a **DBMS capstone**, where correct relational design, n
 | ⭐ **Reviews & Ratings** | Star rating system with automatic average recalculation |
 | 📊 **Role Dashboards** | Freelancers manage gigs + order queue; clients track order history |
 | 🏆 **Leaderboard** | Top freelancers ranked by rating via a SQL view |
+| 🎬 **Cinematic Hero** | Full-viewport space video background with glassmorphism UI on homepage |
 
 ---
 
@@ -69,7 +70,8 @@ Sign up as freelancer → Post a gig → Sign up as client → Browse gigs
 ┌─────────────────────────────────────────────────┐
 │                   FRONTEND                      │
 │         Next.js 16 · React 19 · CSS             │
-│   Dark glassmorphism UI · Responsive design     │
+│  Cinematic video hero · Glassmorphism UI        │
+│  Liquid-glass components · Responsive design    │
 └────────────────────┬────────────────────────────┘
                      │  HTTP / REST
 ┌────────────────────▼────────────────────────────┐
@@ -382,8 +384,8 @@ node src/index.js
 ```powershell
 cd frontend
 npm install
-node node_modules/next/dist/bin/next dev --webpack
-# ▲ Next.js 16.3.0 (webpack) — Ready on http://localhost:3000
+npm run dev
+# ▲ Next.js 16.3.0 — Ready on http://localhost:3000
 ```
 
 ### Step 5 — Open the App
@@ -482,8 +484,9 @@ NexusBase/
 ├── 📂 frontend/
 │   ├── app/
 │   │   ├── layout.js           # Root layout + AuthProvider
-│   │   ├── globals.css         # Design system (CSS variables, dark glass theme)
-│   │   ├── page.js             # Landing page (hero, categories, featured gigs)
+│   │   ├── globals.css         # Design system (CSS vars, glassmorphism, liquid-glass)
+│   │   ├── page.js             # Homepage: video hero, categories, gigs, freelancers
+│   │   ├── page.module.css     # Homepage styles: video, overlays, search, pills
 │   │   ├── auth/
 │   │   │   ├── login/          # Login page
 │   │   │   └── signup/         # Signup with role toggle
@@ -494,13 +497,15 @@ NexusBase/
 │   │   │   └── new/            # Create gig form
 │   │   └── dashboard/          # Role-aware dashboard
 │   ├── components/
-│   │   ├── Navbar.js           # Responsive nav with auth state
+│   │   ├── Navbar.js           # Transparent-on-hero nav, blurs on scroll
 │   │   ├── GigCard.js          # Gig card with star ratings
 │   │   └── ReviewForm.js       # Inline star picker + comment form
 │   ├── context/
 │   │   └── AuthContext.js      # Global auth state via React Context
 │   ├── lib/
 │   │   └── api.js              # Native fetch client (JWT interceptor)
+│   ├── public/
+│   │   └── spaceV.mp4          # Cinematic space video for homepage hero
 │   ├── .env.local              # NEXT_PUBLIC_API_URL
 │   └── package.json
 │
