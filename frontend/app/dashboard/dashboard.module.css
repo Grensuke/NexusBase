@@ -1,36 +1,36 @@
-.page { padding: 2.5rem 0 6rem; }
+.page { padding: var(--space-10) 0 var(--space-24); }
 
 .pageHeader {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  margin-bottom: 2.5rem;
-  gap: 1rem;
+  margin-bottom: var(--space-10);
+  gap: var(--space-4);
   flex-wrap: wrap;
 }
-.welcome { color: var(--text-muted); font-size: 0.9rem; margin-top: 0.35rem; }
+.welcome { color: var(--text-muted); font-size: var(--text-sm); margin-top: var(--space-1); }
 .welcome strong { color: var(--brand-300); }
 
 /* ── Tab nav ── */
 .tabs {
   display: flex;
-  gap: 0.25rem;
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 2rem;
+  gap: var(--space-1);
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: var(--space-8);
 }
 .tab {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0.7rem 1.2rem;
-  font-size: 0.9rem;
+  gap: var(--space-1);
+  padding: var(--space-3) var(--space-5);
+  font-size: var(--text-sm);
   font-weight: 600;
   color: var(--text-muted);
   background: none;
   border: none;
   border-bottom: 2px solid transparent;
   cursor: pointer;
-  transition: color 0.2s, border-color 0.2s;
+  transition: color var(--t-fast), border-color var(--t-fast);
   font-family: inherit;
   margin-bottom: -1px;
 }
@@ -38,58 +38,55 @@
 .tabActive { color: var(--brand-400) !important; border-bottom-color: var(--brand-500) !important; }
 
 /* ── Stat cards ── */
-.statsRow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+.statsRow { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4); }
 .statCard {
-  padding: 1.5rem;
+  padding: var(--space-6);
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: var(--space-1);
   text-align: left;
   position: relative;
   overflow: hidden;
   transition: transform var(--t-normal), box-shadow var(--t-normal);
 }
-.statCard:hover { transform: translateY(-3px); box-shadow: var(--shadow-card-hover); }
+.statCard:hover { transform: translateY(-2px); box-shadow: var(--shadow-card-hover); }
 .statCardIcon {
-  font-size: 1.4rem;
-  margin-bottom: 0.25rem;
+  font-size: 1.3rem;
+  margin-bottom: var(--space-1);
   display: block;
 }
 .statVal {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.9rem;
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
   font-weight: 900;
-  letter-gradient: -0.03em;
-  background: linear-gradient(135deg, var(--brand-300), var(--accent-400));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-primary);
   line-height: 1;
 }
-.statLbl { font-size: 0.8rem; color: var(--text-muted); font-weight: 500; }
+.statLbl { font-size: var(--text-xs); color: var(--text-muted); font-weight: 500; }
 
 /* ── Section card ── */
-.section { padding: 1.75rem; }
+.section { padding: var(--space-6); }
 .sectionHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--space-6);
 }
-.sectionTitle { font-size: 1.05rem; font-weight: 700; color: var(--text-primary); }
-.empty { color: var(--text-muted); font-size: 0.9rem; padding: 1rem 0; }
+.sectionTitle { font-size: var(--text-base); font-weight: 700; color: var(--text-primary); }
+.empty { color: var(--text-muted); font-size: var(--text-sm); padding: var(--space-4) 0; }
 
 /* ── Skills ── */
-.skillTags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+.skillTags { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-4); }
 .skillTag {
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
-  background: rgba(14,165,233,0.1);
-  color: var(--accent-400);
-  border: 1px solid rgba(14,165,233,0.25);
+  background: rgba(139, 92, 246, 0.08);
+  color: var(--brand-300);
+  border: 1px solid rgba(139, 92, 246, 0.20);
   border-radius: var(--r-full);
-  font-size: 0.8rem;
+  font-size: var(--text-xs);
   font-weight: 600;
   padding: 0.25rem 0.65rem;
 }
@@ -99,7 +96,7 @@
   font-size: 1rem; line-height: 1; padding: 0; font-family: inherit;
 }
 .removeSkill:hover { color: var(--error); }
-.skillInput { display: flex; gap: 0.5rem; align-items: center; }
+.skillInput { display: flex; gap: var(--space-2); align-items: center; }
 .skillInput .form-input { max-width: 240px; }
 
 /* ── Gig table ── */
@@ -107,89 +104,89 @@
 .tableHeader {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 0.5fr 1.2fr;
-  gap: 0.5rem;
-  padding: 0.6rem 0.75rem;
-  font-size: 0.72rem;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  font-size: 0.7rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.07em;
+  letter-spacing: var(--tracking-wider);
   color: var(--text-muted);
   border-bottom: 1px solid var(--border);
 }
 .tableRow {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 0.5fr 1.2fr;
-  gap: 0.5rem;
+  gap: var(--space-2);
   align-items: center;
-  padding: 0.9rem 0.75rem;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
+  padding: var(--space-3) var(--space-3);
+  border-bottom: 1px solid var(--border-subtle);
   transition: background var(--t-fast);
   border-radius: var(--r-sm);
 }
-.tableRow:hover { background: rgba(255,255,255,0.03); }
+.tableRow:hover { background: rgba(255, 255, 255, 0.02); }
 .gigTitle {
-  font-size: 0.9rem; font-weight: 600; color: var(--text-primary);
+  font-size: var(--text-sm); font-weight: 600; color: var(--text-primary);
   overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
-.td { font-size: 0.85rem; color: var(--text-secondary); }
-.tableActions { display: flex; gap: 0.4rem; }
+.td { font-size: var(--text-sm); color: var(--text-secondary); }
+.tableActions { display: flex; gap: var(--space-1); }
 
 /* ── Kanban columns ── */
 .kanban {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  gap: var(--space-4);
 }
 .kanbanCol {
-  background: rgba(255,255,255,0.02);
+  background: rgba(255, 255, 255, 0.015);
   border: 1px solid var(--border);
   border-radius: var(--r-lg);
   overflow: hidden;
 }
 .kanbanHead {
-  padding: 0.75rem 1rem;
-  font-size: 0.78rem;
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-xs);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.07em;
+  letter-spacing: var(--tracking-wider);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--border-subtle);
 }
-.kanbanHead.pending   { color: #fbbf24; background: rgba(245,158,11,0.06); }
-.kanbanHead.progress  { color: #38bdf8; background: rgba(14,165,233,0.06); }
-.kanbanHead.completed { color: #4ade80; background: rgba(34,197,94,0.06); }
+.kanbanHead.pending   { color: #fbbf24; background: rgba(245, 158, 11, 0.04); }
+.kanbanHead.progress  { color: #38bdf8; background: rgba(14, 165, 233, 0.04); }
+.kanbanHead.completed { color: #4ade80; background: rgba(34, 197, 94, 0.04); }
 .kanbanCount {
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.06);
   border-radius: var(--r-full);
-  padding: 0.1rem 0.5rem;
-  font-size: 0.75rem;
+  padding: 0.1rem var(--space-2);
+  font-size: var(--text-xs);
 }
-.kanbanItems { padding: 0.75rem; display: flex; flex-direction: column; gap: 0.6rem; }
+.kanbanItems { padding: var(--space-3); display: flex; flex-direction: column; gap: var(--space-2); }
 .kanbanCard {
-  background: rgba(255,255,255,0.04);
+  background: rgba(255, 255, 255, 0.025);
   border: 1px solid var(--border);
   border-radius: var(--r-md);
-  padding: 0.85rem;
-  transition: border-color 0.2s;
+  padding: var(--space-3);
+  transition: border-color var(--t-fast);
 }
-.kanbanCard:hover { border-color: rgba(139,92,246,0.35); }
-.kanbanGig { font-size: 0.85rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.3rem; line-height: 1.35; }
-.kanbanMeta { font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 0.2rem; }
-.kanbanDate { font-size: 0.73rem; color: var(--text-muted); }
-.kanbanActions { margin-top: 0.6rem; display: flex; gap: 0.4rem; flex-wrap: wrap; }
+.kanbanCard:hover { border-color: var(--border-hover); }
+.kanbanGig { font-size: var(--text-sm); font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-1); line-height: var(--leading-snug); }
+.kanbanMeta { font-size: var(--text-xs); color: var(--text-secondary); margin-bottom: var(--space-1); }
+.kanbanDate { font-size: 0.7rem; color: var(--text-muted); }
+.kanbanActions { margin-top: var(--space-2); display: flex; gap: var(--space-1); flex-wrap: wrap; }
 
 /* ── Client order card ── */
-.orderList { display: flex; flex-direction: column; gap: 1rem; }
+.orderList { display: flex; flex-direction: column; gap: var(--space-4); }
 .orderCard {
-  padding: 1.25rem;
-  background: rgba(255,255,255,0.03);
+  padding: var(--space-5);
+  background: rgba(255, 255, 255, 0.02);
   border: 1px solid var(--border);
   border-radius: var(--r-lg);
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
+  gap: var(--space-3);
   transition: border-color var(--t-fast), box-shadow var(--t-fast);
 }
 .orderCard:hover { border-color: var(--border-hover); box-shadow: var(--shadow-glow); }
@@ -197,17 +194,17 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 1rem;
+  gap: var(--space-4);
 }
 .orderCardLeft { flex: 1; }
-.orderGig { font-size: 1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.2rem; }
+.orderGig { font-size: var(--text-base); font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-1); }
 
 /* Timeline stepper */
 .timeline {
   display: flex;
   align-items: center;
   gap: 0;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 600;
 }
 .timelineStep {
@@ -217,52 +214,52 @@
   color: var(--text-muted);
 }
 .timelineStep.done { color: var(--success); }
-.timelineStep.active { color: var(--accent-400); }
+.timelineStep.active { color: var(--brand-400); }
 .timelineDot {
   width: 8px; height: 8px; border-radius: 50%;
   background: var(--text-muted);
   flex-shrink: 0;
 }
 .timelineStep.done .timelineDot { background: var(--success); }
-.timelineStep.active .timelineDot { background: var(--accent-400); box-shadow: 0 0 6px var(--accent-400); }
+.timelineStep.active .timelineDot { background: var(--brand-400); box-shadow: 0 0 6px var(--brand-400); }
 .timelineLine {
   width: 24px; height: 1px;
   background: var(--border);
   flex-shrink: 0;
 }
-.timelineLine.done { background: var(--success); opacity: 0.5; }
+.timelineLine.done { background: var(--success); opacity: 0.4; }
 
-.orderMeta { font-size: 0.83rem; color: var(--text-secondary); display: flex; flex-wrap: wrap; gap: 1rem; }
+.orderMeta { font-size: var(--text-xs); color: var(--text-secondary); display: flex; flex-wrap: wrap; gap: var(--space-4); }
 .orderMeta strong { color: var(--text-primary); }
 .orderAmount {
-  font-size: 1.1rem; font-weight: 800;
-  background: linear-gradient(135deg, var(--brand-300), var(--accent-400));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-size: var(--text-lg); font-weight: 800;
+  color: var(--text-primary);
   flex-shrink: 0;
 }
-.orderActions { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
-.reviewed { font-size: 0.82rem; color: var(--success); font-weight: 600; display: flex; align-items: center; gap: 0.3rem; }
+.orderActions { display: flex; gap: var(--space-2); flex-wrap: wrap; align-items: center; }
+.reviewed { font-size: var(--text-xs); color: var(--success); font-weight: 600; display: flex; align-items: center; gap: 0.3rem; }
 
 /* ── Freelancer summary order (in orders tab) ── */
 .orderItem {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem;
-  background: rgba(255,255,255,0.03);
+  padding: var(--space-4);
+  background: rgba(255, 255, 255, 0.02);
   border: 1px solid var(--border);
   border-radius: var(--r-md);
-  gap: 1rem;
+  gap: var(--space-4);
   transition: border-color var(--t-fast);
 }
 .orderItem:hover { border-color: var(--border-hover); }
 .orderInfo { flex: 1; }
-.orderInfoGig { font-weight: 700; color: var(--text-primary); font-size: 0.93rem; margin-bottom: 0.25rem; }
-.orderInfoMeta { font-size: 0.82rem; color: var(--text-secondary); }
-.orderInfoDate { font-size: 0.77rem; color: var(--text-muted); margin-top: 0.1rem; }
-.orderRight { display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0; }
+.orderInfoGig { font-weight: 700; color: var(--text-primary); font-size: var(--text-sm); margin-bottom: var(--space-1); }
+.orderInfoMeta { font-size: var(--text-xs); color: var(--text-secondary); }
+.orderInfoDate { font-size: 0.7rem; color: var(--text-muted); margin-top: 0.1rem; }
+.orderRight { display: flex; align-items: center; gap: var(--space-3); flex-shrink: 0; }
+
+/* ── Layout wrapper ── */
+.dashLayout { display: flex; flex-direction: column; gap: var(--space-8); }
 
 @media (max-width: 1024px) {
   .kanban { grid-template-columns: 1fr; }

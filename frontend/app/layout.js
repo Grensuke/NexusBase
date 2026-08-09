@@ -2,6 +2,7 @@ import './globals.css';
 import { AuthProvider } from '@/context/AuthContext';
 import { ToastProvider } from '@/components/Toast';
 import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 export const metadata = {
   title: 'NexusBase — Freelance Services Marketplace',
@@ -28,6 +29,7 @@ export default function RootLayout({ children }) {
             <div className="page-wrapper">
               <Navbar />
               <main>{children}</main>
+              <Footer />
             </div>
           </ToastProvider>
         </AuthProvider>
@@ -35,3 +37,4 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+

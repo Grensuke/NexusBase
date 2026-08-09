@@ -224,6 +224,9 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── Statement divider ── */}
+      <div className={styles.sectionDivider}>Where talent meets opportunity</div>
+
       {/* ── Stats ── */}
       <section className={styles.stats}>
         <div className="container">
@@ -246,6 +249,9 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── Statement divider ── */}
+      <div className={styles.sectionDivider}>Find your next project</div>
+
       {/* ── Browse Categories ── */}
       <section className={styles.section}>
         <div className="container">
@@ -260,6 +266,7 @@ export default function HomePage() {
                   className={`${styles.categoryCard} reveal reveal-delay-${Math.min(i+1,4)}`}
                   id={`category-${c.category_id}`}
                 >
+                  <span className={styles.catNumber}>{String(i + 1).padStart(2, '0')}</span>
                   <div className={styles.catBanner} style={{ background: theme.gradient }}>
                     <span className={styles.catBannerIcon}>{theme.icon}</span>
                   </div>
@@ -273,6 +280,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* ── Statement divider ── */}
+      <div className={styles.sectionDivider}>Top rated services</div>
 
       {/* ── Featured Gigs ── */}
       <section className={styles.section}>
@@ -296,6 +306,9 @@ export default function HomePage() {
           )}
         </div>
       </section>
+
+      {/* ── Statement divider ── */}
+      <div className={styles.sectionDivider}>Expert talent on demand</div>
 
       {/* ── Top Freelancers ── */}
       <section className={styles.section}>
