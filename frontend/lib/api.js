@@ -81,3 +81,18 @@ export const getGigReviews = (gig_id)         => request('GET',  `/reviews/gig/$
 
 // ---------- Dashboard ----------
 export const getDashboard = () => request('GET', '/dashboard');
+
+// ---------- Trust ----------
+export const getTrustTiers  = ()     => request('GET', '/trust/tiers');
+export const getMyTrust     = ()     => request('GET', '/trust/me');
+
+// ---------- Assessments ----------
+export const submitAssessment = (skill_id, score) =>
+  request('POST', `/assessments/${skill_id}`, { score });
+export const getMyAssessments = () => request('GET', '/assessments/me');
+
+// ---------- Disputes ----------
+export const raiseDispute   = (order_id, reason) =>
+  request('POST', `/orders/${order_id}/dispute`, { reason });
+export const resolveDispute = (dispute_id, status) =>
+  request('PATCH', `/orders/disputes/${dispute_id}`, { status });

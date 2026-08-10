@@ -30,7 +30,21 @@ router.post('/', authenticate, requireRole('client'), async (req, res) => {
     const [[outRow]] = await conn.query('SELECT @order_id AS order_id');
     const order_id = outRow.order_id;
 
-    res.status(201).json({ order_id, message: 'Order placed successfully' });
+    // Fetch the newly created order to surface commission / trial fields
+    const [[newOrder]] = await conn.query(
+      `SELECT order_id, gig_id, client_id, status, amount,
+              is_trial, commission_rate_applied, commission_amount
+         FROM ORDERS WHERE order_id = ?`,
+      [order_id]
+    );
+
+    res.status(201).json({
+      order_id,
+      is_trial:               !!newOrder.is_trial,
+      commission_rate_applied: newOrder.commission_rate_applied,
+      commission_amount:       newOrder.commission_amount,
+      message: 'Order placed successfully',
+    });
   } catch (err) {
     console.error('[orders POST]', err);
     const msg = err.sqlMessage || err.message || 'Server error';
@@ -50,9 +64,11 @@ router.get('/', authenticate, async (req, res) => {
     if (req.user.role === 'client') {
       query = `
         SELECT o.order_id, o.status, o.amount, o.order_date,
+               o.is_trial, o.commission_rate_applied, o.commission_amount,
                g.gig_id, g.title AS gig_title, g.delivery_days,
                u.user_id AS freelancer_id, u.name AS freelancer_name,
                p.status AS payment_status, p.method AS payment_method,
+               p.escrow_status,
                r.review_id, r.rating, r.comment AS review_comment
           FROM ORDERS   o
           JOIN GIGS     g ON g.gig_id    = o.gig_id
@@ -65,9 +81,10 @@ router.get('/', authenticate, async (req, res) => {
     } else {
       query = `
         SELECT o.order_id, o.status, o.amount, o.order_date,
+               o.is_trial, o.commission_rate_applied, o.commission_amount,
                g.gig_id, g.title AS gig_title,
                u.user_id AS client_id, u.name AS client_name,
-               p.status AS payment_status,
+               p.status AS payment_status, p.escrow_status,
                r.review_id, r.rating
           FROM ORDERS   o
           JOIN GIGS     g ON g.gig_id    = o.gig_id
@@ -93,16 +110,19 @@ router.get('/', authenticate, async (req, res) => {
 router.get('/:id', authenticate, async (req, res) => {
   try {
     const [rows] = await pool.query(
-      `SELECT o.*, g.title AS gig_title, g.delivery_days,
+      `SELECT o.*, g.title AS gig_title, g.delivery_days, g.is_trial AS gig_is_trial,
               uc.name AS client_name, uf.name AS freelancer_name,
-              p.payment_id, p.status AS payment_status, p.method,
-              r.review_id, r.rating, r.comment, r.review_date
+              p.payment_id, p.status AS payment_status, p.method, p.escrow_status,
+              r.review_id, r.rating, r.comment, r.review_date,
+              d.dispute_id, d.reason AS dispute_reason, d.status AS dispute_status,
+              d.raised_by AS dispute_raised_by
          FROM ORDERS   o
          JOIN GIGS     g  ON g.gig_id   = o.gig_id
          JOIN USERS    uc ON uc.user_id = o.client_id
          JOIN USERS    uf ON uf.user_id = g.freelancer_id
          LEFT JOIN PAYMENTS p ON p.order_id = o.order_id
          LEFT JOIN REVIEWS  r ON r.order_id = o.order_id
+         LEFT JOIN DISPUTES d ON d.order_id = o.order_id
         WHERE o.order_id = ?`,
       [req.params.id]
     );
@@ -183,6 +203,136 @@ router.patch('/:id/status', authenticate, async (req, res) => {
   } catch (err) {
     await conn.rollback();
     console.error('[orders PATCH]', err);
+    res.status(500).json({ error: 'Server error' });
+  } finally {
+    conn.release();
+  }
+});
+
+// ---------------------------------------------------------------
+// POST /api/orders/:id/dispute  — raise a dispute on an order
+// Either the client or the freelancer on that order can raise one.
+// Body: { reason: String }
+// ---------------------------------------------------------------
+router.post('/:id/dispute', authenticate, async (req, res) => {
+  const { reason } = req.body;
+  if (!reason || !reason.trim()) {
+    return res.status(400).json({ error: 'reason is required' });
+  }
+
+  const conn = await pool.getConnection();
+  try {
+    // Fetch order + ownership info
+    const [[order]] = await conn.query(
+      `SELECT o.order_id, o.status, o.client_id, g.freelancer_id
+         FROM ORDERS o JOIN GIGS g ON g.gig_id = o.gig_id
+        WHERE o.order_id = ?`,
+      [req.params.id]
+    );
+    if (!order) return res.status(404).json({ error: 'Order not found' });
+
+    const isClient     = order.client_id     === req.user.user_id;
+    const isFreelancer = order.freelancer_id === req.user.user_id;
+    if (!isClient && !isFreelancer) {
+      return res.status(403).json({ error: 'Access denied — not your order' });
+    }
+
+    // Only allow disputes on active/completed orders
+    if (order.status === 'cancelled') {
+      return res.status(400).json({ error: 'Cannot raise a dispute on a cancelled order' });
+    }
+
+    // Prevent duplicate open disputes
+    const [[existing]] = await conn.query(
+      `SELECT dispute_id FROM DISPUTES
+        WHERE order_id = ? AND status = 'open'`,
+      [req.params.id]
+    );
+    if (existing) {
+      return res.status(409).json({
+        error: 'An open dispute already exists for this order',
+        dispute_id: existing.dispute_id,
+      });
+    }
+
+    const [result] = await conn.query(
+      `INSERT INTO DISPUTES (order_id, raised_by, reason) VALUES (?, ?, ?)`,
+      [req.params.id, req.user.user_id, reason.trim()]
+    );
+
+    res.status(201).json({
+      dispute_id: result.insertId,
+      order_id:   parseInt(req.params.id, 10),
+      status:     'open',
+      message:    'Dispute raised — the platform will review and resolve it',
+    });
+  } catch (err) {
+    console.error('[orders/:id/dispute POST]', err);
+    res.status(500).json({ error: 'Server error' });
+  } finally {
+    conn.release();
+  }
+});
+
+// ---------------------------------------------------------------
+// PATCH /api/disputes/:id  — resolve a dispute
+// Allowed resolution values:
+//   'resolved_for_client'     — freelancer at fault; escrow refunded
+//   'resolved_for_freelancer' — client claim rejected; escrow released
+// Access: the freelancer on the order or an admin.
+//   (In this implementation "admin" is approximated as the
+//    freelancer on the order for demo purposes; a real system
+//    would add an admin role.)
+// The after_dispute_resolved trigger does the trust-score work.
+// ---------------------------------------------------------------
+router.patch('/disputes/:id', authenticate, async (req, res) => {
+  const { status } = req.body;
+  const allowed = ['resolved_for_client', 'resolved_for_freelancer'];
+  if (!allowed.includes(status)) {
+    return res.status(400).json({
+      error: `status must be one of: ${allowed.join(', ')}`,
+    });
+  }
+
+  const conn = await pool.getConnection();
+  try {
+    // Fetch dispute + order context
+    const [[dispute]] = await conn.query(
+      `SELECT d.dispute_id, d.order_id, d.status AS current_status,
+              o.client_id, g.freelancer_id
+         FROM DISPUTES d
+         JOIN ORDERS   o ON o.order_id = d.order_id
+         JOIN GIGS     g ON g.gig_id   = o.gig_id
+        WHERE d.dispute_id = ?`,
+      [req.params.id]
+    );
+    if (!dispute) return res.status(404).json({ error: 'Dispute not found' });
+
+    if (dispute.current_status !== 'open') {
+      return res.status(400).json({ error: 'Dispute is already resolved' });
+    }
+
+    // Only the freelancer on the order can resolve (admin approximation)
+    const isFreelancer = dispute.freelancer_id === req.user.user_id;
+    if (!isFreelancer) {
+      return res.status(403).json({
+        error: 'Only the freelancer (or an admin) can resolve a dispute',
+      });
+    }
+
+    // Update dispute — the after_dispute_resolved trigger fires here
+    await conn.query(
+      'UPDATE DISPUTES SET status = ? WHERE dispute_id = ?',
+      [status, req.params.id]
+    );
+
+    res.json({
+      dispute_id: parseInt(req.params.id, 10),
+      status,
+      message: `Dispute resolved: ${status.replace(/_/g, ' ')}`,
+    });
+  } catch (err) {
+    console.error('[disputes/:id PATCH]', err);
     res.status(500).json({ error: 'Server error' });
   } finally {
     conn.release();

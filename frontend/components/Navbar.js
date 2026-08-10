@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
+import { useCurrency } from '@/context/CurrencyContext';
 import Icon from './Icons';
 import styles from './Navbar.module.css';
 
@@ -20,6 +21,23 @@ function UserAvatar({ name, role }) {
     >
       {initials}
     </span>
+  );
+}
+
+function CurrencyPicker() {
+  const { currencyCode, setCurrency, CURRENCIES } = useCurrency();
+  return (
+    <select
+      value={currencyCode}
+      onChange={e => setCurrency(e.target.value)}
+      className={styles.currencyPicker}
+      id="currency-selector"
+      aria-label="Select currency"
+    >
+      {CURRENCIES.map(c => (
+        <option key={c.code} value={c.code}>{c.label}</option>
+      ))}
+    </select>
   );
 }
 
@@ -82,6 +100,7 @@ export default function Navbar() {
 
           {/* Desktop actions */}
           <div className={styles.actions}>
+            <CurrencyPicker />
             {user ? (
               <div className={styles.userMenu} ref={dropRef}>
                 <button
@@ -158,6 +177,10 @@ export default function Navbar() {
           {user && (
             <Link href="/dashboard" className={`${styles.drawerLink} ${isActive('/dashboard') ? styles.drawerActive : ''}`}>Dashboard</Link>
           )}
+          <div className={styles.drawerCurrency}>
+            <span style={{ fontSize: 'var(--text-sm)', color: 'var(--text-muted)' }}>Currency</span>
+            <CurrencyPicker />
+          </div>
           <div className={styles.drawerActions}>
             {user ? (
               <button className="btn btn-danger" onClick={logout} id="nav-logout-mobile-btn" style={{width:'100%'}}>Sign Out</button>

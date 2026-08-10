@@ -31,8 +31,9 @@ export default function Footer() {
         <div className={styles.col}>
           <h4 className={styles.colTitle}>For Freelancers</h4>
           <Link href="/auth/signup?role=freelancer" className={styles.colLink}>Become a Freelancer</Link>
-          <Link href="/gigs/new" className={styles.colLink}>Post a Gig</Link>
-          <Link href="/dashboard" className={styles.colLink}>Manage Orders</Link>
+          <Link href="/gigs/new"    className={styles.colLink}>Post a Gig</Link>
+          <Link href="/dashboard"   className={styles.colLink}>Manage Orders</Link>
+          <Link href="/transparency" className={styles.colLink}>Fee Transparency</Link>
         </div>
 
         {/* Contact */}

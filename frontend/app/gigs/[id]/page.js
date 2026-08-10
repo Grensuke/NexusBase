@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { getGig, placeOrder } from '@/lib/api';
 import { useAuth } from '@/context/AuthContext';
+import { useCurrency } from '@/context/CurrencyContext';
 import Icon from '@/components/Icons';
 import styles from './gig.module.css';
 
@@ -22,6 +23,7 @@ export default function GigDetailPage() {
   const { id }    = useParams();
   const router    = useRouter();
   const { user }  = useAuth();
+  const { formatPrice } = useCurrency();
 
   const [gig,     setGig]     = useState(null);
   const [loading, setLoading] = useState(true);
@@ -146,7 +148,7 @@ export default function GigDetailPage() {
           <div className={`glass-card ${styles.orderCard}`}>
             <div className={styles.priceRow}>
               <span className={styles.from}>Starting at</span>
-              <span className={styles.price}>${parseFloat(gig.price).toFixed(2)}</span>
+              <span className={styles.price}>{formatPrice(gig.price)}</span>
             </div>
 
             <div className={styles.deliveryRow}>

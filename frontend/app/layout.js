@@ -1,6 +1,7 @@
 import './globals.css';
 import { AuthProvider } from '@/context/AuthContext';
 import { ToastProvider } from '@/components/Toast';
+import { CurrencyProvider } from '@/context/CurrencyContext';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
@@ -29,13 +30,15 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <AuthProvider>
-          <ToastProvider>
-            <div className="page-wrapper">
-              <Navbar />
-              <main>{children}</main>
-              <Footer />
-            </div>
-          </ToastProvider>
+          <CurrencyProvider>
+            <ToastProvider>
+              <div className="page-wrapper">
+                <Navbar />
+                <main>{children}</main>
+                <Footer />
+              </div>
+            </ToastProvider>
+          </CurrencyProvider>
         </AuthProvider>
       </body>
     </html>

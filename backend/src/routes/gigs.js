@@ -132,19 +132,63 @@ router.get('/:id', async (req, res) => {
 
 // ---------------------------------------------------------------
 // POST /api/gigs  — create gig (freelancer only)
+// Trust-system additions:
+//   • Fetch the posting freelancer's current trust tier.
+//   • If trial_orders_required > 0 (trial-required tier):
+//       – Enforce the trial_price_cap: reject if price exceeds cap.
+//       – Auto-set is_trial = 1 on the gig.
+//   • Pass is_trial through to the INSERT so place_order can
+//     enforce the cap again at order time (double-guard).
 // ---------------------------------------------------------------
 router.post('/', authenticate, requireRole('freelancer'), async (req, res) => {
   const { category_id, title, description, price, delivery_days } = req.body;
   if (!category_id || !title || !description || !price || !delivery_days) {
     return res.status(400).json({ error: 'All fields are required' });
   }
+
+  const numPrice = parseFloat(price);
+  if (isNaN(numPrice) || numPrice <= 0) {
+    return res.status(400).json({ error: 'price must be a positive number' });
+  }
+
   try {
-    const [result] = await pool.query(
-      `INSERT INTO GIGS (freelancer_id, category_id, title, description, price, delivery_days)
-       VALUES (?, ?, ?, ?, ?, ?)`,
-      [req.user.user_id, category_id, title, description, price, delivery_days]
+    // Look up the freelancer's current tier
+    const [[tierRow]] = await pool.query(
+      `SELECT tt.tier_id, tt.trial_orders_required, tt.trial_price_cap
+         FROM USERS u
+         JOIN TRUST_TIERS tt ON tt.tier_id = u.trust_tier_id
+        WHERE u.user_id = ?`,
+      [req.user.user_id]
     );
-    res.status(201).json({ gig_id: result.insertId, message: 'Gig created' });
+
+    let is_trial = 0;
+
+    if (tierRow && tierRow.trial_orders_required > 0) {
+      // Freelancer is in a trial-required tier
+      is_trial = 1;
+
+      if (tierRow.trial_price_cap !== null && numPrice > tierRow.trial_price_cap) {
+        return res.status(400).json({
+          error: `Your current trust tier caps trial gig prices at ₹${tierRow.trial_price_cap}. ` +
+                 `Please lower your price or complete ${tierRow.trial_orders_required} trial order(s) to unlock full pricing.`,
+          trial_price_cap: tierRow.trial_price_cap,
+        });
+      }
+    }
+
+    const [result] = await pool.query(
+      `INSERT INTO GIGS (freelancer_id, category_id, title, description, price, delivery_days, is_trial)
+       VALUES (?, ?, ?, ?, ?, ?, ?)`,
+      [req.user.user_id, category_id, title, description, numPrice, delivery_days, is_trial]
+    );
+
+    res.status(201).json({
+      gig_id:   result.insertId,
+      is_trial: !!is_trial,
+      message:  is_trial
+        ? 'Trial gig created — price cap enforced by your current trust tier'
+        : 'Gig created',
+    });
   } catch (err) {
     console.error('[gigs POST]', err);
     res.status(500).json({ error: 'Server error' });

@@ -1,6 +1,7 @@
 -- =============================================================
 --  NexusBase — Seed Data
 --  5 clients, 5 freelancers, 10 gigs, 10 orders, payments, reviews
+--  v2 additions: TRUST_TIERS, SKILL_ASSESSMENTS, DISPUTES
 -- =============================================================
 USE nexusbase;
 
@@ -105,3 +106,78 @@ INSERT INTO REVIEWS (order_id, rating, comment, review_date) VALUES
 (3, 4, 'Marcus did a solid SEO audit. Already seeing improvements in rankings.', '2026-06-23 10:00:00'),
 (4, 5, 'Priya built an amazing ML model. Very thorough analysis and great report.', '2026-06-28 15:00:00'),
 (5, 4, 'Liam edited my video professionally. Fast delivery and great quality.', '2026-06-30 11:00:00');
+
+-- ----------------------------------------------------------------
+-- TRUST_TIERS (INSERT IGNORE — already seeded inline in schema.sql)
+-- Running again here is safe; IGNORE prevents duplicate-key errors.
+-- ----------------------------------------------------------------
+INSERT IGNORE INTO TRUST_TIERS
+    (tier_name, min_trust_score, commission_rate, trial_price_cap, trial_orders_required)
+VALUES
+    ('New',          0.00, 0.1000, 1500.00, 3),
+    ('Trusted',     40.00, 0.1500,    NULL, 0),
+    ('Established', 75.00, 0.0800,    NULL, 0);
+
+-- ----------------------------------------------------------------
+-- SKILL_ASSESSMENTS
+-- Mix of passed and failed to give realistic score diversity.
+-- Freelancer user_ids: Alex=1, Sofia=2, Marcus=3, Priya=4, Liam=5
+-- skill_ids: React=1, Node.js=2, UI/UX Design=3, Photoshop=4, SEO=5
+--            Python=6, Data Analysis=7, Copywriting=8, Video Editing=9
+-- ----------------------------------------------------------------
+INSERT INTO SKILL_ASSESSMENTS (user_id, skill_id, score, passed, taken_at) VALUES
+-- Alex Rivera: React passed (92), Node.js passed (85)
+(1, 1, 92.00, 1, '2026-06-01 10:00:00'),
+(1, 2, 85.00, 1, '2026-06-02 10:00:00'),
+-- Sofia Chen: UI/UX passed (88), Photoshop failed (58 < 70 threshold)
+(2, 3, 88.00, 1, '2026-06-01 11:00:00'),
+(2, 4, 58.00, 0, '2026-06-02 11:00:00'),
+-- Marcus Johnson: SEO passed (76), Copywriting failed (62)
+(3, 5, 76.00, 1, '2026-06-03 09:00:00'),
+(3, 8, 62.00, 0, '2026-06-03 10:00:00'),
+-- Priya Patel: Python passed (95), Data Analysis passed (91)
+(4, 6, 95.00, 1, '2026-06-01 14:00:00'),
+(4, 7, 91.00, 1, '2026-06-02 14:00:00'),
+-- Liam O Brien: Video Editing passed (79)
+(5, 9, 79.00, 1, '2026-06-04 09:00:00');
+
+-- ----------------------------------------------------------------
+-- Recalculate trust scores for seeded freelancers.
+-- Since we can't call the stored procedure easily before orders
+-- exist with is_trial flags, we set realistic approximations
+-- directly. The trigger/procedure will maintain accuracy from here.
+-- Formula approximation for established freelancers (they have
+-- real ratings from the review seeds above):
+--
+--   Alex   : A=100% pass, C=5.0*20=100 → score ~60 (Trusted tier)
+--   Sofia  : A=50% pass, C=5.0*20=100 → score ~45 (Trusted tier)
+--   Marcus : A=50% pass, C=4.0*20=80  → score ~39 (stays New)
+--   Priya  : A=100% pass, C=5.0*20=100 → score ~60 (Trusted tier)
+--   Liam   : A=100% pass, C=4.0*20=80  → score ~54 (Trusted tier)
+-- ----------------------------------------------------------------
+UPDATE USERS SET trust_score = 60.00, trust_tier_id = 2, trial_orders_completed = 1 WHERE user_id = 1; -- Alex  → Trusted
+UPDATE USERS SET trust_score = 45.00, trust_tier_id = 2, trial_orders_completed = 0 WHERE user_id = 2; -- Sofia → Trusted
+UPDATE USERS SET trust_score = 39.00, trust_tier_id = 1, trial_orders_completed = 0 WHERE user_id = 3; -- Marcus→ New
+UPDATE USERS SET trust_score = 60.00, trust_tier_id = 2, trial_orders_completed = 0 WHERE user_id = 4; -- Priya → Trusted
+UPDATE USERS SET trust_score = 54.00, trust_tier_id = 2, trial_orders_completed = 0 WHERE user_id = 5; -- Liam  → Trusted
+
+-- ----------------------------------------------------------------
+-- Mark the gigs of Marcus (user_id=3, still in 'New' tier) as
+-- trial gigs so the demo flow works out of the box.
+-- ----------------------------------------------------------------
+UPDATE GIGS SET is_trial = 1 WHERE freelancer_id = 3;
+
+-- ----------------------------------------------------------------
+-- DISPUTES
+-- Two demo rows:
+--   1. Open dispute on order 5 (Liam, completed video order) —
+--      client raised it after delivery, still pending resolution.
+--   2. Resolved dispute on order 3 (Marcus SEO order) resolved
+--      in favour of the freelancer.
+-- ----------------------------------------------------------------
+INSERT INTO DISPUTES (order_id, raised_by, reason, status, resolved_at) VALUES
+-- Order 5: client ava@client.dev (user 10) raises dispute — open
+(5, 10, 'Video delivered was lower quality than the samples shown in the gig.', 'open', NULL),
+-- Order 3: dispute resolved in freelancer favour (Marcus vindicated)
+(3,  8, 'SEO results not visible after 1 week.', 'resolved_for_freelancer', '2026-07-01 09:00:00');
+

@@ -3,11 +3,13 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { getDashboard, updateOrderStatus, deleteGig, updateSkills } from '@/lib/api';
+import { getDashboard, updateOrderStatus, deleteGig, updateSkills, getMyTrust, raiseDispute } from '@/lib/api';
 import { useAuth } from '@/context/AuthContext';
 import { useToast } from '@/components/Toast';
+import { useCurrency } from '@/context/CurrencyContext';
 import ReviewForm from '@/components/ReviewForm';
 import Icon from '@/components/Icons';
+import { TrustWidget } from '@/components/TrustBadge';
 import styles from './dashboard.module.css';
 
 function StatusBadge({ status }) {
@@ -47,11 +49,32 @@ function FreelancerDash({ data, onRefresh }) {
   const { gigs, orders, stats } = data;
   const router = useRouter();
   const { showToast } = useToast();
+  const { formatPrice } = useCurrency();
   const [deletingId,  setDeletingId]  = useState(null);
   const [skillInput,  setSkillInput]  = useState('');
-  const [skills,      setSkills]      = useState([]);
+  // Seed skills from the dashboard API (USER_SKILLS joined with SKILLS)
+  const [skills,      setSkills]      = useState(() => data.skills || []);
+  // Set of skill_ids the user has already passed an assessment for
+  const [passedSkillIds, setPassedSkillIds] = useState(
+    () => new Set((data.passed_skill_ids || []))
+  );
   const [skillSaving, setSkillSaving] = useState(false);
   const [activeTab,   setActiveTab]   = useState('overview');
+  const [trust,       setTrust]       = useState(null);
+  const [disputeId,   setDisputeId]   = useState(null);
+  const [disputeReason, setDisputeReason] = useState('');
+  const [raisingDispute, setRaisingDispute] = useState(false);
+
+  // Re-sync skills and passedSkillIds whenever dashboard data refreshes
+  useEffect(() => {
+    if (data.skills)           setSkills(data.skills);
+    if (data.passed_skill_ids) setPassedSkillIds(new Set(data.passed_skill_ids));
+  }, [data.skills, data.passed_skill_ids]);
+
+  // Fetch trust snapshot
+  useEffect(() => {
+    getMyTrust().then(r => setTrust(r.data)).catch(() => {});
+  }, []);
 
   const handleDelete = async (gig_id) => {
     if (!confirm('Delete this gig?')) return;
@@ -68,13 +91,19 @@ function FreelancerDash({ data, onRefresh }) {
 
   const addSkill = () => {
     const s = skillInput.trim();
-    if (s && !skills.includes(s)) setSkills(sk => [...sk, s]);
+    // Avoid duplicate names (case-insensitive); skill_id is null until saved via DB
+    if (s && !skills.find(sk => sk.skill_name.toLowerCase() === s.toLowerCase())) {
+      setSkills(sk => [...sk, { skill_id: null, skill_name: s }]);
+    }
     setSkillInput('');
   };
-  const removeSkill = (s) => setSkills(sk => sk.filter(x => x !== s));
+  const removeSkill = (name) => setSkills(sk => sk.filter(x => x.skill_name !== name));
   const saveSkills = async () => {
     setSkillSaving(true);
-    try { await updateSkills(skills); showToast('Skills updated!', 'success'); }
+    try {
+      await updateSkills(skills.map(s => s.skill_name));
+      showToast('Skills updated!', 'success');
+    }
     catch { showToast('Failed to save skills', 'error'); }
     finally { setSkillSaving(false); }
   };
@@ -89,17 +118,37 @@ function FreelancerDash({ data, onRefresh }) {
     { id: 'orders',   icon: 'package',    label: `Orders (${orders.length})` },
     { id: 'gigs',     icon: 'shoppingBag', label: `Gigs (${gigs.length})` },
     { id: 'skills',   icon: 'zap',        label: 'Skills' },
+    { id: 'trust',    icon: 'star',       label: 'Trust' },
   ];
+
+  const handleRaiseDispute = async (order_id) => {
+    if (!disputeReason.trim()) return;
+    setRaisingDispute(true);
+    try {
+      await raiseDispute(order_id, disputeReason);
+      showToast('Dispute raised — platform will review', 'success');
+      setDisputeId(null);
+      setDisputeReason('');
+      onRefresh();
+    } catch (err) {
+      showToast(err.response?.data?.error || 'Failed to raise dispute', 'error');
+    } finally {
+      setRaisingDispute(false);
+    }
+  };
 
   return (
     <div className={styles.dashLayout}>
+      {/* Trust widget */}
+      {trust && <TrustWidget trust={trust} />}
+
       {/* Stat cards */}
       <div className={styles.statsRow}>
         {[
           { icon: 'star',        label: 'Avg Rating',   value: stats?.avg_rating ? parseFloat(stats.avg_rating).toFixed(1) + ' ★' : 'N/A' },
           { icon: 'shoppingBag', label: 'Total Gigs',   value: stats?.gig_count ?? 0 },
           { icon: 'package',     label: 'Total Orders',  value: stats?.total_orders ?? 0 },
-          { icon: 'dollarSign',  label: 'Total Earned',  value: `$${parseFloat(stats?.total_earned || 0).toFixed(0)}` },
+          { icon: 'dollarSign',  label: 'Total Earned',  value: formatPrice(stats?.total_earned || 0) },
         ].map(s => (
           <div key={s.label} className={`glass-card ${styles.statCard}`}>
             <span className={styles.statCardIcon}><Icon name={s.icon} size={20} /></span>
@@ -139,7 +188,7 @@ function FreelancerDash({ data, onRefresh }) {
                   ) : col.items.map(o => (
                     <div key={o.order_id} className={styles.kanbanCard}>
                       <p className={styles.kanbanGig}>{o.gig_title}</p>
-                      <p className={styles.kanbanMeta}>{o.client_name} · ${parseFloat(o.amount).toFixed(0)}</p>
+                      <p className={styles.kanbanMeta}>{o.client_name} · {formatPrice(o.amount)}</p>
                       <p className={styles.kanbanDate}>{new Date(o.order_date).toLocaleDateString()}</p>
                       {col.cls === 'pending' && (
                         <div className={styles.kanbanActions}>
@@ -168,8 +217,13 @@ function FreelancerDash({ data, onRefresh }) {
               {orders.map(o => (
                 <div key={o.order_id} className={styles.orderItem}>
                   <div className={styles.orderInfo}>
-                    <p className={styles.orderInfoGig}>{o.gig_title}</p>
-                    <p className={styles.orderInfoMeta}>Client: {o.client_name} · ${parseFloat(o.amount).toFixed(2)}</p>
+                    <p className={styles.orderInfoGig}>
+                      {o.gig_title}
+                      {!!o.is_trial && <span className="badge badge-pending" style={{ marginLeft: '0.5rem', fontSize: '0.6rem' }}>Trial</span>}
+                    </p>
+                    <p className={styles.orderInfoMeta}>Client: {o.client_name} · {formatPrice(o.amount)}
+                      {o.commission_amount && <span style={{ color: 'var(--text-faint)', marginLeft: '0.5rem' }}>· Fee: {formatPrice(o.commission_amount)}</span>}
+                    </p>
                     <p className={styles.orderInfoDate}>{new Date(o.order_date).toLocaleDateString()}</p>
                   </div>
                   <div className={styles.orderRight}>
@@ -178,6 +232,35 @@ function FreelancerDash({ data, onRefresh }) {
                       <button className="btn btn-primary btn-sm" onClick={() => handleAcceptOrder(o.order_id)} id={`accept-order-list-${o.order_id}`}>
                         Accept
                       </button>
+                    )}
+                    {['in_progress','completed'].includes(o.status) && !o.dispute_status && (
+                      disputeId === o.order_id ? (
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', minWidth: 200 }}>
+                          <input
+                            className="form-input"
+                            style={{ fontSize: 'var(--text-xs)', padding: '0.4rem 0.7rem' }}
+                            placeholder="Describe the issue…"
+                            value={disputeReason}
+                            onChange={e => setDisputeReason(e.target.value)}
+                            id={`dispute-reason-${o.order_id}`}
+                          />
+                          <div style={{ display: 'flex', gap: '0.4rem' }}>
+                            <button className="btn btn-danger btn-sm" onClick={() => handleRaiseDispute(o.order_id)} disabled={raisingDispute} id={`submit-dispute-${o.order_id}`}>
+                              {raisingDispute ? '…' : 'Submit'}
+                            </button>
+                            <button className="btn btn-ghost btn-sm" onClick={() => { setDisputeId(null); setDisputeReason(''); }}>Cancel</button>
+                          </div>
+                        </div>
+                      ) : (
+                        <button className="btn btn-ghost btn-sm" onClick={() => setDisputeId(o.order_id)} id={`raise-dispute-${o.order_id}`}>
+                          Dispute
+                        </button>
+                      )
+                    )}
+                    {o.dispute_status && (
+                      <span className={`badge ${o.dispute_status === 'open' ? 'badge-pending' : 'badge-completed'}`}>
+                        {o.dispute_status === 'open' ? '⚖ Disputed' : '✓ Resolved'}
+                      </span>
                     )}
                   </div>
                 </div>
@@ -230,12 +313,36 @@ function FreelancerDash({ data, onRefresh }) {
         <div className={`glass-card ${styles.section}`}>
           <h2 className={styles.sectionTitle}>My Skills</h2>
           <div className={styles.skillTags}>
-            {skills.map(s => (
-              <span key={s} className={styles.skillTag}>
-                {s}
-                <button onClick={() => removeSkill(s)} className={styles.removeSkill}>×</button>
-              </span>
-            ))}
+            {skills.map(s => {
+              const isVerified = s.skill_id && passedSkillIds.has(s.skill_id);
+              return (
+                <span key={s.skill_name} className={styles.skillTag}>
+                  {s.skill_name}
+                  <button onClick={() => removeSkill(s.skill_name)} className={styles.removeSkill}>×</button>
+                  {isVerified ? (
+                    <span
+                      style={{
+                        fontSize: '0.62rem', padding: '0.15rem 0.45rem',
+                        background: 'rgba(120,200,120,0.15)', color: 'var(--success-light)',
+                        borderRadius: '4px', marginLeft: '2px',
+                      }}
+                    >
+                      ✓ Verified
+                    </span>
+                  ) : (
+                    <Link
+                      href={`/assessment?skill_name=${encodeURIComponent(s.skill_name)}&skill_id=${s.skill_id || ''}`}
+                      className="btn btn-ghost btn-sm"
+                      style={{ fontSize: '0.65rem', padding: '0.2rem 0.5rem' }}
+                      id={`assess-skill-${s.skill_name}`}
+                      title="Take skill assessment"
+                    >
+                      Assess
+                    </Link>
+                  )}
+                </span>
+              );
+            })}
             {skills.length === 0 && <p className={styles.empty}>No skills added yet</p>}
           </div>
           <div className={styles.skillInput}>
@@ -253,6 +360,29 @@ function FreelancerDash({ data, onRefresh }) {
               {skillSaving ? 'Saving…' : 'Save Skills'}
             </button>
           </div>
+          <Link href="/assessment" className="btn btn-secondary btn-sm" style={{ alignSelf: 'flex-start' }} id="go-to-assessments-btn">
+            📋 View All Assessment History
+          </Link>
+        </div>
+      )}
+
+      {/* ── Trust tab ── */}
+      {activeTab === 'trust' && (
+        <div className={`glass-card ${styles.section}`}>
+          <div className={styles.sectionHeader}>
+            <h2 className={styles.sectionTitle}>Trust & Commission</h2>
+            <Link href="/transparency" className="btn btn-ghost btn-sm" id="fee-transparency-link">Fee Schedule ↗</Link>
+          </div>
+          {trust ? (
+            <div style={{ maxWidth: 420 }}>
+              <TrustWidget trust={trust} />
+              <p style={{ marginTop: 'var(--space-4)', fontSize: 'var(--text-sm)', color: 'var(--text-muted)' }}>
+                Trust score updates automatically after skill assessments, trial completions, and dispute resolutions.
+              </p>
+            </div>
+          ) : (
+            <div className="skeleton" style={{ height: 180, borderRadius: 'var(--r-lg)' }} />
+          )}
         </div>
       )}
     </div>
@@ -350,6 +480,7 @@ function ClientDash({ data, onRefresh }) {
 }
 
 function OrderCard({ o, onComplete, completing, reviewOrder, setReviewOrder, onRefresh }) {
+  const { formatPrice } = useCurrency();
   return (
     <div className={styles.orderCard}>
       <div className={styles.orderCardHeader}>
@@ -357,7 +488,7 @@ function OrderCard({ o, onComplete, completing, reviewOrder, setReviewOrder, onR
           <p className={styles.orderGig}>{o.gig_title}</p>
           <OrderTimeline status={o.status} hasReview={!!o.review_id} />
         </div>
-        <span className={styles.orderAmount}>${parseFloat(o.amount).toFixed(0)}</span>
+        <span className={styles.orderAmount}>{formatPrice(o.amount)}</span>
       </div>
 
       <div className={styles.orderMeta}>

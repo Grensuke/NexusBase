@@ -10,7 +10,7 @@ const router = express.Router();
 router.get('/', authenticate, async (req, res) => {
   try {
     if (req.user.role === 'freelancer') {
-      // Freelancer dashboard: gigs + order queue + stats
+      // Freelancer dashboard: gigs + order queue + stats + skills
       const [gigs] = await pool.query(
         `SELECT g.gig_id, g.title, g.price, g.delivery_days, c.category_name,
                 COUNT(DISTINCT o.order_id) AS total_orders,
@@ -28,11 +28,16 @@ router.get('/', authenticate, async (req, res) => {
 
       const [orders] = await pool.query(
         `SELECT o.order_id, o.status, o.amount, o.order_date,
+                o.is_trial, o.commission_amount,
                 g.title AS gig_title,
-                u.name AS client_name
+                u.name  AS client_name,
+                d.status AS dispute_status,
+                p.escrow_status
            FROM ORDERS o
            JOIN GIGS   g ON g.gig_id    = o.gig_id
            JOIN USERS  u ON u.user_id   = o.client_id
+           LEFT JOIN DISPUTES d ON d.order_id = o.order_id
+           LEFT JOIN PAYMENTS p ON p.order_id = o.order_id
           WHERE g.freelancer_id = ? AND o.status IN ('pending','in_progress')
           ORDER BY o.order_date DESC`,
         [req.user.user_id]
@@ -50,7 +55,28 @@ router.get('/', authenticate, async (req, res) => {
         [req.user.user_id, req.user.user_id, req.user.user_id, req.user.user_id]
       );
 
-      return res.json({ role: 'freelancer', gigs, orders, stats });
+      // Fetch skills from USER_SKILLS joined with SKILLS for display names
+      const [skillRows] = await pool.query(
+        `SELECT s.skill_id, s.skill_name
+           FROM USER_SKILLS us
+           JOIN SKILLS s ON s.skill_id = us.skill_id
+          WHERE us.user_id = ?
+          ORDER BY s.skill_name`,
+        [req.user.user_id]
+      );
+      // Return as objects {skill_id, skill_name} so the frontend builds correct Assess links
+      const skills = skillRows;
+
+      // Which skills has this user already passed an assessment for?
+      const [passedRows] = await pool.query(
+        `SELECT DISTINCT skill_id
+           FROM SKILL_ASSESSMENTS
+          WHERE user_id = ? AND passed = 1`,
+        [req.user.user_id]
+      );
+      const passed_skill_ids = passedRows.map(r => r.skill_id);
+
+      return res.json({ role: 'freelancer', gigs, orders, stats, skills, passed_skill_ids });
     }
 
     // Client dashboard: order history + spending stats

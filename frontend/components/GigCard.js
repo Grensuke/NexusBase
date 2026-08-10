@@ -2,6 +2,8 @@
 
 import Link from 'next/link';
 import Icon, { CATEGORY_ICON_MAP } from './Icons';
+import { TierPill } from './TrustBadge';
+import { useCurrency } from '@/context/CurrencyContext';
 import styles from './GigCard.module.css';
 
 function Stars({ rating }) {
@@ -30,10 +32,13 @@ function Avatar({ name }) {
 }
 
 export default function GigCard({ gig }) {
+  const { formatPrice } = useCurrency();
   const {
     gig_id, title, price, delivery_days,
     category_name, freelancer_name, freelancer_rating,
     avg_rating, review_count,
+    is_trial, tier_name,
+    trial_orders_completed, trial_orders_required,
   } = gig;
 
   const displayRating = parseFloat(avg_rating || freelancer_rating || 0);
@@ -49,10 +54,13 @@ export default function GigCard({ gig }) {
       </div>
 
       <div className={styles.cardInner}>
-        {/* Category */}
+        {/* Category + Trial badge row */}
         <div className={styles.categoryRow}>
           <Icon name={iconName} size={14} className={styles.catIcon} />
           <span className={styles.catName}>{category_name}</span>
+          {!!is_trial && (
+            <span className={styles.trialChip} title="Trial gig — capped price, shorter escrow window">Trial</span>
+          )}
         </div>
 
         {/* Title */}
@@ -67,10 +75,17 @@ export default function GigCard({ gig }) {
           </span>
         </div>
 
-        {/* Freelancer */}
+        {/* Freelancer + tier */}
         <div className={styles.freelancerRow}>
           <Avatar name={freelancer_name} />
           <span className={styles.freelancerName}>{freelancer_name}</span>
+          {tier_name && (
+            <TierPill
+              tier_name={tier_name}
+              trial_orders_completed={trial_orders_completed}
+              trial_orders_required={trial_orders_required}
+            />
+          )}
         </div>
 
         {/* Footer */}
@@ -80,7 +95,7 @@ export default function GigCard({ gig }) {
           </span>
           <span className={styles.price}>
             <span className={styles.from}>FROM</span>
-            <span className={styles.priceAmount}>${parseFloat(price).toFixed(0)}</span>
+            <span className={styles.priceAmount}>{formatPrice(price)}</span>
           </span>
         </div>
       </div>

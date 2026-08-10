@@ -9,6 +9,8 @@ const categoriesRouter = require('./routes/categories');
 const ordersRouter     = require('./routes/orders');
 const reviewsRouter    = require('./routes/reviews');
 const dashboardRouter  = require('./routes/dashboard');
+const assessmentsRouter = require('./routes/assessments');
+const trustRouter       = require('./routes/trust');
 
 const app  = express();
 const PORT = process.env.PORT || 5000;
@@ -22,13 +24,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // ---- Routes ----
-app.use('/api/auth',       authRouter);
-app.use('/api/users',      usersRouter);
-app.use('/api/gigs',       gigsRouter);
-app.use('/api/categories', categoriesRouter);
-app.use('/api/orders',     ordersRouter);
-app.use('/api/reviews',    reviewsRouter);
-app.use('/api/dashboard',  dashboardRouter);
+app.use('/api/auth',        authRouter);
+app.use('/api/users',       usersRouter);
+app.use('/api/gigs',        gigsRouter);
+app.use('/api/categories',  categoriesRouter);
+app.use('/api/orders',      ordersRouter);
+app.use('/api/reviews',     reviewsRouter);
+app.use('/api/dashboard',   dashboardRouter);
+app.use('/api/assessments', assessmentsRouter);
+app.use('/api/trust',       trustRouter);
 
 // Health check
 app.get('/api/health', (req, res) => res.json({ status: 'ok', timestamp: new Date() }));

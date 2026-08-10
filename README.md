@@ -1,7 +1,7 @@
 # 🌐 NexusBase
-### A Full-Stack Freelance Services Marketplace
+### A Full-Stack Freelance Services Marketplace with a Trust & Commission System
 
-> **DBMS Capstone Project** — demonstrating relational design, stored procedures, triggers, views, and indexes through a production-quality web application.
+> **DBMS Capstone Project** — demonstrating relational design, normalization, stored procedures, triggers, views, indexes, and a multi-tier trust system enforced entirely at the database layer.
 
 `MySQL 8.x` &nbsp;·&nbsp; `Node.js 18+` &nbsp;·&nbsp; `Express 4.x` &nbsp;·&nbsp; `Next.js 16` &nbsp;·&nbsp; `JWT + bcrypt`
 
@@ -24,7 +24,9 @@
 
 ## 🎯 Project Overview
 
-**NexusBase** is a full-stack freelance services marketplace — similar to Fiverr — that connects **clients** who need work done with **freelancers** who offer gigs. The platform handles the complete order lifecycle: browsing → ordering → delivery → review.
+**NexusBase** is a full-stack freelance services marketplace — similar to Fiverr — where **clients** hire **freelancers** for gigs across 10+ service categories. The platform covers the complete lifecycle: browsing → ordering → delivery → review.
+
+The distinguishing feature of this project is its **Trust & Commission System**: a database-enforced vetting mechanism that gates new freelancers behind skill assessments and trial orders before they earn full pricing access. Commission rates are locked at the database level and recorded on every order at the time of placement — not looked up at query time. Three tiers (New → Trusted → Established) are governed by a `TRUST_TIERS` lookup table, two triggers, and a stored procedure (`recalculate_trust_score`) that re-evaluates a freelancer's score after every assessment, trial completion, or dispute resolution.
 
 This project is built as a **DBMS capstone**, where correct relational design, normalization, and the use of advanced database features (stored procedures, triggers, views, indexes) are as important as the working application itself.
 
@@ -35,22 +37,33 @@ This project is built as a **DBMS capstone**, where correct relational design, n
 | 🔐 **JWT Authentication** | Stateless auth with role-based guards (client / freelancer) |
 | 🛍️ **Gig Marketplace** | Browse, search, and filter 10+ categories of freelance services |
 | 📦 **Order Lifecycle** | `pending → in_progress → completed` status flow |
-| 💳 **Payments** | 1:1 payment record per order with status tracking |
+| 💳 **Payments** | 1:1 payment record per order; `escrow_status` for trust-tier hold/release |
 | ⭐ **Reviews & Ratings** | Star rating system with automatic average recalculation |
 | 📊 **Role Dashboards** | Freelancers manage gigs + order queue; clients track order history |
 | 🏆 **Leaderboard** | Top freelancers ranked by rating via a SQL view |
 | 🎬 **Cinematic Hero** | Full-viewport space video background with glassmorphism UI on homepage |
+| 🛡️ **Trust & Commission System** | Three-tier freelancer vetting: skill assessments, trial orders, dispute resolution, and per-tier commission rates enforced at database level via `fee_transparency` view |
 
 ---
 
 ## 🎬 Live Demo Flow
 
-The following end-to-end flow was verified via automated browser testing:
+The following flows were verified end-to-end:
 
+**Core order lifecycle:**
 ```
 Sign up as freelancer → Post a gig → Sign up as client → Browse gigs
 → Place order (stored proc) → Freelancer accepts → Client marks complete
 → Leave review (fires trigger) → avg_rating updated → View leaderboard
+```
+
+**Trust system lifecycle:**
+```
+New freelancer → Take skill assessment (POST /api/assessments/:skill_id)
+→ recalculate_trust_score fires → Post a trial gig (price cap enforced)
+→ Client orders → Freelancer completes → after_trial_order_complete trigger
+→ trial_orders_completed++ → trust score recalculated → tier auto-promoted
+→ Established tier: lower commission, full pricing unlocked
 ```
 
 **Demo Credentials** — all passwords: `Password123!`
@@ -100,30 +113,38 @@ USERS ──< USER_SKILLS >── SKILLS
   │       │
   │       └──< ORDERS >── PAYMENTS  (1:1)
   │                 │
-  │                 └──── REVIEWS   (1:1)
+  │                 ├──── REVIEWS   (1:1)
+  │                 └──── DISPUTES  (0:1)
   │
-  └── (client_id on ORDERS)
+  ├── TRUST_TIERS  (lookup, FK on USERS.trust_tier_id)
+  └──< SKILL_ASSESSMENTS >── SKILLS
 ```
 
 ### Tables at a Glance
 
 | Table | PK | Key Columns | Relationships |
 |-------|----|-------------|---------------|
-| **USERS** | `user_id` | name, email, password_hash, role, avg_rating | Parent of GIGS, ORDERS |
+| **USERS** | `user_id` | name, email, role, avg_rating, **trust_score, trust_tier_id, trial_orders_completed** | Parent of GIGS, ORDERS, SKILL_ASSESSMENTS |
 | **SKILLS** | `skill_id` | skill_name | M:M with USERS via USER_SKILLS |
 | **USER_SKILLS** | (user_id, skill_id) | — | Junction table |
 | **CATEGORIES** | `category_id` | category_name | Parent of GIGS |
-| **GIGS** | `gig_id` | title, price, delivery_days | Child of USERS, CATEGORIES |
-| **ORDERS** | `order_id` | status, amount, order_date | Child of GIGS, USERS |
-| **PAYMENTS** | `payment_id` | amount, method, status | 1:1 child of ORDERS |
+| **GIGS** | `gig_id` | title, price, delivery_days, **is_trial** | Child of USERS, CATEGORIES |
+| **ORDERS** | `order_id` | status, amount, **is_trial, commission_rate_applied, commission_amount** | Child of GIGS, USERS |
+| **PAYMENTS** | `payment_id` | amount, method, status, **escrow_status** | 1:1 child of ORDERS |
 | **REVIEWS** | `review_id` | rating, comment, review_date | 1:1 child of ORDERS |
+| **TRUST_TIERS** | `tier_id` | tier_name, min_trust_score, commission_rate, trial_price_cap, trial_orders_required | Lookup — FK on USERS.trust_tier_id |
+| **SKILL_ASSESSMENTS** | `assessment_id` | user_id, skill_id, score, passed | Child of USERS + SKILLS |
+| **DISPUTES** | `dispute_id` | order_id, raised_by, reason, status | Child of ORDERS |
 
 ### Full DDL Summary
 
 ```sql
--- Run to set up everything:
+-- Fresh install: schema + seed (baseline + trust system migration folded in)
 Get-Content database\schema.sql | mysql -u root "-pYOUR_PASSWORD"
 Get-Content database\seed.sql   | mysql -u root "-pYOUR_PASSWORD"
+
+-- Existing DB: run the incremental migration only
+SOURCE database/migrations/002_trust_system.sql;
 ```
 
 ---
@@ -204,7 +225,33 @@ The `amount` on `ORDERS` is copied from `GIGS.price` at order time rather than b
 
 ---
 
-## ⚙️ DBMS Features In-Depth
+### 7. TRUST_TIERS as a Lookup Table (not an ENUM)
+
+The three tiers (New / Trusted / Established) are stored in their own `TRUST_TIERS` table rather than as an ENUM on USERS.
+
+| Reason | Explanation |
+|--------|-------------|
+| **Data per tier** | Each tier carries `commission_rate`, `trial_price_cap`, `trial_orders_required`, `min_trust_score` — too much to pack into an ENUM |
+| **No migration needed to change rates** | A `commission_rate` change is one `UPDATE` row; an ENUM change requires `ALTER TABLE` on every deployment |
+| **FK-enforced integrity** | `FOREIGN KEY (trust_tier_id) REFERENCES TRUST_TIERS(tier_id)` prevents a user from being assigned a non-existent tier |
+| **`fee_transparency` view** | The view JOINs `TRUST_TIERS` with live USERS counts — impossible with an ENUM |
+
+---
+
+### 8. SKILL_ASSESSMENTS Separate from USER_SKILLS
+
+`USER_SKILLS` records *what* skills a freelancer claims. `SKILL_ASSESSMENTS` records *whether they passed a test* for that skill — a different fact with its own lifecycle (score, passed, taken_at, retakes).
+
+Merging them would create a partial-dependency violation (the score depends on the assessment event, not on the (user_id, skill_id) pair itself) — breaking **2NF**.
+
+---
+
+### 9. `commission_rate_applied` Denormalized on ORDERS (Same Reasoning as `amount`)
+
+Like `amount`, the commission rate is snapshotted onto the ORDER row at the time `place_order` fires. If the freelancer is later promoted to a cheaper tier, historical commission records remain accurate. The procedure also computes `commission_amount = amount × commission_rate` at INSERT time so reporting queries need no runtime arithmetic.
+
+---
+
 
 ### 🔁 Trigger — `after_review_insert`
 
@@ -335,6 +382,83 @@ Without `idx_gigs_category`, a browse-by-category query does a **full table scan
 
 ---
 
+### 🧮 Stored Procedure — `recalculate_trust_score`
+
+```sql
+CREATE PROCEDURE recalculate_trust_score(IN p_user_id INT)
+BEGIN
+  DECLARE v_pass_rate   DECIMAL(5,4) DEFAULT 0;
+  DECLARE v_trial_ratio DECIMAL(5,4) DEFAULT 0;
+  DECLARE v_avg_rating  DECIMAL(5,4) DEFAULT 0;
+  DECLARE v_dispute_pen DECIMAL(5,4) DEFAULT 0;
+  DECLARE v_score       DECIMAL(10,2);
+  -- ... (weights documented in schema.sql)
+  --  score = (pass_rate × 30) + (trial_ratio × 30)
+  --        + (avg_rating_norm × 30) − (dispute_penalty × 10)
+  --  clamped to [0, 100]
+  UPDATE USERS SET trust_score = v_score WHERE user_id = p_user_id;
+  -- Auto-promote tier when score crosses min_trust_score threshold
+END$$
+```
+
+**Weight breakdown (for viva defence):**
+
+| Component | Weight | Source column |
+|-----------|--------|---------------|
+| Skill assessment pass rate | 30% | `SKILL_ASSESSMENTS.passed` |
+| Trial completion ratio | 30% | `USERS.trial_orders_completed` / `TRUST_TIERS.trial_orders_required` |
+| Average client rating (0–5 → 0–100) | 30% | `USERS.avg_rating` |
+| Dispute penalty (per dispute resolved against) | −10% each | `DISPUTES.status = 'resolved_for_client'` |
+
+**Called from:** `after_trial_order_complete` trigger, `after_dispute_resolved` trigger, and directly by `POST /api/assessments/:skill_id`.
+
+---
+
+### 🔁 Trigger — `after_trial_order_complete`
+
+**Fires:** `AFTER UPDATE ON ORDERS` when `status` transitions to `completed` AND `is_trial = 1`.
+
+**What it does:**
+1. Increments `USERS.trial_orders_completed` for the gig's freelancer
+2. Calls `recalculate_trust_score(freelancer_id)`
+3. Compares new `trust_score` against `TRUST_TIERS.min_trust_score` and auto-promotes `trust_tier_id`
+4. Updates `PAYMENTS.escrow_status` from `held` → `released`
+
+**Why this belongs in a trigger (not application code):** The state transition is an atomic fact — it must fire even if the status update arrives via a direct SQL command, not just through the API. A trigger guarantees this.
+
+---
+
+### 🔁 Trigger — `after_dispute_resolved`
+
+**Fires:** `AFTER UPDATE ON DISPUTES` when `status` changes from `open` to a resolved value.
+
+**Branching logic:**
+- `resolved_for_client` → adds a penalty row to dispute count, calls `recalculate_trust_score`, excludes the disputed trial order from the promotion counter, and reverses escrow to `refunded`
+- `resolved_for_freelancer` → calls `recalculate_trust_score` (neutral recount, dispute penalty not applied), releases escrow
+
+---
+
+### 👁️ View — `fee_transparency`
+
+```sql
+CREATE VIEW fee_transparency AS
+SELECT
+  tt.tier_id, tt.tier_name, tt.min_trust_score,
+  tt.commission_rate,
+  ROUND(tt.commission_rate * 100, 2) AS commission_pct,
+  tt.trial_price_cap, tt.trial_orders_required,
+  COUNT(u.user_id) AS freelancers_in_tier
+FROM TRUST_TIERS tt
+LEFT JOIN USERS u ON u.trust_tier_id = tt.tier_id AND u.role = 'freelancer'
+GROUP BY tt.tier_id;
+```
+
+**What it demonstrates:** Commission rates are provably enforced at database level — a SELECT on this view shows live freelancer distribution across tiers. The `/transparency` frontend page renders this view directly, so evaluators can verify numbers match.
+
+**Mirrors:** same aggregation pattern as `top_freelancers`.
+
+---
+
 ## 🚀 Quick Start
 
 ### Prerequisites
@@ -452,6 +576,27 @@ Navigate to **http://localhost:3000** and sign in with a demo account.
 |--------|----------|------|-------------|
 | `GET` | `/api/dashboard` | JWT | Role-aware dashboard data |
 
+### Trust
+
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| `GET` | `/api/trust/tiers` | Public | `fee_transparency` view — all tier data live from DB |
+| `GET` | `/api/trust/me` | JWT | Own trust score, tier, commission, trial progress |
+
+### Assessments
+
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| `POST` | `/api/assessments/:skill_id` | Freelancer | Submit score → writes SKILL_ASSESSMENTS → calls `recalculate_trust_score` |
+| `GET` | `/api/assessments/me` | Freelancer | Own assessment history with skill names |
+
+### Disputes
+
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| `POST` | `/api/orders/:id/dispute` | JWT | Raise dispute on an order |
+| `PATCH` | `/api/orders/disputes/:id` | Freelancer | Resolve dispute — `after_dispute_resolved` trigger fires |
+
 ---
 
 ## 📁 Project Structure
@@ -460,8 +605,11 @@ Navigate to **http://localhost:3000** and sign in with a demo account.
 NexusBase/
 │
 ├── 📂 database/
-│   ├── schema.sql          # Full DDL — 8 tables, trigger, proc, view, indexes
-│   └── seed.sql            # 10 users, 10 gigs, 10 orders, payments, reviews
+│   ├── schema.sql          # Full DDL — 11 tables, 3 triggers, 2 procs, 2 views, indexes
+│   ├── seed.sql            # 10 users, 10 gigs, 10 orders + trust system seed rows
+│   └── migrations/
+│       ├── 001_baseline.sql     # Original 8-table schema
+│       └── 002_trust_system.sql # Incremental: 3 new tables, 4 new cols, 2 procs, 2 triggers, 1 view
 │
 ├── 📂 backend/
 │   ├── src/
@@ -472,11 +620,13 @@ NexusBase/
 │   │   └── routes/
 │   │       ├── auth.js         # signup / login
 │   │       ├── users.js        # profiles, skills, top-freelancers
-│   │       ├── gigs.js         # CRUD + browse with search/filter
+│   │       ├── gigs.js         # CRUD + browse; trial price-cap enforcement
 │   │       ├── categories.js   # lookup list
-│   │       ├── orders.js       # place_order proc + status transitions
+│   │       ├── orders.js       # place_order proc + status + dispute endpoints
 │   │       ├── reviews.js      # triggers avg_rating update
-│   │       └── dashboard.js    # aggregated role-aware data
+│   │       ├── dashboard.js    # aggregated role-aware data
+│   │       ├── assessments.js  # POST submit + GET history
+│   │       └── trust.js        # GET tiers (fee_transparency) + GET me
 │   ├── index.js                # Express app entry
 │   ├── .env                    # DB + JWT config
 │   └── package.json
@@ -484,29 +634,27 @@ NexusBase/
 ├── 📂 frontend/
 │   ├── app/
 │   │   ├── layout.js           # Root layout + AuthProvider
-│   │   ├── globals.css         # Design system (CSS vars, glassmorphism, liquid-glass)
+│   │   ├── globals.css         # Design system (CSS vars, glassmorphism)
 │   │   ├── page.js             # Homepage: video hero, categories, gigs, freelancers
-│   │   ├── page.module.css     # Homepage styles: video, overlays, search, pills
 │   │   ├── auth/
 │   │   │   ├── login/          # Login page
 │   │   │   └── signup/         # Signup with role toggle
 │   │   ├── gigs/
 │   │   │   ├── page.js         # Browse page (search + category filter)
 │   │   │   ├── [id]/           # Gig detail + order sidebar
-│   │   │   │   └── edit/       # Edit gig form
-│   │   │   └── new/            # Create gig form
-│   │   └── dashboard/          # Role-aware dashboard
+│   │   │   └── new/            # Create gig form (trial cap banner)
+│   │   ├── dashboard/          # Role-aware dashboard (+ Trust tab + dispute actions)
+│   │   ├── assessment/         # Skill quiz: intro → 5 Qs → result + gauge
+│   │   └── transparency/       # Public fee schedule page (fee_transparency view)
 │   ├── components/
-│   │   ├── Navbar.js           # Transparent-on-hero nav, blurs on scroll
-│   │   ├── GigCard.js          # Gig card with star ratings
+│   │   ├── Navbar.js           # Scroll-aware nav with user dropdown
+│   │   ├── GigCard.js          # Gig card + TierPill + Trial chip
+│   │   ├── TrustBadge.js       # TierPill · TrialProgress · TrustWidget
 │   │   └── ReviewForm.js       # Inline star picker + comment form
 │   ├── context/
 │   │   └── AuthContext.js      # Global auth state via React Context
 │   ├── lib/
-│   │   └── api.js              # Native fetch client (JWT interceptor)
-│   ├── public/
-│   │   └── spaceV.mp4          # Cinematic space video for homepage hero
-│   ├── .env.local              # NEXT_PUBLIC_API_URL
+│   │   └── api.js              # Native fetch client (JWT interceptor + trust helpers)
 │   └── package.json
 │
 └── README.md                   # You are here
@@ -528,6 +676,15 @@ NexusBase/
 | **Why is `amount` stored on ORDERS instead of computed from GIGS.price?** | Gig prices can change after an order is placed. We record the historical price the client agreed to at order time — intentional, documented denormalization. |
 | **What is 3NF?** | Third Normal Form: every non-key column depends only on the primary key (not on other non-key columns). Our schema satisfies 3NF across all tables. |
 | **How is avg_rating kept consistent?** | Database trigger fires after every review insert and recalculates avg_rating directly — no application-layer code required, consistent even with concurrent writes. |
+| **What is the Trust System?** | A three-tier vetting system (New → Trusted → Established) that adjusts commission rates and unlocks full pricing as freelancers prove reliability via skill assessments, dispute-free trial orders, and client ratings. |
+| **Why is TRUST_TIERS a separate table and not an ENUM?** | An ENUM can't carry per-tier data (commission rates, price caps, trial requirements). A lookup table allows rate changes via a single UPDATE row without ALTER TABLE migrations, and enables the `fee_transparency` view via JOIN. |
+| **How is the trust score calculated?** | Weighted sum: assessment pass rate (30%) + trial completion ratio (30%) + avg_rating normalised 0–100 (30%) − dispute penalty 10% per resolved-against dispute. Clamped to [0, 100] and computed by the `recalculate_trust_score` stored procedure. |
+| **Why is `commission_rate_applied` denormalised on ORDERS?** | Same reasoning as `amount` — if the freelancer is promoted to a cheaper tier later, historical commission records must reflect what was charged at order time. |
+| **What does `after_trial_order_complete` do?** | Fires on ORDERS status → completed when is_trial=1. Increments trial_orders_completed, calls recalculate_trust_score, auto-promotes tier if threshold met, releases escrow on PAYMENTS. |
+| **What does `after_dispute_resolved` do?** | Fires on DISPUTES status change. If resolved_for_client: applies trust-score penalty, excludes disputed trial from promotion count, refunds escrow. If resolved_for_freelancer: neutral recount, releases escrow. |
+| **What is the `fee_transparency` view?** | JOINs TRUST_TIERS with live USERS counts per tier. Proves commission schedule is database-enforced, not just documented. Rendered on the public `/transparency` page. |
+| **Where is the trial price cap enforced?** | Double-guarded: (1) `gigs.js POST` checks TRUST_TIERS before INSERT; (2) `place_order` stored procedure re-validates at order time. Neither layer trusts the other. |
+| **Why are SKILL_ASSESSMENTS separate from USER_SKILLS?** | USER_SKILLS records claimed skills; SKILL_ASSESSMENTS records test events (score, passed, taken_at). Merging them would create a partial-dependency violation (score depends on the assessment event, not on the (user_id, skill_id) pair) — breaking 2NF. |
 
 ---
 
