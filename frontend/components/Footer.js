@@ -11,11 +11,11 @@ export default function Footer() {
         {/* Brand column */}
         <div className={styles.brandCol}>
           <Link href="/" className={styles.logo}>
-            <span className={styles.logoIcon}>⬡</span>
+            <span className={styles.logoMark}>N</span>
             <span className={styles.logoText}>Nexus<strong>Base</strong></span>
           </Link>
           <p className={styles.tagline}>
-            Connect with top freelancers for any project. Fast, reliable, affordable.
+            A marketplace where every rating is earned and every portfolio is real.
           </p>
         </div>
 

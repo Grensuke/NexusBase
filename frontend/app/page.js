@@ -4,21 +4,17 @@ import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { getGigs, getCategories, getTopFreelancers } from '@/lib/api';
 import GigCard from '@/components/GigCard';
+import Icon, { CATEGORY_ICON_MAP } from '@/components/Icons';
 import styles from './page.module.css';
 
-
-
-
-const CATEGORY_THEMES = {
-  'Web Development':       { icon: '💻', gradient: 'linear-gradient(135deg,#1e3a8a,#3b82f6,#06b6d4)', count: null },
-  'Graphic Design':        { icon: '🎨', gradient: 'linear-gradient(135deg,#581c87,#a855f7,#ec4899)', count: null },
-  'Digital Marketing':     { icon: '📣', gradient: 'linear-gradient(135deg,#065f46,#10b981,#34d399)', count: null },
-  'Writing & Translation': { icon: '✍️', gradient: 'linear-gradient(135deg,#7c2d12,#ea580c,#fbbf24)', count: null },
-  'Video & Animation':     { icon: '🎬', gradient: 'linear-gradient(135deg,#1e1b4b,#6366f1,#a78bfa)', count: null },
-  'Data Science':          { icon: '📊', gradient: 'linear-gradient(135deg,#164e63,#0891b2,#67e8f9)', count: null },
-};
-
 const TYPING_PHRASES = ['React developer…', 'Logo design…', 'SEO audit…', 'Video editing…', 'Data analysis…', 'Copywriting…'];
+
+// Hardcoded proof cards from seed data — real completed work
+const PROOF_CARDS = [
+  { name: 'Alex Rivera', rating: 5, gig: 'Full-stack React & Node.js web app', review: 'Outstanding web app. Clean code, on time, and great communication!' },
+  { name: 'Sofia Chen', rating: 5, gig: 'Modern UI/UX design', review: 'Incredible designer. The UI is exactly what I envisioned.' },
+  { name: 'Marcus Johnson', rating: 4, gig: 'SEO audit and optimization', review: 'Solid SEO audit. Already seeing improvements in rankings.' },
+];
 
 function Stars({ rating }) {
   return (
@@ -55,7 +51,6 @@ function CountUp({ target, suffix = '' }) {
     return () => observer.disconnect();
   }, [target]);
 
-  const raw = target.replace(/[^0-9.]/g, '');
   const prefix = target.replace(/[0-9.,+%]/g, '').trim();
   const hasSuffix = target.includes('+') ? '+' : (target.includes('%') ? '%' : suffix);
 
@@ -70,8 +65,8 @@ function FreelancerAvatar({ name, size = 64 }) {
       className={styles.flAvatarCircle}
       style={{
         width: size, height: size,
-        background: `hsl(${hue},55%,28%)`,
-        border: `2px solid hsl(${hue},55%,45%)`,
+        background: `hsl(${hue},25%,20%)`,
+        border: `2px solid hsl(${hue},25%,35%)`,
         fontSize: size * 0.3,
       }}
     >
@@ -132,14 +127,6 @@ export default function HomePage() {
     return () => observer.disconnect();
   }, [loading]);
 
-  // Scroll indicator
-  const [showScroll, setShowScroll] = useState(true);
-  useEffect(() => {
-    const h = () => setShowScroll(window.scrollY < 80);
-    window.addEventListener('scroll', h, { passive: true });
-    return () => window.removeEventListener('scroll', h);
-  }, []);
-
   const handleSearch = (e) => {
     e.preventDefault();
     if (search.trim()) window.location.href = `/gigs?search=${encodeURIComponent(search)}`;
@@ -148,97 +135,82 @@ export default function HomePage() {
   return (
     <div className={styles.page}>
 
-      {/* ── VIDEO HERO ── */}
+      {/* ── HERO ── */}
       <section className={`${styles.hero} hero-no-offset`}>
-        {/* Looping background video — local file */}
-        <video
-          className={styles.heroBgVideo}
-          autoPlay
-          muted
-          loop
-          playsInline
-          src="/spaceV.mp4"
-        />
+        <div className={`container ${styles.heroLayout}`}>
+          {/* Left column */}
+          <div className={styles.heroLeft}>
+            <h1 className={`${styles.heroTitle} animate-fade-in-up`}>
+              Work you can trust.{'\n'}
+              <span className={styles.heroAccent}>Talent you can prove.</span>
+            </h1>
 
-        {/* Deep overlay so text reads well */}
-        <div className={styles.heroOverlay} />
+            <p className={`${styles.heroSub} animate-fade-in-up stagger-2`}>
+              A marketplace where every rating is earned and every portfolio is real. Find expert freelancers for web development, design, marketing, data science, and more.
+            </p>
 
-        {/* Vignette edges */}
-        <div className={styles.heroVignette} />
+            <form className={`${styles.searchBar} animate-fade-in-up stagger-3`} onSubmit={handleSearch} id="hero-search-form">
+              <input
+                id="hero-search-input"
+                type="text"
+                value={search}
+                onChange={e => setSearch(e.target.value)}
+                className={styles.searchInput}
+                placeholder=""
+              />
+              <span className={styles.typingPlaceholder} aria-hidden="true">
+                {search.length === 0 && (
+                  <>{typingText}<span className={styles.cursor}>|</span></>
+                )}
+              </span>
+              <button type="submit" className={styles.searchBtn} id="hero-search-btn">
+                Search
+              </button>
+            </form>
 
-        {/* Content */}
-        <div className={styles.heroInner}>
-          <div className={`${styles.heroBadge} animate-fade-in-up`}>
-            <span className={styles.heroBadgeDot} />
-            Trusted by 10,000+ clients worldwide
+            <div className={`${styles.heroPills} animate-fade-in-up stagger-4`}>
+              <span className={styles.pillLabel}>Popular:</span>
+              {categories.slice(0, 4).map((c) => (
+                <Link key={c.category_id} href={`/gigs?category=${c.category_id}`} className={styles.pill}>
+                  <Icon name={CATEGORY_ICON_MAP[c.category_name] || 'zap'} size={13} /> {c.category_name}
+                </Link>
+              ))}
+            </div>
           </div>
 
-          <h1 className={`${styles.heroTitle} animate-fade-in-up stagger-2`}>
-            Find <span className={styles.heroGradientText}>Expert Freelancers</span><br />
-            for Any Project
-          </h1>
-
-          <p className={`${styles.heroSub} animate-fade-in-up stagger-3`}>
-            Connect with top freelancers for web development, design, marketing,
-            data science, and more. Get work done — fast.
-          </p>
-
-          <form className={`${styles.searchBar} animate-fade-in-up stagger-4`} onSubmit={handleSearch} id="hero-search-form">
-            <input
-              id="hero-search-input"
-              type="text"
-              value={search}
-              onChange={e => setSearch(e.target.value)}
-              className={styles.searchInput}
-              placeholder=""
-            />
-            <span className={styles.typingPlaceholder} aria-hidden="true">
-              {search.length === 0 && (
-                <>{typingText}<span className={styles.cursor}>|</span></>
-              )}
-            </span>
-            <button type="submit" className={styles.searchBtn} id="hero-search-btn">
-              🔍 Search
-            </button>
-          </form>
-
-          <div className={`${styles.heroPills} animate-fade-in-up stagger-5`}>
-            <span className={styles.pillLabel}>Popular:</span>
-            {categories.slice(0, 4).map((c) => (
-              <Link key={c.category_id} href={`/gigs?category=${c.category_id}`} className={styles.pill}>
-                {CATEGORY_THEMES[c.category_name]?.icon || '🔷'} {c.category_name}
-              </Link>
+          {/* Right column — Proof cards */}
+          <div className={`${styles.heroRight} animate-fade-in-up stagger-3`}>
+            {PROOF_CARDS.map((card, i) => (
+              <div key={i} className={styles.proofCard} style={{ '--card-offset': `${i * 12}px`, '--card-rotate': `${(i - 1) * 1.5}deg` }}>
+                <div className={styles.proofCardSpine} style={{ height: `${(card.rating / 5) * 100}%` }} />
+                <div className={styles.proofCardInner}>
+                  <div className={styles.proofCardTop}>
+                    <span className={styles.proofCardName}>{card.name}</span>
+                    <Stars rating={card.rating} />
+                  </div>
+                  <p className={styles.proofCardGig}>{card.gig}</p>
+                  <p className={styles.proofCardReview}>"{card.review}"</p>
+                </div>
+              </div>
             ))}
           </div>
-
-          {/* Liquid-glass CTA */}
-          <a href="/gigs" className={`${styles.liquidGlassBtn} animate-fade-in-up stagger-6`}>
-            Explore All Services
-          </a>
-        </div>
-
-        {/* Scroll indicator */}
-        <div className={`${styles.scrollHint} ${!showScroll ? styles.scrollHintHidden : ''}`}>
-          <span>Explore</span>
-          <div className={styles.scrollArrow}>▾</div>
         </div>
       </section>
 
-      {/* ── Statement divider ── */}
-      <div className={styles.sectionDivider}>Where talent meets opportunity</div>
+      {/* ── Hairline ── */}
+      <hr className="section-rule" />
 
       {/* ── Stats ── */}
       <section className={styles.stats}>
         <div className="container">
           <div className={styles.statsGrid}>
             {[
-              { value: '500+', label: 'Expert Freelancers', icon: '👥' },
-              { value: '2000+', label: 'Gigs Available',    icon: '🛍️' },
-              { value: '98%',  label: 'Satisfaction Rate',  icon: '⭐' },
-              { value: '24',   label: 'Hour Support',        icon: '🕐' },
+              { value: '500+', label: 'Expert Freelancers' },
+              { value: '2000+', label: 'Gigs Available' },
+              { value: '98%',  label: 'Satisfaction Rate' },
+              { value: '24',   label: 'Hour Support' },
             ].map(s => (
               <div key={s.label} className={`${styles.statItem} reveal`}>
-                <span className={styles.statIcon}>{s.icon}</span>
                 <span className={styles.statValue}>
                   <CountUp target={s.value} />
                 </span>
@@ -249,51 +221,43 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Statement divider ── */}
-      <div className={styles.sectionDivider}>Find your next project</div>
+      {/* ── Hairline ── */}
+      <hr className="section-rule" />
 
       {/* ── Browse Categories ── */}
       <section className={styles.section}>
         <div className="container">
           <h2 className={`section-title ${styles.sectionHead} reveal`}>Browse by Category</h2>
           <div className={styles.categoriesGrid}>
-            {categories.map((c, i) => {
-              const theme = CATEGORY_THEMES[c.category_name] || { icon: '🔷', gradient: 'linear-gradient(135deg,#3b1fa8,#7c3aed)' };
-              return (
-                <Link
-                  key={c.category_id}
-                  href={`/gigs?category=${c.category_id}`}
-                  className={`${styles.categoryCard} reveal reveal-delay-${Math.min(i+1,4)}`}
-                  id={`category-${c.category_id}`}
-                >
-                  <span className={styles.catNumber}>{String(i + 1).padStart(2, '0')}</span>
-                  <div className={styles.catBanner} style={{ background: theme.gradient }}>
-                    <span className={styles.catBannerIcon}>{theme.icon}</span>
-                  </div>
-                  <div className={styles.catBody}>
-                    <span className={styles.catName}>{c.category_name}</span>
-                    <span className={styles.catArrow}>→</span>
-                  </div>
-                </Link>
-              );
-            })}
+            {categories.map((c, i) => (
+              <Link
+                key={c.category_id}
+                href={`/gigs?category=${c.category_id}`}
+                className={`${styles.categoryCard} reveal reveal-delay-${Math.min(i+1,4)}`}
+                id={`category-${c.category_id}`}
+              >
+                <Icon name={CATEGORY_ICON_MAP[c.category_name] || 'zap'} size={20} className={styles.catIcon} />
+                <span className={styles.catName}>{c.category_name}</span>
+                <Icon name="arrowRight" size={14} className={styles.catArrow} />
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ── Statement divider ── */}
-      <div className={styles.sectionDivider}>Top rated services</div>
+      {/* ── Hairline ── */}
+      <hr className="section-rule" />
 
       {/* ── Featured Gigs ── */}
       <section className={styles.section}>
         <div className="container">
           <div className={`flex-between ${styles.sectionHead} reveal`}>
             <h2 className="section-title">Featured Gigs</h2>
-            <Link href="/gigs" className="btn btn-secondary btn-sm">View All →</Link>
+            <Link href="/gigs" className="btn btn-secondary btn-sm">View All <Icon name="arrowRight" size={13} /></Link>
           </div>
           {loading ? (
             <div className="grid-auto">
-              {[...Array(6)].map((_,i) => <div key={i} className="skeleton" style={{ height: 300 }} />)}
+              {[...Array(6)].map((_,i) => <div key={i} className="skeleton" style={{ height: 280 }} />)}
             </div>
           ) : (
             <div className="grid-auto">
@@ -307,8 +271,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Statement divider ── */}
-      <div className={styles.sectionDivider}>Expert talent on demand</div>
+      {/* ── Hairline ── */}
+      <hr className="section-rule" />
 
       {/* ── Top Freelancers ── */}
       <section className={styles.section}>
@@ -316,12 +280,12 @@ export default function HomePage() {
           <h2 className={`section-title ${styles.sectionHead} reveal`}>Top Rated Freelancers</h2>
           <div className={styles.freelancersGrid}>
             {freelancers.map((f, i) => (
-              <div key={f.user_id} className={`glass-card ${styles.freelancerCard} reveal reveal-delay-${i+1}`}>
-                <FreelancerAvatar name={f.name} size={72} />
+              <div key={f.user_id} className={`${styles.freelancerCard} reveal reveal-delay-${i+1}`}>
+                <FreelancerAvatar name={f.name} size={64} />
                 <h3 className={styles.flName}>{f.name}</h3>
                 <Stars rating={parseFloat(f.avg_rating || 0)} />
                 <p className={styles.flMeta}>
-                  <strong className="text-gradient">{parseFloat(f.avg_rating || 0).toFixed(1)}</strong>
+                  <strong className={styles.flRating}>{parseFloat(f.avg_rating || 0).toFixed(1)}</strong>
                   &nbsp;· {f.completed_orders} completed
                 </p>
                 {f.bio && <p className={styles.flBio}>{f.bio.slice(0, 80)}…</p>}
@@ -338,27 +302,22 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── Hairline ── */}
+      <hr className="section-rule" />
+
       {/* ── CTA ── */}
       <section className={`${styles.cta} reveal`}>
         <div className="container">
           <div className={styles.ctaBox}>
-            <div className={styles.ctaOrb1} />
-            <div className={styles.ctaOrb2} />
-            <div className={styles.ctaContent}>
-              <div className={styles.heroBadge} style={{ marginBottom: '1rem' }}>
-                <span className={styles.heroBadgeDot} />
-                🚀 Join the community
-              </div>
-              <h2 className={`${styles.ctaTitle} display-font`}>Ready to get started?</h2>
-              <p className={styles.ctaSub}>Join NexusBase today as a freelancer or find the perfect talent for your project.</p>
-              <div className={styles.ctaActions}>
-                <Link href="/auth/signup?role=freelancer" className="btn btn-primary btn-xl" id="cta-freelancer-btn">
-                  🎯 Become a Freelancer
-                </Link>
-                <Link href="/auth/signup?role=client" className="btn btn-secondary btn-xl" id="cta-client-btn">
-                  💼 Hire Talent
-                </Link>
-              </div>
+            <h2 className={styles.ctaTitle}>Ready to get started?</h2>
+            <p className={styles.ctaSub}>Join NexusBase today. Whether you're a freelancer building a reputation or a client who needs expert talent — this is where proven work gets done.</p>
+            <div className={styles.ctaActions}>
+              <Link href="/auth/signup?role=freelancer" className="btn btn-primary btn-xl" id="cta-freelancer-btn">
+                Become a Freelancer
+              </Link>
+              <Link href="/auth/signup?role=client" className="btn btn-secondary btn-xl" id="cta-client-btn">
+                Hire Talent
+              </Link>
             </div>
           </div>
         </div>

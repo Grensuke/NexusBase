@@ -1,18 +1,8 @@
 'use client';
 
 import Link from 'next/link';
+import Icon, { CATEGORY_ICON_MAP } from './Icons';
 import styles from './GigCard.module.css';
-
-// Per-category gradient + icon
-const CATEGORY_THEMES = {
-  'Web Development':       { gradient: 'linear-gradient(135deg,#1e3a8a 0%,#3b82f6 50%,#06b6d4 100%)', icon: '💻' },
-  'Graphic Design':        { gradient: 'linear-gradient(135deg,#581c87 0%,#a855f7 50%,#ec4899 100%)', icon: '🎨' },
-  'Digital Marketing':     { gradient: 'linear-gradient(135deg,#065f46 0%,#10b981 50%,#34d399 100%)', icon: '📣' },
-  'Writing & Translation': { gradient: 'linear-gradient(135deg,#7c2d12 0%,#ea580c 50%,#fbbf24 100%)', icon: '✍️' },
-  'Video & Animation':     { gradient: 'linear-gradient(135deg,#1e1b4b 0%,#6366f1 50%,#a78bfa 100%)', icon: '🎬' },
-  'Data Science':          { gradient: 'linear-gradient(135deg,#164e63 0%,#0891b2 50%,#67e8f9 100%)', icon: '📊' },
-};
-const DEFAULT_THEME = { gradient: 'linear-gradient(135deg,#3b1fa8 0%,#7c3aed 50%,#0e7490 100%)', icon: '⚡' };
 
 function Stars({ rating }) {
   return (
@@ -28,12 +18,11 @@ function Avatar({ name }) {
   const initials = name
     ? name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase()
     : '?';
-  // deterministic hue from name string
   const hue = [...(name || '')].reduce((acc, c) => acc + c.charCodeAt(0), 0) % 360;
   return (
     <span
       className={styles.avatar}
-      style={{ background: `hsl(${hue},60%,35%)`, borderColor: `hsl(${hue},60%,50%)` }}
+      style={{ background: `hsl(${hue},25%,22%)`, borderColor: `hsl(${hue},25%,36%)` }}
     >
       {initials}
     </span>
@@ -48,21 +37,28 @@ export default function GigCard({ gig }) {
   } = gig;
 
   const displayRating = parseFloat(avg_rating || freelancer_rating || 0);
-  const theme = CATEGORY_THEMES[category_name] || DEFAULT_THEME;
+  const spineHeight = displayRating > 0 ? `${(displayRating / 5) * 100}%` : '0%';
+  const iconName = CATEGORY_ICON_MAP[category_name] || 'zap';
 
   return (
-    <Link href={`/gigs/${gig_id}`} className={`glass-card ${styles.card}`} id={`gig-card-${gig_id}`}>
+    <Link href={`/gigs/${gig_id}`} className={styles.card} id={`gig-card-${gig_id}`}>
 
-      {/* Banner */}
-      <div className={styles.banner} style={{ background: theme.gradient }}>
-        <span className={styles.bannerIcon}>{theme.icon}</span>
-        <div className={styles.bannerShimmer} />
+      {/* Proof Spine — height proportional to rating */}
+      <div className={styles.proofSpine} aria-hidden="true">
+        <div className={styles.spineFill} style={{ height: spineHeight }} />
       </div>
 
-      <div className={styles.body}>
-        <span className={styles.category}>{category_name}</span>
+      <div className={styles.cardInner}>
+        {/* Category */}
+        <div className={styles.categoryRow}>
+          <Icon name={iconName} size={14} className={styles.catIcon} />
+          <span className={styles.catName}>{category_name}</span>
+        </div>
+
+        {/* Title */}
         <h3 className={styles.title}>{title}</h3>
 
+        {/* Rating */}
         <div className={styles.meta}>
           <Stars rating={displayRating} />
           <span className={styles.ratingText}>
@@ -71,18 +67,22 @@ export default function GigCard({ gig }) {
           </span>
         </div>
 
+        {/* Freelancer */}
         <div className={styles.freelancerRow}>
           <Avatar name={freelancer_name} />
           <span className={styles.freelancerName}>{freelancer_name}</span>
         </div>
-      </div>
 
-      <div className={styles.footer}>
-        <span className={styles.delivery}>⏱ {delivery_days}d delivery</span>
-        <span className={styles.price}>
-          <span className={styles.from}>FROM</span>
-          <span className={styles.priceAmount}>${parseFloat(price).toFixed(0)}</span>
-        </span>
+        {/* Footer */}
+        <div className={styles.footer}>
+          <span className={styles.delivery}>
+            <Icon name="clock" size={12} style={{ opacity: 0.6 }} /> {delivery_days}d delivery
+          </span>
+          <span className={styles.price}>
+            <span className={styles.from}>FROM</span>
+            <span className={styles.priceAmount}>${parseFloat(price).toFixed(0)}</span>
+          </span>
+        </div>
       </div>
     </Link>
   );

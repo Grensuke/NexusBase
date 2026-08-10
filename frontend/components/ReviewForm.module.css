@@ -11,7 +11,7 @@
 .heading {
   font-family: var(--font-display);
   font-size: var(--text-lg);
-  font-weight: 700;
+  font-weight: 400;
   color: var(--text-primary);
 }
 
@@ -26,17 +26,17 @@
   border: none;
   font-size: 2rem;
   cursor: pointer;
-  color: var(--text-faint);
+  color: var(--stone-dark);
   transition: color var(--t-fast), transform var(--t-fast);
   line-height: 1;
   padding: 0;
 }
-.star.active { color: #fbbf24; }
+.star.active { color: var(--brass); }
 .star:hover  { transform: scale(1.1); }
 
 .ratingLabel {
   margin-left: var(--space-3);
   font-size: var(--text-sm);
   font-weight: 600;
-  color: var(--brand-300);
+  color: var(--brass-light);
 }

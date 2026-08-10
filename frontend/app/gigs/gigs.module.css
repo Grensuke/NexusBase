@@ -26,15 +26,15 @@
   display: flex;
   align-items: center;
   gap: 0;
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--r-full);
   overflow: hidden;
   transition: border-color var(--t-fast), box-shadow var(--t-fast);
 }
 .searchBar:focus-within {
-  border-color: var(--brand-500);
-  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.10);
+  border-color: var(--brass);
+  box-shadow: 0 0 0 3px var(--brass-subtle);
 }
 .searchIcon { padding: 0 var(--space-3) 0 var(--space-5); font-size: var(--text-sm); color: var(--text-muted); flex-shrink: 0; }
 .searchInput {
@@ -47,7 +47,7 @@
   padding: var(--space-3) var(--space-2);
   font-family: inherit;
 }
-.searchInput::placeholder { color: var(--text-muted); }
+.searchInput::placeholder { color: var(--text-faint); }
 .clearBtn {
   background: none;
   border: none;
@@ -66,7 +66,7 @@
 .controls { display: flex; gap: var(--space-3); align-items: center; flex-shrink: 0; }
 
 .sortSelect {
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--r-full);
   color: var(--text-secondary);
@@ -76,7 +76,7 @@
   width: auto;
   font-family: inherit;
 }
-.sortSelect:focus { border-color: var(--brand-500); outline: none; }
+.sortSelect:focus { border-color: var(--brass); outline: none; }
 
 .viewToggle {
   display: flex;
@@ -94,8 +94,8 @@
   transition: background var(--t-fast), color var(--t-fast);
   font-family: inherit;
 }
-.viewBtn:hover { background: rgba(255, 255, 255, 0.04); color: var(--text-secondary); }
-.viewBtnActive { background: rgba(139, 92, 246, 0.10) !important; color: var(--brand-400) !important; }
+.viewBtn:hover { background: rgba(138, 128, 112, 0.06); color: var(--text-secondary); }
+.viewBtnActive { background: var(--brass-subtle) !important; color: var(--brass-light) !important; }
 
 /* Category pills */
 .categoryPills {
@@ -105,7 +105,7 @@
   margin-bottom: var(--space-4);
 }
 .pill {
-  background: rgba(255, 255, 255, 0.03);
+  background: transparent;
   border: 1px solid var(--border);
   border-radius: var(--r-full);
   padding: 0.35rem 0.9rem;
@@ -116,11 +116,11 @@
   transition: all var(--t-fast);
   font-family: inherit;
 }
-.pill:hover { border-color: var(--brand-500); color: var(--brand-300); background: rgba(139, 92, 246, 0.06); }
+.pill:hover { border-color: var(--brass); color: var(--brass-light); background: var(--brass-subtle); }
 .pillActive {
-  background: rgba(139, 92, 246, 0.12) !important;
-  border-color: var(--brand-500) !important;
-  color: var(--brand-300) !important;
+  background: var(--brass-subtle) !important;
+  border-color: var(--brass) !important;
+  color: var(--brass-light) !important;
 }
 
 /* Active filter chips */
@@ -134,10 +134,10 @@
 }
 .filterLabel { font-size: var(--text-xs); color: var(--text-muted); }
 .filterChip {
-  background: rgba(139, 92, 246, 0.08);
-  border: 1px solid rgba(139, 92, 246, 0.20);
+  background: var(--brass-subtle);
+  border: 1px solid rgba(160, 137, 106, 0.20);
   border-radius: var(--r-full);
-  color: var(--brand-300);
+  color: var(--brass-light);
   font-size: var(--text-xs);
   font-weight: 600;
   padding: 0.25rem var(--space-3);
@@ -145,7 +145,7 @@
   transition: background var(--t-fast);
   font-family: inherit;
 }
-.filterChip:hover { background: rgba(139, 92, 246, 0.15); }
+.filterChip:hover { background: rgba(160, 137, 106, 0.18); }
 .clearAll {
   background: none;
   border: none;
@@ -199,7 +199,7 @@
   padding: var(--space-2) var(--space-3);
   border-radius: var(--r-md);
   border: 1px solid var(--border);
-  background: var(--bg-card);
+  background: var(--surface);
   color: var(--text-secondary);
   font-size: var(--text-sm);
   font-weight: 500;
@@ -207,8 +207,8 @@
   transition: all var(--t-fast);
   font-family: inherit;
 }
-.pageBtn:hover:not(.pageBtnDisabled) { border-color: var(--brand-500); color: var(--brand-300); background: rgba(139, 92, 246, 0.06); }
-.pageBtnActive { background: var(--brand-600) !important; border-color: var(--brand-600) !important; color: #fff !important; }
+.pageBtn:hover:not(.pageBtnDisabled) { border-color: var(--brass); color: var(--brass-light); background: var(--brass-subtle); }
+.pageBtnActive { background: var(--brass) !important; border-color: var(--brass) !important; color: var(--ink) !important; font-weight: 700; }
 .pageBtnDisabled { opacity: 0.35; cursor: not-allowed; }
 
 @media (max-width: 640px) {

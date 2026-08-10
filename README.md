@@ -363,7 +363,7 @@ DB_USER=root
 DB_PASSWORD=YOUR_MYSQL_PASSWORD
 DB_NAME=nexusbase
 
-JWT_SECRET=nexusbase_super_secret_jwt_key_change_in_production
+JWT_SECRET=your_jwt_secret_here
 JWT_EXPIRES_IN=7d
 
 PORT=5000

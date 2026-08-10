@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
+import Icon from '@/components/Icons';
 import styles from '../login/auth.module.css';
 
 export default function SignupPage() {
@@ -62,7 +63,7 @@ export default function SignupPage() {
                 onClick={() => setForm(f => ({ ...f, role: r }))}
                 id={`role-${r}`}
               >
-                {r === 'client' ? '🛒 I need work done' : '💼 I want to freelance'}
+                {r === 'client' ? <><Icon name="shoppingBag" size={13} /> I need work done</> : <><Icon name="zap" size={13} /> I want to freelance</>}
               </button>
             ))}
           </div>

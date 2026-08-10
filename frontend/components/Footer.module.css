@@ -10,10 +10,11 @@
   background: linear-gradient(
     90deg,
     transparent 0%,
-    var(--border) 20%,
-    var(--border) 80%,
+    var(--stone-dark) 15%,
+    var(--stone-dark) 85%,
     transparent 100%
   );
+  opacity: 0.5;
 }
 
 .footerInner {
@@ -33,19 +34,30 @@
 .logo {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
-  font-size: var(--text-lg);
-  font-weight: 700;
-  color: var(--text-primary);
+  gap: var(--space-3);
   text-decoration: none;
-  letter-spacing: var(--tracking-snug);
 }
-.logoIcon {
-  font-size: 1.4rem;
-  color: var(--brand-400);
+.logoMark {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--brass);
+  border: 1.5px solid var(--brass);
+  border-radius: 4px;
   line-height: 1;
 }
-.logoText strong { color: var(--brand-400); }
+.logoText {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--chalk);
+  letter-spacing: -0.02em;
+}
+.logoText strong { color: var(--brass-light); font-weight: 700; }
 
 .tagline {
   font-size: var(--text-sm);
@@ -62,7 +74,7 @@
 }
 
 .colTitle {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: var(--text-xs);
   font-weight: 700;
   text-transform: uppercase;
@@ -79,7 +91,7 @@
   line-height: 1;
 }
 .colLink:hover {
-  color: var(--text-primary);
+  color: var(--brass-light);
 }
 
 .colText {

@@ -7,6 +7,7 @@ import { getDashboard, updateOrderStatus, deleteGig, updateSkills } from '@/lib/
 import { useAuth } from '@/context/AuthContext';
 import { useToast } from '@/components/Toast';
 import ReviewForm from '@/components/ReviewForm';
+import Icon from '@/components/Icons';
 import styles from './dashboard.module.css';
 
 function StatusBadge({ status }) {
@@ -84,10 +85,10 @@ function FreelancerDash({ data, onRefresh }) {
   const completed  = orders.filter(o => o.status === 'completed');
 
   const TABS = [
-    { id: 'overview', label: '📊 Overview' },
-    { id: 'orders',   label: `📦 Orders (${orders.length})` },
-    { id: 'gigs',     label: `🛍️ Gigs (${gigs.length})` },
-    { id: 'skills',   label: '⚡ Skills' },
+    { id: 'overview', icon: 'layoutGrid', label: 'Overview' },
+    { id: 'orders',   icon: 'package',    label: `Orders (${orders.length})` },
+    { id: 'gigs',     icon: 'shoppingBag', label: `Gigs (${gigs.length})` },
+    { id: 'skills',   icon: 'zap',        label: 'Skills' },
   ];
 
   return (
@@ -95,13 +96,13 @@ function FreelancerDash({ data, onRefresh }) {
       {/* Stat cards */}
       <div className={styles.statsRow}>
         {[
-          { icon: '⭐', label: 'Avg Rating',   value: stats?.avg_rating ? parseFloat(stats.avg_rating).toFixed(1) + ' ★' : 'N/A' },
-          { icon: '🛍️', label: 'Total Gigs',   value: stats?.gig_count ?? 0 },
-          { icon: '📦', label: 'Total Orders',  value: stats?.total_orders ?? 0 },
-          { icon: '💰', label: 'Total Earned',  value: `$${parseFloat(stats?.total_earned || 0).toFixed(0)}` },
+          { icon: 'star',        label: 'Avg Rating',   value: stats?.avg_rating ? parseFloat(stats.avg_rating).toFixed(1) + ' ★' : 'N/A' },
+          { icon: 'shoppingBag', label: 'Total Gigs',   value: stats?.gig_count ?? 0 },
+          { icon: 'package',     label: 'Total Orders',  value: stats?.total_orders ?? 0 },
+          { icon: 'dollarSign',  label: 'Total Earned',  value: `$${parseFloat(stats?.total_earned || 0).toFixed(0)}` },
         ].map(s => (
           <div key={s.label} className={`glass-card ${styles.statCard}`}>
-            <span className={styles.statCardIcon}>{s.icon}</span>
+            <span className={styles.statCardIcon}><Icon name={s.icon} size={20} /></span>
             <span className={styles.statVal}>{s.value}</span>
             <span className={styles.statLbl}>{s.label}</span>
           </div>
@@ -112,7 +113,7 @@ function FreelancerDash({ data, onRefresh }) {
       <div className={styles.tabs}>
         {TABS.map(t => (
           <button key={t.id} className={`${styles.tab} ${activeTab === t.id ? styles.tabActive : ''}`} onClick={() => setActiveTab(t.id)}>
-            {t.label}
+            <Icon name={t.icon} size={14} /> {t.label}
           </button>
         ))}
       </div>
@@ -138,7 +139,7 @@ function FreelancerDash({ data, onRefresh }) {
                   ) : col.items.map(o => (
                     <div key={o.order_id} className={styles.kanbanCard}>
                       <p className={styles.kanbanGig}>{o.gig_title}</p>
-                      <p className={styles.kanbanMeta}>👤 {o.client_name} · ${parseFloat(o.amount).toFixed(0)}</p>
+                      <p className={styles.kanbanMeta}>{o.client_name} · ${parseFloat(o.amount).toFixed(0)}</p>
                       <p className={styles.kanbanDate}>{new Date(o.order_date).toLocaleDateString()}</p>
                       {col.cls === 'pending' && (
                         <div className={styles.kanbanActions}>
@@ -276,8 +277,8 @@ function ClientDash({ data, onRefresh }) {
   };
 
   const TABS = [
-    { id: 'overview', label: '📊 Overview' },
-    { id: 'orders',   label: `📦 Orders (${orders.length})` },
+    { id: 'overview', icon: 'layoutGrid', label: 'Overview' },
+    { id: 'orders',   icon: 'package',    label: `Orders (${orders.length})` },
   ];
 
   const activeOrders    = orders.filter(o => ['pending', 'in_progress'].includes(o.status));
@@ -288,13 +289,13 @@ function ClientDash({ data, onRefresh }) {
       {/* Stat cards */}
       <div className={styles.statsRow}>
         {[
-          { icon: '📦', label: 'Total Orders',     value: stats?.total_orders    ?? 0 },
-          { icon: '⚡', label: 'Active Orders',    value: stats?.active_orders   ?? 0 },
-          { icon: '✅', label: 'Completed',        value: stats?.completed_orders ?? 0 },
-          { icon: '💳', label: 'Total Spent',      value: `$${parseFloat(stats?.total_spent || 0).toFixed(0)}` },
+          { icon: 'package',     label: 'Total Orders',     value: stats?.total_orders    ?? 0 },
+          { icon: 'zap',         label: 'Active Orders',    value: stats?.active_orders   ?? 0 },
+          { icon: 'checkCircle', label: 'Completed',        value: stats?.completed_orders ?? 0 },
+          { icon: 'creditCard',  label: 'Total Spent',      value: `$${parseFloat(stats?.total_spent || 0).toFixed(0)}` },
         ].map(s => (
           <div key={s.label} className={`glass-card ${styles.statCard}`}>
-            <span className={styles.statCardIcon}>{s.icon}</span>
+            <span className={styles.statCardIcon}><Icon name={s.icon} size={20} /></span>
             <span className={styles.statVal}>{s.value}</span>
             <span className={styles.statLbl}>{s.label}</span>
           </div>
@@ -376,11 +377,11 @@ function OrderCard({ o, onComplete, completing, reviewOrder, setReviewOrder, onR
         )}
         {o.status === 'completed' && !o.review_id && (
           <button className="btn btn-secondary btn-sm" onClick={() => setReviewOrder(reviewOrder === o.order_id ? null : o.order_id)} id={`review-btn-${o.order_id}`}>
-            {reviewOrder === o.order_id ? 'Cancel' : '⭐ Leave Review'}
+            {reviewOrder === o.order_id ? 'Cancel' : 'Leave Review'}
           </button>
         )}
         {o.review_id && (
-          <span className={styles.reviewed}>✅ Reviewed — {o.rating}★</span>
+          <span className={styles.reviewed}><Icon name="checkCircle" size={12} /> Reviewed — {o.rating}★</span>
         )}
       </div>
 
@@ -436,7 +437,7 @@ export default function DashboardPage() {
             <h1 className="section-title display-font">Dashboard</h1>
             <p className={styles.welcome}>Welcome back, <strong>{user?.name}</strong></p>
           </div>
-          <span className={`badge badge-${user.role === 'freelancer' ? 'in_progress' : 'completed'}`} style={{ fontSize: '0.85rem', padding: '0.4rem 1.1rem' }}>
+          <span className={`badge badge-${user.role}`} style={{ fontSize: '0.85rem', padding: '0.4rem 1.1rem' }}>
             {user.role}
           </span>
         </div>

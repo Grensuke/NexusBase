@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { getGig, placeOrder } from '@/lib/api';
 import { useAuth } from '@/context/AuthContext';
+import Icon from '@/components/Icons';
 import styles from './gig.module.css';
 
 function Stars({ rating, size = '1rem' }) {
@@ -149,7 +150,7 @@ export default function GigDetailPage() {
             </div>
 
             <div className={styles.deliveryRow}>
-              <span>⏱ Delivery</span>
+              <span><Icon name="clock" size={14} style={{ verticalAlign: 'text-bottom', marginRight: '0.3rem' }} />Delivery</span>
               <span><strong>{gig.delivery_days}</strong> day{gig.delivery_days > 1 ? 's' : ''}</span>
             </div>
 
@@ -180,9 +181,9 @@ export default function GigDetailPage() {
             )}
 
             <div className={styles.guarantees}>
-              <span>✅ Secure payment</span>
-              <span>🔄 Money-back guarantee</span>
-              <span>💬 24/7 support</span>
+              <span><Icon name="shield" size={13} style={{ verticalAlign: 'text-bottom', marginRight: '0.35rem' }} />Secure payment</span>
+              <span><Icon name="refreshCw" size={13} style={{ verticalAlign: 'text-bottom', marginRight: '0.35rem' }} />Money-back guarantee</span>
+              <span><Icon name="messageCircle" size={13} style={{ verticalAlign: 'text-bottom', marginRight: '0.35rem' }} />24/7 support</span>
             </div>
           </div>
         </div>

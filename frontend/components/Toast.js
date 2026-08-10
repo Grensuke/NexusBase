@@ -1,6 +1,7 @@
 'use client';
 
 import { createContext, useCallback, useContext, useState } from 'react';
+import Icon from './Icons';
 import styles from './Toast.module.css';
 
 const ToastContext = createContext(null);
@@ -40,12 +41,12 @@ export function ToastProvider({ children }) {
   );
 }
 
-const ICONS = { success: '✅', error: '❌', info: 'ℹ️', warning: '⚠️' };
+const TOAST_ICONS = { success: 'checkCircle', error: 'zap', info: 'messageCircle', warning: 'shield' };
 
 function Toast({ id, message, type, duration, onDismiss }) {
   return (
     <div className={`${styles.toast} ${styles[type]}`} role="alert">
-      <span className={styles.icon}>{ICONS[type] || 'ℹ️'}</span>
+      <span className={styles.icon}><Icon name={TOAST_ICONS[type] || 'messageCircle'} size={16} /></span>
       <span className={styles.message}>{message}</span>
       <button className={styles.close} onClick={onDismiss} aria-label="Dismiss">×</button>
       <div className={styles.progress} style={{ animationDuration: `${duration}ms` }} />

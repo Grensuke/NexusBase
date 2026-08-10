@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
+import Icon from './Icons';
 import styles from './Navbar.module.css';
 
 function UserAvatar({ name, role }) {
@@ -14,7 +15,7 @@ function UserAvatar({ name, role }) {
   return (
     <span
       className={styles.avatarCircle}
-      style={{ background: `hsl(${hue},55%,32%)`, borderColor: `hsl(${hue},55%,48%)` }}
+      style={{ background: `hsl(${hue},30%,22%)`, borderColor: `hsl(${hue},30%,38%)` }}
       title={`${name} (${role})`}
     >
       {initials}
@@ -32,7 +33,7 @@ export default function Navbar() {
 
   // Scroll-aware background
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
+    const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
@@ -58,7 +59,7 @@ export default function Navbar() {
 
           {/* Logo */}
           <Link href="/" className={styles.logo}>
-            <span className={styles.logoIcon}>⬡</span>
+            <span className={styles.logoMark}>N</span>
             <span className={styles.logoText}>Nexus<strong>Base</strong></span>
           </Link>
 
@@ -98,22 +99,22 @@ export default function Navbar() {
                   <div className={styles.dropdown}>
                     <div className={styles.dropHeader}>
                       <span className={styles.dropName}>{user.name}</span>
-                      <span className={`badge badge-${user.role === 'freelancer' ? 'in_progress' : 'completed'}`}>
+                      <span className={`badge badge-${user.role}`}>
                         {user.role}
                       </span>
                     </div>
                     <hr className={styles.dropDivider} />
                     <Link href="/dashboard" className={styles.dropItem} id="nav-dashboard-link">
-                      📊 Dashboard
+                      <Icon name="layoutGrid" size={15} /> Dashboard
                     </Link>
                     {user.role === 'freelancer' && (
                       <Link href="/gigs/new" className={styles.dropItem} id="nav-post-gig-link">
-                        ➕ Post a Gig
+                        <Icon name="plus" size={15} /> Post a Gig
                       </Link>
                     )}
                     <hr className={styles.dropDivider} />
                     <button className={`${styles.dropItem} ${styles.dropLogout}`} onClick={logout} id="nav-logout-btn">
-                      🚪 Sign Out
+                      <Icon name="logOut" size={15} /> Sign Out
                     </button>
                   </div>
                 )}

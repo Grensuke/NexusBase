@@ -5,23 +5,23 @@
   left: 0;
   right: 0;
   z-index: 100;
-  height: 80px;
+  height: 72px;
   transition: background var(--t-slow), border-color var(--t-slow), box-shadow var(--t-slow);
   border-bottom: 1px solid transparent;
   background: transparent;
 }
 .nav.scrolled {
-  background: rgba(6, 8, 15, 0.95);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  background: rgba(31, 27, 21, 0.97);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-bottom-color: var(--border);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 2px 20px rgba(10, 8, 4, 0.5);
 }
 
 .inner {
   display: flex;
   align-items: center;
-  height: 80px;
+  height: 72px;
   gap: var(--space-10);
 }
 
@@ -29,21 +29,32 @@
 .logo {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
-  font-family: var(--font-display);
-  font-size: var(--text-xl);
-  font-weight: 800;
-  color: var(--text-primary);
+  gap: var(--space-3);
   text-decoration: none;
   flex-shrink: 0;
-  letter-spacing: -0.03em;
 }
-.logoIcon {
-  font-size: 1.6rem;
-  color: var(--brand-400);
+.logoMark {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--brass);
+  border: 1.5px solid var(--brass);
+  border-radius: 5px;
   line-height: 1;
+  letter-spacing: 0;
 }
-.logoText strong { color: var(--brand-400); }
+.logoText {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--chalk);
+  letter-spacing: -0.02em;
+}
+.logoText strong { color: var(--brass-light); font-weight: 700; }
 
 /* ── Desktop links ── */
 .links {
@@ -71,13 +82,13 @@
   transform: translateX(-50%);
   width: 0;
   height: 2px;
-  background: var(--brand-500);
+  background: var(--brass);
   border-radius: 2px;
   transition: width var(--t-normal);
 }
-.link:hover { color: var(--text-primary); background: rgba(255, 255, 255, 0.04); }
+.link:hover { color: var(--text-primary); background: rgba(138, 128, 112, 0.06); }
 .link:hover::after { width: 50%; }
-.active { color: var(--brand-400) !important; }
+.active { color: var(--brass-light) !important; }
 .active::after { width: 50% !important; }
 
 /* ── Actions area ── */
@@ -96,7 +107,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-2);
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(138, 128, 112, 0.06);
   border: 1px solid var(--border);
   border-radius: var(--r-full);
   padding: 0.3rem 0.75rem 0.3rem 0.3rem;
@@ -106,8 +117,8 @@
   font-family: inherit;
 }
 .avatarBtn:hover {
-  background: rgba(255, 255, 255, 0.07);
-  border-color: var(--brand-500);
+  background: rgba(138, 128, 112, 0.10);
+  border-color: var(--brass);
 }
 .avatarCircle {
   width: 30px;
@@ -119,7 +130,7 @@
   justify-content: center;
   font-size: 0.62rem;
   font-weight: 800;
-  color: #fff;
+  color: var(--chalk);
   flex-shrink: 0;
 }
 .userName {
@@ -141,7 +152,7 @@
   top: calc(100% + 10px);
   right: 0;
   min-width: 220px;
-  background: rgba(15, 20, 36, 0.98);
+  background: rgba(31, 27, 21, 0.98);
   border: 1px solid var(--border);
   border-radius: var(--r-lg);
   box-shadow: var(--shadow-lg);
@@ -182,8 +193,8 @@
   font-family: inherit;
   text-decoration: none;
 }
-.dropItem:hover { background: rgba(255, 255, 255, 0.04); color: var(--text-primary); }
-.dropLogout:hover { background: rgba(239, 68, 68, 0.08); color: #fca5a5; }
+.dropItem:hover { background: rgba(138, 128, 112, 0.06); color: var(--text-primary); }
+.dropLogout:hover { background: rgba(196, 92, 74, 0.08); color: var(--error-light); }
 
 /* ── Hamburger ── */
 .hamburger {
@@ -200,7 +211,7 @@
   display: block;
   width: 22px;
   height: 2px;
-  background: var(--text-secondary);
+  background: var(--stone);
   border-radius: 2px;
   transition: transform var(--t-normal), opacity var(--t-normal);
   transform-origin: center;
@@ -216,9 +227,9 @@
   right: 0;
   width: min(320px, 85vw);
   height: 100dvh;
-  background: rgba(10, 14, 26, 0.98);
+  background: rgba(23, 20, 15, 0.98);
   border-left: 1px solid var(--border-subtle);
-  backdrop-filter: blur(24px);
+  backdrop-filter: blur(20px);
   z-index: 200;
   transform: translateX(100%);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -239,7 +250,7 @@
   align-items: center;
   gap: 0.85rem;
   padding: var(--space-4);
-  background: var(--bg-card);
+  background: var(--surface);
   border-radius: var(--r-lg);
   margin-bottom: var(--space-4);
 }
@@ -259,8 +270,8 @@
   transition: background var(--t-fast), color var(--t-fast);
   text-decoration: none;
 }
-.drawerLink:hover { background: rgba(255, 255, 255, 0.04); color: var(--text-primary); }
-.drawerActive { color: var(--brand-400) !important; background: rgba(139, 92, 246, 0.06) !important; }
+.drawerLink:hover { background: rgba(138, 128, 112, 0.06); color: var(--text-primary); }
+.drawerActive { color: var(--brass-light) !important; background: var(--brass-subtle) !important; }
 
 .drawerActions {
   margin-top: auto;
@@ -272,7 +283,7 @@
 .drawerOverlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(10, 8, 4, 0.65);
   backdrop-filter: blur(3px);
   z-index: 199;
   animation: fadeIn 0.2s ease;

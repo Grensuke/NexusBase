@@ -3,20 +3,16 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import GigCard from '@/components/GigCard';
+import Icon, { CATEGORY_ICON_MAP } from '@/components/Icons';
 import { getGigs, getCategories } from '@/lib/api';
 import styles from './gigs.module.css';
 
 const SORT_OPTIONS = [
-  { value: 'newest',    label: '🕐 Newest' },
-  { value: 'price_asc', label: '💰 Price: Low → High' },
-  { value: 'price_desc',label: '💎 Price: High → Low' },
-  { value: 'top_rated', label: '⭐ Top Rated' },
+  { value: 'newest',    label: 'Newest' },
+  { value: 'price_asc', label: 'Price: Low → High' },
+  { value: 'price_desc',label: 'Price: High → Low' },
+  { value: 'top_rated', label: 'Top Rated' },
 ];
-
-const CAT_ICONS = {
-  'Web Development':'💻','Graphic Design':'🎨','Digital Marketing':'📣',
-  'Writing & Translation':'✍️','Video & Animation':'🎬','Data Science':'📊',
-};
 
 export default function GigsPage() {
   const searchParams = useSearchParams();
@@ -92,7 +88,7 @@ export default function GigsPage() {
         {/* Search + filters row */}
         <div className={`${styles.filtersRow} animate-fade-in-up stagger-2`}>
           <form onSubmit={handleSearch} className={styles.searchBar} id="gigs-search-form">
-            <span className={styles.searchIcon}>🔍</span>
+            <span className={styles.searchIcon}><Icon name="search" size={14} /></span>
             <input
               id="gigs-search-input"
               type="text"
@@ -130,13 +126,13 @@ export default function GigsPage() {
                 onClick={() => setViewMode('grid')}
                 id="view-grid-btn"
                 title="Grid view"
-              >⊞</button>
+              ><Icon name="layoutGrid" size={16} /></button>
               <button
                 className={`${styles.viewBtn} ${viewMode === 'list' ? styles.viewBtnActive : ''}`}
                 onClick={() => setViewMode('list')}
                 id="view-list-btn"
                 title="List view"
-              >☰</button>
+              ><Icon name="list" size={16} /></button>
             </div>
           </div>
         </div>
@@ -148,7 +144,7 @@ export default function GigsPage() {
             onClick={() => updateParams({ category: '', search: searchInput })}
             id="filter-all"
           >
-            🌐 All
+            All
           </button>
           {categories.map(c => (
             <button
@@ -157,7 +153,7 @@ export default function GigsPage() {
               onClick={() => updateParams({ category: c.category_id, search: searchInput })}
               id={`filter-cat-${c.category_id}`}
             >
-              {CAT_ICONS[c.category_name] || '🔷'} {c.category_name}
+              <Icon name={CATEGORY_ICON_MAP[c.category_name] || 'zap'} size={13} /> {c.category_name}
             </button>
           ))}
         </div>
@@ -168,12 +164,12 @@ export default function GigsPage() {
             <span className={styles.filterLabel}>Active filters:</span>
             {search && (
               <button className={styles.filterChip} onClick={() => { setSearchInput(''); updateParams({ search: '' }); }}>
-                🔍 "{search}" ×
+                <Icon name="search" size={11} style={{ marginRight: '0.2rem' }} /> "{search}" ×
               </button>
             )}
             {activeCategoryName && (
               <button className={styles.filterChip} onClick={() => updateParams({ category: '' })}>
-                {CAT_ICONS[activeCategoryName] || '🔷'} {activeCategoryName} ×
+                <Icon name={CATEGORY_ICON_MAP[activeCategoryName] || 'zap'} size={11} style={{ marginRight: '0.2rem' }} /> {activeCategoryName} ×
               </button>
             )}
             <button className={styles.clearAll} onClick={() => { setSearchInput(''); router.push('/gigs'); }}>
@@ -191,7 +187,7 @@ export default function GigsPage() {
           </div>
         ) : gigs.length === 0 ? (
           <div className={styles.empty}>
-            <div className={styles.emptyIcon}>🔍</div>
+            <div className={styles.emptyIcon}><Icon name="search" size={48} /></div>
             <h3 className={styles.emptyTitle}>No gigs found</h3>
             <p className={styles.emptyText}>Try adjusting your search or removing filters</p>
             <button className="btn btn-primary" onClick={() => { setSearchInput(''); router.push('/gigs'); }}>

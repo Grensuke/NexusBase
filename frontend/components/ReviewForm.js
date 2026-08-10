@@ -31,7 +31,7 @@ export default function ReviewForm({ orderId, onSubmitted }) {
   if (success) {
     return (
       <div className="alert alert-success animate-fade-in">
-        ✅ Review submitted! Thank you for your feedback.
+        Review submitted! Thank you for your feedback.
       </div>
     );
   }
