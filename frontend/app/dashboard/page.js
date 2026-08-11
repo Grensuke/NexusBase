@@ -289,7 +289,7 @@ function FreelancerDash({ data, onRefresh }) {
                         Accept
                       </button>
                     )}
-                    {['in_progress','completed'].includes(o.status) && !o.dispute_status && (
+                    {o.status === 'in_progress' && !o.dispute_status && (
                       disputeId === o.order_id ? (
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', minWidth: 200 }}>
                           <input

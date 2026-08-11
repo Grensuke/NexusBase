@@ -15,17 +15,17 @@ router.post('/', authenticate, requireRole('client'), async (req, res) => {
 
   const conn = await pool.getConnection();
   try {
-    // Fetch gig price for the amount
+    // Validate gig exists (quick 404 before calling the procedure)
     const [[gig]] = await conn.query(
-      'SELECT gig_id, price FROM GIGS WHERE gig_id = ?', [gig_id]
+      'SELECT gig_id FROM GIGS WHERE gig_id = ?', [gig_id]
     );
     if (!gig) return res.status(404).json({ error: 'Gig not found' });
 
-    // Call the stored procedure
+    // Call the stored procedure — it fetches the gig price internally
     await conn.query('SET @order_id = 0');
     await conn.query(
-      'CALL place_order(?, ?, ?, ?, @order_id)',
-      [gig_id, req.user.user_id, gig.price, method]
+      'CALL place_order(?, ?, ?, @order_id)',
+      [gig_id, req.user.user_id, method]
     );
     const [[outRow]] = await conn.query('SELECT @order_id AS order_id');
     const order_id = outRow.order_id;
@@ -111,6 +111,7 @@ router.get('/:id', authenticate, async (req, res) => {
   try {
     const [rows] = await pool.query(
       `SELECT o.*, g.title AS gig_title, g.delivery_days, g.is_trial AS gig_is_trial,
+              g.freelancer_id,
               uc.name AS client_name, uf.name AS freelancer_name,
               p.payment_id, p.status AS payment_status, p.method, p.escrow_status,
               r.review_id, r.rating, r.comment, r.review_date,
@@ -129,9 +130,9 @@ router.get('/:id', authenticate, async (req, res) => {
     if (rows.length === 0) return res.status(404).json({ error: 'Order not found' });
 
     const order = rows[0];
-    // Access control
-    const isClient     = req.user.role === 'client'     && order.client_id === req.user.user_id;
-    const isFreelancer = req.user.role === 'freelancer'; // need to verify it's their gig
+    // Access control — verify the user is either the client or the freelancer on this order
+    const isClient     = req.user.role === 'client'     && order.client_id     === req.user.user_id;
+    const isFreelancer = req.user.role === 'freelancer' && order.freelancer_id === req.user.user_id;
     if (!isClient && !isFreelancer) {
       return res.status(403).json({ error: 'Access denied' });
     }
@@ -144,8 +145,11 @@ router.get('/:id', authenticate, async (req, res) => {
 
 // ---------------------------------------------------------------
 // PATCH /api/orders/:id/status  — update order status
-// Freelancers can move: pending -> in_progress
-// Clients can move: in_progress -> completed, any -> cancelled
+// State machine (matches schema ENUM lifecycle):
+//   pending     → in_progress  (freelancer only)
+//   in_progress → completed    (client only)
+//   pending | in_progress → cancelled  (client or freelancer)
+// Terminal states (completed, cancelled) reject all transitions.
 // ---------------------------------------------------------------
 router.patch('/:id/status', authenticate, async (req, res) => {
   const { status } = req.body;
@@ -164,18 +168,41 @@ router.patch('/:id/status', authenticate, async (req, res) => {
     );
     if (!order) return res.status(404).json({ error: 'Order not found' });
 
-    // Role-based transition rules
+    // Role-based transition rules + state machine enforcement
+    //   pending     → in_progress  (freelancer only)
+    //   in_progress → completed    (client only)
+    //   pending | in_progress → cancelled (client or freelancer)
     const isClient     = order.client_id     === req.user.user_id;
     const isFreelancer = order.freelancer_id === req.user.user_id;
 
-    if (status === 'in_progress' && !isFreelancer) {
-      return res.status(403).json({ error: 'Only freelancer can accept order' });
+    // Block transitions from terminal states
+    if (order.status === 'completed' || order.status === 'cancelled') {
+      return res.status(400).json({
+        error: `Cannot change status — order is already ${order.status}`,
+      });
     }
-    if (status === 'completed' && !isClient) {
-      return res.status(403).json({ error: 'Only client can mark order complete' });
+
+    if (status === 'in_progress') {
+      if (!isFreelancer) {
+        return res.status(403).json({ error: 'Only freelancer can accept order' });
+      }
+      if (order.status !== 'pending') {
+        return res.status(400).json({ error: 'Can only accept a pending order' });
+      }
     }
-    if (status === 'cancelled' && !isClient && !isFreelancer) {
-      return res.status(403).json({ error: 'Access denied' });
+    if (status === 'completed') {
+      if (!isClient) {
+        return res.status(403).json({ error: 'Only client can mark order complete' });
+      }
+      if (order.status !== 'in_progress') {
+        return res.status(400).json({ error: 'Can only complete an in-progress order' });
+      }
+    }
+    if (status === 'cancelled') {
+      if (!isClient && !isFreelancer) {
+        return res.status(403).json({ error: 'Access denied' });
+      }
+      // cancellation allowed from pending or in_progress (already guarded by terminal check above)
     }
 
     await conn.beginTransaction();
@@ -237,9 +264,11 @@ router.post('/:id/dispute', authenticate, async (req, res) => {
       return res.status(403).json({ error: 'Access denied — not your order' });
     }
 
-    // Only allow disputes on active/completed orders
-    if (order.status === 'cancelled') {
-      return res.status(400).json({ error: 'Cannot raise a dispute on a cancelled order' });
+    // Only allow disputes on in-progress orders (escrow is still held)
+    if (order.status !== 'in_progress') {
+      return res.status(400).json({
+        error: `Cannot raise a dispute on a ${order.status} order`,
+      });
     }
 
     // Prevent duplicate open disputes
@@ -320,9 +349,10 @@ router.patch('/disputes/:id', authenticate, async (req, res) => {
       });
     }
 
-    // Update dispute — the after_dispute_resolved trigger fires here
+    // Update dispute — the after_dispute_resolved trigger fires here.
+    // resolved_at is set here because the trigger cannot modify its own table.
     await conn.query(
-      'UPDATE DISPUTES SET status = ? WHERE dispute_id = ?',
+      'UPDATE DISPUTES SET status = ?, resolved_at = NOW() WHERE dispute_id = ?',
       [status, req.params.id]
     );
 

@@ -266,34 +266,36 @@ DELIMITER $$
 CREATE PROCEDURE place_order(
     IN  p_gig_id    INT UNSIGNED,
     IN  p_client_id INT UNSIGNED,
-    IN  p_amount    DECIMAL(10,2),
     IN  p_method    VARCHAR(50),
     OUT p_order_id  INT UNSIGNED
 )
 BEGIN
     DECLARE v_gig_count INT DEFAULT 0;
+    DECLARE v_price     DECIMAL(10,2) DEFAULT 0.00;
     DECLARE EXIT HANDLER FOR SQLEXCEPTION
     BEGIN
         ROLLBACK;
         RESIGNAL;
     END;
 
-    -- Validate gig exists
+    -- Validate gig exists and fetch its price
     SELECT COUNT(*) INTO v_gig_count FROM GIGS WHERE gig_id = p_gig_id;
     IF v_gig_count = 0 THEN
         SIGNAL SQLSTATE '45000'
             SET MESSAGE_TEXT = 'Gig not found';
     END IF;
 
+    SELECT price INTO v_price FROM GIGS WHERE gig_id = p_gig_id;
+
     START TRANSACTION;
 
         INSERT INTO ORDERS (gig_id, client_id, status, amount)
-        VALUES (p_gig_id, p_client_id, 'pending', p_amount);
+        VALUES (p_gig_id, p_client_id, 'pending', v_price);
 
         SET p_order_id = LAST_INSERT_ID();
 
         INSERT INTO PAYMENTS (order_id, amount, status, method)
-        VALUES (p_order_id, p_amount, 'pending', p_method);
+        VALUES (p_order_id, v_price, 'pending', p_method);
 
     COMMIT;
 END$$
@@ -459,12 +461,12 @@ DELIMITER $$
 CREATE PROCEDURE place_order(
     IN  p_gig_id    INT UNSIGNED,
     IN  p_client_id INT UNSIGNED,
-    IN  p_amount    DECIMAL(10,2),
     IN  p_method    VARCHAR(50),
     OUT p_order_id  INT UNSIGNED
 )
 BEGIN
     DECLARE v_gig_count         INT           DEFAULT 0;
+    DECLARE v_price             DECIMAL(10,2) DEFAULT 0.00;
     DECLARE v_is_trial          TINYINT(1)    DEFAULT 0;
     DECLARE v_freelancer_id     INT UNSIGNED  DEFAULT 0;
     DECLARE v_tier_id           INT UNSIGNED  DEFAULT 1;
@@ -484,9 +486,9 @@ BEGIN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Gig not found';
     END IF;
 
-    -- Fetch gig trial flag and freelancer
-    SELECT is_trial, freelancer_id
-      INTO v_is_trial, v_freelancer_id
+    -- Fetch gig price, trial flag, and freelancer (single authoritative source)
+    SELECT price, is_trial, freelancer_id
+      INTO v_price, v_is_trial, v_freelancer_id
       FROM GIGS WHERE gig_id = p_gig_id;
 
     -- Fetch freelancer's commission rate and cap
@@ -497,12 +499,12 @@ BEGIN
 
     -- Enforce trial price cap
     IF v_is_trial = 1 AND v_trial_price_cap IS NOT NULL
-                     AND p_amount > v_trial_price_cap THEN
+                     AND v_price > v_trial_price_cap THEN
         SIGNAL SQLSTATE '45000'
-            SET MESSAGE_TEXT = 'Order amount exceeds trial price cap for this gig';
+            SET MESSAGE_TEXT = 'Gig price exceeds trial price cap';
     END IF;
 
-    SET v_commission_amount = ROUND(p_amount * v_commission_rate, 2);
+    SET v_commission_amount = ROUND(v_price * v_commission_rate, 2);
 
     START TRANSACTION;
 
@@ -510,13 +512,13 @@ BEGIN
             (gig_id, client_id, status, amount,
              is_trial, commission_rate_applied, commission_amount)
         VALUES
-            (p_gig_id, p_client_id, 'pending', p_amount,
+            (p_gig_id, p_client_id, 'pending', v_price,
              v_is_trial, v_commission_rate, v_commission_amount);
 
         SET p_order_id = LAST_INSERT_ID();
 
         INSERT INTO PAYMENTS (order_id, amount, status, method, escrow_status)
-        VALUES (p_order_id, p_amount, 'pending', p_method, 'holding');
+        VALUES (p_order_id, v_price, 'pending', p_method, 'holding');
 
     COMMIT;
 END$$
@@ -581,8 +583,8 @@ BEGIN
     IF OLD.status = 'open'
        AND NEW.status IN ('resolved_for_client', 'resolved_for_freelancer')
     THEN
-        UPDATE DISPUTES SET resolved_at = CURRENT_TIMESTAMP
-         WHERE dispute_id = NEW.dispute_id;
+        -- NOTE: resolved_at is set by the backend UPDATE that triggers this,
+        -- NOT here — MySQL forbids a trigger from modifying its own table.
 
         SELECT g.freelancer_id, o.is_trial, o.status
           INTO v_freelancer_id, v_is_trial, v_order_status

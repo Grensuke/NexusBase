@@ -38,7 +38,7 @@ router.get('/', authenticate, async (req, res) => {
            JOIN USERS  u ON u.user_id   = o.client_id
            LEFT JOIN DISPUTES d ON d.order_id = o.order_id
            LEFT JOIN PAYMENTS p ON p.order_id = o.order_id
-          WHERE g.freelancer_id = ? AND o.status IN ('pending','in_progress')
+          WHERE g.freelancer_id = ?
           ORDER BY o.order_date DESC`,
         [req.user.user_id]
       );
