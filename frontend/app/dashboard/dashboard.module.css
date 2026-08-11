@@ -83,28 +83,126 @@
 .sectionTitle { font-size: var(--text-base); font-weight: 700; color: var(--text-primary); }
 .empty { color: var(--text-muted); font-size: var(--text-sm); padding: var(--space-4) 0; }
 
-/* ── Skills ── */
-.skillTags { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-4); }
-.skillTag {
+/* ── Skills list ── */
+.skillList {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  margin-bottom: var(--space-5);
+}
+
+.skillRow {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--border-subtle);
+  transition: background var(--t-fast);
+}
+.skillRow:last-child { border-bottom: none; }
+.skillRow:hover { background: rgba(138, 128, 112, 0.04); }
+
+.skillRowName {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.skillRowStatus {
+  display: flex;
+  align-items: center;
+}
+
+.verifiedBadge {
   display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
-  background: var(--brass-subtle);
-  color: var(--brass-light);
-  border: 1px solid rgba(160, 137, 106, 0.20);
-  border-radius: var(--r-full);
-  font-size: var(--text-xs);
+  gap: 0.25rem;
+  font-size: 0.7rem;
   font-weight: 600;
-  padding: 0.25rem 0.65rem;
+  padding: 0.2rem 0.6rem;
+  background: rgba(90, 158, 111, 0.12);
+  color: var(--success-light);
+  border: 1px solid rgba(90, 158, 111, 0.2);
+  border-radius: var(--r-full);
 }
-.removeSkill {
-  background: none; border: none;
-  color: var(--text-muted); cursor: pointer;
-  font-size: 1rem; line-height: 1; padding: 0; font-family: inherit;
+
+.assessBtn {
+  font-size: 0.72rem !important;
+  padding: 0.2rem 0.65rem !important;
+  opacity: 0.8;
 }
-.removeSkill:hover { color: var(--error-light); }
-.skillInput { display: flex; gap: var(--space-2); align-items: center; }
-.skillInput .form-input { max-width: 240px; }
+.assessBtn:hover { opacity: 1; }
+
+.removeSkillRow {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  padding: 0.2rem 0.3rem;
+  border-radius: var(--r-sm);
+  font-family: inherit;
+  transition: color var(--t-fast), background var(--t-fast);
+}
+.removeSkillRow:hover {
+  color: var(--error-light);
+  background: rgba(180, 80, 80, 0.08);
+}
+
+/* ── Skill add row ── */
+.skillInputRow {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+/* ── Skill autocomplete combobox ── */
+.skillComboWrap {
+  position: relative;
+  flex: 1;
+  max-width: 320px;
+}
+.skillComboWrap .form-input { width: 100%; }
+
+.skillDropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: var(--surface-raised);
+  border: 1px solid var(--border-hover);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-card-hover);
+  list-style: none;
+  padding: var(--space-1) 0;
+  margin: 0;
+  max-height: 220px;
+  overflow-y: auto;
+  animation: dropdown-in 0.12s ease;
+}
+@keyframes dropdown-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.skillOption {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background var(--t-fast), color var(--t-fast);
+}
+.skillOption:hover,
+.skillOptionActive {
+  background: var(--brass-subtle);
+  color: var(--brass-light) !important;
+}
+
 
 /* ── Gig table ── */
 .table { display: flex; flex-direction: column; }

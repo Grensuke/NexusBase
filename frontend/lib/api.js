@@ -69,6 +69,10 @@ export const getMyGigs = ()       => request('GET',    '/gigs/freelancer/my');
 // ---------- Categories ----------
 export const getCategories = () => request('GET', '/categories');
 
+// ---------- Skills ----------
+export const getSkills = (q) => request('GET', '/skills', null, q ? { q } : null);
+
+
 // ---------- Orders ----------
 export const placeOrder        = (body)          => request('POST',  '/orders', body);
 export const getOrders         = ()              => request('GET',   '/orders');

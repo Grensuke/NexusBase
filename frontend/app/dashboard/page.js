@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { getDashboard, updateOrderStatus, deleteGig, updateSkills, getMyTrust, raiseDispute } from '@/lib/api';
+import { getDashboard, updateOrderStatus, deleteGig, updateSkills, getMyTrust, raiseDispute, getSkills } from '@/lib/api';
 import { useAuth } from '@/context/AuthContext';
 import { useToast } from '@/components/Toast';
 import { useCurrency } from '@/context/CurrencyContext';
@@ -58,8 +58,12 @@ function FreelancerDash({ data, onRefresh }) {
   const [passedSkillIds, setPassedSkillIds] = useState(
     () => new Set((data.passed_skill_ids || []))
   );
-  const [skillSaving, setSkillSaving] = useState(false);
-  const [activeTab,   setActiveTab]   = useState('overview');
+  const [skillSaving,   setSkillSaving]   = useState(false);
+  const [activeTab,     setActiveTab]     = useState('overview');
+  const [allSkills,     setAllSkills]     = useState([]);
+  const [suggestions,   setSuggestions]   = useState([]);
+  const [showDropdown,  setShowDropdown]  = useState(false);
+  const [highlightIdx,  setHighlightIdx]  = useState(-1);
   const [trust,       setTrust]       = useState(null);
   const [disputeId,   setDisputeId]   = useState(null);
   const [disputeReason, setDisputeReason] = useState('');
@@ -71,9 +75,15 @@ function FreelancerDash({ data, onRefresh }) {
     if (data.passed_skill_ids) setPassedSkillIds(new Set(data.passed_skill_ids));
   }, [data.skills, data.passed_skill_ids]);
 
-  // Fetch trust snapshot
+  // Fetch trust snapshot whenever dashboard data refreshes so the widget
+  // stays in sync after order completions, disputes, or assessments.
   useEffect(() => {
     getMyTrust().then(r => setTrust(r.data)).catch(() => {});
+  }, [data]);
+
+  // Load all available skills once for the autocomplete
+  useEffect(() => {
+    getSkills().then(r => setAllSkills(r.data || [])).catch(() => {});
   }, []);
 
   const handleDelete = async (gig_id) => {
@@ -89,13 +99,59 @@ function FreelancerDash({ data, onRefresh }) {
     catch (err) { showToast(err.response?.data?.error || 'Error', 'error'); }
   };
 
-  const addSkill = () => {
-    const s = skillInput.trim();
-    // Avoid duplicate names (case-insensitive); skill_id is null until saved via DB
+  const handleSkillInputChange = (e) => {
+    const val = e.target.value;
+    setSkillInput(val);
+    setHighlightIdx(-1);
+    if (val.trim().length === 0) {
+      setSuggestions([]);
+      setShowDropdown(false);
+      return;
+    }
+    const lower = val.trim().toLowerCase();
+    const filtered = allSkills.filter(
+      sk =>
+        sk.skill_name.toLowerCase().includes(lower) &&
+        !skills.find(s => s.skill_name.toLowerCase() === sk.skill_name.toLowerCase())
+    );
+    setSuggestions(filtered);
+    setShowDropdown(filtered.length > 0);
+  };
+
+  const commitSkill = (name) => {
+    const s = (name || skillInput).trim();
     if (s && !skills.find(sk => sk.skill_name.toLowerCase() === s.toLowerCase())) {
-      setSkills(sk => [...sk, { skill_id: null, skill_name: s }]);
+      // Try to find the matching skill_id so Assess links work immediately
+      const match = allSkills.find(sk => sk.skill_name.toLowerCase() === s.toLowerCase());
+      setSkills(sk => [...sk, { skill_id: match?.skill_id ?? null, skill_name: match?.skill_name ?? s }]);
     }
     setSkillInput('');
+    setSuggestions([]);
+    setShowDropdown(false);
+    setHighlightIdx(-1);
+  };
+
+  const addSkill = () => commitSkill();
+
+  const handleSkillKeyDown = (e) => {
+    if (!showDropdown) {
+      if (e.key === 'Enter') { e.preventDefault(); addSkill(); }
+      return;
+    }
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      setHighlightIdx(i => Math.min(i + 1, suggestions.length - 1));
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      setHighlightIdx(i => Math.max(i - 1, -1));
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      if (highlightIdx >= 0) commitSkill(suggestions[highlightIdx].skill_name);
+      else addSkill();
+    } else if (e.key === 'Escape') {
+      setShowDropdown(false);
+      setHighlightIdx(-1);
+    }
   };
   const removeSkill = (name) => setSkills(sk => sk.filter(x => x.skill_name !== name));
   const saveSkills = async () => {
@@ -311,58 +367,83 @@ function FreelancerDash({ data, onRefresh }) {
       {/* ── Skills tab ── */}
       {activeTab === 'skills' && (
         <div className={`glass-card ${styles.section}`}>
-          <h2 className={styles.sectionTitle}>My Skills</h2>
-          <div className={styles.skillTags}>
-            {skills.map(s => {
-              const isVerified = s.skill_id && passedSkillIds.has(s.skill_id);
-              return (
-                <span key={s.skill_name} className={styles.skillTag}>
-                  {s.skill_name}
-                  <button onClick={() => removeSkill(s.skill_name)} className={styles.removeSkill}>×</button>
-                  {isVerified ? (
-                    <span
-                      style={{
-                        fontSize: '0.62rem', padding: '0.15rem 0.45rem',
-                        background: 'rgba(120,200,120,0.15)', color: 'var(--success-light)',
-                        borderRadius: '4px', marginLeft: '2px',
-                      }}
-                    >
-                      ✓ Verified
-                    </span>
-                  ) : (
-                    <Link
-                      href={`/assessment?skill_name=${encodeURIComponent(s.skill_name)}&skill_id=${s.skill_id || ''}`}
-                      className="btn btn-ghost btn-sm"
-                      style={{ fontSize: '0.65rem', padding: '0.2rem 0.5rem' }}
-                      id={`assess-skill-${s.skill_name}`}
-                      title="Take skill assessment"
-                    >
-                      Assess
-                    </Link>
-                  )}
-                </span>
-              );
-            })}
-            {skills.length === 0 && <p className={styles.empty}>No skills added yet</p>}
+          <div className={styles.sectionHeader}>
+            <h2 className={styles.sectionTitle}>My Skills</h2>
+            <Link href="/assessment" className="btn btn-ghost btn-sm" id="go-to-assessments-btn">
+              Assessment History
+            </Link>
           </div>
-          <div className={styles.skillInput}>
-            <input
-              type="text"
-              className="form-input"
-              placeholder="Add a skill (e.g. React)"
-              value={skillInput}
-              onChange={e => setSkillInput(e.target.value)}
-              onKeyDown={e => e.key === 'Enter' && (e.preventDefault(), addSkill())}
-              id="skill-input"
-            />
-            <button className="btn btn-secondary btn-sm" onClick={addSkill}>Add</button>
+
+          {skills.length === 0 ? (
+            <p className={styles.empty}>No skills added yet. Search for a skill below to get started.</p>
+          ) : (
+            <div className={styles.skillList}>
+              {skills.map(s => {
+                const isVerified = s.skill_id && passedSkillIds.has(s.skill_id);
+                return (
+                  <div key={s.skill_name} className={styles.skillRow}>
+                    <span className={styles.skillRowName}>{s.skill_name}</span>
+                    <div className={styles.skillRowStatus}>
+                      {isVerified ? (
+                        <span className={styles.verifiedBadge}>✓ Verified</span>
+                      ) : (
+                        <Link
+                          href={`/assessment?skill_name=${encodeURIComponent(s.skill_name)}&skill_id=${s.skill_id || ''}`}
+                          className={`btn btn-ghost btn-sm ${styles.assessBtn}`}
+                          id={`assess-skill-${s.skill_name}`}
+                        >
+                          Take Assessment
+                        </Link>
+                      )}
+                    </div>
+                    <button
+                      onClick={() => removeSkill(s.skill_name)}
+                      className={styles.removeSkillRow}
+                      title={`Remove ${s.skill_name}`}
+                    >
+                      ×
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+
+          <div className={styles.skillInputRow}>
+            <div className={styles.skillComboWrap}>
+              <input
+                type="text"
+                className="form-input"
+                placeholder="Search or type a skill…"
+                value={skillInput}
+                onChange={handleSkillInputChange}
+                onKeyDown={handleSkillKeyDown}
+                onBlur={() => setTimeout(() => setShowDropdown(false), 150)}
+                onFocus={() => suggestions.length > 0 && setShowDropdown(true)}
+                id="skill-input"
+                autoComplete="off"
+              />
+              {showDropdown && (
+                <ul className={styles.skillDropdown} role="listbox" id="skill-suggestions">
+                  {suggestions.map((sk, i) => (
+                    <li
+                      key={sk.skill_id}
+                      role="option"
+                      aria-selected={i === highlightIdx}
+                      className={`${styles.skillOption} ${i === highlightIdx ? styles.skillOptionActive : ''}`}
+                      onMouseDown={() => commitSkill(sk.skill_name)}
+                    >
+                      {sk.skill_name}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+            <button className="btn btn-secondary btn-sm" onClick={addSkill} id="add-skill-btn">Add</button>
             <button className="btn btn-primary btn-sm" onClick={saveSkills} disabled={skillSaving} id="save-skills-btn">
               {skillSaving ? 'Saving…' : 'Save Skills'}
             </button>
           </div>
-          <Link href="/assessment" className="btn btn-secondary btn-sm" style={{ alignSelf: 'flex-start' }} id="go-to-assessments-btn">
-            📋 View All Assessment History
-          </Link>
         </div>
       )}
 
