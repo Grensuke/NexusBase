@@ -91,8 +91,10 @@ export const getTrustTiers  = ()     => request('GET', '/trust/tiers');
 export const getMyTrust     = ()     => request('GET', '/trust/me');
 
 // ---------- Assessments ----------
-export const submitAssessment = (skill_id, score) =>
-  request('POST', `/assessments/${skill_id}`, { score });
+export const getAssessmentQuestions = (skill_id) =>
+  request('GET', `/assessments/${skill_id}/questions`);
+export const submitAssessment = (skill_id, answers) =>
+  request('POST', `/assessments/${skill_id}`, { answers });
 export const getMyAssessments = () => request('GET', '/assessments/me');
 
 // ---------- Disputes ----------

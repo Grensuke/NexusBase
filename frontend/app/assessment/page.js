@@ -4,64 +4,25 @@ import { useState, useEffect, use } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import { useToast } from '@/components/Toast';
-import { submitAssessment, getMyAssessments } from '@/lib/api';
+import { getAssessmentQuestions, submitAssessment, getMyAssessments } from '@/lib/api';
 import styles from './assessment.module.css';
 
-/* ---------- Simulated question bank ----------
-   In production these come from a quiz engine.
-   For the viva demo, 5 questions per skill covers
-   the full UI flow without a real quiz backend.   */
-const SKILL_QUESTIONS = {
-  default: [
-    { q: 'What is the primary purpose of this skill?', options: ['Produce deliverables', 'Write documentation', 'Attend meetings', 'File reports'], correct: 0 },
-    { q: 'Which best practice is most important in this domain?', options: ['Version control', 'Skipping tests', 'Ignoring feedback', 'Avoiding tools'], correct: 0 },
-    { q: 'How do you handle client revision requests?', options: ['Discuss scope then revise', 'Ignore them', 'Charge triple', 'Quit the project'], correct: 0 },
-    { q: 'What makes a deliverable "complete"?', options: ['It meets the agreed spec', 'It looks nice', 'You ran out of time', 'Client stopped responding'], correct: 0 },
-    { q: 'Which is the correct approach for a tight deadline?', options: ['Communicate early & prioritize', 'Overcommit silently', 'Miss the deadline', 'Blame tooling'], correct: 0 },
-  ],
-  React: [
-    { q: 'What hook manages component state in React?', options: ['useState', 'useEffect', 'useRef', 'useMemo'], correct: 0 },
-    { q: 'Which lifecycle is equivalent to componentDidMount?', options: ['useEffect(fn, [])', 'useEffect(fn)', 'useMemo(fn, [])', 'useCallback(fn)'], correct: 0 },
-    { q: 'What does the key prop help React with?', options: ['Efficient list reconciliation', 'CSS styling', 'Event binding', 'Server rendering'], correct: 0 },
-    { q: 'Which statement about React props is true?', options: ['They flow parent → child', 'They are mutable', 'They flow child → parent', 'They require Redux'], correct: 0 },
-    { q: 'What is the Virtual DOM?', options: ['An in-memory representation of the real DOM', 'A browser API', 'A CSS engine', 'A bundler plugin'], correct: 0 },
-  ],
-  'Node.js': [
-    { q: 'What module system does Node.js primarily use?', options: ['CommonJS (require)', 'AMD', 'SystemJS', 'UMD'], correct: 0 },
-    { q: 'Which method reads a file asynchronously?', options: ['fs.readFile', 'fs.readFileSync', 'fs.open', 'path.read'], correct: 0 },
-    { q: 'What is the event loop responsible for?', options: ['Non-blocking I/O handling', 'Garbage collection', 'Module loading', 'Memory allocation'], correct: 0 },
-    { q: 'Which tool manages Node.js packages?', options: ['npm / yarn', 'pip', 'cargo', 'gem'], correct: 0 },
-    { q: 'What does process.env give you?', options: ['Environment variables', 'Process arguments', 'System PATH', 'File descriptors'], correct: 0 },
-  ],
-  SEO: [
-    { q: 'What does SEO stand for?', options: ['Search Engine Optimization', 'Secure Element Output', 'Site Engagement Order', 'Server Error Output'], correct: 0 },
-    { q: 'Which tag is most important for on-page SEO?', options: ['<title>', '<meta name="keywords">', '<h5>', '<footer>'], correct: 0 },
-    { q: 'What is a backlink?', options: ['A link from another site to yours', 'An internal nav link', 'A CSS anchor', 'A broken link'], correct: 0 },
-    { q: 'What does a 301 redirect signal to search engines?', options: ['Permanent move', 'Temporary move', 'Not found', 'Server error'], correct: 0 },
-    { q: 'Which metric measures page load performance?', options: ['Core Web Vitals', 'Bounce rate alone', 'Session duration', 'Click-through rate'], correct: 0 },
-  ],
-};
-
-function getQuestions(skillName) {
-  return SKILL_QUESTIONS[skillName] || SKILL_QUESTIONS.default;
-}
-
 /* Shuffle the OPTIONS of each question so the correct answer
-   is not always option A. The source data keeps correct:0 for
-   readability; this function randomises the displayed order.   */
-function shuffleQuestions(rawQuestions) {
-  return rawQuestions.map(q => {
+   is not always option A.  Returns shuffled questions plus a
+   mapping so we can convert the user's display-order selection
+   back to the canonical index the server expects.              */
+function shuffleOptions(serverQuestions) {
+  return serverQuestions.map(q => {
     // Build index array [0,1,2,3] and shuffle it
     const indices = q.options.map((_, i) => i);
     for (let i = indices.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [indices[i], indices[j]] = [indices[j], indices[i]];
     }
-    // Map shuffled indices back to options and track new correct position
     return {
-      q:       q.q,
-      options: indices.map(i => q.options[i]),
-      correct: indices.indexOf(q.correct),   // where did the correct answer land?
+      q:             q.q,
+      options:       indices.map(i => q.options[i]),  // shuffled display order
+      canonicalMap:  indices,                          // canonicalMap[displayIdx] = canonicalIdx
     };
   });
 }
@@ -96,22 +57,28 @@ export default function AssessmentPage({ searchParams: searchParamsProp }) {
   const skillId   = searchParams?.skill_id ? parseInt(searchParams.skill_id, 10) : null;
   const skillName = searchParams?.skill_name || 'General';
 
-  const [phase,     setPhase]     = useState('intro');   // intro | quiz | result
-  const [answers,   setAnswers]   = useState({});
-  const [current,   setCurrent]   = useState(0);
-  const [result,    setResult]    = useState(null);
-  const [submitting,setSubmitting]= useState(false);
-  const [history,   setHistory]   = useState([]);
+  const [phase,       setPhase]       = useState('intro');   // intro | loading | quiz | result
+  const [answers,     setAnswers]     = useState({});        // { questionIndex: displayOptionIndex }
+  const [current,     setCurrent]     = useState(0);
+  const [result,      setResult]      = useState(null);
+  const [submitting,  setSubmitting]  = useState(false);
+  const [history,     setHistory]     = useState([]);
   const [redirecting, setRedirecting] = useState(false);
-  // questions is stored in state so shuffle is stable per attempt
-  const [questions, setQuestions] = useState(() => shuffleQuestions(getQuestions(skillName)));
+  const [questions,   setQuestions]   = useState([]);        // shuffled questions from server
 
-  // Shuffle + reset — called on Start and Retake
-  const startQuiz = () => {
-    setQuestions(shuffleQuestions(getQuestions(skillName)));
-    setAnswers({});
-    setCurrent(0);
-    setPhase('quiz');
+  // Start / restart the quiz — fetch questions from the server
+  const startQuiz = async () => {
+    setPhase('loading');
+    try {
+      const { data } = await getAssessmentQuestions(skillId);
+      setQuestions(shuffleOptions(data.questions));
+      setAnswers({});
+      setCurrent(0);
+      setPhase('quiz');
+    } catch (err) {
+      showToast(err.response?.data?.error || 'Failed to load questions', 'error');
+      setPhase('intro');
+    }
   };
 
   useEffect(() => {
@@ -124,8 +91,8 @@ export default function AssessmentPage({ searchParams: searchParamsProp }) {
     }
   }, [user]);
 
-  const handleAnswer = (qIdx, aIdx) => {
-    setAnswers(a => ({ ...a, [qIdx]: aIdx }));
+  const handleAnswer = (qIdx, displayIdx) => {
+    setAnswers(a => ({ ...a, [qIdx]: displayIdx }));
   };
 
   const handleNext = () => {
@@ -137,10 +104,14 @@ export default function AssessmentPage({ searchParams: searchParamsProp }) {
   const handleSubmitQuiz = async () => {
     setSubmitting(true);
     try {
-      const correct = questions.filter((q, i) => answers[i] === q.correct).length;
-      const score   = Math.round((correct / questions.length) * 100);
+      // Convert display-order selections to canonical-order indices
+      // The server expects canonical indices (matching the order it returned)
+      const canonicalAnswers = questions.map((q, i) => {
+        const displayIdx = answers[i];
+        return q.canonicalMap[displayIdx];   // map back to canonical index
+      });
 
-      const { data } = await submitAssessment(skillId, score);
+      const { data } = await submitAssessment(skillId, canonicalAnswers);
       setResult(data);
       setPhase('result');
 
@@ -156,8 +127,8 @@ export default function AssessmentPage({ searchParams: searchParamsProp }) {
     }
   };
 
-  const allAnswered = questions.every((_, i) => answers[i] !== undefined);
-  const progressPct = Math.round(((current + 1) / questions.length) * 100);
+  const allAnswered = questions.length > 0 && questions.every((_, i) => answers[i] !== undefined);
+  const progressPct = questions.length > 0 ? Math.round(((current + 1) / questions.length) * 100) : 0;
 
   // ── Intro screen ──
   if (phase === 'intro') return (
@@ -169,14 +140,14 @@ export default function AssessmentPage({ searchParams: searchParamsProp }) {
               <div className={styles.skillBadge}>{skillName[0]}</div>
               <h1 className={styles.cardTitle}>{skillName} Assessment</h1>
               <p className={styles.cardDesc}>
-                Answer {questions.length} multiple-choice questions. A score of 70% or above
+                Answer 5 multiple-choice questions. A score of 70% or above
                 marks this skill as verified and boosts your trust score immediately.
               </p>
               <div className={styles.rules}>
                 <div className={styles.ruleItem}><span className={styles.ruleDot} />5 questions · ~3 minutes</div>
                 <div className={styles.ruleItem}><span className={styles.ruleDot} />Pass threshold: 70%</div>
                 <div className={styles.ruleItem}><span className={styles.ruleDot} />You may retake any time</div>
-                <div className={styles.ruleItem}><span className={styles.ruleDot} />Triggers immediate trust-score recalculation</div>
+                <div className={styles.ruleItem}><span className={styles.ruleDot} />Scored server-side — answers are graded on the backend</div>
               </div>
               {!skillId && (
                 <div className="alert alert-info" style={{ marginBottom: 'var(--space-4)' }}>
@@ -216,8 +187,25 @@ export default function AssessmentPage({ searchParams: searchParamsProp }) {
     </div>
   );
 
+  // ── Loading screen ──
+  if (phase === 'loading') return (
+    <div className="page-wrapper">
+      <main>
+        <div className={styles.page}>
+          <div className={`container ${styles.center}`}>
+            <div className={styles.card} style={{ maxWidth: 520, textAlign: 'center' }}>
+              <div className={styles.skillBadge}>{skillName[0]}</div>
+              <h2 className={styles.cardTitle}>Loading Questions…</h2>
+              <p className={styles.cardDesc}>Fetching your {skillName} assessment from the server.</p>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  );
+
   // ── Quiz screen ──
-  if (phase === 'quiz') {
+  if (phase === 'quiz' && questions.length > 0) {
     const q = questions[current];
     return (
       <div className="page-wrapper">
@@ -301,8 +289,8 @@ export default function AssessmentPage({ searchParams: searchParamsProp }) {
 
                 <p className={styles.resultDesc}>
                   {result.passed
-                    ? `Your ${skillName} skill is now verified and has been added to your profile. Redirecting to dashboard…`
-                    : `You scored ${pct}%. The pass threshold is 70%. You can retake this assessment any time.`
+                    ? `You answered ${result.correct}/${result.total} correctly. Your ${skillName} skill is now verified and has been added to your profile. Redirecting to dashboard…`
+                    : `You scored ${pct}% (${result.correct}/${result.total} correct). The pass threshold is 70%. You can retake this assessment any time.`
                   }
                 </p>
 
