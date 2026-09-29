@@ -1,0 +1,26 @@
+.env
+.env.*
+!.env.example
+node_modules/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+dist/
+build/
+.cache/
+models/
+
+# IDE / System specific
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Credentials and secrets
+secrets.json
+credentials.json
+*.key
+*.pem

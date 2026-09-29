@@ -1,0 +1,1090 @@
+{
+  "generated_at": "2026-09-29T04:24:45+00:00",
+  "solutions": [
+    {
+      "id": "glitchtip",
+      "name": "GlitchTip",
+      "type": "app",
+      "source": "github",
+      "description": null,
+      "license": "MIT",
+      "license_class": "permissive",
+      "cost_model": "free_oss",
+      "capabilities": [],
+      "evidence": [
+        {
+          "type": "license_file",
+          "url": "https://raw.githubusercontent.com/rh-cssre/glitchtip-backend/HEAD/LICENSE",
+          "excerpt": "MIT License",
+          "all_pattern_hits": [
+            "MIT"
+          ],
+          "fetched_at": "2026-09-29T04:24:45+00:00"
+        }
+      ],
+      "last_verified_at": "2026-09-29T04:24:45+00:00",
+      "extension": {
+        "repo": "rh-cssre/glitchtip-backend",
+        "repo_note": "historical GitHub mirror; project now lives on GitLab, so evidence will be stale",
+        "caveat": null,
+        "github_api": null
+      }
+    },
+    {
+      "id": "sentry",
+      "name": "Sentry",
+      "type": "app",
+      "source": "github",
+      "description": null,
+      "license": "FSL",
+      "license_class": "source_available",
+      "cost_model": "unknown",
+      "capabilities": [],
+      "evidence": [
+        {
+          "type": "license_file",
+          "url": "https://raw.githubusercontent.com/getsentry/sentry/HEAD/LICENSE.md",
+          "excerpt": "# Functional Source License, Version 1.1, Apache 2.0 Future License",
+          "all_pattern_hits": [
+            "FSL",
+            "Apache-2.0"
+          ],
+          "fetched_at": "2026-09-29T04:24:45+00:00"
+        }
+      ],
+      "last_verified_at": "2026-09-29T04:24:45+00:00",
+      "extension": {
+        "repo": "getsentry/sentry",
+        "repo_note": null,
+        "caveat": null,
+        "github_api": null
+      }
+    },
+    {
+      "id": "bugsink",
+      "name": "Bugsink",
+      "type": "app",
+      "source": "github",
+      "description": null,
+      "license": "Polyform AND MIT",
+      "license_class": "mixed",
+      "cost_model": "unknown",
+      "capabilities": [],
+      "evidence": [
+        {
+          "type": "license_file",
+          "url": "https://raw.githubusercontent.com/bugsink/bugsink/HEAD/LICENSE",
+          "excerpt": "Copyright (c) 2023-present Bugsink B.V.",
+          "all_pattern_hits": [
+            "Polyform",
+            "MIT"
+          ],
+          "fetched_at": "2026-09-29T04:24:45+00:00"
+        }
+      ],
+      "last_verified_at": "2026-09-29T04:24:45+00:00",
+      "extension": {
+        "repo": "bugsink/bugsink",
+        "repo_note": null,
+        "caveat": "core code is PolyForm Shield (source-available) plus attributed third-party parts; classifier reports 'mixed' because of the attribution lines, so the constraint is UNRESOLVED by the adapter. Known adapter limitation.",
+        "github_api": null
+      }
+    },
+    {
+      "id": "coolify",
+      "name": "Coolify",
+      "type": "app",
+      "source": "github",
+      "description": null,
+      "license": "Apache-2.0",
+      "license_class": "permissive",
+      "cost_model": "free_oss",
+      "capabilities": [],
+      "evidence": [
+        {
+          "type": "license_file",
+          "url": "https://raw.githubusercontent.com/coollabsio/coolify/HEAD/LICENSE",
+          "excerpt": "Apache License",
+          "all_pattern_hits": [
+            "Apache-2.0"
+          ],
+          "fetched_at": "2026-09-29T04:24:45+00:00"
+        }
+      ],
+      "last_verified_at": "2026-09-29T04:24:45+00:00",
+      "extension": {
+        "repo": "coollabsio/coolify",
+        "repo_note": null,
+        "caveat": null,
+        "github_api": null
+      }
+    },
+    {
+      "id": "dokku",
+      "name": "Dokku",
+      "type": "app",
+      "source": "github",
+      "description": null,
+      "license": "MIT",
+      "license_class": "permissive",
+      "cost_model": "free_oss",
+      "capabilities": [],
+      "evidence": [
+        {
+          "type": "license_file",
+          "url": "https://raw.githubusercontent.com/dokku/dokku/HEAD/LICENSE",
+          "excerpt": "Copyright (C) 2014 Jeff Lindsay",
+          "all_pattern_hits": [
+            "MIT"
+          ],
+          "fetched_at": "2026-09-29T04:24:45+00:00"
+        }
+      ],
+      "last_verified_at": "2026-09-29T04:24:45+00:00",
+      "extension": {
+        "repo": "dokku/dokku",
+        "repo_note": null,
+        "caveat": null,
+        "github_api": null
+      }
+    },
+    {
+      "id": "caprover",
+      "name": "CapRover",
+      "type": "app",
+      "source": "github",
+      "description": null,
+      "license": "Apache-2.0",
+      "license_class": "permissive",
+      "cost_model": "free_oss",
+      "capabilities": [],
+      "evidence": [
+        {
+          "type": "license_file",
+          "url": "https://raw.githubusercontent.com/caprover/caprover/HEAD/LICENSE",
+          "excerpt": "Copyright 2017-2024 BigZee Ventures LLC",
+          "all_pattern_hits": [
+            "Apache-2.0"
+          ],
+          "fetched_at": "2026-09-29T04:24:45+00:00"
+        }
+      ],
+      "last_verified_at": "2026-09-29T04:24:45+00:00",
+      "extension": {
+        "repo": "caprover/caprover",
+        "repo_note": null,
+        "caveat": null,
+        "github_api": null
+      }
+    },
+    {
+      "id": "uptime_kuma",
+      "name": "Uptime Kuma",
+      "type": "app",
+      "source": "github",
+      "description": null,
+      "license": "MIT",
+      "license_class": "permissive",
+      "cost_model": "free_oss",
+      "capabilities": [],
+      "evidence": [
+        {
+          "type": "license_file",
+          "url": "https://raw.githubusercontent.com/louislam/uptime-kuma/HEAD/LICENSE",
+          "excerpt": "MIT License",
+          "all_pattern_hits": [
+            "MIT"
+          ],
+          "fetched_at": "2026-09-29T04:24:45+00:00"
+        }
+      ],
+      "last_verified_at": "2026-09-29T04:24:45+00:00",
+      "extension": {
+        "repo": "louislam/uptime-kuma",
+        "repo_note": null,
+        "caveat": null,
+        "github_api": null
+      }
+    },
+    {
+      "id": "gatus",
+      "name": "Gatus",
+      "type": "app",
+      "source": "github",
+      "description": null,
+      "license": "Apache-2.0",
+      "license_class": "permissive",
+      "cost_model": "free_oss",
+      "capabilities": [],
+      "evidence": [
+        {
+          "type": "license_file",
+          "url": "https://raw.githubusercontent.com/TwiN/gatus/HEAD/LICENSE",
+          "excerpt": "Apache License",
+          "all_pattern_hits": [
+            "Apache-2.0"
+          ],
+          "fetched_at": "2026-09-29T04:24:45+00:00"
+        }
+      ],
+      "last_verified_at": "2026-09-29T04:24:45+00:00",
+      "extension": {
+        "repo": "TwiN/gatus",
+        "repo_note": null,
+        "caveat": null,
+        "github_api": null
+      }
+    },
+    {
+      "id": "unleash",
+      "name": "Unleash",
+      "type": "app",
+      "source": "github",
+      "description": null,
+      "license": "AGPL",
+      "license_class": "copyleft",
+      "cost_model": "free_oss",
+      "capabilities": [],
+      "evidence": [
+        {
+          "type": "license_file",
+          "url": "https://raw.githubusercontent.com/Unleash/unleash/HEAD/LICENSE",
+          "excerpt": "GNU AFFERO GENERAL PUBLIC LICENSE",
+          "all_pattern_hits": [
+            "AGPL",
+            "GPL"
+          ],
+          "fetched_at": "2026-09-29T04:24:45+00:00"
+        }
+      ],
+      "last_verified_at": "2026-09-29T04:24:45+00:00",
+      "extension": {
+        "repo": "Unleash/unleash",
+        "repo_note": null,
+        "caveat": null,
+        "github_api": null
+      }
+    },
+    {
+      "id": "growthbook",
+      "name": "GrowthBook",
+      "type": "app",
+      "source": "github",
+      "description": null,
+      "license": "MIT",
+      "license_class": "permissive",
+      "cost_model": "free_oss",
+      "capabilities": [],
+      "evidence": [
+        {
+          "type": "license_file",
+          "url": "https://raw.githubusercontent.com/growthbook/growthbook/HEAD/LICENSE",
+          "excerpt": "Copyright (c) 2025 GrowthBook, Inc.",
+          "all_pattern_hits": [
+            "MIT"
+          ],
+          "fetched_at": "2026-09-29T04:24:45+00:00"
+        }
+      ],
+      "last_verified_at": "2026-09-29T04:24:45+00:00",
+      "extension": {
+        "repo": "growthbook/growthbook",
+        "repo_note": null,
+        "caveat": "enterprise directory may be under a separate license",
+        "github_api": null
+      }
+    },
+    {
+      "id": "flagsmith",
+      "name": "Flagsmith",
+      "type": "app",
+      "source": "github",
+      "description": null,
+      "license": "BSD",
+      "license_class": "permissive",
+      "cost_model": "free_oss",
+      "capabilities": [],
+      "evidence": [
+        {
+          "type": "license_file",
+          "url": "https://raw.githubusercontent.com/Flagsmith/flagsmith/HEAD/LICENSE.md",
+          "excerpt": "Copyright (c) 2024 Bullet Train Ltd (https://www.flagsmith.com/) and individual contributors. All rights reserved.",
+          "all_pattern_hits": [
+            "BSD"
+          ],
+          "fetched_at": "2026-09-29T04:24:45+00:00"
+        }
+      ],
+      "last_verified_at": "2026-09-29T04:24:45+00:00",
+      "extension": {
+        "repo": "Flagsmith/flagsmith",
+        "repo_note": null,
+        "caveat": null,
+        "github_api": null
+      }
+    },
+    {
+      "id": "docling",
+      "name": "Docling",
+      "type": "library",
+      "source": "github",
+      "description": null,
+      "license": "MIT",
+      "license_class": "permissive",
+      "cost_model": "free_oss",
+      "capabilities": [],
+      "evidence": [
+        {
+          "type": "license_file",
+          "url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/LICENSE",
+          "excerpt": "MIT License",
+          "all_pattern_hits": [
+            "MIT"
+          ],
+          "fetched_at": "2026-09-29T04:24:45+00:00"
+        }
+      ],
+      "last_verified_at": "2026-09-29T04:24:45+00:00",
+      "extension": {
+        "repo": "docling-project/docling",
+        "repo_note": null,
+        "caveat": null,
+        "github_api": null
+      }
+    },
+    {
+      "id": "marker",
+      "name": "marker",
+      "type": "library",
+      "source": "github",
+      "description": null,
+      "license": "Apache-2.0",
+      "license_class": "permissive",
+      "cost_model": "free_oss",
+      "capabilities": [],
+      "evidence": [
+        {
+          "type": "license_file",
+          "url": "https://raw.githubusercontent.com/datalab-to/marker/HEAD/LICENSE",
+          "excerpt": "Apache License",
+          "all_pattern_hits": [
+            "Apache-2.0"
+          ],
+          "fetched_at": "2026-09-29T04:24:45+00:00"
+        }
+      ],
+      "last_verified_at": "2026-09-29T04:24:45+00:00",
+      "extension": {
+        "repo": "datalab-to/marker",
+        "repo_note": null,
+        "caveat": "repo LICENSE is Apache-2.0 at HEAD; README/model-weights terms are NOT checked by the adapter",
+        "github_api": null
+      }
+    },
+    {
+      "id": "mineru",
+      "name": "MinerU",
+      "type": "library",
+      "source": "github",
+      "description": null,
+      "license": "Apache-2.0+custom",
+      "license_class": "custom",
+      "cost_model": "unknown",
+      "capabilities": [],
+      "evidence": [
+        {
+          "type": "license_file",
+          "url": "https://raw.githubusercontent.com/opendatalab/MinerU/HEAD/LICENSE.md",
+          "excerpt": "## MinerU Open Source License",
+          "all_pattern_hits": [
+            "Apache-2.0"
+          ],
+          "fetched_at": "2026-09-29T04:24:45+00:00"
+        }
+      ],
+      "last_verified_at": "2026-09-29T04:24:45+00:00",
+      "extension": {
+        "repo": "opendatalab/MinerU",
+        "repo_note": null,
+        "caveat": "Apache-2.0 plus additional terms (commercial thresholds, attribution); treat as UNRESOLVED for 'permissive'",
+        "github_api": null
+      }
+    },
+    {
+      "id": "pymupdf4llm",
+      "name": "PyMuPDF4LLM",
+      "type": "library",
+      "source": "github",
+      "description": null,
+      "license": "AGPL",
+      "license_class": "copyleft",
+      "cost_model": "free_oss",
+      "capabilities": [],
+      "evidence": [
+        {
+          "type": "license_file",
+          "url": "https://raw.githubusercontent.com/pymupdf/pymupdf4llm/HEAD/LICENSE",
+          "excerpt": "GNU AFFERO GENERAL PUBLIC LICENSE",
+          "all_pattern_hits": [
+            "AGPL",
+            "GPL"
+          ],
+          "fetched_at": "2026-09-29T04:24:45+00:00"
+        }
+      ],
+      "last_verified_at": "2026-09-29T04:24:45+00:00",
+      "extension": {
+        "repo": "pymupdf/pymupdf4llm",
+        "repo_note": null,
+        "caveat": null,
+        "github_api": null
+      }
+    },
+    {
+      "id": "faster_whisper",
+      "name": "faster-whisper",
+      "type": "library",
+      "source": "github",
+      "description": null,
+      "license": "MIT",
+      "license_class": "permissive",
+      "cost_model": "free_oss",
+      "capabilities": [],
+      "evidence": [
+        {
+          "type": "license_file",
+          "url": "https://raw.githubusercontent.com/SYSTRAN/faster-whisper/HEAD/LICENSE",
+          "excerpt": "MIT License",
+          "all_pattern_hits": [
+            "MIT"
+          ],
+          "fetched_at": "2026-09-29T04:24:45+00:00"
+        }
+      ],
+      "last_verified_at": "2026-09-29T04:24:45+00:00",
+      "extension": {
+        "repo": "SYSTRAN/faster-whisper",
+        "repo_note": null,
+        "caveat": null,
+        "github_api": null
+      }
+    },
+    {
+      "id": "whisper_cpp",
+      "name": "whisper.cpp",
+      "type": "library",
+      "source": "github",
+      "description": null,
+      "license": "MIT",
+      "license_class": "permissive",
+      "cost_model": "free_oss",
+      "capabilities": [],
+      "evidence": [
+        {
+          "type": "license_file",
+          "url": "https://raw.githubusercontent.com/ggml-org/whisper.cpp/HEAD/LICENSE",
+          "excerpt": "MIT License",
+          "all_pattern_hits": [
+            "MIT"
+          ],
+          "fetched_at": "2026-09-29T04:24:45+00:00"
+        }
+      ],
+      "last_verified_at": "2026-09-29T04:24:45+00:00",
+      "extension": {
+        "repo": "ggml-org/whisper.cpp",
+        "repo_note": null,
+        "caveat": null,
+        "github_api": null
+      }
+    },
+    {
+      "id": "whisperx",
+      "name": "WhisperX",
+      "type": "library",
+      "source": "github",
+      "description": null,
+      "license": "BSD",
+      "license_class": "permissive",
+      "cost_model": "free_oss",
+      "capabilities": [],
+      "evidence": [
+        {
+          "type": "license_file",
+          "url": "https://raw.githubusercontent.com/m-bain/whisperX/HEAD/LICENSE",
+          "excerpt": "BSD 2-Clause License",
+          "all_pattern_hits": [
+            "BSD"
+          ],
+          "fetched_at": "2026-09-29T04:24:45+00:00"
+        }
+      ],
+      "last_verified_at": "2026-09-29T04:24:45+00:00",
+      "extension": {
+        "repo": "m-bain/whisperX",
+        "repo_note": null,
+        "caveat": null,
+        "github_api": null
+      }
+    },
+    {
+      "id": "pyannote",
+      "name": "pyannote-audio",
+      "type": "library",
+      "source": "github",
+      "description": null,
+      "license": "MIT",
+      "license_class": "permissive",
+      "cost_model": "free_oss",
+      "capabilities": [],
+      "evidence": [
+        {
+          "type": "license_file",
+          "url": "https://raw.githubusercontent.com/pyannote/pyannote-audio/HEAD/LICENSE",
+          "excerpt": "MIT License",
+          "all_pattern_hits": [
+            "MIT"
+          ],
+          "fetched_at": "2026-09-29T04:24:45+00:00"
+        }
+      ],
+      "last_verified_at": "2026-09-29T04:24:45+00:00",
+      "extension": {
+        "repo": "pyannote/pyannote-audio",
+        "repo_note": null,
+        "caveat": "pretrained pipelines are gated on Hugging Face",
+        "github_api": null
+      }
+    },
+    {
+      "id": "valkey",
+      "name": "Valkey",
+      "type": "app",
+      "source": "github",
+      "description": null,
+      "license": "BSD",
+      "license_class": "permissive",
+      "cost_model": "free_oss",
+      "capabilities": [],
+      "evidence": [
+        {
+          "type": "license_file",
+          "url": "https://raw.githubusercontent.com/valkey-io/valkey/HEAD/COPYING",
+          "excerpt": "BSD 3-Clause License",
+          "all_pattern_hits": [
+            "BSD"
+          ],
+          "fetched_at": "2026-09-29T04:24:45+00:00"
+        }
+      ],
+      "last_verified_at": "2026-09-29T04:24:45+00:00",
+      "extension": {
+        "repo": "valkey-io/valkey",
+        "repo_note": null,
+        "caveat": null,
+        "github_api": null
+      }
+    },
+    {
+      "id": "redis",
+      "name": "Redis",
+      "type": "app",
+      "source": "github",
+      "description": null,
+      "license": "SSPL AND RSAL AND AGPL",
+      "license_class": "mixed",
+      "cost_model": "unknown",
+      "capabilities": [],
+      "evidence": [
+        {
+          "type": "license_file",
+          "url": "https://raw.githubusercontent.com/redis/redis/HEAD/LICENSE.txt",
+          "excerpt": "Starting with Redis 8, Redis Open Source is moving to a tri-licensing model with all new Redis code",
+          "all_pattern_hits": [
+            "SSPL",
+            "RSAL",
+            "AGPL",
+            "GPL"
+          ],
+          "fetched_at": "2026-09-29T04:24:45+00:00"
+        }
+      ],
+      "last_verified_at": "2026-09-29T04:24:45+00:00",
+      "extension": {
+        "repo": "redis/redis",
+        "repo_note": null,
+        "caveat": "license differs by version",
+        "github_api": null
+      }
+    },
+    {
+      "id": "keydb",
+      "name": "KeyDB",
+      "type": "app",
+      "source": "github",
+      "description": null,
+      "license": "BSD",
+      "license_class": "permissive",
+      "cost_model": "free_oss",
+      "capabilities": [],
+      "evidence": [
+        {
+          "type": "license_file",
+          "url": "https://raw.githubusercontent.com/Snapchat/KeyDB/HEAD/COPYING",
+          "excerpt": "Copyright (c) 2006-2020, Salvatore Sanfilippo",
+          "all_pattern_hits": [
+            "BSD"
+          ],
+          "fetched_at": "2026-09-29T04:24:45+00:00"
+        }
+      ],
+      "last_verified_at": "2026-09-29T04:24:45+00:00",
+      "extension": {
+        "repo": "Snapchat/KeyDB",
+        "repo_note": null,
+        "caveat": null,
+        "github_api": null
+      }
+    },
+    {
+      "id": "opentofu",
+      "name": "OpenTofu",
+      "type": "app",
+      "source": "github",
+      "description": null,
+      "license": "MPL-2.0",
+      "license_class": "copyleft",
+      "cost_model": "free_oss",
+      "capabilities": [],
+      "evidence": [
+        {
+          "type": "license_file",
+          "url": "https://raw.githubusercontent.com/opentofu/opentofu/HEAD/LICENSE",
+          "excerpt": "Copyright (c) The OpenTofu Authors",
+          "all_pattern_hits": [
+            "MPL-2.0",
+            "GPL"
+          ],
+          "fetched_at": "2026-09-29T04:24:45+00:00"
+        }
+      ],
+      "last_verified_at": "2026-09-29T04:24:45+00:00",
+      "extension": {
+        "repo": "opentofu/opentofu",
+        "repo_note": null,
+        "caveat": null,
+        "github_api": null
+      }
+    },
+    {
+      "id": "terraform",
+      "name": "Terraform",
+      "type": "app",
+      "source": "github",
+      "description": null,
+      "license": "BUSL-1.1",
+      "license_class": "source_available",
+      "cost_model": "unknown",
+      "capabilities": [],
+      "evidence": [
+        {
+          "type": "license_file",
+          "url": "https://raw.githubusercontent.com/hashicorp/terraform/HEAD/LICENSE",
+          "excerpt": "License text copyright (c) 2020 MariaDB Corporation Ab, All Rights Reserved.",
+          "all_pattern_hits": [
+            "BUSL-1.1"
+          ],
+          "fetched_at": "2026-09-29T04:24:45+00:00"
+        }
+      ],
+      "last_verified_at": "2026-09-29T04:24:45+00:00",
+      "extension": {
+        "repo": "hashicorp/terraform",
+        "repo_note": null,
+        "caveat": null,
+        "github_api": null
+      }
+    },
+    {
+      "id": "paradedb",
+      "name": "ParadeDB",
+      "type": "extension",
+      "source": "github",
+      "description": null,
+      "license": "AGPL",
+      "license_class": "copyleft",
+      "cost_model": "free_oss",
+      "capabilities": [],
+      "evidence": [
+        {
+          "type": "license_file",
+          "url": "https://raw.githubusercontent.com/paradedb/paradedb/HEAD/LICENSE",
+          "excerpt": "GNU AFFERO GENERAL PUBLIC LICENSE",
+          "all_pattern_hits": [
+            "AGPL",
+            "GPL"
+          ],
+          "fetched_at": "2026-09-29T04:24:45+00:00"
+        }
+      ],
+      "last_verified_at": "2026-09-29T04:24:45+00:00",
+      "extension": {
+        "repo": "paradedb/paradedb",
+        "repo_note": null,
+        "caveat": null,
+        "github_api": null
+      }
+    },
+    {
+      "id": "meilisearch",
+      "name": "Meilisearch",
+      "type": "app",
+      "source": "github",
+      "description": null,
+      "license": "BUSL-1.1 AND MIT",
+      "license_class": "mixed",
+      "cost_model": "unknown",
+      "capabilities": [],
+      "evidence": [
+        {
+          "type": "license_file",
+          "url": "https://raw.githubusercontent.com/meilisearch/meilisearch/HEAD/LICENSE",
+          "excerpt": "# License",
+          "all_pattern_hits": [
+            "BUSL-1.1",
+            "MIT"
+          ],
+          "fetched_at": "2026-09-29T04:24:45+00:00"
+        }
+      ],
+      "last_verified_at": "2026-09-29T04:24:45+00:00",
+      "extension": {
+        "repo": "meilisearch/meilisearch",
+        "repo_note": null,
+        "caveat": "enterprise directory may be under a separate license",
+        "github_api": null
+      }
+    },
+    {
+      "id": "typesense",
+      "name": "Typesense",
+      "type": "app",
+      "source": "github",
+      "description": null,
+      "license": "GPL",
+      "license_class": "copyleft",
+      "cost_model": "free_oss",
+      "capabilities": [],
+      "evidence": [
+        {
+          "type": "license_file",
+          "url": "https://raw.githubusercontent.com/typesense/typesense/HEAD/LICENSE.txt",
+          "excerpt": "GNU GENERAL PUBLIC LICENSE",
+          "all_pattern_hits": [
+            "AGPL",
+            "GPL"
+          ],
+          "fetched_at": "2026-09-29T04:24:45+00:00"
+        }
+      ],
+      "last_verified_at": "2026-09-29T04:24:45+00:00",
+      "extension": {
+        "repo": "typesense/typesense",
+        "repo_note": null,
+        "caveat": null,
+        "github_api": null
+      }
+    },
+    {
+      "id": "pg_fts",
+      "name": "PostgreSQL full-text search",
+      "type": "feature",
+      "source": "github",
+      "description": null,
+      "license": "PostgreSQL",
+      "license_class": "permissive",
+      "cost_model": "free_oss",
+      "capabilities": [],
+      "evidence": [
+        {
+          "type": "license_file",
+          "url": "https://raw.githubusercontent.com/postgres/postgres/HEAD/COPYRIGHT",
+          "excerpt": "PostgreSQL Database Management System",
+          "all_pattern_hits": [
+            "PostgreSQL"
+          ],
+          "fetched_at": "2026-09-29T04:24:45+00:00"
+        }
+      ],
+      "last_verified_at": "2026-09-29T04:24:45+00:00",
+      "extension": {
+        "repo": "postgres/postgres",
+        "repo_note": null,
+        "caveat": null,
+        "github_api": null
+      }
+    },
+    {
+      "id": "github_mcp",
+      "name": "GitHub MCP Server",
+      "type": "mcp_server",
+      "source": "github",
+      "description": null,
+      "license": "MIT",
+      "license_class": "permissive",
+      "cost_model": "free_oss",
+      "capabilities": [],
+      "evidence": [
+        {
+          "type": "license_file",
+          "url": "https://raw.githubusercontent.com/github/github-mcp-server/HEAD/LICENSE",
+          "excerpt": "MIT License",
+          "all_pattern_hits": [
+            "MIT"
+          ],
+          "fetched_at": "2026-09-29T04:24:45+00:00"
+        }
+      ],
+      "last_verified_at": "2026-09-29T04:24:45+00:00",
+      "extension": {
+        "repo": "github/github-mcp-server",
+        "repo_note": null,
+        "caveat": null,
+        "github_api": null
+      }
+    },
+    {
+      "id": "scalar",
+      "name": "Scalar",
+      "type": "app",
+      "source": "github",
+      "description": null,
+      "license": "MIT",
+      "license_class": "permissive",
+      "cost_model": "free_oss",
+      "capabilities": [],
+      "evidence": [
+        {
+          "type": "license_file",
+          "url": "https://raw.githubusercontent.com/scalar/scalar/HEAD/LICENSE",
+          "excerpt": "MIT License",
+          "all_pattern_hits": [
+            "MIT"
+          ],
+          "fetched_at": "2026-09-29T04:24:45+00:00"
+        }
+      ],
+      "last_verified_at": "2026-09-29T04:24:45+00:00",
+      "extension": {
+        "repo": "scalar/scalar",
+        "repo_note": null,
+        "caveat": null,
+        "github_api": null
+      }
+    },
+    {
+      "id": "redoc",
+      "name": "Redoc",
+      "type": "library",
+      "source": "github",
+      "description": null,
+      "license": "MIT",
+      "license_class": "permissive",
+      "cost_model": "free_oss",
+      "capabilities": [],
+      "evidence": [
+        {
+          "type": "license_file",
+          "url": "https://raw.githubusercontent.com/Redocly/redoc/HEAD/LICENSE",
+          "excerpt": "The MIT License (MIT)",
+          "all_pattern_hits": [
+            "MIT"
+          ],
+          "fetched_at": "2026-09-29T04:24:45+00:00"
+        }
+      ],
+      "last_verified_at": "2026-09-29T04:24:45+00:00",
+      "extension": {
+        "repo": "Redocly/redoc",
+        "repo_note": null,
+        "caveat": null,
+        "github_api": null
+      }
+    },
+    {
+      "id": "swagger_ui",
+      "name": "Swagger UI",
+      "type": "library",
+      "source": "github",
+      "description": null,
+      "license": "Apache-2.0",
+      "license_class": "permissive",
+      "cost_model": "free_oss",
+      "capabilities": [],
+      "evidence": [
+        {
+          "type": "license_file",
+          "url": "https://raw.githubusercontent.com/swagger-api/swagger-ui/HEAD/LICENSE",
+          "excerpt": "Apache License",
+          "all_pattern_hits": [
+            "Apache-2.0"
+          ],
+          "fetched_at": "2026-09-29T04:24:45+00:00"
+        }
+      ],
+      "last_verified_at": "2026-09-29T04:24:45+00:00",
+      "extension": {
+        "repo": "swagger-api/swagger-ui",
+        "repo_note": null,
+        "caveat": null,
+        "github_api": null
+      }
+    },
+    {
+      "id": "chroma",
+      "name": "Chroma",
+      "type": "app",
+      "source": "github",
+      "description": null,
+      "license": "Apache-2.0",
+      "license_class": "permissive",
+      "cost_model": "free_oss",
+      "capabilities": [],
+      "evidence": [
+        {
+          "type": "license_file",
+          "url": "https://raw.githubusercontent.com/chroma-core/chroma/HEAD/LICENSE",
+          "excerpt": "Apache License",
+          "all_pattern_hits": [
+            "Apache-2.0"
+          ],
+          "fetched_at": "2026-09-29T04:24:45+00:00"
+        }
+      ],
+      "last_verified_at": "2026-09-29T04:24:45+00:00",
+      "extension": {
+        "repo": "chroma-core/chroma",
+        "repo_note": null,
+        "caveat": null,
+        "github_api": null
+      }
+    },
+    {
+      "id": "celery",
+      "name": "Celery",
+      "type": "library",
+      "source": "github",
+      "description": null,
+      "license": "BSD",
+      "license_class": "permissive",
+      "cost_model": "free_oss",
+      "capabilities": [],
+      "evidence": [
+        {
+          "type": "license_file",
+          "url": "https://raw.githubusercontent.com/celery/celery/HEAD/LICENSE",
+          "excerpt": "Copyright (c) 2017-2026 Asif Saif Uddin, core team & contributors. All rights reserved.",
+          "all_pattern_hits": [
+            "BSD"
+          ],
+          "fetched_at": "2026-09-29T04:24:45+00:00"
+        }
+      ],
+      "last_verified_at": "2026-09-29T04:24:45+00:00",
+      "extension": {
+        "repo": "celery/celery",
+        "repo_note": null,
+        "caveat": null,
+        "github_api": null
+      }
+    },
+    {
+      "id": "rq",
+      "name": "RQ",
+      "type": "library",
+      "source": "github",
+      "description": null,
+      "license": "BSD",
+      "license_class": "permissive",
+      "cost_model": "free_oss",
+      "capabilities": [],
+      "evidence": [
+        {
+          "type": "license_file",
+          "url": "https://raw.githubusercontent.com/rq/rq/HEAD/LICENSE",
+          "excerpt": "Copyright 2012 Vincent Driessen. All rights reserved.",
+          "all_pattern_hits": [
+            "BSD"
+          ],
+          "fetched_at": "2026-09-29T04:24:45+00:00"
+        }
+      ],
+      "last_verified_at": "2026-09-29T04:24:45+00:00",
+      "extension": {
+        "repo": "rq/rq",
+        "repo_note": null,
+        "caveat": null,
+        "github_api": null
+      }
+    },
+    {
+      "id": "dramatiq",
+      "name": "Dramatiq",
+      "type": "library",
+      "source": "github",
+      "description": null,
+      "license": "GPL",
+      "license_class": "copyleft",
+      "cost_model": "free_oss",
+      "capabilities": [],
+      "evidence": [
+        {
+          "type": "license_file",
+          "url": "https://raw.githubusercontent.com/Bogdanp/dramatiq/HEAD/COPYING",
+          "excerpt": "GNU GENERAL PUBLIC LICENSE",
+          "all_pattern_hits": [
+            "AGPL",
+            "GPL"
+          ],
+          "fetched_at": "2026-09-29T04:24:45+00:00"
+        }
+      ],
+      "last_verified_at": "2026-09-29T04:24:45+00:00",
+      "extension": {
+        "repo": "Bogdanp/dramatiq",
+        "repo_note": null,
+        "caveat": null,
+        "github_api": null
+      }
+    },
+    {
+      "id": "procrastinate",
+      "name": "Procrastinate",
+      "type": "library",
+      "source": "github",
+      "description": null,
+      "license": "MIT",
+      "license_class": "permissive",
+      "cost_model": "free_oss",
+      "capabilities": [],
+      "evidence": [
+        {
+          "type": "license_file",
+          "url": "https://raw.githubusercontent.com/procrastinate-org/procrastinate/HEAD/LICENSE.md",
+          "excerpt": "MIT License",
+          "all_pattern_hits": [
+            "MIT"
+          ],
+          "fetched_at": "2026-09-29T04:24:45+00:00"
+        }
+      ],
+      "last_verified_at": "2026-09-29T04:24:45+00:00",
+      "extension": {
+        "repo": "procrastinate-org/procrastinate",
+        "repo_note": null,
+        "caveat": null,
+        "github_api": null
+      }
+    }
+  ]
+}

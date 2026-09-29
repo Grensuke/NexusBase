@@ -1,0 +1,1829 @@
+{
+  "meta": {
+    "version": "capability-v0.1",
+    "generated_at": "2026-09-29T04:53:22+00:00",
+    "vertical": "developer tooling / self-hostable infrastructure",
+    "entity_count": 37,
+    "method": "evidence-backed first-pass manual extraction from official repository/docs sources; not automated LLM extraction",
+    "purpose": "replace empty capabilities=[] with a testable capability seed for requirement-to-solution matching",
+    "limitation": "Some capabilities are strongly evidenced in README/docs; others remain medium confidence where the source excerpt is broad. This is a seed, not final automated extraction."
+  },
+  "entities": {
+    "glitchtip": {
+      "name": "GlitchTip",
+      "repo": "rh-cssre/glitchtip-backend",
+      "capabilities": [
+        {
+          "id": "error_tracking",
+          "label": "Error tracking platform",
+          "evidence": {
+            "url": "https://github.com/rh-cssre/glitchtip-backend/blob/master/README.md",
+            "quote": "GlitchTip is an open source, Sentry API compatible error tracking platform."
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "sentry_api_compatible",
+          "label": "Sentry API compatibility",
+          "evidence": {
+            "url": "https://github.com/rh-cssre/glitchtip-backend/blob/master/README.md",
+            "quote": "Sentry API compatible"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "self_hosted",
+          "label": "Self-hostable deployment",
+          "evidence": {
+            "url": "https://github.com/rh-cssre/glitchtip-backend/blob/master/README.md",
+            "quote": "Self hosted GlitchTip will never report home."
+          },
+          "confidence": "medium"
+        },
+        {
+          "id": "privacy_focused",
+          "label": "Privacy-focused operation",
+          "evidence": {
+            "url": "https://github.com/rh-cssre/glitchtip-backend/blob/master/README.md",
+            "quote": "Respects your privacy. No third party spying."
+          },
+          "confidence": "medium"
+        }
+      ],
+      "capability_count": 4
+    },
+    "sentry": {
+      "name": "Sentry",
+      "repo": "getsentry/sentry",
+      "capabilities": [
+        {
+          "id": "error_tracking",
+          "label": "Error tracking / debugging",
+          "evidence": {
+            "url": "https://github.com/getsentry/sentry",
+            "quote": "Sentry is the debugging platform that helps every developer detect, trace, and fix issues."
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "performance_monitoring",
+          "label": "Performance monitoring",
+          "evidence": {
+            "url": "https://github.com/getsentry/sentry",
+            "quote": "Developer-first error tracking and performance monitoring"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "multi_language_sdks",
+          "label": "Multi-language SDKs",
+          "evidence": {
+            "url": "https://github.com/getsentry/sentry",
+            "quote": "Official Sentry SDKs"
+          },
+          "confidence": "medium"
+        },
+        {
+          "id": "javascript_sdk",
+          "label": "JavaScript SDK",
+          "evidence": {
+            "url": "https://github.com/getsentry/sentry",
+            "quote": "JavaScript"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "python_sdk",
+          "label": "Python SDK",
+          "evidence": {
+            "url": "https://github.com/getsentry/sentry",
+            "quote": "Python"
+          },
+          "confidence": "high"
+        }
+      ],
+      "capability_count": 5
+    },
+    "bugsink": {
+      "name": "Bugsink",
+      "repo": "bugsink/bugsink",
+      "capabilities": [
+        {
+          "id": "error_tracking",
+          "label": "Error tracking",
+          "evidence": {
+            "url": "https://github.com/bugsink/bugsink",
+            "quote": "Bugsink: Self-hosted Error Tracking"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "self_hosted",
+          "label": "Self-hosted deployment",
+          "evidence": {
+            "url": "https://github.com/bugsink/bugsink",
+            "quote": "Built to self-host"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "sentry_sdk_compatible",
+          "label": "Sentry SDK compatibility",
+          "evidence": {
+            "url": "https://github.com/bugsink/bugsink",
+            "quote": "Sentry-SDK compatible"
+          },
+          "confidence": "high"
+        }
+      ],
+      "capability_count": 3
+    },
+    "coolify": {
+      "name": "Coolify",
+      "repo": "coollabsio/coolify",
+      "capabilities": [
+        {
+          "id": "self_hostable_paas",
+          "label": "Self-hostable PaaS",
+          "evidence": {
+            "url": "https://github.com/coollabsio/coolify",
+            "quote": "An open-source & self-hostable alternative to Heroku / Netlify / Vercel."
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "application_deployment",
+          "label": "Application deployment",
+          "evidence": {
+            "url": "https://github.com/coollabsio/coolify",
+            "quote": "deploy static sites, databases, full-stack applications"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "database_deployment",
+          "label": "Database deployment/management",
+          "evidence": {
+            "url": "https://github.com/coollabsio/coolify",
+            "quote": "manage your servers, applications, and databases on your own hardware"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "ssh_based_server_management",
+          "label": "SSH-based server management",
+          "evidence": {
+            "url": "https://github.com/coollabsio/coolify",
+            "quote": "you only need an SSH connection"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "no_vendor_lock_in",
+          "label": "No vendor lock-in positioning",
+          "evidence": {
+            "url": "https://github.com/coollabsio/coolify",
+            "quote": "No vendor lock-in"
+          },
+          "confidence": "medium"
+        }
+      ],
+      "capability_count": 5
+    },
+    "dokku": {
+      "name": "Dokku",
+      "repo": "dokku/dokku",
+      "capabilities": [
+        {
+          "id": "git_push_deployment",
+          "label": "Git-push application deployment",
+          "evidence": {
+            "url": "https://raw.githubusercontent.com/dokku/dokku/master/README.md",
+            "quote": "Docker powered mini-Heroku."
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "docker_paas",
+          "label": "Docker-powered mini PaaS",
+          "evidence": {
+            "url": "https://raw.githubusercontent.com/dokku/dokku/master/README.md",
+            "quote": "Docker powered mini-Heroku"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "domain_configuration",
+          "label": "Domain configuration",
+          "evidence": {
+            "url": "https://raw.githubusercontent.com/dokku/dokku/master/README.md",
+            "quote": "configure your server domain"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "single_server_paas",
+          "label": "Single-server deployment model",
+          "evidence": {
+            "url": "https://raw.githubusercontent.com/dokku/dokku/master/README.md",
+            "quote": "A fresh VM"
+          },
+          "confidence": "medium"
+        }
+      ],
+      "capability_count": 4
+    },
+    "caprover": {
+      "name": "CapRover",
+      "repo": "caprover/caprover",
+      "capabilities": [
+        {
+          "id": "application_deployment",
+          "label": "Automated application deployment",
+          "evidence": {
+            "url": "https://github.com/caprover/caprover-cli",
+            "quote": "CapRover is a modern automated app deployment & web server manager."
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "docker_deployment",
+          "label": "Dockerfile/image deployment",
+          "evidence": {
+            "url": "https://github.com/caprover/caprover-cli",
+            "quote": "Deploy via caprover CLI supports 4 deployments methods: captain-definition file, Dockerfile, tar file, and image name"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "https",
+          "label": "HTTPS/SSL setup",
+          "evidence": {
+            "url": "https://github.com/caprover/caprover-cli",
+            "quote": "Secure your services over HTTPS for FREE"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "self_hosted_server",
+          "label": "Own-server deployment",
+          "evidence": {
+            "url": "https://github.com/caprover/caprover-cli",
+            "quote": "This guide assumes that you have started CapRover on a linux server"
+          },
+          "confidence": "high"
+        }
+      ],
+      "capability_count": 4
+    },
+    "uptime_kuma": {
+      "name": "Uptime Kuma",
+      "repo": "louislam/uptime-kuma",
+      "capabilities": [
+        {
+          "id": "uptime_monitoring",
+          "label": "Self-hosted uptime monitoring",
+          "evidence": {
+            "url": "https://raw.githubusercontent.com/louislam/uptime-kuma/master/README.md",
+            "quote": "Uptime Kuma is an easy-to-use self-hosted monitoring tool."
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "http_tcp_monitoring",
+          "label": "HTTP/TCP monitoring",
+          "evidence": {
+            "url": "https://raw.githubusercontent.com/louislam/uptime-kuma/master/README.md",
+            "quote": "Monitoring uptime for HTTP(s) / TCP"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "notifications",
+          "label": "Failure notifications",
+          "evidence": {
+            "url": "https://raw.githubusercontent.com/louislam/uptime-kuma/master/README.md",
+            "quote": "Notifications via Telegram, Discord, Gotify, Slack, Pushover, Email (SMTP)"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "status_pages",
+          "label": "Multiple status pages",
+          "evidence": {
+            "url": "https://raw.githubusercontent.com/louislam/uptime-kuma/master/README.md",
+            "quote": "Multiple status pages"
+          },
+          "confidence": "high"
+        }
+      ],
+      "capability_count": 4
+    },
+    "gatus": {
+      "name": "Gatus",
+      "repo": "TwiN/gatus",
+      "capabilities": [
+        {
+          "id": "health_monitoring",
+          "label": "Service health monitoring",
+          "evidence": {
+            "url": "https://github.com/TwiN/gatus",
+            "quote": "Gatus is a developer-oriented health dashboard"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "http_tcp_monitoring",
+          "label": "HTTP/TCP monitoring",
+          "evidence": {
+            "url": "https://github.com/TwiN/gatus",
+            "quote": "monitor your services using HTTP, ICMP, TCP, and even DNS queries"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "alerting",
+          "label": "Alerting",
+          "evidence": {
+            "url": "https://github.com/TwiN/gatus",
+            "quote": "each of these health checks can be paired with alerting"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "status_page",
+          "label": "Status page",
+          "evidence": {
+            "url": "https://github.com/TwiN/gatus",
+            "quote": "Automated developer-oriented status page with alerting and incident support"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "status_api",
+          "label": "Status API",
+          "evidence": {
+            "url": "https://github.com/TwiN/gatus",
+            "quote": "Gatus provides a simple read-only API"
+          },
+          "confidence": "high"
+        }
+      ],
+      "capability_count": 5
+    },
+    "unleash": {
+      "name": "Unleash",
+      "repo": "Unleash/unleash",
+      "capabilities": [
+        {
+          "id": "feature_flags",
+          "label": "Feature management / flags",
+          "evidence": {
+            "url": "https://github.com/Unleash/unleash",
+            "quote": "Unleash is a powerful open-source solution for feature management."
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "gradual_rollouts",
+          "label": "Gradual/canary rollouts",
+          "evidence": {
+            "url": "https://github.com/Unleash/unleash",
+            "quote": "Canary releases / gradual rollouts"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "ab_testing",
+          "label": "A/B testing",
+          "evidence": {
+            "url": "https://github.com/Unleash/unleash",
+            "quote": "A/B testing"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "sdk_integrations",
+          "label": "Official and community SDKs",
+          "evidence": {
+            "url": "https://github.com/Unleash/unleash",
+            "quote": "It supports 15 official client and server SDKs"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "webhooks_api",
+          "label": "Webhooks and API-first automation",
+          "evidence": {
+            "url": "https://github.com/Unleash/unleash",
+            "quote": "API-first: everything can be automated. No exceptions."
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "self_hosted",
+          "label": "On-premise/self-hosted hosting",
+          "evidence": {
+            "url": "https://github.com/Unleash/unleash",
+            "quote": "Flexible hosting options: host it on premise or in the cloud"
+          },
+          "confidence": "high"
+        }
+      ],
+      "capability_count": 6
+    },
+    "growthbook": {
+      "name": "GrowthBook",
+      "repo": "growthbook/growthbook",
+      "capabilities": [
+        {
+          "id": "feature_flags",
+          "label": "Feature flags",
+          "evidence": {
+            "url": "https://github.com/growthbook/growthbook",
+            "quote": "Feature flags with advanced targeting, gradual rollouts, and experiments"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "gradual_rollouts",
+          "label": "Gradual rollouts",
+          "evidence": {
+            "url": "https://github.com/growthbook/growthbook",
+            "quote": "gradual rollouts"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "ab_testing",
+          "label": "Experimentation / A-B testing",
+          "evidence": {
+            "url": "https://github.com/growthbook/growthbook",
+            "quote": "World class experiment stats engine"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "sdk_integrations",
+          "label": "Multiple SDKs",
+          "evidence": {
+            "url": "https://github.com/growthbook/growthbook",
+            "quote": "24 SDKs including React, Python, Android, and iOS"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "webhooks_api",
+          "label": "Webhooks and REST API",
+          "evidence": {
+            "url": "https://github.com/growthbook/growthbook",
+            "quote": "Webhooks and a full REST API for building integrations and custom workflows."
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "self_hosted",
+          "label": "Self-hosted deployment",
+          "evidence": {
+            "url": "https://github.com/growthbook/growthbook",
+            "quote": "Or run it yourself with:"
+          },
+          "confidence": "high"
+        }
+      ],
+      "capability_count": 6
+    },
+    "flagsmith": {
+      "name": "Flagsmith",
+      "repo": "Flagsmith/flagsmith",
+      "capabilities": [
+        {
+          "id": "feature_flags",
+          "label": "Feature flag management",
+          "evidence": {
+            "url": "https://github.com/Flagsmith/flagsmith",
+            "quote": "create and manage feature flags across web, mobile, and server-side applications"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "remote_config",
+          "label": "Remote configuration/toggling",
+          "evidence": {
+            "url": "https://github.com/Flagsmith/flagsmith",
+            "quote": "Make changes remotely: Easily toggle individual features on and off"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "ab_testing",
+          "label": "A/B and multivariate testing",
+          "evidence": {
+            "url": "https://github.com/Flagsmith/flagsmith",
+            "quote": "A/B testing: Use segments to run A/B and multivariate tests"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "segments",
+          "label": "User segments",
+          "evidence": {
+            "url": "https://github.com/Flagsmith/flagsmith",
+            "quote": "Segments: Release features to beta testers"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "sdk_integrations",
+          "label": "Multi-language SDKs",
+          "evidence": {
+            "url": "https://github.com/Flagsmith/flagsmith",
+            "quote": "Choose from 15+ popular languages"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "self_hosted",
+          "label": "Self-hosted/private-cloud deployment",
+          "evidence": {
+            "url": "https://github.com/Flagsmith/flagsmith",
+            "quote": "self-hosted or cloud deployment options"
+          },
+          "confidence": "high"
+        }
+      ],
+      "capability_count": 6
+    },
+    "docling": {
+      "name": "Docling",
+      "repo": "docling-project/docling",
+      "capabilities": [
+        {
+          "id": "document_parsing",
+          "label": "Multi-format document parsing",
+          "evidence": {
+            "url": "https://github.com/docling-project/docling",
+            "quote": "Parsing of multiple document formats including PDF, DOCX, PPTX, XLSX, HTML, EPUB"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "pdf_understanding",
+          "label": "Advanced PDF understanding",
+          "evidence": {
+            "url": "https://github.com/docling-project/docling",
+            "quote": "Advanced PDF understanding incl. page layout, reading order, table structure"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "table_extraction",
+          "label": "Table extraction",
+          "evidence": {
+            "url": "https://github.com/docling-project/docling",
+            "quote": "table structure"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "markdown_export",
+          "label": "Markdown export",
+          "evidence": {
+            "url": "https://github.com/docling-project/docling",
+            "quote": "export formats ... including Markdown"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "local_execution",
+          "label": "Local/air-gapped execution",
+          "evidence": {
+            "url": "https://github.com/docling-project/docling",
+            "quote": "Local execution capabilities for sensitive data and air-gapped environments"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "ocr",
+          "label": "OCR",
+          "evidence": {
+            "url": "https://github.com/docling-project/docling",
+            "quote": "Extensive OCR support for scanned PDFs and images"
+          },
+          "confidence": "high"
+        }
+      ],
+      "capability_count": 6
+    },
+    "marker": {
+      "name": "marker",
+      "repo": "datalab-to/marker",
+      "capabilities": [
+        {
+          "id": "document_conversion",
+          "label": "Document conversion",
+          "evidence": {
+            "url": "https://github.com/datalab-to/marker/blob/master/README.md?plain=1",
+            "quote": "Marker converts documents to markdown, JSON, chunks, and HTML quickly and accurately."
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "pdf_to_markdown",
+          "label": "PDF to Markdown",
+          "evidence": {
+            "url": "https://github.com/datalab-to/marker/blob/master/README.md?plain=1",
+            "quote": "Converts PDF, image, PPTX, DOCX, XLSX, HTML, EPUB files"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "table_formatting",
+          "label": "Table formatting",
+          "evidence": {
+            "url": "https://github.com/datalab-to/marker/blob/master/README.md?plain=1",
+            "quote": "Formats tables, forms, equations, inline math, links, references, and code blocks"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "ocr",
+          "label": "OCR",
+          "evidence": {
+            "url": "https://github.com/datalab-to/marker/blob/master/README.md?plain=1",
+            "quote": "disable_ocr"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "local_acceleration",
+          "label": "CPU/GPU/MPS execution",
+          "evidence": {
+            "url": "https://github.com/datalab-to/marker/blob/master/README.md?plain=1",
+            "quote": "Works on GPU, CPU, or MPS"
+          },
+          "confidence": "high"
+        }
+      ],
+      "capability_count": 5
+    },
+    "mineru": {
+      "name": "MinerU",
+      "repo": "opendatalab/MinerU",
+      "capabilities": [
+        {
+          "id": "document_parsing",
+          "label": "Complex document parsing",
+          "evidence": {
+            "url": "https://github.com/opendatalab/mineru",
+            "quote": "Transforms complex documents like PDFs and Office docs into LLM-ready markdown/JSON"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "pdf_to_markdown",
+          "label": "PDF to Markdown/JSON",
+          "evidence": {
+            "url": "https://github.com/opendatalab/MinerU/blob/master/docs/en/quick_start/index.md",
+            "quote": "Parse a single file ... and write Markdown to a file"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "table_recognition",
+          "label": "Table recognition",
+          "evidence": {
+            "url": "https://github.com/opendatalab/MinerU-Ecosystem/blob/main/cli/mineru-open-api/README.md",
+            "quote": "--table | Enable/disable table recognition"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "ocr",
+          "label": "OCR for scanned documents",
+          "evidence": {
+            "url": "https://github.com/opendatalab/MinerU-Ecosystem/blob/main/skills/SKILL.md",
+            "quote": "OCR is enabled"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "local_execution",
+          "label": "Local execution / CPU mode",
+          "evidence": {
+            "url": "https://github.com/opendatalab/mineru",
+            "quote": "can be used for document parsing through the CLI, API, WebUI"
+          },
+          "confidence": "medium"
+        }
+      ],
+      "capability_count": 5
+    },
+    "pymupdf4llm": {
+      "name": "PyMuPDF4LLM",
+      "repo": "pymupdf/pymupdf4llm",
+      "capabilities": [
+        {
+          "id": "pdf_to_markdown",
+          "label": "PDF to Markdown",
+          "evidence": {
+            "url": "https://github.com/pymupdf/pymupdf4llm/blob/main/README.md",
+            "quote": "converts documents into structured Markdown, JSON, and plain text"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "table_detection",
+          "label": "Table detection/extraction",
+          "evidence": {
+            "url": "https://github.com/pymupdf/pymupdf4llm/blob/main/README.md",
+            "quote": "table detection"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "ocr",
+          "label": "Automatic OCR",
+          "evidence": {
+            "url": "https://github.com/pymupdf/pymupdf4llm/blob/main/README.md",
+            "quote": "scanned pages with automatic OCR"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "local_execution",
+          "label": "No cloud / local execution",
+          "evidence": {
+            "url": "https://github.com/pymupdf/pymupdf4llm/blob/main/README.md",
+            "quote": "No GPU, no Cloud, no Tokens required."
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "rag_integrations",
+          "label": "RAG/LLM ingestion integration",
+          "evidence": {
+            "url": "https://github.com/pymupdf/pymupdf4llm/blob/main/README.md",
+            "quote": "optimised for RAG pipelines, vector embeddings, and LLM ingestion"
+          },
+          "confidence": "high"
+        }
+      ],
+      "capability_count": 5
+    },
+    "faster_whisper": {
+      "name": "faster-whisper",
+      "repo": "SYSTRAN/faster-whisper",
+      "capabilities": [
+        {
+          "id": "speech_to_text",
+          "label": "Speech-to-text transcription",
+          "evidence": {
+            "url": "https://github.com/SYSTRAN/faster-whisper/blob/master/README.md",
+            "quote": "Faster Whisper transcription with CTranslate2"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "word_timestamps",
+          "label": "Word-level timestamps",
+          "evidence": {
+            "url": "https://github.com/SYSTRAN/faster-whisper/blob/master/faster_whisper/transcribe.py",
+            "quote": "word_timestamps: Extract word-level timestamps"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "cpu_inference",
+          "label": "CPU inference",
+          "evidence": {
+            "url": "https://github.com/SYSTRAN/faster-whisper/blob/master/README.md",
+            "quote": "8-bit quantization on both CPU and GPU"
+          },
+          "confidence": "medium"
+        },
+        {
+          "id": "gpu_inference",
+          "label": "GPU inference",
+          "evidence": {
+            "url": "https://github.com/SYSTRAN/faster-whisper/blob/master/README.md",
+            "quote": "Large-v2 model on GPU"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "quantization",
+          "label": "8-bit quantization",
+          "evidence": {
+            "url": "https://github.com/SYSTRAN/faster-whisper/blob/master/README.md",
+            "quote": "8-bit quantization on both CPU and GPU"
+          },
+          "confidence": "high"
+        }
+      ],
+      "capability_count": 5
+    },
+    "whisper_cpp": {
+      "name": "whisper.cpp",
+      "repo": "ggml-org/whisper.cpp",
+      "capabilities": [
+        {
+          "id": "speech_to_text",
+          "label": "Speech transcription",
+          "evidence": {
+            "url": "https://github.com/ggml-org/whisper.cpp",
+            "quote": "whisper.cpp"
+          },
+          "confidence": "medium"
+        },
+        {
+          "id": "segment_timestamps",
+          "label": "Timestamped transcription segments",
+          "evidence": {
+            "url": "https://github.com/ggml-org/whisper.cpp/blob/master/include/whisper.h",
+            "quote": "print_timestamps: print timestamps for each text segment"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "token_timestamps",
+          "label": "Token-level timestamps",
+          "evidence": {
+            "url": "https://github.com/ggml-org/whisper.cpp/blob/master/include/whisper.h",
+            "quote": "token_timestamps; enable token-level timestamps"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "cpu_inference",
+          "label": "CPU execution option",
+          "evidence": {
+            "url": "https://github.com/ggml-org/whisper.cpp/blob/master/examples/cli/README.md",
+            "quote": "OpenVINO device ... CPU"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "gpu_optional",
+          "label": "GPU acceleration option",
+          "evidence": {
+            "url": "https://github.com/ggml-org/whisper.cpp/blob/master/examples/cli/README.md",
+            "quote": "--no-gpu | disable GPU"
+          },
+          "confidence": "high"
+        }
+      ],
+      "capability_count": 5
+    },
+    "whisperx": {
+      "name": "WhisperX",
+      "repo": "m-bain/whisperX",
+      "capabilities": [
+        {
+          "id": "speech_to_text",
+          "label": "Automatic speech recognition",
+          "evidence": {
+            "url": "https://github.com/m-bain/whisperX",
+            "quote": "Automatic Speech Recognition"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "word_timestamps",
+          "label": "Word-level timestamps",
+          "evidence": {
+            "url": "https://github.com/m-bain/whisperX",
+            "quote": "word-level timestamps"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "speaker_diarization",
+          "label": "Speaker diarization",
+          "evidence": {
+            "url": "https://github.com/m-bain/whisperX",
+            "quote": "speaker diarization"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "forced_alignment",
+          "label": "Forced alignment",
+          "evidence": {
+            "url": "https://github.com/m-bain/whisperX",
+            "quote": "wav2vec2 alignment"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "vad",
+          "label": "Voice activity detection",
+          "evidence": {
+            "url": "https://github.com/m-bain/whisperX",
+            "quote": "VAD preprocessing"
+          },
+          "confidence": "high"
+        }
+      ],
+      "capability_count": 5
+    },
+    "pyannote": {
+      "name": "pyannote-audio",
+      "repo": "pyannote/pyannote-audio",
+      "capabilities": [
+        {
+          "id": "speaker_diarization",
+          "label": "Speaker diarization toolkit",
+          "evidence": {
+            "url": "https://github.com/pyannote/pyannote-audio",
+            "quote": "open-source toolkit written in Python for speaker diarization"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "speaker_embeddings",
+          "label": "Speaker embeddings",
+          "evidence": {
+            "url": "https://github.com/pyannote/pyannote-audio/blob/main/src/pyannote/audio/pipelines/speaker_diarization.py",
+            "quote": "get one speaker embedding per speaker"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "local_execution",
+          "label": "Local pipeline execution",
+          "evidence": {
+            "url": "https://github.com/pyannote/pyannote-audio",
+            "quote": "output = pipeline(\"audio.wav\") # runs locally"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "gpu_acceleration",
+          "label": "GPU acceleration",
+          "evidence": {
+            "url": "https://github.com/pyannote/pyannote-audio",
+            "quote": "pipeline.to(torch.device(\"cuda\"))"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "pretrained_models",
+          "label": "Pretrained diarization pipelines",
+          "evidence": {
+            "url": "https://github.com/pyannote/pyannote-audio",
+            "quote": "pretrained models and pipelines"
+          },
+          "confidence": "high"
+        }
+      ],
+      "capability_count": 5
+    },
+    "valkey": {
+      "name": "Valkey",
+      "repo": "valkey-io/valkey",
+      "capabilities": [
+        {
+          "id": "redis_protocol_compatibility",
+          "label": "Redis protocol compatibility",
+          "evidence": {
+            "url": "https://github.com/valkey-io/valkey-doc/blob/main/topics/migration.md",
+            "quote": "Valkey is compatible with Redis OSS 7.2 and all earlier open-source Redis versions"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "resp2_resp3",
+          "label": "RESP2/RESP3 support",
+          "evidence": {
+            "url": "https://github.com/valkey-io/valkey-doc/blob/main/topics/migration.md",
+            "quote": "Valkey uses the RESP wire protocol and supports both RESP2 and RESP3."
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "key_value_store",
+          "label": "Key-value/data structure server",
+          "evidence": {
+            "url": "https://github.com/valkey-io/valkey",
+            "quote": "high-performance key-value store"
+          },
+          "confidence": "medium"
+        },
+        {
+          "id": "redis_client_compatibility",
+          "label": "Redis client compatibility",
+          "evidence": {
+            "url": "https://github.com/valkey-io/valkey-doc/blob/main/topics/migration.md",
+            "quote": "Existing Redis client libraries can connect to Valkey without code changes."
+          },
+          "confidence": "high"
+        }
+      ],
+      "capability_count": 4
+    },
+    "redis": {
+      "name": "Redis",
+      "repo": "redis/redis",
+      "capabilities": [
+        {
+          "id": "caching",
+          "label": "Caching",
+          "evidence": {
+            "url": "https://github.com/redis/redis/blob/unstable/README.md",
+            "quote": "Caching: Supports multiple eviction policies, key expiration"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "data_structures",
+          "label": "Data structure server",
+          "evidence": {
+            "url": "https://github.com/redis/redis/blob/unstable/README.md",
+            "quote": "strings, lists, sets, hashes, sorted sets, JSON"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "full_text_search",
+          "label": "Full-text search",
+          "evidence": {
+            "url": "https://github.com/redis/redis/blob/unstable/README.md",
+            "quote": "vector search, full-text search, geospatial queries"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "vector_search",
+          "label": "Vector search",
+          "evidence": {
+            "url": "https://github.com/redis/redis/blob/unstable/README.md",
+            "quote": "vector search"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "pubsub_streams",
+          "label": "Streams/pub-sub messaging",
+          "evidence": {
+            "url": "https://github.com/redis/redis/blob/unstable/README.md",
+            "quote": "streams, and pub/sub"
+          },
+          "confidence": "high"
+        }
+      ],
+      "capability_count": 5
+    },
+    "keydb": {
+      "name": "KeyDB",
+      "repo": "Snapchat/KeyDB",
+      "capabilities": [
+        {
+          "id": "redis_protocol_compatibility",
+          "label": "Redis protocol compatibility",
+          "evidence": {
+            "url": "https://github.com/Snapchat/KeyDB/blob/main/README.md",
+            "quote": "KeyDB maintains full compatibility with the Redis protocol"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "redis_module_compatibility",
+          "label": "Redis module compatibility",
+          "evidence": {
+            "url": "https://github.com/Snapchat/KeyDB/blob/main/README.md",
+            "quote": "full compatibility with the Redis protocol, modules, and scripts"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "multithreading",
+          "label": "Multithreaded database engine",
+          "evidence": {
+            "url": "https://github.com/Snapchat/KeyDB/blob/main/README.md",
+            "quote": "A Multithreaded Fork of Redis"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "active_replication",
+          "label": "Active replication",
+          "evidence": {
+            "url": "https://github.com/Snapchat/KeyDB/blob/main/README.md",
+            "quote": "Active Replication"
+          },
+          "confidence": "high"
+        }
+      ],
+      "capability_count": 4
+    },
+    "opentofu": {
+      "name": "OpenTofu",
+      "repo": "opentofu/opentofu",
+      "capabilities": [
+        {
+          "id": "infrastructure_as_code",
+          "label": "Infrastructure as code",
+          "evidence": {
+            "url": "https://github.com/opentofu/opentofu",
+            "quote": "OpenTofu is an open-source Terraform alternative for managing infrastructure"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "terraform_workflow_compatibility",
+          "label": "Terraform workflow compatibility",
+          "evidence": {
+            "url": "https://github.com/opentofu/opentofu",
+            "quote": "Terraform-compatible alternative"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "provider_ecosystem",
+          "label": "Provider ecosystem",
+          "evidence": {
+            "url": "https://opentofu.org/docs/language/providers/",
+            "quote": "OpenTofu relies on plugins called \"providers\""
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "module_registry",
+          "label": "Module/provider registry support",
+          "evidence": {
+            "url": "https://opentofu.org/docs/language/providers/",
+            "quote": "browse the Public OpenTofu Registry"
+          },
+          "confidence": "high"
+        }
+      ],
+      "capability_count": 4
+    },
+    "terraform": {
+      "name": "Terraform",
+      "repo": "hashicorp/terraform",
+      "capabilities": [
+        {
+          "id": "infrastructure_as_code",
+          "label": "Infrastructure as code",
+          "evidence": {
+            "url": "https://github.com/hashicorp/terraform/blob/main/README.md",
+            "quote": "Infrastructure as Code: Infrastructure is described using a high-level configuration syntax."
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "provider_management",
+          "label": "Provider management",
+          "evidence": {
+            "url": "https://github.com/hashicorp/terraform/blob/main/README.md",
+            "quote": "Terraform can manage existing and popular service providers"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "execution_plans",
+          "label": "Execution plans",
+          "evidence": {
+            "url": "https://github.com/hashicorp/terraform/blob/main/README.md",
+            "quote": "Execution Plans: Terraform has a planning step"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "versionable_configuration",
+          "label": "Versionable infrastructure configuration",
+          "evidence": {
+            "url": "https://github.com/hashicorp/terraform/blob/main/README.md",
+            "quote": "allows a blueprint of your datacenter to be versioned"
+          },
+          "confidence": "high"
+        }
+      ],
+      "capability_count": 4
+    },
+    "paradedb": {
+      "name": "ParadeDB",
+      "repo": "paradedb/paradedb",
+      "capabilities": [
+        {
+          "id": "postgres_extension",
+          "label": "PostgreSQL extension",
+          "evidence": {
+            "url": "https://github.com/paradedb/paradedb/blob/main/README.md",
+            "quote": "Built as a Postgres extension"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "full_text_search",
+          "label": "Full-text search",
+          "evidence": {
+            "url": "https://github.com/paradedb/paradedb/blob/main/README.md",
+            "quote": "custom index for fast full-text and vector search"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "bm25_ranking",
+          "label": "BM25 ranking",
+          "evidence": {
+            "url": "https://github.com/paradedb/paradedb/blob/main/README.md",
+            "quote": "BM25 scoring"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "vector_search",
+          "label": "Vector search",
+          "evidence": {
+            "url": "https://github.com/paradedb/paradedb/blob/main/README.md",
+            "quote": "full-text and vector search"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "sql_acid",
+          "label": "Standard SQL and ACID transactions",
+          "evidence": {
+            "url": "https://github.com/paradedb/paradedb/blob/main/README.md",
+            "quote": "standard SQL and ACID transactions"
+          },
+          "confidence": "high"
+        }
+      ],
+      "capability_count": 5
+    },
+    "meilisearch": {
+      "name": "Meilisearch",
+      "repo": "meilisearch/meilisearch",
+      "capabilities": [
+        {
+          "id": "full_text_search",
+          "label": "Full-text search",
+          "evidence": {
+            "url": "https://github.com/meilisearch/meilisearch",
+            "quote": "full-text search"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "hybrid_search",
+          "label": "Hybrid semantic + full-text search",
+          "evidence": {
+            "url": "https://github.com/meilisearch/meilisearch",
+            "quote": "Hybrid search: Combine the best of both semantic & full-text search"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "typo_tolerance",
+          "label": "Typo tolerance",
+          "evidence": {
+            "url": "https://github.com/meilisearch/meilisearch",
+            "quote": "Typo tolerance"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "filtering_faceting",
+          "label": "Filtering and faceting",
+          "evidence": {
+            "url": "https://github.com/meilisearch/meilisearch",
+            "quote": "Filtering and faceted search"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "sorting",
+          "label": "Field sorting",
+          "evidence": {
+            "url": "https://github.com/meilisearch/meilisearch",
+            "quote": "Sorting: sort results based on price, date"
+          },
+          "confidence": "high"
+        }
+      ],
+      "capability_count": 5
+    },
+    "typesense": {
+      "name": "Typesense",
+      "repo": "typesense/typesense",
+      "capabilities": [
+        {
+          "id": "full_text_search",
+          "label": "Full-text/fuzzy search",
+          "evidence": {
+            "url": "https://github.com/typesense/typesense",
+            "quote": "fast, typo-tolerant search engine"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "typo_tolerance",
+          "label": "Typo tolerance",
+          "evidence": {
+            "url": "https://github.com/typesense/typesense",
+            "quote": "Typo Tolerance: Handles typographical errors elegantly"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "tunable_ranking",
+          "label": "Tunable ranking",
+          "evidence": {
+            "url": "https://github.com/typesense/typesense",
+            "quote": "Tunable Ranking"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "filtering_faceting",
+          "label": "Filtering and faceting",
+          "evidence": {
+            "url": "https://github.com/typesense/typesense",
+            "quote": "Faceting & Filtering"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "semantic_hybrid_search",
+          "label": "Semantic/hybrid search",
+          "evidence": {
+            "url": "https://github.com/typesense/typesense",
+            "quote": "Semantic / Hybrid search"
+          },
+          "confidence": "high"
+        }
+      ],
+      "capability_count": 5
+    },
+    "pg_fts": {
+      "name": "PostgreSQL full-text search",
+      "repo": "postgres/postgres",
+      "capabilities": [
+        {
+          "id": "full_text_search",
+          "label": "Built-in PostgreSQL full-text search",
+          "evidence": {
+            "url": "https://www.postgresql.org/docs/current/datatype-textsearch.html",
+            "quote": "PostgreSQL provides two data types that are designed to support full text search"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "tsvector_tsquery",
+          "label": "tsvector and tsquery",
+          "evidence": {
+            "url": "https://www.postgresql.org/docs/current/datatype-textsearch.html",
+            "quote": "tsvector type represents a document ... tsquery type similarly represents a text query"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "relevance_ranking",
+          "label": "Relevance ranking",
+          "evidence": {
+            "url": "https://www.postgresql.org/docs/17/textsearch-controls.html",
+            "quote": "PostgreSQL provides support for ... ranking search results"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "no_additional_service",
+          "label": "Runs inside PostgreSQL",
+          "evidence": {
+            "url": "https://www.postgresql.org/docs/current/datatype-textsearch.html",
+            "quote": "PostgreSQL provides ... full text search"
+          },
+          "confidence": "high"
+        }
+      ],
+      "capability_count": 4
+    },
+    "github_mcp": {
+      "name": "GitHub MCP Server",
+      "repo": "github/github-mcp-server",
+      "capabilities": [
+        {
+          "id": "github_repository_access",
+          "label": "Repository/code access",
+          "evidence": {
+            "url": "https://github.com/github/github-mcp-server/blob/main/README.md",
+            "quote": "read repositories and code files"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "code_search",
+          "label": "Search files/code",
+          "evidence": {
+            "url": "https://github.com/github/github-mcp-server/blob/main/README.md",
+            "quote": "Browse and query code, search files"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "issue_management",
+          "label": "Issue management",
+          "evidence": {
+            "url": "https://github.com/github/github-mcp-server/blob/main/README.md",
+            "quote": "manage issues and PRs"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "pull_request_management",
+          "label": "Pull request management",
+          "evidence": {
+            "url": "https://github.com/github/github-mcp-server/blob/main/README.md",
+            "quote": "manage issues and PRs"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "workflow_intelligence",
+          "label": "CI/CD workflow analysis",
+          "evidence": {
+            "url": "https://github.com/github/github-mcp-server/blob/main/README.md",
+            "quote": "Monitor GitHub Actions workflow runs"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "security_analysis",
+          "label": "Code/security analysis",
+          "evidence": {
+            "url": "https://github.com/github/github-mcp-server/blob/main/README.md",
+            "quote": "Examine security findings, review Dependabot alerts"
+          },
+          "confidence": "high"
+        }
+      ],
+      "capability_count": 6
+    },
+    "scalar": {
+      "name": "Scalar",
+      "repo": "scalar/scalar",
+      "capabilities": [
+        {
+          "id": "openapi_docs",
+          "label": "OpenAPI/Swagger API reference",
+          "evidence": {
+            "url": "https://github.com/scalar/scalar/blob/main/README.md",
+            "quote": "Interactive API Reference from OpenAPI/Swagger"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "interactive_api_testing",
+          "label": "Interactive API testing",
+          "evidence": {
+            "url": "https://github.com/scalar/scalar/blob/main/README.md",
+            "quote": "Comes with an API testing tool"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "code_examples",
+          "label": "Code example generation",
+          "evidence": {
+            "url": "https://github.com/scalar/scalar/blob/main/README.md",
+            "quote": "Generates code examples for many languages & frameworks"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "offline_api_client",
+          "label": "Offline-first API client",
+          "evidence": {
+            "url": "https://github.com/scalar/scalar/blob/main/README.md",
+            "quote": "An offline-first API Client built for OpenAPI"
+          },
+          "confidence": "high"
+        }
+      ],
+      "capability_count": 4
+    },
+    "redoc": {
+      "name": "Redoc",
+      "repo": "Redocly/redoc",
+      "capabilities": [
+        {
+          "id": "openapi_docs",
+          "label": "OpenAPI documentation generation",
+          "evidence": {
+            "url": "https://github.com/Redocly/redoc/blob/main/README.md",
+            "quote": "Generate beautiful API documentation from OpenAPI"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "responsive_api_docs",
+          "label": "Responsive API documentation",
+          "evidence": {
+            "url": "https://github.com/Redocly/redoc/blob/main/README.md",
+            "quote": "three-panel, responsive layout"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "request_response_examples",
+          "label": "Request/response examples",
+          "evidence": {
+            "url": "https://github.com/Redocly/redoc/blob/main/README.md",
+            "quote": "right panel contains request and response examples"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "openapi_versions",
+          "label": "OpenAPI 3.x and Swagger support",
+          "evidence": {
+            "url": "https://github.com/Redocly/redoc/blob/main/README.md",
+            "quote": "Support for OpenAPI 3.1, 3.0, and Swagger 2.0"
+          },
+          "confidence": "high"
+        }
+      ],
+      "capability_count": 4
+    },
+    "swagger_ui": {
+      "name": "Swagger UI",
+      "repo": "swagger-api/swagger-ui",
+      "capabilities": [
+        {
+          "id": "openapi_docs",
+          "label": "OpenAPI documentation",
+          "evidence": {
+            "url": "https://github.com/swagger-api/swagger-ui/blob/main/README.md",
+            "quote": "automatically generated from your OpenAPI ... Specification"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "interactive_api_testing",
+          "label": "Interactive API exploration",
+          "evidence": {
+            "url": "https://github.com/swagger-api/swagger-ui/blob/main/README.md",
+            "quote": "visualize and interact with the API’s resources"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "api_spec_rendering",
+          "label": "API spec rendering",
+          "evidence": {
+            "url": "https://github.com/swagger-api/swagger-ui/blob/main/README.md",
+            "quote": "Swagger UI"
+          },
+          "confidence": "medium"
+        }
+      ],
+      "capability_count": 3
+    },
+    "chroma": {
+      "name": "Chroma",
+      "repo": "chroma-core/chroma",
+      "capabilities": [
+        {
+          "id": "vector_database",
+          "label": "Vector data infrastructure",
+          "evidence": {
+            "url": "https://github.com/chroma-core/chroma/blob/main/README.md",
+            "quote": "Chroma - the open-source data infrastructure for AI."
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "embeddings",
+          "label": "Embedding/indexing support",
+          "evidence": {
+            "url": "https://github.com/chroma-core/chroma/blob/main/README.md",
+            "quote": "we handle tokenization, embedding, and indexing automatically"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "semantic_search",
+          "label": "Similarity/semantic search",
+          "evidence": {
+            "url": "https://github.com/chroma-core/chroma/blob/main/README.md",
+            "quote": "Query/search 2 most similar results"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "metadata_filtering",
+          "label": "Metadata filtering",
+          "evidence": {
+            "url": "https://github.com/chroma-core/chroma/blob/main/README.md",
+            "quote": "where={\"metadata_field\": \"is_equal_to_this\"} # optional filter"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "persistence",
+          "label": "Persistent local database",
+          "evidence": {
+            "url": "https://github.com/chroma-core/chroma/blob/main/README.md",
+            "quote": "Can add persistence easily!"
+          },
+          "confidence": "medium"
+        }
+      ],
+      "capability_count": 5
+    },
+    "celery": {
+      "name": "Celery",
+      "repo": "celery/celery",
+      "capabilities": [
+        {
+          "id": "task_queue",
+          "label": "Distributed task queue",
+          "evidence": {
+            "url": "https://github.com/celery/celery",
+            "quote": "Task queues are used as a mechanism to distribute work across threads or machines."
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "background_workers",
+          "label": "Background worker processing",
+          "evidence": {
+            "url": "https://github.com/celery/celery",
+            "quote": "dedicated worker processes constantly monitor the queue"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "broker_architecture",
+          "label": "Broker-based queue architecture",
+          "evidence": {
+            "url": "https://github.com/celery/celery",
+            "quote": "Celery communicates via messages, usually using a broker"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "redis_transport",
+          "label": "Redis transport",
+          "evidence": {
+            "url": "https://github.com/celery/celery",
+            "quote": "The RabbitMQ, Redis transports are feature complete"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "horizontal_scaling",
+          "label": "Multi-worker scaling",
+          "evidence": {
+            "url": "https://github.com/celery/celery",
+            "quote": "A Celery system can consist of multiple workers and brokers"
+          },
+          "confidence": "high"
+        }
+      ],
+      "capability_count": 5
+    },
+    "rq": {
+      "name": "RQ",
+      "repo": "rq/rq",
+      "capabilities": [
+        {
+          "id": "python_job_queue",
+          "label": "Python background job queue",
+          "evidence": {
+            "url": "https://github.com/rq/rq/blob/master/README.md",
+            "quote": "RQ (Redis Queue) is a simple Python library for queueing jobs and processing them in the background with workers."
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "redis_backend",
+          "label": "Redis/Valkey-backed queue",
+          "evidence": {
+            "url": "https://github.com/rq/rq/blob/master/README.md",
+            "quote": "It is backed by Redis/Valkey"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "retry_failed_jobs",
+          "label": "Job retries",
+          "evidence": {
+            "url": "https://github.com/rq/rq",
+            "quote": "Retrying failed jobs is also supported"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "webhooks",
+          "label": "Completion/failure webhooks",
+          "evidence": {
+            "url": "https://github.com/rq/rq",
+            "quote": "RQ can send an HTTP request to a URL when a job finishes or fails"
+          },
+          "confidence": "high"
+        }
+      ],
+      "capability_count": 4
+    },
+    "dramatiq": {
+      "name": "Dramatiq",
+      "repo": "Bogdanp/dramatiq",
+      "capabilities": [
+        {
+          "id": "python_task_processing",
+          "label": "Distributed Python task processing",
+          "evidence": {
+            "url": "https://github.com/Bogdanp/dramatiq/blob/master/README.md",
+            "quote": "A fast and reliable distributed task processing library for Python 3."
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "rabbitmq_broker",
+          "label": "RabbitMQ broker",
+          "evidence": {
+            "url": "https://github.com/Bogdanp/dramatiq/blob/master/README.md",
+            "quote": "install and run it with RabbitMQ"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "redis_broker",
+          "label": "Redis broker",
+          "evidence": {
+            "url": "https://github.com/Bogdanp/dramatiq/blob/master/README.md",
+            "quote": "or if you want to use it with Redis"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "retry_failed_tasks",
+          "label": "Automatic retries",
+          "evidence": {
+            "url": "https://github.com/Bogdanp/dramatiq/blob/master/docs/source/guide.rst",
+            "quote": "automatically retries failures with exponential backoff"
+          },
+          "confidence": "high"
+        }
+      ],
+      "capability_count": 4
+    },
+    "procrastinate": {
+      "name": "Procrastinate",
+      "repo": "procrastinate-org/procrastinate",
+      "capabilities": [
+        {
+          "id": "postgres_job_queue",
+          "label": "PostgreSQL-based task queue",
+          "evidence": {
+            "url": "https://github.com/procrastinate-org/procrastinate",
+            "quote": "PostgreSQL-based Task Queue for Python"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "background_task_processing",
+          "label": "Distributed background task processing",
+          "evidence": {
+            "url": "https://github.com/procrastinate-org/procrastinate",
+            "quote": "distributed task processing library"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "retries",
+          "label": "Retries",
+          "evidence": {
+            "url": "https://github.com/procrastinate-org/procrastinate",
+            "quote": "It supports periodic tasks, retries, arbitrary task locks etc."
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "periodic_tasks",
+          "label": "Periodic/scheduled tasks",
+          "evidence": {
+            "url": "https://github.com/procrastinate-org/procrastinate",
+            "quote": "It supports periodic tasks"
+          },
+          "confidence": "high"
+        },
+        {
+          "id": "postgres_native",
+          "label": "Uses existing PostgreSQL",
+          "evidence": {
+            "url": "https://github.com/procrastinate-org/procrastinate",
+            "quote": "leveraging PostgreSQL 13+ to store task definitions, manage locks and dispatch tasks"
+          },
+          "confidence": "high"
+        }
+      ],
+      "capability_count": 5
+    }
+  }
+}

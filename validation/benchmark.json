@@ -1,0 +1,787 @@
+{
+  "meta": {
+    "vertical": "developer tooling / self-hostable infrastructure",
+    "version": "spike-0.1",
+    "notes": "expected_license_class values are PRIORS from memory. adapter.py re-derives them from live LICENSE files; mismatches are reported, not hidden.",
+    "license_classes": {
+      "permissive": [
+        "MIT",
+        "BSD",
+        "Apache-2.0",
+        "ISC"
+      ],
+      "copyleft": [
+        "GPL",
+        "AGPL",
+        "LGPL",
+        "MPL"
+      ],
+      "source_available": [
+        "BUSL",
+        "FSL",
+        "Polyform",
+        "SSPL",
+        "Elastic"
+      ],
+      "custom": [
+        "Apache/MIT base + additional terms"
+      ],
+      "mixed": [
+        "multiple licenses by directory or version"
+      ]
+    },
+    "constraint_semantics": {
+      "osi_open_source": "permissive or copyleft",
+      "permissive": "permissive only",
+      "states": "satisfied | violated | unresolved (mixed, custom, unverified)"
+    }
+  },
+  "entities": {
+    "glitchtip": {
+      "name": "GlitchTip",
+      "type": "app",
+      "repo": "rh-cssre/glitchtip-backend",
+      "repo_note": "historical GitHub mirror; project now lives on GitLab, so evidence will be stale",
+      "prior": "permissive"
+    },
+    "sentry": {
+      "name": "Sentry",
+      "type": "app",
+      "repo": "getsentry/sentry",
+      "prior": "source_available"
+    },
+    "bugsink": {
+      "name": "Bugsink",
+      "type": "app",
+      "repo": "bugsink/bugsink",
+      "prior": "mixed",
+      "caveat": "core code is PolyForm Shield (source-available) plus attributed third-party parts; classifier reports 'mixed' because of the attribution lines, so the constraint is UNRESOLVED by the adapter. Known adapter limitation."
+    },
+    "coolify": {
+      "name": "Coolify",
+      "type": "app",
+      "repo": "coollabsio/coolify",
+      "prior": "permissive"
+    },
+    "dokku": {
+      "name": "Dokku",
+      "type": "app",
+      "repo": "dokku/dokku",
+      "prior": "permissive"
+    },
+    "caprover": {
+      "name": "CapRover",
+      "type": "app",
+      "repo": "caprover/caprover",
+      "prior": "permissive"
+    },
+    "uptime_kuma": {
+      "name": "Uptime Kuma",
+      "type": "app",
+      "repo": "louislam/uptime-kuma",
+      "prior": "permissive"
+    },
+    "gatus": {
+      "name": "Gatus",
+      "type": "app",
+      "repo": "TwiN/gatus",
+      "prior": "permissive"
+    },
+    "unleash": {
+      "name": "Unleash",
+      "type": "app",
+      "repo": "Unleash/unleash",
+      "prior": "copyleft",
+      "note": "prior was permissive; live LICENSE shows AGPL"
+    },
+    "growthbook": {
+      "name": "GrowthBook",
+      "type": "app",
+      "repo": "growthbook/growthbook",
+      "prior": "permissive",
+      "caveat": "enterprise directory may be under a separate license"
+    },
+    "flagsmith": {
+      "name": "Flagsmith",
+      "type": "app",
+      "repo": "Flagsmith/flagsmith",
+      "prior": "permissive"
+    },
+    "docling": {
+      "name": "Docling",
+      "type": "library",
+      "repo": "docling-project/docling",
+      "prior": "permissive"
+    },
+    "marker": {
+      "name": "marker",
+      "type": "library",
+      "repo": "datalab-to/marker",
+      "prior": "permissive",
+      "caveat": "repo LICENSE is Apache-2.0 at HEAD; README/model-weights terms are NOT checked by the adapter"
+    },
+    "mineru": {
+      "name": "MinerU",
+      "type": "library",
+      "repo": "opendatalab/MinerU",
+      "prior": "custom",
+      "caveat": "Apache-2.0 plus additional terms (commercial thresholds, attribution); treat as UNRESOLVED for 'permissive'"
+    },
+    "pymupdf4llm": {
+      "name": "PyMuPDF4LLM",
+      "type": "library",
+      "repo": "pymupdf/pymupdf4llm",
+      "prior": "copyleft"
+    },
+    "faster_whisper": {
+      "name": "faster-whisper",
+      "type": "library",
+      "repo": "SYSTRAN/faster-whisper",
+      "prior": "permissive"
+    },
+    "whisper_cpp": {
+      "name": "whisper.cpp",
+      "type": "library",
+      "repo": "ggml-org/whisper.cpp",
+      "prior": "permissive"
+    },
+    "whisperx": {
+      "name": "WhisperX",
+      "type": "library",
+      "repo": "m-bain/whisperX",
+      "prior": "permissive"
+    },
+    "pyannote": {
+      "name": "pyannote-audio",
+      "type": "library",
+      "repo": "pyannote/pyannote-audio",
+      "prior": "permissive",
+      "caveat": "pretrained pipelines are gated on Hugging Face"
+    },
+    "valkey": {
+      "name": "Valkey",
+      "type": "app",
+      "repo": "valkey-io/valkey",
+      "prior": "permissive"
+    },
+    "redis": {
+      "name": "Redis",
+      "type": "app",
+      "repo": "redis/redis",
+      "prior": "mixed",
+      "caveat": "license differs by version"
+    },
+    "keydb": {
+      "name": "KeyDB",
+      "type": "app",
+      "repo": "Snapchat/KeyDB",
+      "prior": "permissive"
+    },
+    "opentofu": {
+      "name": "OpenTofu",
+      "type": "app",
+      "repo": "opentofu/opentofu",
+      "prior": "copyleft"
+    },
+    "terraform": {
+      "name": "Terraform",
+      "type": "app",
+      "repo": "hashicorp/terraform",
+      "prior": "source_available"
+    },
+    "paradedb": {
+      "name": "ParadeDB",
+      "type": "extension",
+      "repo": "paradedb/paradedb",
+      "prior": "copyleft"
+    },
+    "meilisearch": {
+      "name": "Meilisearch",
+      "type": "app",
+      "repo": "meilisearch/meilisearch",
+      "prior": "mixed",
+      "caveat": "enterprise directory may be under a separate license"
+    },
+    "typesense": {
+      "name": "Typesense",
+      "type": "app",
+      "repo": "typesense/typesense",
+      "prior": "copyleft"
+    },
+    "pg_fts": {
+      "name": "PostgreSQL full-text search",
+      "type": "feature",
+      "repo": "postgres/postgres",
+      "license_files": [
+        "COPYRIGHT"
+      ],
+      "prior": "permissive"
+    },
+    "github_mcp": {
+      "name": "GitHub MCP Server",
+      "type": "mcp_server",
+      "repo": "github/github-mcp-server",
+      "prior": "permissive"
+    },
+    "scalar": {
+      "name": "Scalar",
+      "type": "app",
+      "repo": "scalar/scalar",
+      "prior": "permissive"
+    },
+    "redoc": {
+      "name": "Redoc",
+      "type": "library",
+      "repo": "Redocly/redoc",
+      "prior": "permissive"
+    },
+    "swagger_ui": {
+      "name": "Swagger UI",
+      "type": "library",
+      "repo": "swagger-api/swagger-ui",
+      "prior": "permissive"
+    },
+    "chroma": {
+      "name": "Chroma",
+      "type": "app",
+      "repo": "chroma-core/chroma",
+      "prior": "permissive"
+    },
+    "celery": {
+      "name": "Celery",
+      "type": "library",
+      "repo": "celery/celery",
+      "prior": "permissive"
+    },
+    "rq": {
+      "name": "RQ",
+      "type": "library",
+      "repo": "rq/rq",
+      "prior": "permissive"
+    },
+    "dramatiq": {
+      "name": "Dramatiq",
+      "type": "library",
+      "repo": "Bogdanp/dramatiq",
+      "prior": "copyleft"
+    },
+    "procrastinate": {
+      "name": "Procrastinate",
+      "type": "library",
+      "repo": "procrastinate-org/procrastinate",
+      "prior": "permissive"
+    }
+  },
+  "scenarios": [
+    {
+      "id": "S01",
+      "domain": "observability",
+      "problem": "We're a 4-person team and want error tracking for our Python and JS apps. It must be self-hosted and have a genuinely open-source license.",
+      "constraints": {
+        "license": "osi_open_source",
+        "hosting": "self_hosted",
+        "cost": "free"
+      },
+      "requirements": [
+        {
+          "name": "capture exceptions from app SDKs",
+          "priority": "must_have"
+        },
+        {
+          "name": "stack traces with issue grouping",
+          "priority": "must_have"
+        },
+        {
+          "name": "alerting",
+          "priority": "must_have"
+        },
+        {
+          "name": "low operational footprint",
+          "priority": "nice_to_have"
+        }
+      ],
+      "viable": [
+        "glitchtip"
+      ],
+      "static_non_viable": [],
+      "license_traps": [
+        "sentry",
+        "bugsink"
+      ],
+      "expected_status": "paths",
+      "notes": "Tests whether 'self-hostable' gets confused with 'open source'.",
+      "constraint_violators": []
+    },
+    {
+      "id": "S02",
+      "domain": "deployment",
+      "problem": "I want a Heroku-like git-push deploy experience on a single cheap VPS I control, without running Kubernetes.",
+      "constraints": {
+        "license": null,
+        "hosting": "self_hosted",
+        "cost": "free"
+      },
+      "requirements": [
+        {
+          "name": "deploy from git or container image",
+          "priority": "must_have"
+        },
+        {
+          "name": "runs on a single server",
+          "priority": "must_have"
+        },
+        {
+          "name": "automatic TLS/domains",
+          "priority": "nice_to_have"
+        }
+      ],
+      "viable": [
+        "coolify",
+        "dokku",
+        "caprover"
+      ],
+      "static_non_viable": [
+        {
+          "name": "Kubernetes",
+          "reason": "violates 'without Kubernetes'"
+        },
+        {
+          "name": "Heroku",
+          "reason": "hosted and paid, violates self-hosted/free"
+        }
+      ],
+      "license_traps": [],
+      "expected_status": "paths",
+      "constraint_violators": []
+    },
+    {
+      "id": "S03",
+      "domain": "observability",
+      "problem": "Monitor uptime for about 20 endpoints and show a public status page. Self-hosted, free.",
+      "constraints": {
+        "license": null,
+        "hosting": "self_hosted",
+        "cost": "free"
+      },
+      "requirements": [
+        {
+          "name": "HTTP/TCP uptime checks",
+          "priority": "must_have"
+        },
+        {
+          "name": "notifications on failure",
+          "priority": "must_have"
+        },
+        {
+          "name": "public status page",
+          "priority": "must_have"
+        }
+      ],
+      "viable": [
+        "uptime_kuma",
+        "gatus"
+      ],
+      "static_non_viable": [
+        {
+          "name": "Atlassian Statuspage",
+          "reason": "hosted SaaS"
+        }
+      ],
+      "license_traps": [],
+      "expected_status": "paths",
+      "constraint_violators": []
+    },
+    {
+      "id": "S04",
+      "domain": "feature-management",
+      "problem": "We need feature flags with gradual rollouts. We want to self-host and avoid vendor lock-in.",
+      "constraints": {
+        "license": "osi_open_source",
+        "hosting": "self_hosted",
+        "cost": "free"
+      },
+      "requirements": [
+        {
+          "name": "boolean and percentage-rollout flags",
+          "priority": "must_have"
+        },
+        {
+          "name": "SDKs for common languages",
+          "priority": "must_have"
+        },
+        {
+          "name": "A/B experiment analysis",
+          "priority": "nice_to_have"
+        }
+      ],
+      "viable": [
+        "unleash",
+        "growthbook",
+        "flagsmith"
+      ],
+      "static_non_viable": [
+        {
+          "name": "LaunchDarkly",
+          "reason": "hosted proprietary SaaS"
+        }
+      ],
+      "license_traps": [],
+      "expected_status": "paths",
+      "notes": "A/B analysis should differentiate GrowthBook; caveats about enterprise directories should surface.",
+      "constraint_violators": []
+    },
+    {
+      "id": "S05",
+      "domain": "documents",
+      "problem": "Convert PDFs to clean Markdown locally for an LLM ingestion pipeline in a commercial product. Free, and the license must not force us to open-source our app.",
+      "constraints": {
+        "license": "permissive",
+        "hosting": "local",
+        "cost": "free"
+      },
+      "requirements": [
+        {
+          "name": "PDF to Markdown/structured text",
+          "priority": "must_have"
+        },
+        {
+          "name": "table extraction",
+          "priority": "must_have"
+        },
+        {
+          "name": "runs fully locally",
+          "priority": "must_have"
+        }
+      ],
+      "viable": [
+        "docling"
+      ],
+      "static_non_viable": [],
+      "license_traps": [
+        "pymupdf4llm",
+        "mineru"
+      ],
+      "expected_status": "paths",
+      "notes": "Popular, technically strong tools may violate or leave unresolved the license constraint. Prior expected marker to be a copyleft trap; live LICENSE says Apache-2.0, so the adapter now treats it as satisfied and only the weights caveat remains manual.",
+      "constraint_violators": []
+    },
+    {
+      "id": "S06",
+      "domain": "audio",
+      "problem": "Transcribe recorded interviews locally with timestamps. No cloud APIs, free.",
+      "constraints": {
+        "license": null,
+        "hosting": "local",
+        "cost": "free"
+      },
+      "requirements": [
+        {
+          "name": "speech-to-text with timestamps",
+          "priority": "must_have"
+        },
+        {
+          "name": "runs offline",
+          "priority": "must_have"
+        },
+        {
+          "name": "reasonable speed on CPU or consumer GPU",
+          "priority": "nice_to_have"
+        }
+      ],
+      "viable": [
+        "faster_whisper",
+        "whisper_cpp"
+      ],
+      "static_non_viable": [
+        {
+          "name": "OpenAI Whisper API",
+          "reason": "cloud API, violates offline"
+        }
+      ],
+      "license_traps": [],
+      "expected_status": "paths",
+      "constraint_violators": []
+    },
+    {
+      "id": "S07",
+      "domain": "audio",
+      "problem": "Same as above, but I also need speaker labels (who said what), still fully local and free.",
+      "constraints": {
+        "license": null,
+        "hosting": "local",
+        "cost": "free"
+      },
+      "requirements": [
+        {
+          "name": "speech-to-text with timestamps",
+          "priority": "must_have"
+        },
+        {
+          "name": "speaker diarization",
+          "priority": "must_have"
+        },
+        {
+          "name": "runs offline",
+          "priority": "must_have"
+        }
+      ],
+      "viable": [
+        "whisperx",
+        "pyannote"
+      ],
+      "static_non_viable": [],
+      "license_traps": [],
+      "expected_status": "paths",
+      "composition": true,
+      "notes": "Composition test: transcription tool + diarization tool. A verified label needs cited integration evidence. Also check whether gated model access is disclosed.",
+      "constraint_violators": []
+    },
+    {
+      "id": "S08",
+      "domain": "data-store",
+      "problem": "We want a Redis-compatible cache for a new product, with a truly open-source license.",
+      "constraints": {
+        "license": "osi_open_source",
+        "hosting": "self_hosted",
+        "cost": "free"
+      },
+      "requirements": [
+        {
+          "name": "Redis protocol compatibility",
+          "priority": "must_have"
+        },
+        {
+          "name": "OSI-approved license for the version recommended",
+          "priority": "must_have"
+        }
+      ],
+      "viable": [
+        "valkey",
+        "keydb"
+      ],
+      "static_non_viable": [],
+      "license_traps": [
+        "redis"
+      ],
+      "expected_status": "paths",
+      "notes": "Version-dependent licensing. Correct behavior is to state the version caveat, not just name Redis.",
+      "constraint_violators": []
+    },
+    {
+      "id": "S09",
+      "domain": "infrastructure-as-code",
+      "problem": "We want Terraform-style infrastructure as code with a license that isn't source-available.",
+      "constraints": {
+        "license": "osi_open_source",
+        "hosting": "self_hosted",
+        "cost": "free"
+      },
+      "requirements": [
+        {
+          "name": "Terraform-style declarative provisioning",
+          "priority": "must_have"
+        },
+        {
+          "name": "existing Terraform provider ecosystem compatibility",
+          "priority": "must_have"
+        }
+      ],
+      "viable": [
+        "opentofu"
+      ],
+      "static_non_viable": [],
+      "license_traps": [
+        "terraform"
+      ],
+      "expected_status": "paths",
+      "constraint_violators": []
+    },
+    {
+      "id": "S10",
+      "domain": "search",
+      "problem": "Add full-text search to our Postgres-backed app without operating any additional service.",
+      "constraints": {
+        "license": "osi_open_source",
+        "hosting": "self_hosted",
+        "cost": "free",
+        "max_new_services": 0
+      },
+      "requirements": [
+        {
+          "name": "full-text search over Postgres data",
+          "priority": "must_have"
+        },
+        {
+          "name": "no new service to run",
+          "priority": "must_have"
+        },
+        {
+          "name": "relevance ranking",
+          "priority": "nice_to_have"
+        }
+      ],
+      "viable": [
+        "pg_fts",
+        "paradedb"
+      ],
+      "static_non_viable": [],
+      "license_traps": [],
+      "expected_status": "paths",
+      "notes": "Existing-stack awareness: Meilisearch and Typesense are good search engines but violate the zero-new-services constraint. ParadeDB is an extension; note AGPL and managed-hosting caveats.",
+      "constraint_violators": [
+        "meilisearch",
+        "typesense"
+      ]
+    },
+    {
+      "id": "S11",
+      "domain": "documentation",
+      "problem": "Generate a browsable API reference from our OpenAPI spec. Free.",
+      "constraints": {
+        "license": null,
+        "hosting": "any",
+        "cost": "free"
+      },
+      "requirements": [
+        {
+          "name": "render OpenAPI spec as docs",
+          "priority": "must_have"
+        },
+        {
+          "name": "try-it-out / interactive requests",
+          "priority": "nice_to_have"
+        }
+      ],
+      "viable": [
+        "scalar",
+        "redoc",
+        "swagger_ui"
+      ],
+      "static_non_viable": [],
+      "license_traps": [],
+      "expected_status": "paths",
+      "notes": "Fewest-tools test. A single tool suffices; a 3-tool composition is padding.",
+      "constraint_violators": [],
+      "single_sufficient": true
+    },
+    {
+      "id": "S12",
+      "domain": "background-jobs",
+      "problem": "I already run Postgres and Docker. I need a background job queue for a Python app with retries. Free, and I'd rather not add Redis.",
+      "constraints": {
+        "license": null,
+        "hosting": "self_hosted",
+        "cost": "free",
+        "max_new_services": 0
+      },
+      "existing_tools": [
+        "Postgres",
+        "Docker"
+      ],
+      "requirements": [
+        {
+          "name": "Python job queue with retries",
+          "priority": "must_have"
+        },
+        {
+          "name": "uses existing Postgres, no new broker",
+          "priority": "must_have"
+        },
+        {
+          "name": "scheduled/periodic jobs",
+          "priority": "nice_to_have"
+        }
+      ],
+      "viable": [
+        "procrastinate"
+      ],
+      "static_non_viable": [
+        {
+          "name": "Sidekiq",
+          "reason": "Ruby, wrong language"
+        }
+      ],
+      "license_traps": [],
+      "expected_status": "paths",
+      "notes": "Celery and RQ are popular but need a broker (Redis/RabbitMQ), which violates the stated preference. Should appear only as flagged trade-offs, not top paths.",
+      "constraint_violators": [
+        "celery",
+        "rq"
+      ]
+    },
+    {
+      "id": "S13",
+      "domain": "search-plus-ai",
+      "problem": "Build a private, searchable archive of my meeting recordings (transcribe plus semantic search). Local and free.",
+      "constraints": {
+        "license": null,
+        "hosting": "local",
+        "cost": "free"
+      },
+      "requirements": [
+        {
+          "name": "speech-to-text",
+          "priority": "must_have"
+        },
+        {
+          "name": "semantic search over transcripts",
+          "priority": "must_have"
+        },
+        {
+          "name": "simple UI to browse and query",
+          "priority": "nice_to_have"
+        }
+      ],
+      "viable": [
+        "faster_whisper",
+        "whisper_cpp",
+        "chroma"
+      ],
+      "static_non_viable": [],
+      "license_traps": [],
+      "expected_status": "potential_paths_only",
+      "composition": true,
+      "notes": "Honesty test: no single tool covers it and glue code is required, so compositions should be labeled Unverified/Potential, not confirmed implementation paths.",
+      "constraint_violators": []
+    },
+    {
+      "id": "S14",
+      "domain": "failure-mode",
+      "problem": "Find a free, offline tool that automatically translates our 500k-line COBOL codebase to Java with guaranteed behavioral equivalence.",
+      "constraints": {
+        "license": null,
+        "hosting": "local",
+        "cost": "free"
+      },
+      "requirements": [
+        {
+          "name": "automatic COBOL to Java translation",
+          "priority": "must_have"
+        },
+        {
+          "name": "guaranteed behavioral equivalence",
+          "priority": "must_have"
+        }
+      ],
+      "viable": [],
+      "static_non_viable": [],
+      "license_traps": [],
+      "expected_status": "no_valid_path",
+      "notes": "Correct output is 'no valid path found' (or clearly partial), not a confident recommendation.",
+      "constraint_violators": []
+    },
+    {
+      "id": "S15",
+      "domain": "failure-mode",
+      "problem": "I need something to manage my team's stuff.",
+      "constraints": {},
+      "requirements": [],
+      "viable": [],
+      "static_non_viable": [],
+      "license_traps": [],
+      "expected_status": "clarify",
+      "notes": "Ambiguity test: should ask one useful clarifying question, not dump a tool list.",
+      "constraint_violators": []
+    }
+  ]
+}
