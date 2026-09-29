@@ -40,6 +40,7 @@ from datetime import datetime, timezone
 
 HERE = Path(__file__).parent
 PROMPT_PATH = HERE / 'NexusBase_capability_extraction_prompt_v0.2.md'
+PROMPT_STAGE2_PATH = HERE / 'NexusBase_capability_normalization_prompt_v0.2.md'
 BENCHMARK_PATH = HERE / 'benchmark.json'
 DEFAULT_OUT = HERE / 'NexusBase_extracted_capabilities_v0.2.json'
 DEFAULT_REPORT = HERE / 'NexusBase_extraction_report_v0.2.md'
@@ -128,16 +129,47 @@ def normalize_for_match(text: str) -> str:
     return re.sub(r'[ \t]+', ' ', text)
 
 
-def find_span(source: str, quote: str):
-    """Return (start, end, match_mode) or None.  Requires contiguous match."""
-    i = source.find(quote)
-    if i >= 0:
-        return i, i + len(quote), 'exact'
-    ns, nq = normalize_for_match(source), normalize_for_match(quote)
-    i = ns.find(nq)
-    if i >= 0:
-        return i, i + len(nq), 'normalized'
-    return None
+def generate_blocks(text: str) -> tuple[str, dict[str, dict]]:
+    """Splits text into deterministic blocks, returns (blocked_text, block_map)."""
+    block_map = {}
+    lines = text.splitlines(keepends=True)
+    result_pieces = []
+    i = 0
+    block_id_counter = 1
+    while i < len(lines):
+        line = lines[i]
+        if line.strip() == '':
+            result_pieces.append(line)
+            i += 1
+            continue
+            
+        block_start_idx = sum(len(l) for l in lines[:i])
+        block_lines = [line]
+        
+        j = i + 1
+        while j < len(lines):
+            next_line = lines[j]
+            if next_line.strip() == '':
+                break
+            if re.match(r'^\s*([-*+]|\d+\.)\s', next_line) or re.match(r'^\s*#+\s', next_line):
+                break
+            block_lines.append(next_line)
+            j += 1
+            
+        block_text_val = "".join(block_lines)
+        b_id = f"B{block_id_counter:03d}"
+        block_id_counter += 1
+        
+        block_map[b_id] = {
+            'start': block_start_idx,
+            'end': block_start_idx + len(block_text_val),
+            'text': block_text_val
+        }
+        
+        result_pieces.append(f"[{b_id}] " + block_text_val)
+        i = j
+        
+    return "".join(result_pieces), block_map
 
 
 # ---------------------------------------------------------------------------
@@ -204,9 +236,8 @@ def classify_evidence_type(quote: str) -> str:
 # LLM call  (decision 2: no hand-authored labels sent)
 # ---------------------------------------------------------------------------
 
-def call_llm(source_url: str, entity_id: str, source_text: str,
-             max_chars: int) -> dict:
-    """Call the LLM.  Sends ONLY entity ID + raw source text."""
+def call_llm_stage1(source_url: str, entity_id: str, chunk: str) -> dict:
+    """Call the LLM.  Sends ONLY entity ID + raw chunk text."""
     api_key = os.environ.get('NEXUSBASE_LLM_API_KEY')
     base_url = os.environ.get('NEXUSBASE_LLM_BASE_URL',
                               'https://api.openai.com/v1').rstrip('/')
@@ -220,12 +251,13 @@ def call_llm(source_url: str, entity_id: str, source_text: str,
         'model': model,
         'temperature': 0,
         'response_format': {'type': 'json_object'},
+        'reasoning_effort': 'none', # Disabling reasoning tokens to avoid timeout on local extraction
         'messages': [
             {'role': 'system', 'content': prompt},
             {'role': 'user', 'content': json.dumps({
                 'entity': entity_id,
                 'source_url': source_url,
-                'source_text': source_text[:max_chars],
+                'source_text': chunk,
             }, ensure_ascii=False)},
         ],
     }
@@ -239,7 +271,43 @@ def call_llm(source_url: str, entity_id: str, source_text: str,
         },
         method='POST',
     )
-    with urllib.request.urlopen(req, timeout=120) as resp:
+    with urllib.request.urlopen(req, timeout=300) as resp:
+        payload = json.loads(resp.read().decode('utf-8'))
+    return json.loads(payload['choices'][0]['message']['content'])
+
+
+def call_llm_stage2(entity_id: str, block_text: str) -> dict:
+    """Call the LLM for Stage 2 normalization."""
+    api_key = os.environ.get('NEXUSBASE_LLM_API_KEY')
+    base_url = os.environ.get('NEXUSBASE_LLM_BASE_URL',
+                              'https://api.openai.com/v1').rstrip('/')
+    model = os.environ.get('NEXUSBASE_LLM_MODEL')
+
+    prompt = PROMPT_STAGE2_PATH.read_text(encoding='utf-8')
+    body = {
+        'model': model,
+        'temperature': 0,
+        'response_format': {'type': 'json_object'},
+        'reasoning_effort': 'none',
+        'messages': [
+            {'role': 'system', 'content': prompt},
+            {'role': 'user', 'content': json.dumps({
+                'entity': entity_id,
+                'source_block_text': block_text,
+            }, ensure_ascii=False)},
+        ],
+    }
+    data = json.dumps(body).encode('utf-8')
+    req = urllib.request.Request(
+        base_url + '/chat/completions', data=data,
+        headers={
+            'Authorization': f'Bearer {api_key}',
+            'Content-Type': 'application/json',
+            'User-Agent': 'nexusbase-capability-extractor/0.2',
+        },
+        method='POST',
+    )
+    with urllib.request.urlopen(req, timeout=300) as resp:
         payload = json.loads(resp.read().decode('utf-8'))
     return json.loads(payload['choices'][0]['message']['content'])
 
@@ -248,84 +316,150 @@ def call_llm(source_url: str, entity_id: str, source_text: str,
 # Post-extraction validation  (decisions 4, 5)
 # ---------------------------------------------------------------------------
 
-def validate_extraction(entity_id: str, source_url: str, source_type: str,
-                        source_text: str, extracted: dict) -> dict:
-    """Validate extracted capabilities against source text.
+def deduplicate_capabilities(caps: list[dict]) -> list[dict]:
+    def simplify(s): return re.sub(r'[^a-z0-9]', '', str(s).lower())
+    grouped = {}
+    for cap in caps:
+        cid = cap.get('capability_id') or cap.get('id', '')
+        lbl = cap.get('label', '')
+        key = simplify(cid) + '_' + simplify(lbl)
+        if key not in grouped: grouped[key] = []
+        grouped[key].append(cap)
+    deduped = []
+    for group in grouped.values():
+        best = max(group, key=lambda c: len(str(c.get('evidence', {}).get('quote', ''))))
+        deduped.append(best)
+    return deduped
 
-    - Rejects claims whose quote is not an exact contiguous span.
-    - Rejects/downgrades generic fragments.
-    - Records evidence type and character offsets.
-    """
+def is_heuristic_quality_passed(quote: str, label: str, entity_name: str) -> tuple[bool, str]:
+    q_norm = quote.strip().lower()
+    words = q_norm.split()
+    if q_norm == entity_name.lower():
+        return False, "only a product/entity name"
+    if len(words) == 1 and q_norm in GENERIC_FRAGMENTS:
+        return False, "only a generic technology word"
+    GENERIC_HEADINGS = {'features', 'installation', 'quick start', 'getting started', 'overview', 'introduction', 'usage', 'configuration', 'documentation', 'license', 'support', 'about', 'requirements'}
+    if q_norm in GENERIC_HEADINGS:
+        return False, "only a generic heading with no capability-specific meaning"
+    MARKETING_PHRASES = {'blazing fast', 'world class', 'industry leading', 'next generation', 'easy to use', 'simple to use', 'robust', 'powerful', 'flexible'}
+    if q_norm in MARKETING_PHRASES:
+        return False, "vague adjective or marketing phrase"
+    if len(words) <= 3:
+        lbl_w = set(re.findall(r'[a-z0-9]+', label.lower()))
+        qt_w = set(re.findall(r'[a-z0-9]+', q_norm))
+        if lbl_w and not (lbl_w & qt_w) and not EXPLICIT_CUES.search(q_norm):
+            return False, "short quote does not explicitly support the capability label"
+    return True, "valid"
+
+def validate_extraction(entity_id: str, entity_name: str, source_url: str, source_type: str,
+                        source_text: str, extracted: dict, block_map: dict) -> dict:
+    """Validate extracted capabilities against source text."""
     now = datetime.now(timezone.utc).isoformat(timespec='seconds')
     out: dict = {
         'entity_id': entity_id,
         'source_url': source_url,
         'source_type': source_type,
         'capabilities': [],
+        'deployment_models': [],
         'rejected': [],
+        'metrics': {}
     }
-    seen: set[str] = set()
+    caps = extracted.get('capabilities', [])
+    deps = extracted.get('deployment_models', [])
+    out['metrics']['candidates_generated'] = len(caps) + len(deps)
 
-    for cap in extracted.get('capabilities', []):
-        cid = cap.get('id', '').strip()
-        label = cap.get('label', '').strip()
-        quote = cap.get('evidence', {}).get('quote', '').strip()
-        conf = cap.get('confidence')
+    def validate_items(items: list[dict], is_deployment: bool):
+        accepted = []
+        for cap in items:
+            cid = str(cap.get('capability_id') or cap.get('id', '')).strip()
+            label = str(cap.get('label', '')).strip()
+            conf = str(cap.get('confidence', '')).strip()
+            evidence_blocks = cap.get('evidence_blocks', [])
 
-        # Shape check
-        if not cid or not label or not quote or conf not in ('high', 'medium'):
-            out['rejected'].append({
-                'capability_id': cid or '(empty)',
-                'label': label,
-                'reason': 'invalid output shape or missing fields',
-                'quote': quote,
+            if not cid or not label or not evidence_blocks or not isinstance(evidence_blocks, list) or conf not in ('high', 'medium', 'low'):
+                out['rejected'].append({
+                    'capability_id': cid or '(empty)', 'label': label,
+                    'reason': 'invalid output shape or missing fields', 'quote': '',
+                })
+                continue
+
+            prov_valid = True
+            heur_passed = False
+            
+            quotes = []
+            min_start = float('inf')
+            max_end = -1
+            rej_reason = ''
+            
+            for b_id in evidence_blocks:
+                if b_id not in block_map:
+                    prov_valid = False
+                    rej_reason = f'invalid block reference: {b_id}'
+                    break
+                b_info = block_map[b_id]
+                quotes.append(b_info['text'])
+                min_start = min(min_start, b_info['start'])
+                max_end = max(max_end, b_info['end'])
+                
+            if not prov_valid:
+                quote = ''
+            else:
+                quote = source_text[min_start:max_end]
+                if is_deployment:
+                    sv, sr = True, "valid"
+                else:
+                    sv, sr = is_heuristic_quality_passed(quote, label, entity_name)
+                
+                if not sv:
+                    rej_reason = sr
+                else:
+                    heur_passed = True
+
+            if not prov_valid or not heur_passed:
+                out['rejected'].append({
+                    'capability_id': cid, 'label': label, 'reason': rej_reason,
+                    'quote': quote if prov_valid else str(evidence_blocks), 'confidence': conf,
+                    'provenance_valid': prov_valid, 'heuristic_quality_passed': heur_passed
+                })
+                continue
+
+            if is_deployment:
+                gated_conf, rejection = conf, None
+            else:
+                gated_conf, rejection = gate_confidence(quote, conf)
+                
+            if gated_conf == 'rejected':
+                out['rejected'].append({
+                    'capability_id': cid, 'label': label, 'reason': rejection,
+                    'quote': quote if prov_valid else str(evidence_blocks), 'original_confidence': conf,
+                    'provenance_valid': prov_valid, 'heuristic_quality_passed': heur_passed
+                })
+                continue
+
+            accepted.append({
+                'capability_id': cid, 'label': label, 'confidence': gated_conf,
+                'evidence': {
+                    'source_url': source_url, 'evidence_type': classify_evidence_type(quote),
+                    'quote': quote, 'start': min_start, 'end': max_end, 'match_mode': 'block_derived',
+                    'evidence_blocks': evidence_blocks,
+                },
+                'provenance_valid': prov_valid, 'heuristic_quality_passed': heur_passed,
+                'validated_at': now,
             })
-            continue
+        return accepted
 
-        # Duplicate check
-        if cid in seen:
-            out['rejected'].append({
-                'capability_id': cid, 'label': label,
-                'reason': 'duplicate capability id', 'quote': quote,
-            })
-            continue
-        seen.add(cid)
-
-        # Span verification — reject if not contiguous
-        span = find_span(source_text, quote)
-        if span is None:
-            out['rejected'].append({
-                'capability_id': cid, 'label': label,
-                'reason': 'evidence quote not found as exact contiguous span',
-                'quote': quote, 'confidence': conf,
-            })
-            continue
-
-        # Confidence gating — reject / downgrade generic fragments
-        gated_conf, rejection = gate_confidence(quote, conf)
-        if gated_conf == 'rejected':
-            out['rejected'].append({
-                'capability_id': cid, 'label': label,
-                'reason': rejection, 'quote': quote,
-                'original_confidence': conf,
-            })
-            continue
-
-        start, end, match_mode = span
-        out['capabilities'].append({
-            'capability_id': cid,
-            'label': label,
-            'confidence': gated_conf,
-            'evidence': {
-                'source_url': source_url,
-                'evidence_type': classify_evidence_type(quote),
-                'quote': quote,
-                'start': start,
-                'end': end,
-                'match_mode': match_mode,
-            },
-            'validated_at': now,
-        })
+    out['capabilities'] = validate_items(caps, False)
+    out['deployment_models'] = validate_items(deps, True)
+    
+    out['metrics']['candidates_passing_exact_span'] = len(out['capabilities']) + len(out['deployment_models'])
+    out['metrics']['candidates_passing_validation_before_dedup'] = len(out['capabilities']) + len(out['deployment_models'])
+    
+    out['capabilities'] = deduplicate_capabilities(out['capabilities'])
+    out['deployment_models'] = deduplicate_capabilities(out['deployment_models'])
+    
+    out['metrics']['final_accepted'] = len(out['capabilities'])
+    out['metrics']['final_accepted_deployments'] = len(out['deployment_models'])
+    out['metrics']['final_rejected'] = len(out['rejected'])
 
     return out
 
@@ -482,15 +616,71 @@ def main() -> None:
 
         # ---- live extraction ----
         try:
-            extracted = call_llm(url, eid, text, args.max_chars)
-            validated = validate_extraction(eid, url, source_type,
-                                            text, extracted)
+            blocked_text, block_map = generate_blocks(text)
+            
+            chunk_size = 7000
+            overlap = 1000
+            chunks = []
+            idx = 0
+            while idx < len(blocked_text):
+                chunks.append(blocked_text[idx:idx+chunk_size])
+                idx += (chunk_size - overlap)
+                if idx >= len(blocked_text): break
+            
+            stage1_blocks = set()
+            for i, chunk in enumerate(chunks):
+                extracted = call_llm_stage1(url, eid, chunk)
+                for eb in extracted.get('evidence_blocks', []):
+                    b_id = eb.get('block_id', '').strip()
+                    if b_id:
+                        stage1_blocks.add(b_id)
+            
+            valid_blocks_for_stage2 = []
+            invalid_block_ids = []
+            for b_id in stage1_blocks:
+                if b_id in block_map:
+                    valid_blocks_for_stage2.append(b_id)
+                else:
+                    invalid_block_ids.append(b_id)
+                    
+            all_caps = []
+            all_deps = []
+            for b_id in valid_blocks_for_stage2:
+                block_text = block_map[b_id]['text']
+                extracted_caps = call_llm_stage2(eid, block_text)
+                for c in extracted_caps.get('capabilities', []):
+                    c['evidence_blocks'] = [b_id]
+                    all_caps.append(c)
+                for d in extracted_caps.get('deployment_models', []):
+                    d['evidence_blocks'] = [b_id]
+                    all_deps.append(d)
+            
+            combined_extracted = {'capabilities': all_caps, 'deployment_models': all_deps}
+
+            validated = validate_extraction(eid, name, url, source_type,
+                                            text, combined_extracted, block_map)
+                                            
+            validated['metrics']['stage1_raw_candidates'] = len(stage1_blocks)
+            validated['metrics']['stage1_valid_blocks'] = len(valid_blocks_for_stage2)
+            validated['metrics']['stage1_invalid_blocks'] = len(invalid_block_ids)
+            validated['metrics']['stage2_capability_candidates'] = len(all_caps)
+            validated['metrics']['stage2_deployment_candidates'] = len(all_deps)
+            
+            for b_id in invalid_block_ids:
+                validated['rejected'].append({
+                    'capability_id': b_id, 'label': '', 'reason': 'invalid block reference',
+                    'quote': '', 'original_confidence': '', 'provenance_valid': False,
+                    'heuristic_quality_passed': False
+                })
+                
+            validated['metrics']['final_rejected'] = len(validated['rejected'])
+
             validated['name'] = name
             validated['status'] = 'extracted'
             results['entities'][eid] = validated
             n_acc = len(validated['capabilities'])
             n_rej = len(validated['rejected'])
-            print(f'  [ok] Extracted: {n_acc} accepted, {n_rej} rejected')
+            print(f'  [ok] Extracted: {n_acc} accepted, {n_rej} rejected (from {len(chunks)} chunks)')
         except Exception as exc:
             print(f'  [FAIL] Failed: {type(exc).__name__}: {exc}')
             results['entities'][eid] = {

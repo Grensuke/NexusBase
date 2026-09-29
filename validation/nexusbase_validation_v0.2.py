@@ -342,8 +342,8 @@ def run_pipeline(catalog_path: Path):
                                     'list used ONLY after matching for scoring'),
             'evidence_policy': ('Only LLM-extracted, span-verified '
                                 'capabilities used for matching'),
-            'separation': ('Capability fit, constraint fit, and evidence '
-                           'completeness evaluated independently'),
+            'separation': ('Capability fit, constraint fit, evidence '
+                           'completeness, and compatibility evaluated independently'),
         },
         'scenarios': {},
     }
@@ -433,9 +433,10 @@ def run_pipeline(catalog_path: Path):
                 'capability_fit':    capability_fit,
                 'constraint_fit':    constraint_fit,
                 'constraint_states': constraint_states,
+                'evidence_summary':  ev,
+                'compatibility_fit': 'unverified',
                 'eligibility':       eligibility,
                 'requirements':      req_rows,
-                'evidence_summary':  ev,
             })
 
         # ── Evaluation  (benchmark viable used ONLY here, after matching) ──
@@ -495,7 +496,7 @@ def generate_validation_report(matrix, catalog, benchmark):
         '- **Answer key usage**: Benchmark `viable` list used ONLY after '
         'matching for recall/FP scoring',
         '- **Separation of concerns**: Capability fit, constraint fit, '
-        'and evidence completeness evaluated independently',
+        'evidence completeness, and compatibility evaluated independently',
         '- **Constraint handling**: Unverified constraints classified as '
         '`unresolved`, not automatically invalid',
         '',
