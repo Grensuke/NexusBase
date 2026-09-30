@@ -1,0 +1,80 @@
+==================================================
+STAGE 3 FINALIZATION REPORT
+==================================================
+1. Input catalog/version: NexusBase_quality_gated_capabilities_v0.2.json
+2. Output catalog/version: NexusBase_normalized_capabilities_v0.3.json
+3. Raw count: 209
+4. Atomic count by entity:
+   - mineru: 128
+   - pymupdf4llm: 40
+5. Total atomic count: 168
+6. Metadata count: 15
+7. Discarded count: 26
+8. Count reconciliation:
+   Raw Phase 2: 209
+   Sum of Atomic+Metadata+Discarded: 209
+   Reconciliation: OK
+9. Number of families: 13
+10. Empty families removed: 0
+
+11. Data-integrity checks:
+   - All data integrity checks passed.
+
+12. Positive regression result: 1. Number of positive tests passed (TEST 1): 10/10
+13. Negative regression result: 2. Number of negative tests passed (TEST 2+3): 5/6
+
+14. ADJUDICATED ITEMS LIST:
+  - Remote API usage check => [B] Moved to: B
+  - Installation recommendation for uv => [B] Moved to: B
+  - File forgetting without deletion => [A] Moved to: A
+  - Support for multiple model engines => [B] Moved to: B
+  - Support for custom installation of model engines => [B] Moved to: B
+  - Model download size varies by engine (0.8 GB to 3 GB) => [B] Moved to: B
+  - RAM requirements vary by model engine (2 GB to 16 GB) => [B] Moved to: B
+  - Support for CPU and GPU/MPS accelerators => [B] Moved to: B
+  - Document content retrieval => [A] Moved to: A
+  - Support for page/block continuation in long documents => [A] Moved to: A
+  - User choice-based recovery paths for errors => [B] Moved to: B
+  - Document format conversion => [D] Moved to: D
+  - Agent continuation by page or block => [A] Moved to: A
+  - Citation support through locators => [A] Moved to: A
+  - Forget a file or folder without deleting it => [A] Moved to: A
+  - Targeted content retrieval using locators => [A] Moved to: A
+  - Support for different model engines with additional features => [B] Moved to: B
+  - Command-line entrypoint usage => [C] Moved to: C
+  - Document summarization => [D] Moved to: D
+  - Document quoting => [D] Moved to: D
+  - Document citing => [D] Moved to: D
+  - Document question answering => [D] Moved to: D
+  - Support for NVIDIA GPU with `mineru[full]` => [B] Moved to: B
+  - WebUI interface support => [A] Moved to: A
+  - Default limit to first 10 PDF pages => [B] Moved to: B
+  - Document conversion => [D] Moved to: D
+  - Application integration => [D] Moved to: D
+  - Support for multiple rendering formats => [A] Moved to: A
+  - PDF cache invalidation => [A] Moved to: A
+  - Remote failure fallback to local execution => [B] Moved to: B
+  - Document locator support => [A] Moved to: A
+  - Watched directories support => [A] Moved to: A
+  - Page/block continuation locators => [A] Moved to: A
+  - Result invalidation support => [A] Moved to: A
+  - User-controlled document upload => [B] Moved to: B
+  - Unified toolset for integration and interaction => [D] Moved to: D
+  - PDF page selection across multiple interfaces => [A] Moved to: A
+  - Support for multiple document formats => [D] Moved to: D
+  - Support for scanned PDFs => [A] Moved to: A
+  - Support for academic papers => [D] Moved to: D
+  - Support for office document formats => [A] Moved to: A
+  - Support for HTML documents => [A] Moved to: A
+  - Support for CSV and TSV files => [A] Moved to: A
+  - Model downloading by tier => [B] Moved to: B
+  - Model verification by tier => [B] Moved to: B
+  - File content display => [A] Moved to: A
+  - Document scanning => [D] Moved to: D
+  - Detection and preservation of bold, italic, monospace, and code blocks => [A] Moved to: A
+  - Detection and inclusion of references to vector graphic elements => [A] Moved to: A
+  - Processing a subset of pages via the `pages` parameter => [A] Moved to: A
+  - Page count retrieval => [A] Moved to: A
+  - File path retrieval => [C] Moved to: C
+  - LlamaIndex and LangChain compatibility => [A] Moved to: A
+  - Document loading integration with LlamaIndex and LangChain => [A] Moved to: A

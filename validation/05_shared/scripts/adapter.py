@@ -90,7 +90,7 @@ def gh_api(repo):
             "archived": j.get("archived"), "default_branch": j.get("default_branch")}
 
 def build():
-    bench = json.load(open(os.path.join(HERE, "benchmark.json")))
+    bench = json.load(open(os.path.join(HERE, "04_benchmark/inputs/benchmark.json")))
     now = datetime.now(timezone.utc).isoformat(timespec="seconds")
     out, mismatches = [], []
     for eid, e in bench["entities"].items():
@@ -126,7 +126,7 @@ def build():
             mismatches.append((e["name"], prior, cls, spdx))
         print(f"{e['name']:<30} prior={prior:<16} verified={cls:<16} {spdx}")
         time.sleep(0.15)
-    json.dump({"generated_at": now, "solutions": out}, open(os.path.join(HERE, "seed_index.json"), "w"), indent=2)
+    json.dump({"generated_at": now, "solutions": out}, open(os.path.join(HERE, "05_shared/inputs/seed_index.json"), "w"), indent=2)
     print("\nPrior vs verified mismatches:")
     for m in mismatches:
         print("  ", m)

@@ -1,0 +1,800 @@
+[
+  {
+    "scenario_id": "S01",
+    "type": "observability",
+    "problem": "We're a 4-person team and want error tracking for our Python and JS apps. It must be self-hosted and have a genuinely open-source license.",
+    "interpreted_requirements": [
+      {
+        "name": "capture exceptions from app SDKs",
+        "priority": "must_have"
+      },
+      {
+        "name": "stack traces with issue grouping",
+        "priority": "must_have"
+      },
+      {
+        "name": "alerting",
+        "priority": "must_have"
+      },
+      {
+        "name": "low operational footprint",
+        "priority": "nice_to_have"
+      }
+    ],
+    "must_have_requirements": [
+      {
+        "name": "capture exceptions from app SDKs",
+        "priority": "must_have"
+      },
+      {
+        "name": "stack traces with issue grouping",
+        "priority": "must_have"
+      },
+      {
+        "name": "alerting",
+        "priority": "must_have"
+      }
+    ],
+    "constraints": {
+      "license": "osi_open_source",
+      "hosting": "self_hosted",
+      "cost": "free"
+    },
+    "expected_status": "paths",
+    "actual_status": "no_valid_path",
+    "duration_sec": 18.53487491607666,
+    "paths": [
+      {
+        "solutions": [],
+        "capability_matches": {},
+        "constraint_violations": [
+          "No entity in catalog satisfies error tracking requirements for Python/JS apps with self-hosting and open-source license"
+        ],
+        "flags": [
+          "All catalog entries are focused on audio processing/analysis, not error tracking"
+        ],
+        "compatibility": "n/a"
+      }
+    ],
+    "source_availability_impact": false
+  },
+  {
+    "scenario_id": "S02",
+    "type": "deployment",
+    "problem": "I want a Heroku-like git-push deploy experience on a single cheap VPS I control, without running Kubernetes.",
+    "interpreted_requirements": [
+      {
+        "name": "deploy from git or container image",
+        "priority": "must_have"
+      },
+      {
+        "name": "runs on a single server",
+        "priority": "must_have"
+      },
+      {
+        "name": "automatic TLS/domains",
+        "priority": "nice_to_have"
+      }
+    ],
+    "must_have_requirements": [
+      {
+        "name": "deploy from git or container image",
+        "priority": "must_have"
+      },
+      {
+        "name": "runs on a single server",
+        "priority": "must_have"
+      }
+    ],
+    "constraints": {
+      "license": null,
+      "hosting": "self_hosted",
+      "cost": "free"
+    },
+    "expected_status": "paths",
+    "actual_status": "no_valid_path",
+    "duration_sec": 19.468923091888428,
+    "paths": [],
+    "source_availability_impact": false
+  },
+  {
+    "scenario_id": "S03",
+    "status": "SOURCE_UNAVAILABLE",
+    "blocked_entities": [
+      "uptime_kuma",
+      "gatus"
+    ]
+  },
+  {
+    "scenario_id": "S04",
+    "type": "feature-management",
+    "problem": "We need feature flags with gradual rollouts. We want to self-host and avoid vendor lock-in.",
+    "interpreted_requirements": [
+      {
+        "name": "boolean and percentage-rollout flags",
+        "priority": "must_have"
+      },
+      {
+        "name": "SDKs for common languages",
+        "priority": "must_have"
+      },
+      {
+        "name": "A/B experiment analysis",
+        "priority": "nice_to_have"
+      }
+    ],
+    "must_have_requirements": [
+      {
+        "name": "boolean and percentage-rollout flags",
+        "priority": "must_have"
+      },
+      {
+        "name": "SDKs for common languages",
+        "priority": "must_have"
+      }
+    ],
+    "constraints": {
+      "license": "osi_open_source",
+      "hosting": "self_hosted",
+      "cost": "free"
+    },
+    "expected_status": "paths",
+    "actual_status": "no_valid_path",
+    "duration_sec": 19.601006269454956,
+    "paths": [],
+    "source_availability_impact": true
+  },
+  {
+    "scenario_id": "S05",
+    "type": "documents",
+    "problem": "Convert PDFs to clean Markdown locally for an LLM ingestion pipeline in a commercial product. Free, and the license must not force us to open-source our app.",
+    "interpreted_requirements": [
+      {
+        "name": "PDF to Markdown/structured text",
+        "priority": "must_have"
+      },
+      {
+        "name": "table extraction",
+        "priority": "must_have"
+      },
+      {
+        "name": "runs fully locally",
+        "priority": "must_have"
+      }
+    ],
+    "must_have_requirements": [
+      {
+        "name": "PDF to Markdown/structured text",
+        "priority": "must_have"
+      },
+      {
+        "name": "table extraction",
+        "priority": "must_have"
+      },
+      {
+        "name": "runs fully locally",
+        "priority": "must_have"
+      }
+    ],
+    "constraints": {
+      "license": "permissive",
+      "hosting": "local",
+      "cost": "free"
+    },
+    "expected_status": "paths",
+    "actual_status": "paths",
+    "duration_sec": 26.630608320236206,
+    "paths": [
+      {
+        "solutions": [
+          "docling"
+        ],
+        "capability_matches": {
+          "PDF to Markdown/structured text": [
+            {
+              "entity": "docling",
+              "capability_id": "advanced_pdf_understanding",
+              "label": "Advanced PDF understanding",
+              "evidence": [
+                {
+                  "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
+                  "evidence_type": "descriptive_context",
+                  "quote": "- \ud83d\udcd1 Advanced PDF understanding incl. page layout, reading order, table structure, code, formulas, image classification, and more\n",
+                  "start": 2848,
+                  "end": 2977,
+                  "match_mode": "block_derived",
+                  "evidence_blocks": [
+                    "B009"
+                  ]
+                }
+              ]
+            },
+            {
+              "entity": "docling",
+              "capability_id": "markdown_superset_parsing",
+              "label": "Markdown superset parsing",
+              "evidence": [
+                {
+                  "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
+                  "evidence_type": "explicit_statement",
+                  "quote": "- \ud83d\udcdd Parsing of plain-text files (`.txt`, `.text`) and Markdown supersets (`.qmd`, `.Rmd`)\n",
+                  "start": 4709,
+                  "end": 4799,
+                  "match_mode": "block_derived",
+                  "evidence_blocks": [
+                    "B028"
+                  ]
+                }
+              ]
+            }
+          ],
+          "table extraction": [
+            {
+              "entity": "docling",
+              "capability_id": "table_structure_analysis",
+              "label": "Table structure analysis",
+              "evidence": [
+                {
+                  "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
+                  "evidence_type": "descriptive_context",
+                  "quote": "- \ud83d\udcd1 Advanced PDF understanding incl. page layout, reading order, table structure, code, formulas, image classification, and more\n",
+                  "start": 2848,
+                  "end": 2977,
+                  "match_mode": "block_derived",
+                  "evidence_blocks": [
+                    "B009"
+                  ]
+                }
+              ]
+            }
+          ],
+          "runs fully locally": []
+        },
+        "constraint_violations": [],
+        "flags": [
+          "License permissiveness and cost verification required"
+        ],
+        "compatibility": "unverified"
+      }
+    ],
+    "source_availability_impact": false
+  },
+  {
+    "scenario_id": "S06",
+    "type": "audio",
+    "problem": "Transcribe recorded interviews locally with timestamps. No cloud APIs, free.",
+    "interpreted_requirements": [
+      {
+        "name": "speech-to-text with timestamps",
+        "priority": "must_have"
+      },
+      {
+        "name": "runs offline",
+        "priority": "must_have"
+      },
+      {
+        "name": "reasonable speed on CPU or consumer GPU",
+        "priority": "nice_to_have"
+      }
+    ],
+    "must_have_requirements": [
+      {
+        "name": "speech-to-text with timestamps",
+        "priority": "must_have"
+      },
+      {
+        "name": "runs offline",
+        "priority": "must_have"
+      }
+    ],
+    "constraints": {
+      "license": null,
+      "hosting": "local",
+      "cost": "free"
+    },
+    "expected_status": "paths",
+    "actual_status": "paths",
+    "duration_sec": 74.22406339645386,
+    "paths": [
+      {
+        "solutions": [
+          "whisperx"
+        ],
+        "capability_matches": {
+          "speech-to-text with timestamps": [
+            {
+              "entity": "whisperx",
+              "capability_id": "speaker_diarization",
+              "label": "Speaker diarization",
+              "evidence": [
+                {
+                  "source_url": "https://raw.githubusercontent.com/m-bain/whisperX/HEAD/README.md",
+                  "evidence_type": "explicit_statement",
+                  "quote": "This repository provides fast automatic speech recognition (70x realtime with large-v2) with word-level timestamps and speaker diarization.\n",
+                  "start": 1959,
+                  "end": 2099,
+                  "match_mode": "block_derived",
+                  "evidence_blocks": [
+                    "B008"
+                  ]
+                }
+              ]
+            },
+            {
+              "entity": "whisperx",
+              "capability_id": "vad_based_segment_transcription",
+              "label": "VAD-based segment transcription",
+              "evidence": [
+                {
+                  "source_url": "https://raw.githubusercontent.com/m-bain/whisperX/HEAD/README.md",
+                  "evidence_type": "descriptive_context",
+                  "quote": "2. VAD-based segment transcription, unlike the buffered transcription of openai's. In the WhisperX paper we show this reduces WER, and enables accurate batched inference\n",
+                  "start": 11881,
+                  "end": 12051,
+                  "match_mode": "block_derived",
+                  "evidence_blocks": [
+                    "B101"
+                  ]
+                }
+              ]
+            }
+          ],
+          "runs offline": [],
+          "reasonable speed on CPU or consumer GPU": []
+        },
+        "constraint_violations": [],
+        "flags": [
+          "Requires manual timestamp integration via VAD/segmentation"
+        ],
+        "compatibility": "verified"
+      },
+      {
+        "solutions": [
+          "whisper_cpp"
+        ],
+        "capability_matches": {
+          "speech-to-text with timestamps": [
+            {
+              "entity": "whisper_cpp",
+              "capability_id": "audio_transcription",
+              "label": "Audio transcription",
+              "evidence": [
+                {
+                  "source_url": "https://raw.githubusercontent.com/ggml-org/whisper.cpp/HEAD/README.md",
+                  "evidence_type": "explicit_statement",
+                  "quote": "| Example                                             | Web                                   | Description                                                                                                                     |\n| --------------------------------------------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |\n| [whisper-cli](examples/cli)                         | [whisper.wasm](examples/whisper.wasm) | Tool for translating and transcribing audio using Whisper                                                                       |\n| [whisper-bench](examples/bench)                     | [bench.wasm](examples/bench.wasm)     | Benchmark the performance of Whisper on your machine                                                                            |\n| [whisper-stream](examples/stream)                   | [stream.wasm](examples/stream.wasm)   | Real-time transcription of raw microphone capture                                                                               |\n| [whisper-command](examples/command)                 | [command.wasm](examples/command.wasm) | Basic voice assistant example for receiving voice commands from the mic                                                         |\n| [whisper-server](examples/server)                   |                                       | HTTP transcription server with OAI-like API                                                                                     |\n| [whisper-talk-llama](examples/talk-llama)           |                                       | Talk with a LLaMA bot                                                                                                           |\n| [whisper.objc](examples/whisper.objc)               |                                       | iOS mobile application using whisper.cpp                                                                                        |\n| [whisper.swiftui](examples/whisper.swiftui)         |                                       | SwiftUI iOS / macOS application using whisper.cpp                                                                               |\n| [whisper.android](examples/whisper.android)         |                                       | Android mobile application using whisper.cpp                                                                                    |\n| [whisper.nvim](examples/whisper.nvim)               |                                       | Speech-to-text plugin for Neovim                                                                                                |\n| [generate-karaoke.sh](examples/generate-karaoke.sh) |                                       | Helper script to easily [generate a karaoke video](https://youtu.be/uj7hVta4blM) of raw audio capture                           |\n| [livestream.sh](examples/livestream.sh)             |                                       | [Livestream audio transcription](https://github.com/ggml-org/whisper.cpp/issues/185)                                            |\n| [yt-wsp.sh](examples/yt-wsp.sh)                     |                                       | Download + transcribe and/or translate any VOD [(original)](https://gist.github.com/DaniruKun/96f763ec1a037cc92fe1a059b643b818) |\n| [wchess](examples/wchess)                           | [wchess.wasm](examples/wchess)        | Voice-controlled chess                                                                                                          |\n",
+                  "start": 36855,
+                  "end": 40471,
+                  "match_mode": "block_derived",
+                  "evidence_blocks": [
+                    "B342"
+                  ]
+                }
+              ]
+            }
+          ],
+          "runs offline": [],
+          "reasonable speed on CPU or consumer GPU": []
+        },
+        "constraint_violations": [],
+        "flags": [
+          "No built-in timestamping; requires external timing integration"
+        ],
+        "compatibility": "verified"
+      }
+    ],
+    "source_availability_impact": false
+  },
+  {
+    "scenario_id": "S07",
+    "type": "audio",
+    "problem": "Same as above, but I also need speaker labels (who said what), still fully local and free.",
+    "interpreted_requirements": [
+      {
+        "name": "speech-to-text with timestamps",
+        "priority": "must_have"
+      },
+      {
+        "name": "speaker diarization",
+        "priority": "must_have"
+      },
+      {
+        "name": "runs offline",
+        "priority": "must_have"
+      }
+    ],
+    "must_have_requirements": [
+      {
+        "name": "speech-to-text with timestamps",
+        "priority": "must_have"
+      },
+      {
+        "name": "speaker diarization",
+        "priority": "must_have"
+      },
+      {
+        "name": "runs offline",
+        "priority": "must_have"
+      }
+    ],
+    "constraints": {
+      "license": null,
+      "hosting": "local",
+      "cost": "free"
+    },
+    "expected_status": "paths",
+    "actual_status": "paths",
+    "duration_sec": 36.464165925979614,
+    "paths": [
+      {
+        "solutions": [
+          "whisperx"
+        ],
+        "capability_matches": {
+          "speech-to-text with timestamps": [
+            {
+              "entity": "whisperx",
+              "capability_id": "language_specific_phoneme_alignment",
+              "label": "Language-specific phoneme ASR alignment",
+              "evidence": [
+                {
+                  "source_url": "https://raw.githubusercontent.com/m-bain/whisperX/HEAD/README.md",
+                  "evidence_type": "descriptive_context",
+                  "quote": "The phoneme ASR alignment model is _language-specific_, for tested languages these models are [automatically picked from torchaudio pipelines or huggingface](https://github.com/m-bain/whisperX/blob/f2da2f858e99e4211fe4f64b5f2938b007827e17/whisperx/alignment.py#L24-L58).\nJust pass in the `--language` code, and use the whisper `--model large`.\n",
+                  "start": 7735,
+                  "end": 8079,
+                  "match_mode": "block_derived",
+                  "evidence_blocks": [
+                    "B065"
+                  ]
+                }
+              ]
+            },
+            {
+              "entity": "whisperx",
+              "capability_id": "batched_whisper_support",
+              "label": "Batched whisper support",
+              "evidence": [
+                {
+                  "source_url": "https://raw.githubusercontent.com/m-bain/whisperX/HEAD/README.md",
+                  "evidence_type": "descriptive_context",
+                  "quote": "- v3 released, 70x speed-up open-sourced. Using batched whisper with [faster-whisper](https://github.com/guillaumekln/faster-whisper) backend!\n",
+                  "start": 3841,
+                  "end": 3984,
+                  "match_mode": "block_derived",
+                  "evidence_blocks": [
+                    "B022"
+                  ]
+                }
+              ]
+            },
+            {
+              "entity": "whisperx",
+              "capability_id": "language_support",
+              "label": "Support for multiple languages via Hugging Face models",
+              "evidence": [
+                {
+                  "source_url": "https://raw.githubusercontent.com/m-bain/whisperX/HEAD/README.md",
+                  "evidence_type": "descriptive_context",
+                  "quote": "Currently default models provided for `{en, fr, de, es, it}` via torchaudio pipelines and many other languages via Hugging Face. Please find the list of currently supported languages under `DEFAULT_ALIGN_MODELS_HF` on [alignment.py](https://github.com/m-bain/whisperX/blob/main/whisperx/alignment.py). If the detected language is not in this list, you need to find a phoneme-based ASR model from [huggingface model hub](https://huggingface.co/models) and test it on your data.\n",
+                  "start": 8080,
+                  "end": 8557,
+                  "match_mode": "block_derived",
+                  "evidence_blocks": [
+                    "B066"
+                  ]
+                }
+              ]
+            }
+          ],
+          "speaker diarization": [
+            {
+              "entity": "whisperx",
+              "capability_id": "speaker_diarization",
+              "label": "Speaker diarization",
+              "evidence": [
+                {
+                  "source_url": "https://raw.githubusercontent.com/m-bain/whisperX/HEAD/README.md",
+                  "evidence_type": "explicit_statement",
+                  "quote": "This repository provides fast automatic speech recognition (70x realtime with large-v2) with word-level timestamps and speaker diarization.\n",
+                  "start": 1959,
+                  "end": 2099,
+                  "match_mode": "block_derived",
+                  "evidence_blocks": [
+                    "B008"
+                  ]
+                }
+              ]
+            },
+            {
+              "entity": "whisperx",
+              "capability_id": "speaker_diarization_support",
+              "label": "Speaker diarization support",
+              "evidence": [
+                {
+                  "source_url": "https://raw.githubusercontent.com/m-bain/whisperX/HEAD/README.md",
+                  "evidence_type": "explicit_statement",
+                  "quote": "To **enable Speaker Diarization**, include your Hugging Face access token (read) that you can generate from [Here](https://huggingface.co/settings/tokens) after the `--hf_token` argument and accept the user agreement for the [speaker-diarization-community-1](https://huggingface.co/pyannote/speaker-diarization-community-1) model.\n",
+                  "start": 5788,
+                  "end": 6119,
+                  "match_mode": "block_derived",
+                  "evidence_blocks": [
+                    "B045"
+                  ]
+                }
+              ]
+            },
+            {
+              "entity": "whisperx",
+              "capability_id": "accurate_batched_inference",
+              "label": "Accurate batched inference",
+              "evidence": [
+                {
+                  "source_url": "https://raw.githubusercontent.com/m-bain/whisperX/HEAD/README.md",
+                  "evidence_type": "descriptive_context",
+                  "quote": "2. VAD-based segment transcription, unlike the buffered transcription of openai's. In the WhisperX paper we show this reduces WER, and enables accurate batched inference\n",
+                  "start": 11881,
+                  "end": 12051,
+                  "match_mode": "block_derived",
+                  "evidence_blocks": [
+                    "B101"
+                  ]
+                }
+              ]
+            }
+          ],
+          "runs offline": [
+            {
+              "entity": "whisperx",
+              "capability_id": "automatic_model_selection",
+              "label": "Automatic model selection from torchaudio pipelines or huggingface",
+              "evidence": [
+                {
+                  "source_url": "https://raw.githubusercontent.com/m-bain/whisperX/HEAD/README.md",
+                  "evidence_type": "descriptive_context",
+                  "quote": "The phoneme ASR alignment model is _language-specific_, for tested languages these models are [automatically picked from torchaudio pipelines or huggingface](https://github.com/m-bain/whisperX/blob/f2da2f858e99e4211fe4f64b5f2938b007827e17/whisperx/alignment.py#L24-L58).\nJust pass in the `--language` code, and use the whisper `--model large`.\n",
+                  "start": 7735,
+                  "end": 8079,
+                  "match_mode": "block_derived",
+                  "evidence_blocks": [
+                    "B065"
+                  ]
+                }
+              ]
+            },
+            {
+              "entity": "whisperx",
+              "capability_id": "model_flush_for_low_gpu_mem",
+              "label": "Model flush for low GPU memory resources",
+              "evidence": [
+                {
+                  "source_url": "https://raw.githubusercontent.com/m-bain/whisperX/HEAD/README.md",
+                  "evidence_type": "descriptive_context",
+                  "quote": "- [x] Model flush, for low gpu mem resources\n",
+                  "start": 13186,
+                  "end": 13231,
+                  "match_mode": "block_derived",
+                  "evidence_blocks": [
+                    "B116"
+                  ]
+                }
+              ]
+            },
+            {
+              "entity": "whisperx",
+              "capability_id": "speed_up_support",
+              "label": "70x speed-up support",
+              "evidence": [
+                {
+                  "source_url": "https://raw.githubusercontent.com/m-bain/whisperX/HEAD/README.md",
+                  "evidence_type": "descriptive_context",
+                  "quote": "- v3 released, 70x speed-up open-sourced. Using batched whisper with [faster-whisper](https://github.com/guillaumekln/faster-whisper) backend!\n",
+                  "start": 3841,
+                  "end": 3984,
+                  "match_mode": "block_derived",
+                  "evidence_blocks": [
+                    "B022"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "constraint_violations": [],
+        "flags": [
+          "Requires Python environment",
+          "No cloud dependency"
+        ],
+        "compatibility": "verified"
+      }
+    ],
+    "source_availability_impact": false
+  },
+  {
+    "scenario_id": "S08",
+    "type": "data-store",
+    "problem": "We want a Redis-compatible cache for a new product, with a truly open-source license.",
+    "interpreted_requirements": [
+      {
+        "name": "Redis protocol compatibility",
+        "priority": "must_have"
+      },
+      {
+        "name": "OSI-approved license for the version recommended",
+        "priority": "must_have"
+      }
+    ],
+    "must_have_requirements": [
+      {
+        "name": "Redis protocol compatibility",
+        "priority": "must_have"
+      },
+      {
+        "name": "OSI-approved license for the version recommended",
+        "priority": "must_have"
+      }
+    ],
+    "constraints": {
+      "license": "osi_open_source",
+      "hosting": "self_hosted",
+      "cost": "free"
+    },
+    "expected_status": "paths",
+    "actual_status": "paths",
+    "duration_sec": 29.641080617904663,
+    "paths": [
+      {
+        "solutions": [
+          "valkey"
+        ],
+        "capability_matches": {
+          "Redis protocol compatibility": [
+            {
+              "entity": "valkey",
+              "capability_id": "high_performance_data_structure_server",
+              "label": "High-performance data structure server",
+              "evidence": [
+                {
+                  "source_url": "https://raw.githubusercontent.com/valkey-io/valkey/HEAD/README.md",
+                  "evidence_type": "explicit_statement",
+                  "quote": "Valkey is a high-performance data structure server that primarily serves key/value workloads.\nIt supports a wide range of native structures and an extensible plugin system for adding new data structures and access patterns.\n",
+                  "start": 564,
+                  "end": 788,
+                  "match_mode": "block_derived",
+                  "evidence_blocks": [
+                    "B005"
+                  ]
+                }
+              ]
+            }
+          ],
+          "OSI-approved license for the version recommended": []
+        },
+        "constraint_violations": [],
+        "flags": [
+          "Linux only support as per metadata"
+        ],
+        "compatibility": "verified"
+      }
+    ],
+    "source_availability_impact": true
+  },
+  {
+    "scenario_id": "S09",
+    "status": "SOURCE_UNAVAILABLE",
+    "blocked_entities": [
+      "opentofu"
+    ]
+  },
+  {
+    "scenario_id": "S10",
+    "status": "SOURCE_UNAVAILABLE",
+    "blocked_entities": [
+      "pg_fts",
+      "paradedb"
+    ]
+  },
+  {
+    "scenario_id": "S11",
+    "status": "SOURCE_UNAVAILABLE",
+    "blocked_entities": [
+      "scalar",
+      "redoc",
+      "swagger_ui"
+    ]
+  },
+  {
+    "scenario_id": "S12",
+    "status": "SOURCE_UNAVAILABLE",
+    "blocked_entities": [
+      "procrastinate"
+    ]
+  },
+  {
+    "scenario_id": "S13",
+    "type": "search-plus-ai",
+    "problem": "Build a private, searchable archive of my meeting recordings (transcribe plus semantic search). Local and free.",
+    "interpreted_requirements": [
+      {
+        "name": "speech-to-text",
+        "priority": "must_have"
+      },
+      {
+        "name": "semantic search over transcripts",
+        "priority": "must_have"
+      },
+      {
+        "name": "simple UI to browse and query",
+        "priority": "nice_to_have"
+      }
+    ],
+    "must_have_requirements": [
+      {
+        "name": "speech-to-text",
+        "priority": "must_have"
+      },
+      {
+        "name": "semantic search over transcripts",
+        "priority": "must_have"
+      }
+    ],
+    "constraints": {
+      "license": null,
+      "hosting": "local",
+      "cost": "free"
+    },
+    "expected_status": "potential_paths_only",
+    "actual_status": "no_valid_path",
+    "duration_sec": 41.05175733566284,
+    "paths": [],
+    "source_availability_impact": true
+  },
+  {
+    "scenario_id": "S14",
+    "type": "failure-mode",
+    "problem": "Find a free, offline tool that automatically translates our 500k-line COBOL codebase to Java with guaranteed behavioral equivalence.",
+    "interpreted_requirements": [
+      {
+        "name": "automatic COBOL to Java translation",
+        "priority": "must_have"
+      },
+      {
+        "name": "guaranteed behavioral equivalence",
+        "priority": "must_have"
+      }
+    ],
+    "must_have_requirements": [
+      {
+        "name": "automatic COBOL to Java translation",
+        "priority": "must_have"
+      },
+      {
+        "name": "guaranteed behavioral equivalence",
+        "priority": "must_have"
+      }
+    ],
+    "constraints": {
+      "license": null,
+      "hosting": "local",
+      "cost": "free"
+    },
+    "expected_status": "no_valid_path",
+    "actual_status": "no_valid_path",
+    "duration_sec": 12.896439790725708,
+    "paths": [],
+    "source_availability_impact": false
+  },
+  {
+    "scenario_id": "S15",
+    "type": "failure-mode",
+    "problem": "I need something to manage my team's stuff.",
+    "interpreted_requirements": [],
+    "must_have_requirements": [],
+    "constraints": {},
+    "expected_status": "clarify",
+    "actual_status": "no_valid_path",
+    "duration_sec": 20.259135007858276,
+    "paths": [],
+    "source_availability_impact": false
+  }
+]

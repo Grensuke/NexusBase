@@ -1,0 +1,504 @@
+==================================================
+STAGE 3.2B ADJUDICATION REPORT
+==================================================
+- Entity: mineru
+  ID: 0d1fcf7c-9501-4810-8a1d-6e4720901175
+  Label: Remote API usage check
+  Class: B
+  Block ID: B087
+  Evidence: 11. User asks for Remote API usage or limits: use `mineru usage --json`. 
+  Reason: Describes checking quota/usage limits, a deployment/metadata property.
+  Confidence: HIGH
+
+- Entity: mineru
+  ID: 96ada226-10cd-4b71-b910-a0dba81448b7
+  Label: Installation recommendation for uv
+  Class: B
+  Block ID: B136
+  Evidence: If `uv`, `pipx`, `pip`, and `pip3` are all unavailable, or none of them can i...
+  Reason: Deployment/environment recommendation, not a software capability.
+  Confidence: HIGH
+
+- Entity: mineru
+  ID: fbb2b142-8a36-4076-9a25-7ea402536cc8
+  Label: File forgetting without deletion
+  Class: A
+  Block ID: B323
+  Evidence: Use `forget` to forget a file or folder from MinerU without deleting source f...
+  Reason: Explicit user-facing command to wipe database records without deleting source files.
+  Confidence: HIGH
+
+- Entity: mineru
+  ID: 6b65b18b-8c67-47b9-9b81-cf86de831477
+  Label: Support for multiple model engines
+  Class: B
+  Block ID: B214
+  Evidence: | Hardware | Recommended startup tier | Model engines | Extra | |---|---|---|...
+  Reason: Configuration choice of backend model engines.
+  Confidence: HIGH
+
+- Entity: mineru
+  ID: abba3f84-12eb-47bd-8d53-145ce5b94a56
+  Label: Support for custom installation of model engines
+  Class: B
+  Block ID: B214
+  Evidence: | Hardware | Recommended startup tier | Model engines | Extra | |---|---|---|...
+  Reason: Deployment and configuration property.
+  Confidence: HIGH
+
+- Entity: mineru
+  ID: 2dcf7911-1376-44bf-b7d5-29ec4a0cf7c5
+  Label: Model download size varies by engine (0.8 GB to 3 GB)
+  Class: B
+  Block ID: B180
+  Evidence: | Tier | Model engines | Model download | Min RAM required | Accelerator | |-...
+  Reason: Resource requirement/deployment metadata.
+  Confidence: HIGH
+
+- Entity: mineru
+  ID: c649ae90-ce3c-42fb-8e5b-3ec5ba47a598
+  Label: RAM requirements vary by model engine (2 GB to 16 GB)
+  Class: B
+  Block ID: B180
+  Evidence: | Tier | Model engines | Model download | Min RAM required | Accelerator | |-...
+  Reason: Resource requirement/deployment metadata.
+  Confidence: HIGH
+
+- Entity: mineru
+  ID: 1f18c9f5-da77-4e6c-a9b1-c44091a87658
+  Label: Support for CPU and GPU/MPS accelerators
+  Class: B
+  Block ID: B180
+  Evidence: | Tier | Model engines | Model download | Min RAM required | Accelerator | |-...
+  Reason: Deployment/hardware configuration property.
+  Confidence: HIGH
+
+- Entity: mineru
+  ID: 64ba8ce3-5984-4ea2-8a5a-972fcb66bd09
+  Label: Document content retrieval
+  Class: A
+  Block ID: B098
+  Evidence: ```bash mineru search "liquidated damages" --min-tier basic --json mineru rea...
+  Reason: Core user-facing function: retrieving parsed content.
+  Confidence: HIGH
+
+- Entity: mineru
+  ID: 2bd2b610-1704-422a-a63a-7670eb718f0e
+  Label: Support for page/block continuation in long documents
+  Class: A
+  Block ID: B055
+  Evidence: - Work with long documents using page/block continuation instead of loading t...
+  Reason: Distinct user-facing function for navigating/resuming long documents.
+  Confidence: HIGH
+
+- Entity: mineru
+  ID: e9dadf0c-f915-4bf6-8e2d-2f2f966817e7
+  Label: User choice-based recovery paths for errors
+  Class: B
+  Block ID: B074
+  Evidence: - When a recoverable engine or configuration error requires a quality, privac...
+  Reason: Runtime error handling configuration.
+  Confidence: HIGH
+
+- Entity: mineru
+  ID: 972669d2-82fb-4dc7-8602-64a557eef6f1
+  Label: Document format conversion
+  Class: D
+  Block ID: B029
+  Evidence: ```bash uv pip install -U "mineru>=4.0,<5" mineru-kit parse document.pdf -o d...
+  Reason: Generic description of overall purpose rather than a specific atomic feature.
+  Confidence: HIGH
+
+- Entity: mineru
+  ID: 6050c9d8-6a02-4b0e-b91a-6bb5fde51722
+  Label: Agent continuation by page or block
+  Class: A
+  Block ID: B045
+  Evidence: MinerU is a command-line document reader for agents. It parses local document...
+  Reason: Navigation feature allowing agents to resume reading.
+  Confidence: HIGH
+
+- Entity: mineru
+  ID: fae83160-c08e-469c-8551-980896ca234d
+  Label: Citation support through locators
+  Class: A
+  Block ID: B045
+  Evidence: MinerU is a command-line document reader for agents. It parses local document...
+  Reason: Feature that provides stable locators for citing specific blocks.
+  Confidence: HIGH
+
+- Entity: mineru
+  ID: 598ce42d-3ddc-4633-9386-196527923ad6
+  Label: Forget a file or folder without deleting it
+  Class: A
+  Block ID: B085
+  Evidence: 9. User asks MinerU to forget a file or folder without deleting it: use `mine...
+  Reason: Duplicate of file forgetting: explicit user command.
+  Confidence: HIGH
+
+- Entity: mineru
+  ID: c2592294-d435-43ea-ae5d-79bdfaf74a80
+  Label: Targeted content retrieval using locators
+  Class: A
+  Block ID: B080
+  Evidence: 4. User asks for a specific page or block after parsing: use `mineru read <lo...
+  Reason: User-facing function to retrieve specific content blocks.
+  Confidence: HIGH
+
+- Entity: mineru
+  ID: d10440c3-96b3-4168-a810-94e4a1c04392
+  Label: Support for different model engines with additional features
+  Class: B
+  Block ID: B177
+  Evidence: MinerU use neural network models for local `basic`, `standard`, and `advanced...
+  Reason: Configuration property regarding model engines.
+  Confidence: HIGH
+
+- Entity: mineru
+  ID: 71ac6ded-451a-4ad4-9334-39aa5a6f48d7
+  Label: Command-line entrypoint usage
+  Class: C
+  Block ID: B069
+  Evidence: - Use `mineru` as the command entrypoint. 
+  Reason: Implementation detail describing how the CLI is invoked.
+  Confidence: HIGH
+
+- Entity: mineru
+  ID: da0a3c95-94f3-4d8f-93bc-0cfb7f3c4dc4
+  Label: Document summarization
+  Class: D
+  Block ID: B051
+  Evidence: - Read, inspect, summarize, quote, cite, or answer questions about a local do...
+  Reason: Downstream use case (the tool parses, the downstream agent summarizes).
+  Confidence: MEDIUM
+
+- Entity: mineru
+  ID: 0a07d53f-d8ef-4703-acca-36ec2448d7e7
+  Label: Document quoting
+  Class: D
+  Block ID: B051
+  Evidence: - Read, inspect, summarize, quote, cite, or answer questions about a local do...
+  Reason: Downstream use case / generic description.
+  Confidence: MEDIUM
+
+- Entity: mineru
+  ID: 19ca2959-7d61-4d67-bfa9-7e5c051ef04b
+  Label: Document citing
+  Class: D
+  Block ID: B051
+  Evidence: - Read, inspect, summarize, quote, cite, or answer questions about a local do...
+  Reason: Downstream use case / generic description.
+  Confidence: MEDIUM
+
+- Entity: mineru
+  ID: 1b3582a1-d119-4d37-aa4c-f1a9b9393342
+  Label: Document question answering
+  Class: D
+  Block ID: B051
+  Evidence: - Read, inspect, summarize, quote, cite, or answer questions about a local do...
+  Reason: Downstream use case (the tool parses, downstream does QA).
+  Confidence: MEDIUM
+
+- Entity: mineru
+  ID: 08067e2d-35fe-460f-bad9-11000b3c9560
+  Label: Support for NVIDIA GPU with `mineru[full]`
+  Class: B
+  Block ID: B038
+  Evidence: The default install works out of the box: small models run ONNX CPU inference...
+  Reason: Hardware deployment/installation configuration.
+  Confidence: HIGH
+
+- Entity: mineru
+  ID: de61659a-a345-4bfc-9265-525009af5303
+  Label: WebUI interface support
+  Class: A
+  Block ID: B029
+  Evidence: ```bash uv pip install -U "mineru>=4.0,<5" mineru-kit parse document.pdf -o d...
+  Reason: Distinct user-facing interface delivery.
+  Confidence: HIGH
+
+- Entity: mineru
+  ID: bae1e471-de73-470d-b71c-ee124090b8e4
+  Label: Default limit to first 10 PDF pages
+  Class: B
+  Block ID: B039
+  Evidence: For the document library and agent reading, use `mineru parse document.pdf --...
+  Reason: Runtime configuration / default setting behavior.
+  Confidence: HIGH
+
+- Entity: mineru
+  ID: 9b4c406e-9867-4d46-85ca-39e568b149da
+  Label: Document conversion
+  Class: D
+  Block ID: B012
+  Evidence: MinerU 4.0 brings document parsing, a local document library, and service too...
+  Reason: Too generic; high-level description.
+  Confidence: HIGH
+
+- Entity: mineru
+  ID: 9cb18282-5f19-418b-bea7-18829fa3c667
+  Label: Application integration
+  Class: D
+  Block ID: B012
+  Evidence: MinerU 4.0 brings document parsing, a local document library, and service too...
+  Reason: Broad marketing statement.
+  Confidence: HIGH
+
+- Entity: mineru
+  ID: 81b9ffd0-dc96-4024-b6cf-3d0b81e80b90
+  Label: Support for multiple rendering formats
+  Class: A
+  Block ID: B018
+  Evidence: - **Structured results and rendering**: one document model supports nine rend...
+  Reason: Meaningful user-facing outcome (rendering into 9 formats).
+  Confidence: MEDIUM
+
+- Entity: mineru
+  ID: fcb5370c-8dd4-42ba-99a7-f7cb24ae9bbd
+  Label: PDF cache invalidation
+  Class: A
+  Block ID: B340
+  Evidence: ```bash mineru invalidate "report.pdf" mineru invalidate "report.pdf" --tier ...
+  Reason: Explicit user command to invalidate cache for a file.
+  Confidence: HIGH
+
+- Entity: mineru
+  ID: 1bc3df0f-4751-4222-b089-0dd58c6b8b74
+  Label: Remote failure fallback to local execution
+  Class: B
+  Block ID: B146
+  Evidence: - Remote failure may fall back to local if the request can still be satisfied...
+  Reason: Runtime configuration/behavior property.
+  Confidence: HIGH
+
+- Entity: mineru
+  ID: 68f57d42-3073-4cdc-ac47-228b3937a0dd
+  Label: Document locator support
+  Class: A
+  Block ID: B268
+  Evidence: Use `mineru read` when a document has already been parsed or when the user gi...
+  Reason: Feature generating and using stable identifiers for content.
+  Confidence: HIGH
+
+- Entity: mineru
+  ID: 79aa31fd-1b51-44ff-91f9-1f6c06f23216
+  Label: Watched directories support
+  Class: A
+  Block ID: B037
+  Evidence: `DoclibClient` also covers search, watched directories, locators for page/blo...
+  Reason: Distinct user-facing functionality (watching folders for auto-processing).
+  Confidence: HIGH
+
+- Entity: mineru
+  ID: bb8c70bb-300f-4403-bc96-bc83303ef626
+  Label: Page/block continuation locators
+  Class: A
+  Block ID: B037
+  Evidence: `DoclibClient` also covers search, watched directories, locators for page/blo...
+  Reason: Feature providing locators for resuming reads.
+  Confidence: HIGH
+
+- Entity: mineru
+  ID: 4248df1b-5eab-4882-b4dd-25f5cc67e27e
+  Label: Result invalidation support
+  Class: A
+  Block ID: B037
+  Evidence: `DoclibClient` also covers search, watched directories, locators for page/blo...
+  Reason: Explicit user function to invalidate cache.
+  Confidence: HIGH
+
+- Entity: mineru
+  ID: a170d379-291e-47aa-b570-2052e477b430
+  Label: User-controlled document upload
+  Class: B
+  Block ID: B144
+  Evidence: - Even if remote parsing is configured, do not upload a document until the us...
+  Reason: Privacy/operational behavior property.
+  Confidence: HIGH
+
+- Entity: mineru
+  ID: 0878e60c-bc3b-4c52-9d89-63bcd64e16c7
+  Label: Unified toolset for integration and interaction
+  Class: D
+  Block ID: B017
+  Evidence: - **Unified tools**: Python SDK, V1 API, stateless batch conversion, multi-se...
+  Reason: Broad marketing statement.
+  Confidence: HIGH
+
+- Entity: mineru
+  ID: 5d605f78-a0fe-4a61-8af1-fa12f5d9b78d
+  Label: PDF page selection across multiple interfaces
+  Class: A
+  Block ID: B236
+  Evidence: PDF page selection is shared across CLI, Doclib, API, Gradio and Python. See ...
+  Reason: User-facing capability to select specific pages to parse.
+  Confidence: HIGH
+
+- Entity: mineru
+  ID: 48dd6c73-a43d-4c47-9c75-74b0563aee66
+  Label: Support for multiple document formats
+  Class: D
+  Block ID: B062
+  Evidence: | Type | Extensions | |---|---| | PDF | `.pdf`, including scanned PDFs and ac...
+  Reason: Generic description; specific formats are extracted elsewhere.
+  Confidence: HIGH
+
+- Entity: mineru
+  ID: 001abd12-6c33-4a7f-8d99-117481f6d62b
+  Label: Support for scanned PDFs
+  Class: A
+  Block ID: B062
+  Evidence: | Type | Extensions | |---|---| | PDF | `.pdf`, including scanned PDFs and ac...
+  Reason: Explicit format support capability.
+  Confidence: HIGH
+
+- Entity: mineru
+  ID: 7d61cc20-4813-449a-9512-92c263b70f33
+  Label: Support for academic papers
+  Class: D
+  Block ID: B062
+  Evidence: | Type | Extensions | |---|---| | PDF | `.pdf`, including scanned PDFs and ac...
+  Reason: Downstream use case / generic description.
+  Confidence: MEDIUM
+
+- Entity: mineru
+  ID: 8dfa7a30-2dce-42c1-8ffa-8c460ed9024d
+  Label: Support for office document formats
+  Class: A
+  Block ID: B062
+  Evidence: | Type | Extensions | |---|---| | PDF | `.pdf`, including scanned PDFs and ac...
+  Reason: Explicit format support capability.
+  Confidence: HIGH
+
+- Entity: mineru
+  ID: e33909db-37a0-429a-8946-085c9cda70fb
+  Label: Support for HTML documents
+  Class: A
+  Block ID: B062
+  Evidence: | Type | Extensions | |---|---| | PDF | `.pdf`, including scanned PDFs and ac...
+  Reason: Explicit format support capability.
+  Confidence: HIGH
+
+- Entity: mineru
+  ID: 47144dde-aa5b-4827-b71b-5631aef6b684
+  Label: Support for CSV and TSV files
+  Class: A
+  Block ID: B062
+  Evidence: | Type | Extensions | |---|---| | PDF | `.pdf`, including scanned PDFs and ac...
+  Reason: Explicit format support capability.
+  Confidence: HIGH
+
+- Entity: mineru
+  ID: 5bb07286-ec41-4f76-9c27-dcc6cd2ab7cf
+  Label: Model downloading by tier
+  Class: B
+  Block ID: B221
+  Evidence: ```bash mineru-kit models download --tier <tier> mineru-kit models verify --t...
+  Reason: Configuration / deployment command.
+  Confidence: HIGH
+
+- Entity: mineru
+  ID: 2761e7a6-61e1-400e-9bac-c190d7ae4502
+  Label: Model verification by tier
+  Class: B
+  Block ID: B221
+  Evidence: ```bash mineru-kit models download --tier <tier> mineru-kit models verify --t...
+  Reason: Configuration / deployment command.
+  Confidence: HIGH
+
+- Entity: mineru
+  ID: 6cb56fda-daaf-4761-a0b4-1123255aea0e
+  Label: File content display
+  Class: A
+  Block ID: B299
+  Evidence: ```bash mineru show file "report.pdf" mineru show file "report.pdf" --json mi...
+  Reason: Explicit user command to display parsed content.
+  Confidence: HIGH
+
+- Entity: mineru
+  ID: 546b40ab-6717-4bc0-b7f6-ccc9f1911a52
+  Label: Document scanning
+  Class: D
+  Block ID: B299
+  Evidence: ```bash mineru show file "report.pdf" mineru show file "report.pdf" --json mi...
+  Reason: Generic or downstream use case.
+  Confidence: MEDIUM
+
+- Entity: pymupdf4llm
+  ID: 633f0223-da70-43ac-82de-e1dd79fb27c6
+  Label: Detection and preservation of bold, italic, monospace, and code blocks
+  Class: A
+  Block ID: B059
+  Evidence: | Feature | Description | |---|---| | **Layout analysis** | Reconstructs natu...
+  Reason: Explicit parsed layout element preservation.
+  Confidence: HIGH
+
+- Entity: pymupdf4llm
+  ID: be8d2cee-c3ae-4f97-8f7a-33bd125bb72b
+  Label: Detection and inclusion of references to vector graphic elements
+  Class: A
+  Block ID: B059
+  Evidence: | Feature | Description | |---|---| | **Layout analysis** | Reconstructs natu...
+  Reason: Explicit parsed layout element preservation.
+  Confidence: HIGH
+
+- Entity: pymupdf4llm
+  ID: d29248f5-4411-4635-95ce-1069bbd5d013
+  Label: Processing a subset of pages via the `pages` parameter
+  Class: A
+  Block ID: B059
+  Evidence: | Feature | Description | |---|---| | **Layout analysis** | Reconstructs natu...
+  Reason: Explicit user-facing parameter.
+  Confidence: HIGH
+
+- Entity: pymupdf4llm
+  ID: 58237ed2-6cc4-40b2-879c-759378552a05
+  Label: Page count retrieval
+  Class: A
+  Block ID: B144
+  Evidence: ```python {     "metadata": {         "format": "PDF 1.7",         "title": "...
+  Reason: Metadata feature returned by the parser.
+  Confidence: HIGH
+
+- Entity: pymupdf4llm
+  ID: 02d52fc5-4de7-4101-a334-6e8d4dd87a65
+  Label: File path retrieval
+  Class: C
+  Block ID: B144
+  Evidence: ```python {     "metadata": {         "format": "PDF 1.7",         "title": "...
+  Reason: Implementation detail (returning the path passed in).
+  Confidence: HIGH
+
+- Entity: pymupdf4llm
+  ID: d9b0f6a4-f806-4911-8625-0f32d839a933
+  Label: LlamaIndex and LangChain compatibility
+  Class: A
+  Block ID: B018
+  Evidence: - **Framework integrations** — drop-in support for LlamaIndex and LangChain 
+  Reason: Explicitly supported framework integration.
+  Confidence: HIGH
+
+- Entity: pymupdf4llm
+  ID: 38bd9cb7-b810-49af-a045-630f3f1744ca
+  Label: Document loading integration with LlamaIndex and LangChain
+  Class: A
+  Block ID: B095
+  Evidence: | Framework | Method | |---|---| | **LlamaIndex** | `pymupdf4llm.LlamaMarkdow...
+  Reason: Explicitly supported framework integration.
+  Confidence: HIGH
+
+==================================================
+QUALITY METRICS
+==================================================
+A total: 26
+B total: 15
+C total: 2
+D total: 11
+Former E total: 54
+
+==================================================
+FLAGGED ITEMS
+==================================================
+Insufficient evidence: 0
+LOW confidence: 0
+Needs manual review: 0

@@ -1,6 +1,6 @@
 import sys, json
 
-data = json.load(open('NexusBase_extracted_capabilities_v0.2.json', encoding='utf-8'))
+data = json.load(open('01_extraction/outputs/NexusBase_extracted_capabilities_v0.2.json', encoding='utf-8'))
 
 entities = ['redis', 'sentry', 'whisperx', 'marker']
 for e in entities:

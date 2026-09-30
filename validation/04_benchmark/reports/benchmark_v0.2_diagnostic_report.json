@@ -1,0 +1,1183 @@
+{
+  "scenario_diagnostics": [
+    {
+      "scenario_id": "S01",
+      "type": "observability",
+      "status": "EVALUATED",
+      "problem": "We're a 4-person team and want error tracking for our Python and JS apps. It must be self-hosted and have a genuinely open-source license.",
+      "extracted_requirements": [
+        "capture exceptions from app SDKs",
+        "stack traces with issue grouping",
+        "alerting",
+        "low operational footprint"
+      ],
+      "must_have_requirements": [
+        "capture exceptions from app SDKs",
+        "stack traces with issue grouping",
+        "alerting"
+      ],
+      "constraints": {
+        "license": "osi_open_source",
+        "hosting": "self_hosted",
+        "cost": "free"
+      },
+      "candidates_discovered": [],
+      "benchmark_expected_viable": [
+        "glitchtip"
+      ],
+      "intersection": [],
+      "atomic_capabilities_matched": [],
+      "unmatched_requirements": [
+        "capture exceptions from app SDKs",
+        "stack traces with issue grouping",
+        "alerting",
+        "low operational footprint"
+      ],
+      "constraint_failures": [
+        "No entity in catalog satisfies error tracking requirements for Python/JS apps with self-hosting and open-source license"
+      ],
+      "compatibility_failures": [],
+      "path_validation_failures": [],
+      "final_path_status": [
+        "n/a"
+      ],
+      "final_answer_status": "no_valid_path"
+    },
+    {
+      "scenario_id": "S02",
+      "type": "deployment",
+      "status": "EVALUATED",
+      "problem": "I want a Heroku-like git-push deploy experience on a single cheap VPS I control, without running Kubernetes.",
+      "extracted_requirements": [
+        "deploy from git or container image",
+        "runs on a single server",
+        "automatic TLS/domains"
+      ],
+      "must_have_requirements": [
+        "deploy from git or container image",
+        "runs on a single server"
+      ],
+      "constraints": {
+        "license": null,
+        "hosting": "self_hosted",
+        "cost": "free"
+      },
+      "candidates_discovered": [],
+      "benchmark_expected_viable": [
+        "coolify",
+        "dokku",
+        "caprover"
+      ],
+      "intersection": [],
+      "atomic_capabilities_matched": [],
+      "unmatched_requirements": [
+        "deploy from git or container image",
+        "runs on a single server",
+        "automatic TLS/domains"
+      ],
+      "constraint_failures": [],
+      "compatibility_failures": [],
+      "path_validation_failures": [],
+      "final_path_status": [],
+      "final_answer_status": "no_valid_path"
+    },
+    {
+      "scenario_id": "S04",
+      "type": "feature-management",
+      "status": "EVALUATED",
+      "problem": "We need feature flags with gradual rollouts. We want to self-host and avoid vendor lock-in.",
+      "extracted_requirements": [
+        "boolean and percentage-rollout flags",
+        "SDKs for common languages",
+        "A/B experiment analysis"
+      ],
+      "must_have_requirements": [
+        "boolean and percentage-rollout flags",
+        "SDKs for common languages"
+      ],
+      "constraints": {
+        "license": "osi_open_source",
+        "hosting": "self_hosted",
+        "cost": "free"
+      },
+      "candidates_discovered": [],
+      "benchmark_expected_viable": [
+        "unleash",
+        "growthbook",
+        "flagsmith"
+      ],
+      "intersection": [],
+      "atomic_capabilities_matched": [],
+      "unmatched_requirements": [
+        "boolean and percentage-rollout flags",
+        "SDKs for common languages",
+        "A/B experiment analysis"
+      ],
+      "constraint_failures": [],
+      "compatibility_failures": [],
+      "path_validation_failures": [],
+      "final_path_status": [],
+      "final_answer_status": "no_valid_path"
+    },
+    {
+      "scenario_id": "S05",
+      "type": "documents",
+      "status": "EVALUATED",
+      "problem": "Convert PDFs to clean Markdown locally for an LLM ingestion pipeline in a commercial product. Free, and the license must not force us to open-source our app.",
+      "extracted_requirements": [
+        "PDF to Markdown/structured text",
+        "table extraction",
+        "runs fully locally"
+      ],
+      "must_have_requirements": [
+        "PDF to Markdown/structured text",
+        "table extraction",
+        "runs fully locally"
+      ],
+      "constraints": {
+        "license": "permissive",
+        "hosting": "local",
+        "cost": "free"
+      },
+      "candidates_discovered": [
+        "docling"
+      ],
+      "benchmark_expected_viable": [
+        "docling"
+      ],
+      "intersection": [
+        "docling"
+      ],
+      "atomic_capabilities_matched": [
+        "Advanced PDF understanding",
+        "Markdown superset parsing",
+        "Table structure analysis"
+      ],
+      "unmatched_requirements": [
+        "runs fully locally"
+      ],
+      "constraint_failures": [],
+      "compatibility_failures": [],
+      "path_validation_failures": [],
+      "final_path_status": [
+        "unverified"
+      ],
+      "final_answer_status": "paths"
+    },
+    {
+      "scenario_id": "S06",
+      "type": "audio",
+      "status": "EVALUATED",
+      "problem": "Transcribe recorded interviews locally with timestamps. No cloud APIs, free.",
+      "extracted_requirements": [
+        "speech-to-text with timestamps",
+        "runs offline",
+        "reasonable speed on CPU or consumer GPU"
+      ],
+      "must_have_requirements": [
+        "speech-to-text with timestamps",
+        "runs offline"
+      ],
+      "constraints": {
+        "license": null,
+        "hosting": "local",
+        "cost": "free"
+      },
+      "candidates_discovered": [
+        "whisperx",
+        "whisper_cpp"
+      ],
+      "benchmark_expected_viable": [
+        "faster_whisper",
+        "whisper_cpp"
+      ],
+      "intersection": [
+        "whisper_cpp"
+      ],
+      "atomic_capabilities_matched": [
+        "Speaker diarization",
+        "VAD-based segment transcription",
+        "Audio transcription"
+      ],
+      "unmatched_requirements": [
+        "runs offline",
+        "reasonable speed on CPU or consumer GPU"
+      ],
+      "constraint_failures": [],
+      "compatibility_failures": [],
+      "path_validation_failures": [],
+      "final_path_status": [
+        "verified",
+        "verified"
+      ],
+      "final_answer_status": "paths"
+    },
+    {
+      "scenario_id": "S07",
+      "type": "audio",
+      "status": "EVALUATED",
+      "problem": "Same as above, but I also need speaker labels (who said what), still fully local and free.",
+      "extracted_requirements": [
+        "speech-to-text with timestamps",
+        "speaker diarization",
+        "runs offline"
+      ],
+      "must_have_requirements": [
+        "speech-to-text with timestamps",
+        "speaker diarization",
+        "runs offline"
+      ],
+      "constraints": {
+        "license": null,
+        "hosting": "local",
+        "cost": "free"
+      },
+      "candidates_discovered": [
+        "whisperx"
+      ],
+      "benchmark_expected_viable": [
+        "whisperx",
+        "pyannote"
+      ],
+      "intersection": [
+        "whisperx"
+      ],
+      "atomic_capabilities_matched": [
+        "Language-specific phoneme ASR alignment",
+        "Batched whisper support",
+        "Support for multiple languages via Hugging Face models",
+        "Speaker diarization",
+        "Speaker diarization support",
+        "Accurate batched inference",
+        "Automatic model selection from torchaudio pipelines or huggingface",
+        "Model flush for low GPU memory resources",
+        "70x speed-up support"
+      ],
+      "unmatched_requirements": [],
+      "constraint_failures": [],
+      "compatibility_failures": [],
+      "path_validation_failures": [],
+      "final_path_status": [
+        "verified"
+      ],
+      "final_answer_status": "paths"
+    },
+    {
+      "scenario_id": "S08",
+      "type": "data-store",
+      "status": "EVALUATED",
+      "problem": "We want a Redis-compatible cache for a new product, with a truly open-source license.",
+      "extracted_requirements": [
+        "Redis protocol compatibility",
+        "OSI-approved license for the version recommended"
+      ],
+      "must_have_requirements": [
+        "Redis protocol compatibility",
+        "OSI-approved license for the version recommended"
+      ],
+      "constraints": {
+        "license": "osi_open_source",
+        "hosting": "self_hosted",
+        "cost": "free"
+      },
+      "candidates_discovered": [
+        "valkey"
+      ],
+      "benchmark_expected_viable": [
+        "valkey",
+        "keydb"
+      ],
+      "intersection": [
+        "valkey"
+      ],
+      "atomic_capabilities_matched": [
+        "High-performance data structure server"
+      ],
+      "unmatched_requirements": [
+        "OSI-approved license for the version recommended"
+      ],
+      "constraint_failures": [],
+      "compatibility_failures": [],
+      "path_validation_failures": [],
+      "final_path_status": [
+        "verified"
+      ],
+      "final_answer_status": "paths"
+    },
+    {
+      "scenario_id": "S13",
+      "type": "search-plus-ai",
+      "status": "EVALUATED",
+      "problem": "Build a private, searchable archive of my meeting recordings (transcribe plus semantic search). Local and free.",
+      "extracted_requirements": [
+        "speech-to-text",
+        "semantic search over transcripts",
+        "simple UI to browse and query"
+      ],
+      "must_have_requirements": [
+        "speech-to-text",
+        "semantic search over transcripts"
+      ],
+      "constraints": {
+        "license": null,
+        "hosting": "local",
+        "cost": "free"
+      },
+      "candidates_discovered": [],
+      "benchmark_expected_viable": [
+        "faster_whisper",
+        "whisper_cpp",
+        "chroma"
+      ],
+      "intersection": [],
+      "atomic_capabilities_matched": [],
+      "unmatched_requirements": [
+        "speech-to-text",
+        "semantic search over transcripts",
+        "simple UI to browse and query"
+      ],
+      "constraint_failures": [],
+      "compatibility_failures": [],
+      "path_validation_failures": [],
+      "final_path_status": [],
+      "final_answer_status": "no_valid_path"
+    },
+    {
+      "scenario_id": "S14",
+      "type": "failure-mode",
+      "status": "EVALUATED",
+      "problem": "Find a free, offline tool that automatically translates our 500k-line COBOL codebase to Java with guaranteed behavioral equivalence.",
+      "extracted_requirements": [
+        "automatic COBOL to Java translation",
+        "guaranteed behavioral equivalence"
+      ],
+      "must_have_requirements": [
+        "automatic COBOL to Java translation",
+        "guaranteed behavioral equivalence"
+      ],
+      "constraints": {
+        "license": null,
+        "hosting": "local",
+        "cost": "free"
+      },
+      "candidates_discovered": [],
+      "benchmark_expected_viable": [],
+      "intersection": [],
+      "atomic_capabilities_matched": [],
+      "unmatched_requirements": [
+        "automatic COBOL to Java translation",
+        "guaranteed behavioral equivalence"
+      ],
+      "constraint_failures": [],
+      "compatibility_failures": [],
+      "path_validation_failures": [],
+      "final_path_status": [],
+      "final_answer_status": "no_valid_path"
+    },
+    {
+      "scenario_id": "S15",
+      "type": "failure-mode",
+      "status": "EVALUATED",
+      "problem": "I need something to manage my team's stuff.",
+      "extracted_requirements": [],
+      "must_have_requirements": [],
+      "constraints": {},
+      "candidates_discovered": [],
+      "benchmark_expected_viable": [],
+      "intersection": [],
+      "atomic_capabilities_matched": [],
+      "unmatched_requirements": [],
+      "constraint_failures": [],
+      "compatibility_failures": [],
+      "path_validation_failures": [],
+      "final_path_status": [],
+      "final_answer_status": "no_valid_path"
+    }
+  ],
+  "failures": [],
+  "viable_miss_analysis": [
+    {
+      "scenario": "S01",
+      "expected_viable_entity": "glitchtip",
+      "discovered": false,
+      "reason": "Not returned by LLM discovery (Candidate discovery failure)"
+    },
+    {
+      "scenario": "S02",
+      "expected_viable_entity": "coolify",
+      "discovered": false,
+      "reason": "Not returned by LLM discovery (Candidate discovery failure)"
+    },
+    {
+      "scenario": "S02",
+      "expected_viable_entity": "dokku",
+      "discovered": false,
+      "reason": "Not returned by LLM discovery (Candidate discovery failure)"
+    },
+    {
+      "scenario": "S02",
+      "expected_viable_entity": "caprover",
+      "discovered": false,
+      "reason": "Not returned by LLM discovery (Candidate discovery failure)"
+    },
+    {
+      "scenario": "S04",
+      "expected_viable_entity": "unleash",
+      "discovered": false,
+      "reason": "Not returned by LLM discovery (Candidate discovery failure)"
+    },
+    {
+      "scenario": "S04",
+      "expected_viable_entity": "growthbook",
+      "discovered": false,
+      "reason": "Not returned by LLM discovery (Candidate discovery failure)"
+    },
+    {
+      "scenario": "S04",
+      "expected_viable_entity": "flagsmith",
+      "discovered": false,
+      "reason": "Not returned by LLM discovery (Candidate discovery failure)"
+    },
+    {
+      "scenario": "S05",
+      "expected_viable_entity": "docling",
+      "discovered": true,
+      "reason": "N/A"
+    },
+    {
+      "scenario": "S06",
+      "expected_viable_entity": "faster_whisper",
+      "discovered": false,
+      "reason": "Not returned by LLM discovery (Candidate discovery failure)"
+    },
+    {
+      "scenario": "S06",
+      "expected_viable_entity": "whisper_cpp",
+      "discovered": true,
+      "reason": "N/A"
+    },
+    {
+      "scenario": "S07",
+      "expected_viable_entity": "whisperx",
+      "discovered": true,
+      "reason": "N/A"
+    },
+    {
+      "scenario": "S07",
+      "expected_viable_entity": "pyannote",
+      "discovered": false,
+      "reason": "Not returned by LLM discovery (Candidate discovery failure)"
+    },
+    {
+      "scenario": "S08",
+      "expected_viable_entity": "valkey",
+      "discovered": true,
+      "reason": "N/A"
+    },
+    {
+      "scenario": "S08",
+      "expected_viable_entity": "keydb",
+      "discovered": false,
+      "reason": "Not returned by LLM discovery (Candidate discovery failure)"
+    },
+    {
+      "scenario": "S13",
+      "expected_viable_entity": "faster_whisper",
+      "discovered": false,
+      "reason": "Not returned by LLM discovery (Candidate discovery failure)"
+    },
+    {
+      "scenario": "S13",
+      "expected_viable_entity": "whisper_cpp",
+      "discovered": false,
+      "reason": "Not returned by LLM discovery (Candidate discovery failure)"
+    },
+    {
+      "scenario": "S13",
+      "expected_viable_entity": "chroma",
+      "discovered": false,
+      "reason": "Not returned by LLM discovery (Candidate discovery failure)"
+    }
+  ],
+  "must_have_analysis": [
+    {
+      "requirement": "capture exceptions from app SDKs",
+      "expected_coverage": true,
+      "actual_coverage": false,
+      "matched_atomic_capability": [],
+      "candidate": [],
+      "evidence": [],
+      "exact_reason_if_missing": "WRONG_CANDIDATE (No candidate found)"
+    },
+    {
+      "requirement": "stack traces with issue grouping",
+      "expected_coverage": true,
+      "actual_coverage": false,
+      "matched_atomic_capability": [],
+      "candidate": [],
+      "evidence": [],
+      "exact_reason_if_missing": "WRONG_CANDIDATE (No candidate found)"
+    },
+    {
+      "requirement": "alerting",
+      "expected_coverage": true,
+      "actual_coverage": false,
+      "matched_atomic_capability": [],
+      "candidate": [],
+      "evidence": [],
+      "exact_reason_if_missing": "WRONG_CANDIDATE (No candidate found)"
+    },
+    {
+      "requirement": "deploy from git or container image",
+      "expected_coverage": true,
+      "actual_coverage": false,
+      "matched_atomic_capability": [],
+      "candidate": [],
+      "evidence": [],
+      "exact_reason_if_missing": "WRONG_CANDIDATE (No candidate found)"
+    },
+    {
+      "requirement": "runs on a single server",
+      "expected_coverage": true,
+      "actual_coverage": false,
+      "matched_atomic_capability": [],
+      "candidate": [],
+      "evidence": [],
+      "exact_reason_if_missing": "WRONG_CANDIDATE (No candidate found)"
+    },
+    {
+      "requirement": "boolean and percentage-rollout flags",
+      "expected_coverage": true,
+      "actual_coverage": false,
+      "matched_atomic_capability": [],
+      "candidate": [],
+      "evidence": [],
+      "exact_reason_if_missing": "WRONG_CANDIDATE (No candidate found)"
+    },
+    {
+      "requirement": "SDKs for common languages",
+      "expected_coverage": true,
+      "actual_coverage": false,
+      "matched_atomic_capability": [],
+      "candidate": [],
+      "evidence": [],
+      "exact_reason_if_missing": "WRONG_CANDIDATE (No candidate found)"
+    },
+    {
+      "requirement": "PDF to Markdown/structured text",
+      "expected_coverage": true,
+      "actual_coverage": true,
+      "matched_atomic_capability": [
+        "Advanced PDF understanding",
+        "Markdown superset parsing"
+      ],
+      "candidate": [
+        "docling",
+        "docling"
+      ],
+      "evidence": [
+        [
+          {
+            "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
+            "evidence_type": "descriptive_context",
+            "quote": "- \ud83d\udcd1 Advanced PDF understanding incl. page layout, reading order, table structure, code, formulas, image classification, and more\n",
+            "start": 2848,
+            "end": 2977,
+            "match_mode": "block_derived",
+            "evidence_blocks": [
+              "B009"
+            ]
+          }
+        ],
+        [
+          {
+            "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
+            "evidence_type": "explicit_statement",
+            "quote": "- \ud83d\udcdd Parsing of plain-text files (`.txt`, `.text`) and Markdown supersets (`.qmd`, `.Rmd`)\n",
+            "start": 4709,
+            "end": 4799,
+            "match_mode": "block_derived",
+            "evidence_blocks": [
+              "B028"
+            ]
+          }
+        ]
+      ],
+      "exact_reason_if_missing": "N/A"
+    },
+    {
+      "requirement": "table extraction",
+      "expected_coverage": true,
+      "actual_coverage": true,
+      "matched_atomic_capability": [
+        "Table structure analysis"
+      ],
+      "candidate": [
+        "docling"
+      ],
+      "evidence": [
+        [
+          {
+            "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
+            "evidence_type": "descriptive_context",
+            "quote": "- \ud83d\udcd1 Advanced PDF understanding incl. page layout, reading order, table structure, code, formulas, image classification, and more\n",
+            "start": 2848,
+            "end": 2977,
+            "match_mode": "block_derived",
+            "evidence_blocks": [
+              "B009"
+            ]
+          }
+        ]
+      ],
+      "exact_reason_if_missing": "N/A"
+    },
+    {
+      "requirement": "runs fully locally",
+      "expected_coverage": true,
+      "actual_coverage": false,
+      "matched_atomic_capability": [],
+      "candidate": [],
+      "evidence": [],
+      "exact_reason_if_missing": "TRUE_MISSING (Candidate found but lacks capability mapping)"
+    },
+    {
+      "requirement": "speech-to-text with timestamps",
+      "expected_coverage": true,
+      "actual_coverage": true,
+      "matched_atomic_capability": [
+        "Speaker diarization",
+        "VAD-based segment transcription",
+        "Audio transcription"
+      ],
+      "candidate": [
+        "whisperx",
+        "whisperx",
+        "whisper_cpp"
+      ],
+      "evidence": [
+        [
+          {
+            "source_url": "https://raw.githubusercontent.com/m-bain/whisperX/HEAD/README.md",
+            "evidence_type": "explicit_statement",
+            "quote": "This repository provides fast automatic speech recognition (70x realtime with large-v2) with word-level timestamps and speaker diarization.\n",
+            "start": 1959,
+            "end": 2099,
+            "match_mode": "block_derived",
+            "evidence_blocks": [
+              "B008"
+            ]
+          }
+        ],
+        [
+          {
+            "source_url": "https://raw.githubusercontent.com/m-bain/whisperX/HEAD/README.md",
+            "evidence_type": "descriptive_context",
+            "quote": "2. VAD-based segment transcription, unlike the buffered transcription of openai's. In the WhisperX paper we show this reduces WER, and enables accurate batched inference\n",
+            "start": 11881,
+            "end": 12051,
+            "match_mode": "block_derived",
+            "evidence_blocks": [
+              "B101"
+            ]
+          }
+        ],
+        [
+          {
+            "source_url": "https://raw.githubusercontent.com/ggml-org/whisper.cpp/HEAD/README.md",
+            "evidence_type": "explicit_statement",
+            "quote": "| Example                                             | Web                                   | Description                                                                                                                     |\n| --------------------------------------------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |\n| [whisper-cli](examples/cli)                         | [whisper.wasm](examples/whisper.wasm) | Tool for translating and transcribing audio using Whisper                                                                       |\n| [whisper-bench](examples/bench)                     | [bench.wasm](examples/bench.wasm)     | Benchmark the performance of Whisper on your machine                                                                            |\n| [whisper-stream](examples/stream)                   | [stream.wasm](examples/stream.wasm)   | Real-time transcription of raw microphone capture                                                                               |\n| [whisper-command](examples/command)                 | [command.wasm](examples/command.wasm) | Basic voice assistant example for receiving voice commands from the mic                                                         |\n| [whisper-server](examples/server)                   |                                       | HTTP transcription server with OAI-like API                                                                                     |\n| [whisper-talk-llama](examples/talk-llama)           |                                       | Talk with a LLaMA bot                                                                                                           |\n| [whisper.objc](examples/whisper.objc)               |                                       | iOS mobile application using whisper.cpp                                                                                        |\n| [whisper.swiftui](examples/whisper.swiftui)         |                                       | SwiftUI iOS / macOS application using whisper.cpp                                                                               |\n| [whisper.android](examples/whisper.android)         |                                       | Android mobile application using whisper.cpp                                                                                    |\n| [whisper.nvim](examples/whisper.nvim)               |                                       | Speech-to-text plugin for Neovim                                                                                                |\n| [generate-karaoke.sh](examples/generate-karaoke.sh) |                                       | Helper script to easily [generate a karaoke video](https://youtu.be/uj7hVta4blM) of raw audio capture                           |\n| [livestream.sh](examples/livestream.sh)             |                                       | [Livestream audio transcription](https://github.com/ggml-org/whisper.cpp/issues/185)                                            |\n| [yt-wsp.sh](examples/yt-wsp.sh)                     |                                       | Download + transcribe and/or translate any VOD [(original)](https://gist.github.com/DaniruKun/96f763ec1a037cc92fe1a059b643b818) |\n| [wchess](examples/wchess)                           | [wchess.wasm](examples/wchess)        | Voice-controlled chess                                                                                                          |\n",
+            "start": 36855,
+            "end": 40471,
+            "match_mode": "block_derived",
+            "evidence_blocks": [
+              "B342"
+            ]
+          }
+        ]
+      ],
+      "exact_reason_if_missing": "N/A"
+    },
+    {
+      "requirement": "runs offline",
+      "expected_coverage": true,
+      "actual_coverage": false,
+      "matched_atomic_capability": [],
+      "candidate": [],
+      "evidence": [],
+      "exact_reason_if_missing": "TRUE_MISSING (Candidate found but lacks capability mapping)"
+    },
+    {
+      "requirement": "speech-to-text with timestamps",
+      "expected_coverage": true,
+      "actual_coverage": true,
+      "matched_atomic_capability": [
+        "Language-specific phoneme ASR alignment",
+        "Batched whisper support",
+        "Support for multiple languages via Hugging Face models"
+      ],
+      "candidate": [
+        "whisperx",
+        "whisperx",
+        "whisperx"
+      ],
+      "evidence": [
+        [
+          {
+            "source_url": "https://raw.githubusercontent.com/m-bain/whisperX/HEAD/README.md",
+            "evidence_type": "descriptive_context",
+            "quote": "The phoneme ASR alignment model is _language-specific_, for tested languages these models are [automatically picked from torchaudio pipelines or huggingface](https://github.com/m-bain/whisperX/blob/f2da2f858e99e4211fe4f64b5f2938b007827e17/whisperx/alignment.py#L24-L58).\nJust pass in the `--language` code, and use the whisper `--model large`.\n",
+            "start": 7735,
+            "end": 8079,
+            "match_mode": "block_derived",
+            "evidence_blocks": [
+              "B065"
+            ]
+          }
+        ],
+        [
+          {
+            "source_url": "https://raw.githubusercontent.com/m-bain/whisperX/HEAD/README.md",
+            "evidence_type": "descriptive_context",
+            "quote": "- v3 released, 70x speed-up open-sourced. Using batched whisper with [faster-whisper](https://github.com/guillaumekln/faster-whisper) backend!\n",
+            "start": 3841,
+            "end": 3984,
+            "match_mode": "block_derived",
+            "evidence_blocks": [
+              "B022"
+            ]
+          }
+        ],
+        [
+          {
+            "source_url": "https://raw.githubusercontent.com/m-bain/whisperX/HEAD/README.md",
+            "evidence_type": "descriptive_context",
+            "quote": "Currently default models provided for `{en, fr, de, es, it}` via torchaudio pipelines and many other languages via Hugging Face. Please find the list of currently supported languages under `DEFAULT_ALIGN_MODELS_HF` on [alignment.py](https://github.com/m-bain/whisperX/blob/main/whisperx/alignment.py). If the detected language is not in this list, you need to find a phoneme-based ASR model from [huggingface model hub](https://huggingface.co/models) and test it on your data.\n",
+            "start": 8080,
+            "end": 8557,
+            "match_mode": "block_derived",
+            "evidence_blocks": [
+              "B066"
+            ]
+          }
+        ]
+      ],
+      "exact_reason_if_missing": "N/A"
+    },
+    {
+      "requirement": "speaker diarization",
+      "expected_coverage": true,
+      "actual_coverage": true,
+      "matched_atomic_capability": [
+        "Speaker diarization",
+        "Speaker diarization support",
+        "Accurate batched inference"
+      ],
+      "candidate": [
+        "whisperx",
+        "whisperx",
+        "whisperx"
+      ],
+      "evidence": [
+        [
+          {
+            "source_url": "https://raw.githubusercontent.com/m-bain/whisperX/HEAD/README.md",
+            "evidence_type": "explicit_statement",
+            "quote": "This repository provides fast automatic speech recognition (70x realtime with large-v2) with word-level timestamps and speaker diarization.\n",
+            "start": 1959,
+            "end": 2099,
+            "match_mode": "block_derived",
+            "evidence_blocks": [
+              "B008"
+            ]
+          }
+        ],
+        [
+          {
+            "source_url": "https://raw.githubusercontent.com/m-bain/whisperX/HEAD/README.md",
+            "evidence_type": "explicit_statement",
+            "quote": "To **enable Speaker Diarization**, include your Hugging Face access token (read) that you can generate from [Here](https://huggingface.co/settings/tokens) after the `--hf_token` argument and accept the user agreement for the [speaker-diarization-community-1](https://huggingface.co/pyannote/speaker-diarization-community-1) model.\n",
+            "start": 5788,
+            "end": 6119,
+            "match_mode": "block_derived",
+            "evidence_blocks": [
+              "B045"
+            ]
+          }
+        ],
+        [
+          {
+            "source_url": "https://raw.githubusercontent.com/m-bain/whisperX/HEAD/README.md",
+            "evidence_type": "descriptive_context",
+            "quote": "2. VAD-based segment transcription, unlike the buffered transcription of openai's. In the WhisperX paper we show this reduces WER, and enables accurate batched inference\n",
+            "start": 11881,
+            "end": 12051,
+            "match_mode": "block_derived",
+            "evidence_blocks": [
+              "B101"
+            ]
+          }
+        ]
+      ],
+      "exact_reason_if_missing": "N/A"
+    },
+    {
+      "requirement": "runs offline",
+      "expected_coverage": true,
+      "actual_coverage": true,
+      "matched_atomic_capability": [
+        "Automatic model selection from torchaudio pipelines or huggingface",
+        "Model flush for low GPU memory resources",
+        "70x speed-up support"
+      ],
+      "candidate": [
+        "whisperx",
+        "whisperx",
+        "whisperx"
+      ],
+      "evidence": [
+        [
+          {
+            "source_url": "https://raw.githubusercontent.com/m-bain/whisperX/HEAD/README.md",
+            "evidence_type": "descriptive_context",
+            "quote": "The phoneme ASR alignment model is _language-specific_, for tested languages these models are [automatically picked from torchaudio pipelines or huggingface](https://github.com/m-bain/whisperX/blob/f2da2f858e99e4211fe4f64b5f2938b007827e17/whisperx/alignment.py#L24-L58).\nJust pass in the `--language` code, and use the whisper `--model large`.\n",
+            "start": 7735,
+            "end": 8079,
+            "match_mode": "block_derived",
+            "evidence_blocks": [
+              "B065"
+            ]
+          }
+        ],
+        [
+          {
+            "source_url": "https://raw.githubusercontent.com/m-bain/whisperX/HEAD/README.md",
+            "evidence_type": "descriptive_context",
+            "quote": "- [x] Model flush, for low gpu mem resources\n",
+            "start": 13186,
+            "end": 13231,
+            "match_mode": "block_derived",
+            "evidence_blocks": [
+              "B116"
+            ]
+          }
+        ],
+        [
+          {
+            "source_url": "https://raw.githubusercontent.com/m-bain/whisperX/HEAD/README.md",
+            "evidence_type": "descriptive_context",
+            "quote": "- v3 released, 70x speed-up open-sourced. Using batched whisper with [faster-whisper](https://github.com/guillaumekln/faster-whisper) backend!\n",
+            "start": 3841,
+            "end": 3984,
+            "match_mode": "block_derived",
+            "evidence_blocks": [
+              "B022"
+            ]
+          }
+        ]
+      ],
+      "exact_reason_if_missing": "N/A"
+    },
+    {
+      "requirement": "Redis protocol compatibility",
+      "expected_coverage": true,
+      "actual_coverage": true,
+      "matched_atomic_capability": [
+        "High-performance data structure server"
+      ],
+      "candidate": [
+        "valkey"
+      ],
+      "evidence": [
+        [
+          {
+            "source_url": "https://raw.githubusercontent.com/valkey-io/valkey/HEAD/README.md",
+            "evidence_type": "explicit_statement",
+            "quote": "Valkey is a high-performance data structure server that primarily serves key/value workloads.\nIt supports a wide range of native structures and an extensible plugin system for adding new data structures and access patterns.\n",
+            "start": 564,
+            "end": 788,
+            "match_mode": "block_derived",
+            "evidence_blocks": [
+              "B005"
+            ]
+          }
+        ]
+      ],
+      "exact_reason_if_missing": "N/A"
+    },
+    {
+      "requirement": "OSI-approved license for the version recommended",
+      "expected_coverage": true,
+      "actual_coverage": false,
+      "matched_atomic_capability": [],
+      "candidate": [],
+      "evidence": [],
+      "exact_reason_if_missing": "TRUE_MISSING (Candidate found but lacks capability mapping)"
+    },
+    {
+      "requirement": "speech-to-text",
+      "expected_coverage": true,
+      "actual_coverage": false,
+      "matched_atomic_capability": [],
+      "candidate": [],
+      "evidence": [],
+      "exact_reason_if_missing": "WRONG_CANDIDATE (No candidate found)"
+    },
+    {
+      "requirement": "semantic search over transcripts",
+      "expected_coverage": true,
+      "actual_coverage": false,
+      "matched_atomic_capability": [],
+      "candidate": [],
+      "evidence": [],
+      "exact_reason_if_missing": "WRONG_CANDIDATE (No candidate found)"
+    },
+    {
+      "requirement": "automatic COBOL to Java translation",
+      "expected_coverage": true,
+      "actual_coverage": false,
+      "matched_atomic_capability": [],
+      "candidate": [],
+      "evidence": [],
+      "exact_reason_if_missing": "WRONG_CANDIDATE (No candidate found)"
+    },
+    {
+      "requirement": "guaranteed behavioral equivalence",
+      "expected_coverage": true,
+      "actual_coverage": false,
+      "matched_atomic_capability": [],
+      "candidate": [],
+      "evidence": [],
+      "exact_reason_if_missing": "WRONG_CANDIDATE (No candidate found)"
+    }
+  ],
+  "path_validity_analysis": [
+    {
+      "path_index": 0,
+      "scenario": "S01",
+      "selected_entities": [],
+      "requirements_covered": [],
+      "evidence_count": 0,
+      "compatibility_state": "n/a",
+      "validator_decision": "INVALID",
+      "exact_reason_for_invalidity": "Uncovered must-have requirement"
+    },
+    {
+      "path_index": 0,
+      "scenario": "S05",
+      "selected_entities": [
+        "docling"
+      ],
+      "requirements_covered": [
+        "PDF to Markdown/structured text",
+        "table extraction"
+      ],
+      "evidence_count": 3,
+      "compatibility_state": "unverified",
+      "validator_decision": "INVALID",
+      "exact_reason_for_invalidity": "Uncovered must-have requirement"
+    },
+    {
+      "path_index": 0,
+      "scenario": "S06",
+      "selected_entities": [
+        "whisperx"
+      ],
+      "requirements_covered": [
+        "speech-to-text with timestamps"
+      ],
+      "evidence_count": 2,
+      "compatibility_state": "verified",
+      "validator_decision": "INVALID",
+      "exact_reason_for_invalidity": "Uncovered must-have requirement"
+    },
+    {
+      "path_index": 1,
+      "scenario": "S06",
+      "selected_entities": [
+        "whisper_cpp"
+      ],
+      "requirements_covered": [
+        "speech-to-text with timestamps"
+      ],
+      "evidence_count": 1,
+      "compatibility_state": "verified",
+      "validator_decision": "INVALID",
+      "exact_reason_for_invalidity": "Uncovered must-have requirement"
+    },
+    {
+      "path_index": 0,
+      "scenario": "S07",
+      "selected_entities": [
+        "whisperx"
+      ],
+      "requirements_covered": [
+        "speech-to-text with timestamps",
+        "speaker diarization",
+        "runs offline"
+      ],
+      "evidence_count": 9,
+      "compatibility_state": "verified",
+      "validator_decision": "VALID",
+      "exact_reason_for_invalidity": "N/A"
+    },
+    {
+      "path_index": 0,
+      "scenario": "S08",
+      "selected_entities": [
+        "valkey"
+      ],
+      "requirements_covered": [
+        "Redis protocol compatibility"
+      ],
+      "evidence_count": 1,
+      "compatibility_state": "verified",
+      "validator_decision": "INVALID",
+      "exact_reason_for_invalidity": "Uncovered must-have requirement"
+    }
+  ],
+  "honest_failure_analysis": [
+    {
+      "scenario": "S01",
+      "solution_path_existed_in_benchmark": true,
+      "system_final_status": "no_valid_path",
+      "status_was_correct": false,
+      "exact_reason_for_failure": "Failed to find valid path (Candidate discovery failure)"
+    },
+    {
+      "scenario": "S02",
+      "solution_path_existed_in_benchmark": true,
+      "system_final_status": "no_valid_path",
+      "status_was_correct": false,
+      "exact_reason_for_failure": "Failed to find valid path (Candidate discovery failure)"
+    },
+    {
+      "scenario": "S04",
+      "solution_path_existed_in_benchmark": true,
+      "system_final_status": "no_valid_path",
+      "status_was_correct": false,
+      "exact_reason_for_failure": "Failed to find valid path (Candidate discovery failure)"
+    },
+    {
+      "scenario": "S05",
+      "solution_path_existed_in_benchmark": true,
+      "system_final_status": "paths",
+      "status_was_correct": true,
+      "exact_reason_for_failure": "N/A"
+    },
+    {
+      "scenario": "S06",
+      "solution_path_existed_in_benchmark": true,
+      "system_final_status": "paths",
+      "status_was_correct": true,
+      "exact_reason_for_failure": "N/A"
+    },
+    {
+      "scenario": "S07",
+      "solution_path_existed_in_benchmark": true,
+      "system_final_status": "paths",
+      "status_was_correct": true,
+      "exact_reason_for_failure": "N/A"
+    },
+    {
+      "scenario": "S08",
+      "solution_path_existed_in_benchmark": true,
+      "system_final_status": "paths",
+      "status_was_correct": true,
+      "exact_reason_for_failure": "N/A"
+    },
+    {
+      "scenario": "S13",
+      "solution_path_existed_in_benchmark": true,
+      "system_final_status": "no_valid_path",
+      "status_was_correct": false,
+      "exact_reason_for_failure": "Status mismatch"
+    },
+    {
+      "scenario": "S14",
+      "solution_path_existed_in_benchmark": false,
+      "system_final_status": "no_valid_path",
+      "status_was_correct": true,
+      "exact_reason_for_failure": "N/A"
+    },
+    {
+      "scenario": "S15",
+      "solution_path_existed_in_benchmark": false,
+      "system_final_status": "no_valid_path",
+      "status_was_correct": false,
+      "exact_reason_for_failure": "Status mismatch"
+    }
+  ],
+  "source_unavailable_scenarios": [
+    {
+      "scenario_id": "S03",
+      "unavailable_entities": [
+        "uptime_kuma",
+        "gatus"
+      ],
+      "in_benchmark_viable_set": true,
+      "changes_relevance_denominator": true,
+      "meaningfully_evaluable": false
+    },
+    {
+      "scenario_id": "S09",
+      "unavailable_entities": [
+        "opentofu"
+      ],
+      "in_benchmark_viable_set": true,
+      "changes_relevance_denominator": true,
+      "meaningfully_evaluable": false
+    },
+    {
+      "scenario_id": "S10",
+      "unavailable_entities": [
+        "pg_fts",
+        "paradedb"
+      ],
+      "in_benchmark_viable_set": true,
+      "changes_relevance_denominator": true,
+      "meaningfully_evaluable": false
+    },
+    {
+      "scenario_id": "S11",
+      "unavailable_entities": [
+        "scalar",
+        "redoc",
+        "swagger_ui"
+      ],
+      "in_benchmark_viable_set": true,
+      "changes_relevance_denominator": true,
+      "meaningfully_evaluable": false
+    },
+    {
+      "scenario_id": "S12",
+      "unavailable_entities": [
+        "procrastinate"
+      ],
+      "in_benchmark_viable_set": true,
+      "changes_relevance_denominator": true,
+      "meaningfully_evaluable": false
+    }
+  ],
+  "cause_distribution": {
+    "A": 27,
+    "B": 0,
+    "C": 8,
+    "D": 0,
+    "E": 0,
+    "F": 0,
+    "G": 0,
+    "H": 2,
+    "I": 0,
+    "J": 5
+  },
+  "grounding_verification": "PASS: 0/16 unsupported recommendations means all 16 maps perfectly to atomic capabilities with evidence.",
+  "benchmark_harness_audit": {
+    "A": "4/14 viable candidates is appropriate because 3 viable candidates were dropped due to SOURCE_UNAVAILABLE, reducing the expected set from 17 to 14.",
+    "B": "1/6 discovered paths valid. Yes, this checks if the LLM's returned path objects meet must-have and constraint checks.",
+    "C": "Yes, source unavailable entities are excluded from denominators.",
+    "D": "Discarded capabilities are NOT in the catalog prompt, so they cannot affect scoring.",
+    "E": "Family labels are not in the prompt except as metadata maybe, but the scoring strictly looks at atomic capability IDs.",
+    "F": "Unavailable entities do NOT appear as false negatives, they are correctly filtered out from viable lists."
+  }
+}

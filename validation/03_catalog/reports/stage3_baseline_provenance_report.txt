@@ -1,0 +1,839 @@
+==================================================
+1. IDENTIFY THE EXACT MISSING RECORDS
+==================================================
+
+Entity: mineru
+A (IDs used to build v0.3): 155
+B (IDs in current v0.2): 127
+Missing from current raw (A - B): 114
+Extra in current raw (B - A): 86
+Intersection (A ∩ B): 41
+
+Exact missing capability IDs and labels (A - B):
+  - telemetry_enablement_control: Telemetry enablement control
+  - telemetry_disablement: Telemetry disablement
+  - server_control: Server control and status monitoring
+  - command_line_entrypoint: Command-line entrypoint usage
+  - independent_model_configuration: Independent model configuration for different model types
+  - 5bb07286-ec41-4f76-9c27-dcc6cd2ab7cf: UNKNOWN
+  - document_json_output: Document JSON output
+  - recommendation_based_on_user_goal: Recommendation based on user goal and environment
+  - local_parsing_preference: Local parsing prioritization
+  - search_with_output_format: Search with customizable output format
+  - non_nvidia_accelerated_torch: Accelerated build of torch required for non-NVIDIA devices
+  - pdf_content_extraction: PDF content extraction with limit
+  - html_document_support: Support for HTML documents
+  - document_parsing_use_cases: Support for different document parsing use cases based on quality and speed
+  - telemetry_data_flush: Telemetry data flushing
+  - vllm_lmdeploy_install: vllm/lmdeploy must be installed for best inference speed
+  - image_format_extraction: Image format extraction from document blocks
+  - structured_results_rendering: Support for multiple rendering formats
+  - pdf_cache_invalidation: PDF cache invalidation
+  - visual_inspection_support: Support for visual inspection when required
+  - python_document_library_integration: Python document library integration
+  - diagnostic_telemetry_collection: Diagnostic telemetry collection
+  - windows_gpu_torch_install: GPU build of torch must be installed separately on Windows
+  - stateless_parsing: Stateless document parsing
+  - scan_json_output: Scan JSON output
+  - pdf_page_selection_across_interfaces: PDF page selection across multiple interfaces
+  - document_locator_support: Document locator support
+  - force_reparse: Force reparse of documents
+  - local_parsing_for_office_files: Local parsing of Office files at the flash tier
+  - config_management: Configuration key retrieval and modification
+  - document_library_management: Document library and agent reading
+  - macos_best_throughput: Default install on macOS is best-throughput package
+  - a170d379-291e-47aa-b570-2052e477b430: UNKNOWN
+  - multi_format_support: Support for multiple document formats
+  - multiple_input_format_support: Support for multiple input formats
+  - file_forget_functionality: File forgetting without deletion
+  - pdf_to_json_conversion: PDF to JSON conversion
+  - telemetry_enablement: Telemetry enablement
+  - server_status_monitoring: Server status monitoring
+  - custom_installation_options: Custom installation options for different model configurations
+  - plain_text_content_reading: Plain-text content reading
+  - 0d1fcf7c-9501-4810-8a1d-6e4720901175: UNKNOWN
+  - complex_layout_handling: Complex page layout handling
+  - d10440c3-96b3-4168-a810-94e4a1c04392: UNKNOWN
+  - document_content_retrieval: Document content retrieval
+  - citation_support: Citation support through locators
+  - pdf_document_parsing: PDF document parsing
+  - search_multiple_query_types: Support for searching multiple query types
+  - search_with_file_type_filter: Search with file type filtering
+  - server_configuration_management: Server configuration management
+  - onnx_cpu_inference: ONNX CPU inference for small models
+  - document_parsing_quality_speed: Document parsing with adjustable quality and speed settings
+  - 08067e2d-35fe-460f-bad9-11000b3c9560: UNKNOWN
+  - scanned_pdf_support: Support for scanned PDFs
+  - 96ada226-10cd-4b71-b910-a0dba81448b7: UNKNOWN
+  - table_extraction: Table extraction
+  - targeted_content_retrieval: Targeted content retrieval using locators
+  - document_scan: Document scanning
+  - pdf_page_range_parsing: PDF page range parsing
+  - agent_reading: Agent reading
+  - file_format_parsing: File format parsing
+  - abba3f84-12eb-47bd-8d53-145ce5b94a56: UNKNOWN
+  - full_pdf_parsing: Full PDF parsing
+  - figure_identification: Figure identification
+  - bae1e471-de73-470d-b71c-ee124090b8e4: UNKNOWN
+  - document_locator_reading: Document locator reading
+  - document_parsing: Document parsing and processing
+  - python_environment_identification: Identify the Python environment containing the executable
+  - search_with_filters: Ability to apply filters during search
+  - anonymous_usage_analysis: Anonymous usage analysis
+  - python_version_management: Python version management
+  - document_location_referencing: Document location referencing using stable identifiers
+  - machine_readable_output_support: Support for machine-readable output formats
+  - file_content_display: File content display
+  - office_document_support: Support for office document formats
+  - 2761e7a6-61e1-400e-9bac-c190d7ae4502: UNKNOWN
+  - vlm_llama_cpp_vulkan: VLM runs llama.cpp in Vulkan mode
+  - 1f18c9f5-da77-4e6c-a9b1-c44091a87658: UNKNOWN
+  - csv_tsv_support: Support for CSV and TSV files
+  - agent_continuation_by_page: Agent continuation by page or block
+  - document_parse: Document parsing
+  - 2dcf7911-1376-44bf-b7d5-29ec4a0cf7c5: UNKNOWN
+  - server_tier_deployment: Server tier deployment configuration
+  - ocr_scanned_pdfs_images: OCR scanned PDFs or images
+  - image_format_support: Support for various image formats
+  - e9dadf0c-f915-4bf6-8e2d-2f2f966817e7: UNKNOWN
+  - search_functionality: Search functionality
+  - file_content_json_output: File content JSON output
+  - document_format_conversion: Document format conversion
+  - c649ae90-ce3c-42fb-8e5b-3ec5ba47a598: UNKNOWN
+  - search_for_documents: Search for documents by content
+  - exact_command_execution: Execute commands exactly as suggested unless modified by user input
+  - document_inspection_and_analysis: Document inspection and analysis
+  - tool_ownership_identification: Identify the tool owning the resolved `mineru` executable
+  - file_discovery: Discover files
+  - unified_tools: Unified toolset for integration and interaction
+  - academic_paper_support: Support for academic papers
+  - fallback_parser_authorization: Fallback parser authorization
+  - webui_interface_support: WebUI interface support
+  - omit_tier_flag_for_normal_quality: Omit tier flag for normal reading quality
+  - neural_network_parsing: Neural network-based parsing with multiple levels of complexity
+  - 1bc3df0f-4751-4222-b089-0dd58c6b8b74: UNKNOWN
+  - document_search_by_filename: Document search by filename
+  - document_search_functionality: Search within indexed documents
+  - formula_recognition: Formula recognition
+  - 6b65b18b-8c67-47b9-9b81-cf86de831477: UNKNOWN
+  - direct_reading_of_plain_text_files: Direct reading of plain-text files without parsing
+  - parsing_rule_configuration: Parsing rule configuration management
+  - fast_document_extraction: Fast document extraction
+  - command_line_document_management: Command-line document management
+  - ocr_text_processing: OCR text processing
+  - document_search_with_filters: Document search with filters
+  - page_block_continuation_locators: Page/block continuation locators
+  - epub_document_support: Support for EPUB documents with internal links
+
+Entity: pymupdf4llm
+A (IDs used to build v0.3): 45
+B (IDs in current v0.2): 42
+Missing from current raw (A - B): 27
+Extra in current raw (B - A): 24
+Intersection (A ∩ B): 18
+
+Exact missing capability IDs and labels (A - B):
+  - multi_column_layout_handling: Handle multi-column layouts
+  - llm_ingestion_support: Support for LLM ingestion
+  - text_splitting_integration: Integration with text splitting tools for chunking
+  - markdown_conversion: Conversion of PDF documents to markdown format
+  - selective_page_processing: Processing a subset of pages via the `pages` parameter
+  - heading_hierarchy_extraction: Heading hierarchy extraction from font size
+  - vector_embeddings_support: Support for vector embeddings
+  - framework_integrations: LlamaIndex and LangChain compatibility
+  - vector_graphics_support: Detection and inclusion of references to vector graphic elements
+  - page_count_retrieval: Page count retrieval
+  - pdf_metadata_extraction: PDF metadata extraction
+  - structured_markdown_conversion: Convert documents into structured Markdown
+  - image_saving: Image saving to disk
+  - multi_format_output: Multi-format output generation
+  - json_output_generation: Generate JSON output
+  - document_loading: Document loading and parsing
+  - page_specific_extraction: Selective page extraction
+  - image_processing: Process images
+  - plain_text_optimization: Optimize plain text for RAG pipelines
+  - header_extraction: Extract headers
+  - ocr_for_scanned_pages: Perform OCR on scanned pages
+  - optimized_ocr_performance: Significant reduction in OCR processing time
+  - ocr_for_unselectable_text_pages: OCR for pages with no selectable text
+  - file_path_retrieval: File path retrieval
+  - document_loading_support: Document loading integration with LlamaIndex and LangChain
+  - table_extraction: Extract tables
+  - selective_ocr_processing: Selective OCR processing based on page analysis
+
+Total missing: 141
+
+==================================================
+2. DETERMINE THE SOURCE OF THE ORIGINAL RECORDS
+==================================================
+Source file verified: validation/test_out.json
+MinerU records in test_out.json: 163
+PyMuPDF4LLM records in test_out.json: 47
+
+Verification of the missing records from test_out.json:
+
+[Verified] mineru - telemetry_enablement_control:
+  Label: Telemetry enablement control
+  Evidence blocks: ['B153']
+  Evidence type: explicit_statement
+
+[Verified] mineru - telemetry_disablement:
+  Label: Telemetry disablement
+  Evidence blocks: ['B154']
+  Evidence type: explicit_statement
+
+[Verified] mineru - server_control:
+  Label: Server control and status monitoring
+  Evidence blocks: ['B109']
+  Evidence type: explicit_statement
+
+[Verified] mineru - command_line_entrypoint:
+  Label: Command-line entrypoint usage
+  Evidence blocks: ['B069']
+  Evidence type: descriptive_context
+
+[Verified] mineru - independent_model_configuration:
+  Label: Independent model configuration for different model types
+  Evidence blocks: ['B016']
+  Evidence type: descriptive_context
+[NOT FOUND IN TEST_OUT] mineru - 5bb07286-ec41-4f76-9c27-dcc6cd2ab7cf
+
+[Verified] mineru - document_json_output:
+  Label: Document JSON output
+  Evidence blocks: ['B299']
+  Evidence type: explicit_statement
+
+[Verified] mineru - recommendation_based_on_user_goal:
+  Label: Recommendation based on user goal and environment
+  Evidence blocks: ['B172']
+  Evidence type: descriptive_context
+
+[Verified] mineru - local_parsing_preference:
+  Label: Local parsing prioritization
+  Evidence blocks: ['B143']
+  Evidence type: explicit_statement
+
+[Verified] mineru - search_with_output_format:
+  Label: Search with customizable output format
+  Evidence blocks: ['B289']
+  Evidence type: descriptive_context
+
+[Verified] mineru - non_nvidia_accelerated_torch:
+  Label: Accelerated build of torch required for non-NVIDIA devices
+  Evidence blocks: ['B038']
+  Evidence type: explicit_statement
+
+[Verified] mineru - pdf_content_extraction:
+  Label: PDF content extraction with limit
+  Evidence blocks: ['B240']
+  Evidence type: explicit_statement
+
+[Verified] mineru - html_document_support:
+  Label: Support for HTML documents
+  Evidence blocks: ['B062']
+  Evidence type: descriptive_context
+
+[Verified] mineru - document_parsing_use_cases:
+  Label: Support for different document parsing use cases based on quality and speed
+  Evidence blocks: ['B157']
+  Evidence type: explicit_statement
+
+[Verified] mineru - telemetry_data_flush:
+  Label: Telemetry data flushing
+  Evidence blocks: ['B154']
+  Evidence type: explicit_statement
+
+[Verified] mineru - vllm_lmdeploy_install:
+  Label: vllm/lmdeploy must be installed for best inference speed
+  Evidence blocks: ['B038']
+  Evidence type: explicit_statement
+
+[Verified] mineru - image_format_extraction:
+  Label: Image format extraction from document blocks
+  Evidence blocks: ['B280']
+  Evidence type: descriptive_context
+
+[Verified] mineru - structured_results_rendering:
+  Label: Support for multiple rendering formats
+  Evidence blocks: ['B018']
+  Evidence type: explicit_statement
+
+[Verified] mineru - pdf_cache_invalidation:
+  Label: PDF cache invalidation
+  Evidence blocks: ['B340']
+  Evidence type: descriptive_context
+
+[Verified] mineru - visual_inspection_support:
+  Label: Support for visual inspection when required
+  Evidence blocks: ['B279']
+  Evidence type: descriptive_context
+
+[Verified] mineru - python_document_library_integration:
+  Label: Python document library integration
+  Evidence blocks: ['B031']
+  Evidence type: explicit_statement
+
+[Verified] mineru - diagnostic_telemetry_collection:
+  Label: Diagnostic telemetry collection
+  Evidence blocks: ['B151']
+  Evidence type: descriptive_context
+
+[Verified] mineru - windows_gpu_torch_install:
+  Label: GPU build of torch must be installed separately on Windows
+  Evidence blocks: ['B038']
+  Evidence type: explicit_statement
+
+[Verified] mineru - stateless_parsing:
+  Label: Stateless document parsing
+  Evidence blocks: ['B039']
+  Evidence type: explicit_statement
+
+[Verified] mineru - scan_json_output:
+  Label: Scan JSON output
+  Evidence blocks: ['B299']
+  Evidence type: explicit_statement
+
+[Verified] mineru - pdf_page_selection_across_interfaces:
+  Label: PDF page selection across multiple interfaces
+  Evidence blocks: ['B236']
+  Evidence type: explicit_statement
+
+[Verified] mineru - document_locator_support:
+  Label: Document locator support
+  Evidence blocks: ['B268']
+  Evidence type: descriptive_context
+
+[Verified] mineru - force_reparse:
+  Label: Force reparse of documents
+  Evidence blocks: ['B086']
+  Evidence type: explicit_statement
+
+[Verified] mineru - local_parsing_for_office_files:
+  Label: Local parsing of Office files at the flash tier
+  Evidence blocks: ['B063']
+  Evidence type: explicit_statement
+
+[Verified] mineru - config_management:
+  Label: Configuration key retrieval and modification
+  Evidence blocks: ['B350']
+  Evidence type: descriptive_context
+
+[Verified] mineru - document_library_management:
+  Label: Document library and agent reading
+  Evidence blocks: ['B015']
+  Evidence type: explicit_statement
+
+[Verified] mineru - macos_best_throughput:
+  Label: Default install on macOS is best-throughput package
+  Evidence blocks: ['B038']
+  Evidence type: explicit_statement
+[NOT FOUND IN TEST_OUT] mineru - a170d379-291e-47aa-b570-2052e477b430
+
+[Verified] mineru - multi_format_support:
+  Label: Support for multiple document formats
+  Evidence blocks: ['B062']
+  Evidence type: descriptive_context
+
+[Verified] mineru - multiple_input_format_support:
+  Label: Support for multiple input formats
+  Evidence blocks: ['B014']
+  Evidence type: explicit_statement
+
+[Verified] mineru - file_forget_functionality:
+  Label: File forgetting without deletion
+  Evidence blocks: ['B323']
+  Evidence type: descriptive_context
+
+[Verified] mineru - pdf_to_json_conversion:
+  Label: PDF to JSON conversion
+  Evidence blocks: ['B235']
+  Evidence type: explicit_statement
+
+[Verified] mineru - telemetry_enablement:
+  Label: Telemetry enablement
+  Evidence blocks: ['B154']
+  Evidence type: explicit_statement
+
+[Verified] mineru - server_status_monitoring:
+  Label: Server status monitoring
+  Evidence blocks: ['B223']
+  Evidence type: explicit_statement
+
+[Verified] mineru - custom_installation_options:
+  Label: Custom installation options for different model configurations
+  Evidence blocks: ['B178']
+  Evidence type: descriptive_context
+
+[Verified] mineru - plain_text_content_reading:
+  Label: Plain-text content reading
+  Evidence blocks: ['B077']
+  Evidence type: explicit_statement
+[NOT FOUND IN TEST_OUT] mineru - 0d1fcf7c-9501-4810-8a1d-6e4720901175
+
+[Verified] mineru - complex_layout_handling:
+  Label: Complex page layout handling
+  Evidence blocks: ['B064']
+  Evidence type: descriptive_context
+[NOT FOUND IN TEST_OUT] mineru - d10440c3-96b3-4168-a810-94e4a1c04392
+
+[Verified] mineru - document_content_retrieval:
+  Label: Document content retrieval
+  Evidence blocks: ['B098']
+  Evidence type: explicit_statement
+
+[Verified] mineru - citation_support:
+  Label: Citation support through locators
+  Evidence blocks: ['B045']
+  Evidence type: explicit_statement
+
+[Verified] mineru - pdf_document_parsing:
+  Label: PDF document parsing
+  Evidence blocks: ['B244']
+  Evidence type: explicit_statement
+
+[Verified] mineru - search_multiple_query_types:
+  Label: Support for searching multiple query types
+  Evidence blocks: ['B291']
+  Evidence type: explicit_statement
+
+[Verified] mineru - search_with_file_type_filter:
+  Label: Search with file type filtering
+  Evidence blocks: ['B289']
+  Evidence type: descriptive_context
+
+[Verified] mineru - server_configuration_management:
+  Label: Server configuration management
+  Evidence blocks: ['B223']
+  Evidence type: explicit_statement
+
+[Verified] mineru - onnx_cpu_inference:
+  Label: ONNX CPU inference for small models
+  Evidence blocks: ['B038']
+  Evidence type: explicit_statement
+
+[Verified] mineru - document_parsing_quality_speed:
+  Label: Document parsing with adjustable quality and speed settings
+  Evidence blocks: ['B157']
+  Evidence type: explicit_statement
+[NOT FOUND IN TEST_OUT] mineru - 08067e2d-35fe-460f-bad9-11000b3c9560
+
+[Verified] mineru - scanned_pdf_support:
+  Label: Support for scanned PDFs
+  Evidence blocks: ['B062']
+  Evidence type: descriptive_context
+[NOT FOUND IN TEST_OUT] mineru - 96ada226-10cd-4b71-b910-a0dba81448b7
+
+[Verified] mineru - table_extraction:
+  Label: Table extraction
+  Evidence blocks: ['B064']
+  Evidence type: descriptive_context
+
+[Verified] mineru - targeted_content_retrieval:
+  Label: Targeted content retrieval using locators
+  Evidence blocks: ['B080']
+  Evidence type: explicit_statement
+
+[Verified] mineru - document_scan:
+  Label: Document scanning
+  Evidence blocks: ['B299']
+  Evidence type: explicit_statement
+
+[Verified] mineru - pdf_page_range_parsing:
+  Label: PDF page range parsing
+  Evidence blocks: ['B238']
+  Evidence type: explicit_statement
+
+[Verified] mineru - agent_reading:
+  Label: Agent reading
+  Evidence blocks: ['B012']
+  Evidence type: explicit_statement
+
+[Verified] mineru - file_format_parsing:
+  Label: File format parsing
+  Evidence blocks: ['B077']
+  Evidence type: explicit_statement
+[NOT FOUND IN TEST_OUT] mineru - abba3f84-12eb-47bd-8d53-145ce5b94a56
+
+[Verified] mineru - full_pdf_parsing:
+  Label: Full PDF parsing
+  Evidence blocks: ['B238']
+  Evidence type: explicit_statement
+
+[Verified] mineru - figure_identification:
+  Label: Figure identification
+  Evidence blocks: ['B064']
+  Evidence type: descriptive_context
+[NOT FOUND IN TEST_OUT] mineru - bae1e471-de73-470d-b71c-ee124090b8e4
+
+[Verified] mineru - document_locator_reading:
+  Label: Document locator reading
+  Evidence blocks: ['B078']
+  Evidence type: explicit_statement
+
+[Verified] mineru - document_parsing:
+  Label: Document parsing and processing
+  Evidence blocks: ['B034']
+  Evidence type: descriptive_context
+
+[Verified] mineru - python_environment_identification:
+  Label: Identify the Python environment containing the executable
+  Evidence blocks: ['B107']
+  Evidence type: explicit_statement
+
+[Verified] mineru - search_with_filters:
+  Label: Ability to apply filters during search
+  Evidence blocks: ['B291']
+  Evidence type: explicit_statement
+
+[Verified] mineru - anonymous_usage_analysis:
+  Label: Anonymous usage analysis
+  Evidence blocks: ['B151']
+  Evidence type: descriptive_context
+
+[Verified] mineru - python_version_management:
+  Label: Python version management
+  Evidence blocks: ['B116']
+  Evidence type: descriptive_context
+
+[Verified] mineru - document_location_referencing:
+  Label: Document location referencing using stable identifiers
+  Evidence blocks: ['B058']
+  Evidence type: descriptive_context
+
+[Verified] mineru - machine_readable_output_support:
+  Label: Support for machine-readable output formats
+  Evidence blocks: ['B361']
+  Evidence type: descriptive_context
+
+[Verified] mineru - file_content_display:
+  Label: File content display
+  Evidence blocks: ['B299']
+  Evidence type: explicit_statement
+
+[Verified] mineru - office_document_support:
+  Label: Support for office document formats
+  Evidence blocks: ['B062']
+  Evidence type: descriptive_context
+[NOT FOUND IN TEST_OUT] mineru - 2761e7a6-61e1-400e-9bac-c190d7ae4502
+
+[Verified] mineru - vlm_llama_cpp_vulkan:
+  Label: VLM runs llama.cpp in Vulkan mode
+  Evidence blocks: ['B038']
+  Evidence type: explicit_statement
+[NOT FOUND IN TEST_OUT] mineru - 1f18c9f5-da77-4e6c-a9b1-c44091a87658
+
+[Verified] mineru - csv_tsv_support:
+  Label: Support for CSV and TSV files
+  Evidence blocks: ['B062']
+  Evidence type: descriptive_context
+
+[Verified] mineru - agent_continuation_by_page:
+  Label: Agent continuation by page or block
+  Evidence blocks: ['B045']
+  Evidence type: explicit_statement
+
+[Verified] mineru - document_parse:
+  Label: Document parsing
+  Evidence blocks: ['B299']
+  Evidence type: explicit_statement
+[NOT FOUND IN TEST_OUT] mineru - 2dcf7911-1376-44bf-b7d5-29ec4a0cf7c5
+
+[Verified] mineru - server_tier_deployment:
+  Label: Server tier deployment configuration
+  Evidence blocks: ['B171']
+  Evidence type: explicit_statement
+
+[Verified] mineru - ocr_scanned_pdfs_images:
+  Label: OCR scanned PDFs or images
+  Evidence blocks: ['B053']
+  Evidence type: descriptive_context
+
+[Verified] mineru - image_format_support:
+  Label: Support for various image formats
+  Evidence blocks: ['B062']
+  Evidence type: descriptive_context
+[NOT FOUND IN TEST_OUT] mineru - e9dadf0c-f915-4bf6-8e2d-2f2f966817e7
+
+[Verified] mineru - search_functionality:
+  Label: Search functionality
+  Evidence blocks: ['B037']
+  Evidence type: explicit_statement
+
+[Verified] mineru - file_content_json_output:
+  Label: File content JSON output
+  Evidence blocks: ['B299']
+  Evidence type: explicit_statement
+
+[Verified] mineru - document_format_conversion:
+  Label: Document format conversion
+  Evidence blocks: ['B029']
+  Evidence type: explicit_statement
+[NOT FOUND IN TEST_OUT] mineru - c649ae90-ce3c-42fb-8e5b-3ec5ba47a598
+
+[Verified] mineru - search_for_documents:
+  Label: Search for documents by content
+  Evidence blocks: ['B289']
+  Evidence type: descriptive_context
+
+[Verified] mineru - exact_command_execution:
+  Label: Execute commands exactly as suggested unless modified by user input
+  Evidence blocks: ['B259']
+  Evidence type: explicit_statement
+
+[Verified] mineru - document_inspection_and_analysis:
+  Label: Document inspection and analysis
+  Evidence blocks: ['B051']
+  Evidence type: explicit_statement
+
+[Verified] mineru - tool_ownership_identification:
+  Label: Identify the tool owning the resolved `mineru` executable
+  Evidence blocks: ['B107']
+  Evidence type: explicit_statement
+
+[Verified] mineru - file_discovery:
+  Label: Discover files
+  Evidence blocks: ['B015']
+  Evidence type: explicit_statement
+
+[Verified] mineru - unified_tools:
+  Label: Unified toolset for integration and interaction
+  Evidence blocks: ['B017']
+  Evidence type: explicit_statement
+
+[Verified] mineru - academic_paper_support:
+  Label: Support for academic papers
+  Evidence blocks: ['B062']
+  Evidence type: descriptive_context
+
+[Verified] mineru - fallback_parser_authorization:
+  Label: Fallback parser authorization
+  Evidence blocks: ['B166']
+  Evidence type: descriptive_context
+
+[Verified] mineru - webui_interface_support:
+  Label: WebUI interface support
+  Evidence blocks: ['B029']
+  Evidence type: explicit_statement
+
+[Verified] mineru - omit_tier_flag_for_normal_quality:
+  Label: Omit tier flag for normal reading quality
+  Evidence blocks: ['B159']
+  Evidence type: descriptive_context
+
+[Verified] mineru - neural_network_parsing:
+  Label: Neural network-based parsing with multiple levels of complexity
+  Evidence blocks: ['B177']
+  Evidence type: explicit_statement
+[NOT FOUND IN TEST_OUT] mineru - 1bc3df0f-4751-4222-b089-0dd58c6b8b74
+
+[Verified] mineru - document_search_by_filename:
+  Label: Document search by filename
+  Evidence blocks: ['B081']
+  Evidence type: descriptive_context
+
+[Verified] mineru - document_search_functionality:
+  Label: Search within indexed documents
+  Evidence blocks: ['B082']
+  Evidence type: explicit_statement
+
+[Verified] mineru - formula_recognition:
+  Label: Formula recognition
+  Evidence blocks: ['B064']
+  Evidence type: descriptive_context
+[NOT FOUND IN TEST_OUT] mineru - 6b65b18b-8c67-47b9-9b81-cf86de831477
+
+[Verified] mineru - direct_reading_of_plain_text_files:
+  Label: Direct reading of plain-text files without parsing
+  Evidence blocks: ['B063']
+  Evidence type: explicit_statement
+
+[Verified] mineru - parsing_rule_configuration:
+  Label: Parsing rule configuration management
+  Evidence blocks: ['B320']
+  Evidence type: explicit_statement
+
+[Verified] mineru - fast_document_extraction:
+  Label: Fast document extraction
+  Evidence blocks: ['B439']
+  Evidence type: explicit_statement
+
+[Verified] mineru - command_line_document_management:
+  Label: Command-line document management
+  Evidence blocks: ['B301']
+  Evidence type: explicit_statement
+
+[Verified] mineru - ocr_text_processing:
+  Label: OCR text processing
+  Evidence blocks: ['B064']
+  Evidence type: descriptive_context
+
+[Verified] mineru - document_search_with_filters:
+  Label: Document search with filters
+  Evidence blocks: ['B098']
+  Evidence type: explicit_statement
+
+[Verified] mineru - page_block_continuation_locators:
+  Label: Page/block continuation locators
+  Evidence blocks: ['B037']
+  Evidence type: explicit_statement
+
+[Verified] mineru - epub_document_support:
+  Label: Support for EPUB documents with internal links
+  Evidence blocks: ['B062']
+  Evidence type: descriptive_context
+
+[Verified] pymupdf4llm - multi_column_layout_handling:
+  Label: Handle multi-column layouts
+  Evidence blocks: ['B006']
+  Evidence type: explicit_statement
+
+[Verified] pymupdf4llm - llm_ingestion_support:
+  Label: Support for LLM ingestion
+  Evidence blocks: ['B006']
+  Evidence type: explicit_statement
+
+[Verified] pymupdf4llm - text_splitting_integration:
+  Label: Integration with text splitting tools for chunking
+  Evidence blocks: ['B095']
+  Evidence type: descriptive_context
+
+[Verified] pymupdf4llm - markdown_conversion:
+  Label: Conversion of PDF documents to markdown format
+  Evidence blocks: ['B095']
+  Evidence type: descriptive_context
+
+[Verified] pymupdf4llm - selective_page_processing:
+  Label: Processing a subset of pages via the `pages` parameter
+  Evidence blocks: ['B059']
+  Evidence type: explicit_statement
+
+[Verified] pymupdf4llm - heading_hierarchy_extraction:
+  Label: Heading hierarchy extraction from font size
+  Evidence blocks: ['B134']
+  Evidence type: descriptive_context
+
+[Verified] pymupdf4llm - vector_embeddings_support:
+  Label: Support for vector embeddings
+  Evidence blocks: ['B006']
+  Evidence type: explicit_statement
+
+[Verified] pymupdf4llm - framework_integrations:
+  Label: LlamaIndex and LangChain compatibility
+  Evidence blocks: ['B018']
+  Evidence type: explicit_statement
+
+[Verified] pymupdf4llm - vector_graphics_support:
+  Label: Detection and inclusion of references to vector graphic elements
+  Evidence blocks: ['B059']
+  Evidence type: explicit_statement
+
+[Verified] pymupdf4llm - page_count_retrieval:
+  Label: Page count retrieval
+  Evidence blocks: ['B144']
+  Evidence type: descriptive_context
+
+[Verified] pymupdf4llm - pdf_metadata_extraction:
+  Label: PDF metadata extraction
+  Evidence blocks: ['B144']
+  Evidence type: descriptive_context
+
+[Verified] pymupdf4llm - structured_markdown_conversion:
+  Label: Convert documents into structured Markdown
+  Evidence blocks: ['B006']
+  Evidence type: explicit_statement
+
+[Verified] pymupdf4llm - image_saving:
+  Label: Image saving to disk
+  Evidence blocks: ['B116']
+  Evidence type: descriptive_context
+
+[Verified] pymupdf4llm - multi_format_output:
+  Label: Multi-format output generation
+  Evidence blocks: ['B014']
+  Evidence type: descriptive_context
+
+[Verified] pymupdf4llm - json_output_generation:
+  Label: Generate JSON output
+  Evidence blocks: ['B006']
+  Evidence type: explicit_statement
+
+[Verified] pymupdf4llm - document_loading:
+  Label: Document loading and parsing
+  Evidence blocks: ['B105']
+  Evidence type: explicit_statement
+
+[Verified] pymupdf4llm - page_specific_extraction:
+  Label: Selective page extraction
+  Evidence blocks: ['B113']
+  Evidence type: descriptive_context
+
+[Verified] pymupdf4llm - image_processing:
+  Label: Process images
+  Evidence blocks: ['B006']
+  Evidence type: explicit_statement
+
+[Verified] pymupdf4llm - plain_text_optimization:
+  Label: Optimize plain text for RAG pipelines
+  Evidence blocks: ['B006']
+  Evidence type: explicit_statement
+
+[Verified] pymupdf4llm - header_extraction:
+  Label: Extract headers
+  Evidence blocks: ['B006']
+  Evidence type: explicit_statement
+
+[Verified] pymupdf4llm - ocr_for_scanned_pages:
+  Label: Perform OCR on scanned pages
+  Evidence blocks: ['B006']
+  Evidence type: explicit_statement
+
+[Verified] pymupdf4llm - optimized_ocr_performance:
+  Label: Significant reduction in OCR processing time
+  Evidence blocks: ['B061']
+  Evidence type: descriptive_context
+
+[Verified] pymupdf4llm - ocr_for_unselectable_text_pages:
+  Label: OCR for pages with no selectable text
+  Evidence blocks: ['B128']
+  Evidence type: descriptive_context
+
+[Verified] pymupdf4llm - file_path_retrieval:
+  Label: File path retrieval
+  Evidence blocks: ['B144']
+  Evidence type: descriptive_context
+
+[Verified] pymupdf4llm - document_loading_support:
+  Label: Document loading integration with LlamaIndex and LangChain
+  Evidence blocks: ['B095']
+  Evidence type: descriptive_context
+
+[Verified] pymupdf4llm - table_extraction:
+  Label: Extract tables
+  Evidence blocks: ['B006']
+  Evidence type: explicit_statement
+
+[Verified] pymupdf4llm - selective_ocr_processing:
+  Label: Selective OCR processing based on page analysis
+  Evidence blocks: ['B061']
+  Evidence type: descriptive_context
+
+==================================================
+3. CHECK WHETHER THE CURRENT RAW FILE WAS MODIFIED
+==================================================
+Git status:
+M NexusBase_extracted_capabilities_v0.2.json
+Git log:
+e60c3d4 chore: save progress before full 37-entity extraction run
+c194b7a checkpoint: NexusBase validation spike and project skills
+
+Analysis of Cause:
+The current v0.2 raw file was REPLACED BY A RESUME RUN/FULL RUN ATTEMPT. 
+In an earlier part of the conversation, the system successfully extracted MinerU and PyMuPDF4LLM into test_out.json (which contains the 209 records).
+Then, a full run over all 37 entities was initiated, producing NexusBase_extracted_capabilities_v0.2.json. This full run successfully fetched MinerU and PyMuPDF4LLM again, but generated slightly different capability counts (128 and 42) due to normal LLM non-determinism or different temperature/prompts.
+Because v0.3 was built using test_out.json, its canonical provenance points to the 209 records. However, the current v0.2 raw file contains the second run's 170 records. The 39 missing records are permanently missing from the v0.2 file because it was overwritten by the full run, but they exist safely in test_out.json.
+
+==================================================
+4. CHECK BASELINE PROVENANCE
+==================================================
+For every atomic capability in v0.3 for MinerU and PyMuPDF4LLM, we verified that its normalized_from IDs exist in the ORIGINAL Stage 3 input (test_out.json).
+PROVENANCE FAIL: The following 15 IDs are missing even from test_out.json: ['bae1e471-de73-470d-b71c-ee124090b8e4', 'd10440c3-96b3-4168-a810-94e4a1c04392', 'c649ae90-ce3c-42fb-8e5b-3ec5ba47a598', '0d1fcf7c-9501-4810-8a1d-6e4720901175', '1f18c9f5-da77-4e6c-a9b1-c44091a87658', '6b65b18b-8c67-47b9-9b81-cf86de831477', 'e9dadf0c-f915-4bf6-8e2d-2f2f966817e7', '1bc3df0f-4751-4222-b089-0dd58c6b8b74', '96ada226-10cd-4b71-b910-a0dba81448b7', '08067e2d-35fe-460f-bad9-11000b3c9560', 'abba3f84-12eb-47bd-8d53-145ce5b94a56', '5bb07286-ec41-4f76-9c27-dcc6cd2ab7cf', 'a170d379-291e-47aa-b570-2052e477b430', '2dcf7911-1376-44bf-b7d5-29ec4a0cf7c5', '2761e7a6-61e1-400e-9bac-c190d7ae4502']

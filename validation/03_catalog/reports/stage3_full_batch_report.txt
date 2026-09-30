@@ -1,0 +1,61 @@
+==================================================
+STAGE 3 FULL BATCH REPORT
+==================================================
+1. Total entities expected = 37
+2. Previously validated = 2
+3. Remaining = 35
+
+4. Entity status table:
+Entity          | Stage 2                   | Stage 3         | Raw   | Atomic | Meta | Disc | Fam 
+-----------------------------------------------------------------------------------------------
+glitchtip       | extracted                 | processed       | 7     | 6      | 1    | 0    | 1   
+sentry          | extracted                 | processed       | 1     | 1      | 0    | 0    | 0   
+bugsink         | extracted                 | processed       | 1     | 0      | 1    | 0    | 0   
+coolify         | extracted                 | processed       | 36    | 30     | 3    | 1    | 2   
+dokku           | extracted                 | processed       | 3     | 3      | 0    | 0    | 1   
+caprover        | extracted                 | processed       | 15    | 15     | 0    | 0    | 2   
+uptime_kuma     | dry_run_source_resolved   | failed          | 0     | 0      | 0    | 0    | 0   
+gatus           | dry_run_source_resolved   | failed          | 0     | 0      | 0    | 0    | 0   
+unleash         | extracted                 | processed       | 25    | 21     | 4    | 0    | 2   
+growthbook      | extracted                 | processed       | 13    | 13     | 0    | 0    | 1   
+flagsmith       | dry_run_source_resolved   | failed          | 0     | 0      | 0    | 0    | 0   
+docling         | extracted                 | processed       | 30    | 29     | 1    | 0    | 3   
+marker          | dry_run_source_resolved   | failed          | 0     | 0      | 0    | 0    | 0   
+mineru          | extracted                 | validated_v0.3  | 128   | 128    | 15   | 19   | 7   
+pymupdf4llm     | extracted                 | validated_v0.3  | 42    | 40     | 0    | 7    | 6   
+faster_whisper  | extracted                 | processed       | 17    | 15     | 0    | 2    | 1   
+whisper_cpp     | extracted                 | processed       | 32    | 28     | 1    | 3    | 1   
+whisperx        | extracted                 | processed       | 23    | 19     | 0    | 4    | 1   
+pyannote        | extracted                 | processed       | 13    | 11     | 2    | 0    | 1   
+valkey          | extracted                 | processed       | 16    | 11     | 4    | 1    | 1   
+redis           | dry_run_source_resolved   | failed          | 0     | 0      | 0    | 0    | 0   
+keydb           | dry_run_source_resolved   | failed          | 0     | 0      | 0    | 0    | 0   
+opentofu        | dry_run_source_resolved   | failed          | 0     | 0      | 0    | 0    | 0   
+terraform       | dry_run_source_resolved   | failed          | 0     | 0      | 0    | 0    | 0   
+paradedb        | dry_run_source_resolved   | failed          | 0     | 0      | 0    | 0    | 0   
+meilisearch     | dry_run_source_resolved   | failed          | 0     | 0      | 0    | 0    | 0   
+typesense       | dry_run_source_resolved   | failed          | 0     | 0      | 0    | 0    | 0   
+pg_fts          | dry_run_source_resolved   | failed          | 0     | 0      | 0    | 0    | 0   
+github_mcp      | dry_run_source_resolved   | failed          | 0     | 0      | 0    | 0    | 0   
+scalar          | dry_run_source_resolved   | failed          | 0     | 0      | 0    | 0    | 0   
+redoc           | dry_run_source_resolved   | failed          | 0     | 0      | 0    | 0    | 0   
+swagger_ui      | dry_run_source_resolved   | failed          | 0     | 0      | 0    | 0    | 0   
+chroma          | dry_run_source_resolved   | failed          | 0     | 0      | 0    | 0    | 0   
+celery          | dry_run_source_resolved   | failed          | 0     | 0      | 0    | 0    | 0   
+rq              | dry_run_source_resolved   | failed          | 0     | 0      | 0    | 0    | 0   
+dramatiq        | dry_run_source_resolved   | failed          | 0     | 0      | 0    | 0    | 0   
+procrastinate   | dry_run_source_resolved   | failed          | 0     | 0      | 0    | 0    | 0   
+
+5. Total raw capabilities: 402
+6. Total atomic capabilities: 370
+7. Total metadata: 32
+8. Total discarded: 37
+9. Total families: 30
+
+10. Number of successful entities: 16
+11. Number of failed entities: 21
+12. Number of retry-success entities: 0
+13. Number of unresolved entities: 21
+
+14. New extraction/normalization patterns: 160
+15. Schema/data-integrity violations: None detected

@@ -1,0 +1,171 @@
+==================================================
+STAGE 3 FAILED ENTITIES REPORT
+==================================================
+Entity: uptime_kuma
+Repository/Source: unknown (https://raw.githubusercontent.com/louislam/uptime-kuma/HEAD/README.md)
+Previous status: dry_run_source_resolved
+Current status: SOURCE_UNAVAILABLE
+Exact failure category: network_timeout_dns_failure
+Error summary: Host network/DNS resolution failed. HTTP Error 404 or Timeout.
+Retry possible later: Yes, when network environment permits external GitHub raw API access.
+--------------------------------------------------
+Entity: gatus
+Repository/Source: unknown (https://raw.githubusercontent.com/TwiN/gatus/HEAD/README.md)
+Previous status: dry_run_source_resolved
+Current status: SOURCE_UNAVAILABLE
+Exact failure category: network_timeout_dns_failure
+Error summary: Host network/DNS resolution failed. HTTP Error 404 or Timeout.
+Retry possible later: Yes, when network environment permits external GitHub raw API access.
+--------------------------------------------------
+Entity: flagsmith
+Repository/Source: unknown (https://raw.githubusercontent.com/Flagsmith/flagsmith/HEAD/README.md)
+Previous status: dry_run_source_resolved
+Current status: SOURCE_UNAVAILABLE
+Exact failure category: network_timeout_dns_failure
+Error summary: Host network/DNS resolution failed. HTTP Error 404 or Timeout.
+Retry possible later: Yes, when network environment permits external GitHub raw API access.
+--------------------------------------------------
+Entity: marker
+Repository/Source: unknown (https://raw.githubusercontent.com/datalab-to/marker/HEAD/README.md)
+Previous status: dry_run_source_resolved
+Current status: SOURCE_UNAVAILABLE
+Exact failure category: network_timeout_dns_failure
+Error summary: Host network/DNS resolution failed. HTTP Error 404 or Timeout.
+Retry possible later: Yes, when network environment permits external GitHub raw API access.
+--------------------------------------------------
+Entity: redis
+Repository/Source: unknown (https://raw.githubusercontent.com/redis/redis/HEAD/README.md)
+Previous status: dry_run_source_resolved
+Current status: SOURCE_UNAVAILABLE
+Exact failure category: network_timeout_dns_failure
+Error summary: Host network/DNS resolution failed. HTTP Error 404 or Timeout.
+Retry possible later: Yes, when network environment permits external GitHub raw API access.
+--------------------------------------------------
+Entity: keydb
+Repository/Source: unknown (https://raw.githubusercontent.com/Snapchat/KeyDB/HEAD/README.md)
+Previous status: dry_run_source_resolved
+Current status: SOURCE_UNAVAILABLE
+Exact failure category: network_timeout_dns_failure
+Error summary: Host network/DNS resolution failed. HTTP Error 404 or Timeout.
+Retry possible later: Yes, when network environment permits external GitHub raw API access.
+--------------------------------------------------
+Entity: opentofu
+Repository/Source: unknown (https://raw.githubusercontent.com/opentofu/opentofu/HEAD/README.md)
+Previous status: dry_run_source_resolved
+Current status: SOURCE_UNAVAILABLE
+Exact failure category: network_timeout_dns_failure
+Error summary: Host network/DNS resolution failed. HTTP Error 404 or Timeout.
+Retry possible later: Yes, when network environment permits external GitHub raw API access.
+--------------------------------------------------
+Entity: terraform
+Repository/Source: unknown (https://raw.githubusercontent.com/hashicorp/terraform/HEAD/README.md)
+Previous status: dry_run_source_resolved
+Current status: SOURCE_UNAVAILABLE
+Exact failure category: network_timeout_dns_failure
+Error summary: Host network/DNS resolution failed. HTTP Error 404 or Timeout.
+Retry possible later: Yes, when network environment permits external GitHub raw API access.
+--------------------------------------------------
+Entity: paradedb
+Repository/Source: unknown (https://raw.githubusercontent.com/paradedb/paradedb/HEAD/README.md)
+Previous status: dry_run_source_resolved
+Current status: SOURCE_UNAVAILABLE
+Exact failure category: network_timeout_dns_failure
+Error summary: Host network/DNS resolution failed. HTTP Error 404 or Timeout.
+Retry possible later: Yes, when network environment permits external GitHub raw API access.
+--------------------------------------------------
+Entity: meilisearch
+Repository/Source: unknown (https://raw.githubusercontent.com/meilisearch/meilisearch/HEAD/README.md)
+Previous status: dry_run_source_resolved
+Current status: SOURCE_UNAVAILABLE
+Exact failure category: network_timeout_dns_failure
+Error summary: Host network/DNS resolution failed. HTTP Error 404 or Timeout.
+Retry possible later: Yes, when network environment permits external GitHub raw API access.
+--------------------------------------------------
+Entity: typesense
+Repository/Source: unknown (https://raw.githubusercontent.com/typesense/typesense/HEAD/README.md)
+Previous status: dry_run_source_resolved
+Current status: SOURCE_UNAVAILABLE
+Exact failure category: network_timeout_dns_failure
+Error summary: Host network/DNS resolution failed. HTTP Error 404 or Timeout.
+Retry possible later: Yes, when network environment permits external GitHub raw API access.
+--------------------------------------------------
+Entity: pg_fts
+Repository/Source: unknown (https://raw.githubusercontent.com/postgres/postgres/HEAD/README.md)
+Previous status: dry_run_source_resolved
+Current status: SOURCE_UNAVAILABLE
+Exact failure category: network_timeout_dns_failure
+Error summary: Host network/DNS resolution failed. HTTP Error 404 or Timeout.
+Retry possible later: Yes, when network environment permits external GitHub raw API access.
+--------------------------------------------------
+Entity: github_mcp
+Repository/Source: unknown (https://raw.githubusercontent.com/github/github-mcp-server/HEAD/README.md)
+Previous status: dry_run_source_resolved
+Current status: SOURCE_UNAVAILABLE
+Exact failure category: network_timeout_dns_failure
+Error summary: Host network/DNS resolution failed. HTTP Error 404 or Timeout.
+Retry possible later: Yes, when network environment permits external GitHub raw API access.
+--------------------------------------------------
+Entity: scalar
+Repository/Source: unknown (https://raw.githubusercontent.com/scalar/scalar/HEAD/README.md)
+Previous status: dry_run_source_resolved
+Current status: SOURCE_UNAVAILABLE
+Exact failure category: network_timeout_dns_failure
+Error summary: Host network/DNS resolution failed. HTTP Error 404 or Timeout.
+Retry possible later: Yes, when network environment permits external GitHub raw API access.
+--------------------------------------------------
+Entity: redoc
+Repository/Source: unknown (https://raw.githubusercontent.com/Redocly/redoc/HEAD/README.md)
+Previous status: dry_run_source_resolved
+Current status: SOURCE_UNAVAILABLE
+Exact failure category: network_timeout_dns_failure
+Error summary: Host network/DNS resolution failed. HTTP Error 404 or Timeout.
+Retry possible later: Yes, when network environment permits external GitHub raw API access.
+--------------------------------------------------
+Entity: swagger_ui
+Repository/Source: unknown (https://raw.githubusercontent.com/swagger-api/swagger-ui/HEAD/README.md)
+Previous status: dry_run_source_resolved
+Current status: SOURCE_UNAVAILABLE
+Exact failure category: network_timeout_dns_failure
+Error summary: Host network/DNS resolution failed. HTTP Error 404 or Timeout.
+Retry possible later: Yes, when network environment permits external GitHub raw API access.
+--------------------------------------------------
+Entity: chroma
+Repository/Source: unknown (https://raw.githubusercontent.com/chroma-core/chroma/HEAD/README.md)
+Previous status: dry_run_source_resolved
+Current status: SOURCE_UNAVAILABLE
+Exact failure category: network_timeout_dns_failure
+Error summary: Host network/DNS resolution failed. HTTP Error 404 or Timeout.
+Retry possible later: Yes, when network environment permits external GitHub raw API access.
+--------------------------------------------------
+Entity: celery
+Repository/Source: unknown (https://raw.githubusercontent.com/celery/celery/HEAD/README.rst)
+Previous status: dry_run_source_resolved
+Current status: SOURCE_UNAVAILABLE
+Exact failure category: network_timeout_dns_failure
+Error summary: Host network/DNS resolution failed. HTTP Error 404 or Timeout.
+Retry possible later: Yes, when network environment permits external GitHub raw API access.
+--------------------------------------------------
+Entity: rq
+Repository/Source: unknown (https://raw.githubusercontent.com/rq/rq/HEAD/README.md)
+Previous status: dry_run_source_resolved
+Current status: SOURCE_UNAVAILABLE
+Exact failure category: network_timeout_dns_failure
+Error summary: Host network/DNS resolution failed. HTTP Error 404 or Timeout.
+Retry possible later: Yes, when network environment permits external GitHub raw API access.
+--------------------------------------------------
+Entity: dramatiq
+Repository/Source: unknown (https://raw.githubusercontent.com/Bogdanp/dramatiq/HEAD/README.md)
+Previous status: dry_run_source_resolved
+Current status: SOURCE_UNAVAILABLE
+Exact failure category: network_timeout_dns_failure
+Error summary: Host network/DNS resolution failed. HTTP Error 404 or Timeout.
+Retry possible later: Yes, when network environment permits external GitHub raw API access.
+--------------------------------------------------
+Entity: procrastinate
+Repository/Source: unknown (https://raw.githubusercontent.com/procrastinate-org/procrastinate/HEAD/README.md)
+Previous status: dry_run_source_resolved
+Current status: SOURCE_UNAVAILABLE
+Exact failure category: network_timeout_dns_failure
+Error summary: Host network/DNS resolution failed. HTTP Error 404 or Timeout.
+Retry possible later: Yes, when network environment permits external GitHub raw API access.
+--------------------------------------------------

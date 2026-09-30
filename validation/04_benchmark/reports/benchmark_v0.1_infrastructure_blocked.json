@@ -1,0 +1,25 @@
+{
+  "timestamp": 1790797059.0033436,
+  "catalog_filename": "NexusBase_normalized_capabilities_v0.3_full_reproducible.json",
+  "benchmark_filename": "benchmark.json",
+  "model": "qwen3:8b",
+  "model_endpoint": "http://localhost:11434/v1",
+  "python_version": "3.13.14 (tags/v3.13.14:fd17997, Jun 10 2026, 13:03:48) [MSC v.1944 64 bit (AMD64)]",
+  "metrics": {
+    "scenarios_executed": 15,
+    "scenarios_fully_blocked": 5,
+    "viable_expected": 14,
+    "viable_found": 0,
+    "viable_unavailable": 12,
+    "must_have_expected": 0,
+    "must_have_covered": 0,
+    "total_recommendations": 0,
+    "unsupported_recommendations": 0,
+    "status_matches": 1,
+    "overconfident_on_failure": 0,
+    "total_paths": 0,
+    "valid_paths": 0
+  },
+  "grounding_leakage_check": "PASS (discovery_engine.py only receives problem, constraints, and requirements; it has no access to viable lists or expected status)",
+  "limitations": []
+}

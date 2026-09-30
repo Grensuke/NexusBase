@@ -1,0 +1,227 @@
+Entity: glitchtip | Cap: Modern development environment with Python 3 and Django 4 | Evid: - A modern development environment with Python 3 and Django 4.
+ | Reason: Unclassified/No rule matched
+Entity: glitchtip | Cap: Uses PostgreSQL to store error data | Evid: - Simplicity over features. We use Postgres to store error data. Our code base is a fraction of the  | Reason: Unclassified/No rule matched
+Entity: glitchtip | Cap: Leverages existing open source Django ecosystem apps | Evid: - Simplicity over features. We use Postgres to store error data. Our code base is a fraction of the  | Reason: Unclassified/No rule matched
+Entity: glitchtip | Cap: Privacy respect | Evid: - Respects your privacy. No massive JS bundles. No invasive tracking. No third party spying. Our mar | Reason: Unclassified/No rule matched
+Entity: glitchtip | Cap: Error tracking platform | Evid: GlitchTip is an open source, Sentry API compatible error tracking platform. It is a partial fork/mos | Reason: Unclassified/No rule matched
+Entity: glitchtip | Cap: Sentry API compatibility | Evid: GlitchTip is an open source, Sentry API compatible error tracking platform. It is a partial fork/mos | Reason: Unclassified/No rule matched
+Entity: sentry | Cap: Issue detection and tracing | Evid: Sentry is the debugging platform that helps every developer detect, trace, and fix issues. Code brea | Reason: Unclassified/No rule matched
+Entity: coolify | Cap: Support for multiple build methods | Evid: - **Deploy any application:** Build from GitHub, GitLab, Bitbucket, or Gitea with Nixpacks, Railpack | Reason: Unclassified/No rule matched
+Entity: coolify | Cap: Persistent storage support | Evid: - **Run databases and services:** Deploy managed databases and more than 300 one-click services with | Reason: Unclassified/No rule matched
+Entity: coolify | Cap: Team-based access controls | Evid: - **Integrate with your workflow:** Manage resources through the dashboard, API, CLI, MCP, and team- | Reason: Unclassified/No rule matched
+Entity: coolify | Cap: Create pull-request previews | Evid: - **Automate deployments:** Deploy on every Git push, create pull-request previews, call deployment  | Reason: Unclassified/No rule matched
+Entity: coolify | Cap: YouTube data scraping | Evid: * [Supadata](https://supadata.ai/) - Scrape YouTube, web, and files. Get AI-ready, clean data for yo | Reason: Unclassified/No rule matched
+Entity: coolify | Cap: Web data scraping | Evid: * [Supadata](https://supadata.ai/) - Scrape YouTube, web, and files. Get AI-ready, clean data for yo | Reason: Unclassified/No rule matched
+Entity: coolify | Cap: File data scraping | Evid: * [Supadata](https://supadata.ai/) - Scrape YouTube, web, and files. Get AI-ready, clean data for yo | Reason: Unclassified/No rule matched
+Entity: coolify | Cap: Container terminal access | Evid: - **Operate your infrastructure:** Manage multiple servers, inspect deployment and runtime logs, ope | Reason: Unclassified/No rule matched
+Entity: coolify | Cap: Custom domain configuration | Evid: - **Manage networking:** Configure custom domains, automatic HTTPS certificates, reverse proxies, he | Reason: Unclassified/No rule matched
+Entity: coolify | Cap: Reverse proxy configuration | Evid: - **Manage networking:** Configure custom domains, automatic HTTPS certificates, reverse proxies, he | Reason: Unclassified/No rule matched
+Entity: coolify | Cap: Health check configuration | Evid: - **Manage networking:** Configure custom domains, automatic HTTPS certificates, reverse proxies, he | Reason: Unclassified/No rule matched
+Entity: coolify | Cap: Container network configuration | Evid: - **Manage networking:** Configure custom domains, automatic HTTPS certificates, reverse proxies, he | Reason: Unclassified/No rule matched
+Entity: coolify | Cap: Database and storage backups configuration | Evid: - **Protect your workloads:** Configure database and storage backups, scheduled tasks, environment v | Reason: Unclassified/No rule matched
+Entity: coolify | Cap: Scheduled tasks configuration | Evid: - **Protect your workloads:** Configure database and storage backups, scheduled tasks, environment v | Reason: Unclassified/No rule matched
+Entity: coolify | Cap: Notification configuration | Evid: - **Protect your workloads:** Configure database and storage backups, scheduled tasks, environment v | Reason: Unclassified/No rule matched
+Entity: dokku | Cap: Server domain configuration | Evid: You can then proceed to configure your server domain (via `dokku domains:set-global`) and user acces | Reason: Unclassified/No rule matched
+Entity: dokku | Cap: User access configuration | Evid: You can then proceed to configure your server domain (via `dokku domains:set-global`) and user acces | Reason: Unclassified/No rule matched
+Entity: dokku | Cap: Docker-based PaaS implementation | Evid: Docker powered mini-Heroku. The smallest PaaS implementation you've ever seen.
+ | Reason: Unclassified/No rule matched
+Entity: caprover | Cap: Docker Swarm containerization | Evid: ✔ Docker Swarm under the hood for containerization and clustering
+ | Reason: Unclassified/No rule matched
+Entity: caprover | Cap: Docker Swarm clustering | Evid: ✔ Docker Swarm under the hood for containerization and clustering
+ | Reason: Unclassified/No rule matched
+Entity: caprover | Cap: Docker integration | Evid: It's blazingly fast and very robust as it uses Docker, nginx, LetsEncrypt and NetData under the hood | Reason: Unclassified/No rule matched
+Entity: caprover | Cap: Nginx support | Evid: It's blazingly fast and very robust as it uses Docker, nginx, LetsEncrypt and NetData under the hood | Reason: Unclassified/No rule matched
+Entity: caprover | Cap: Let's Encrypt support | Evid: It's blazingly fast and very robust as it uses Docker, nginx, LetsEncrypt and NetData under the hood | Reason: Unclassified/No rule matched
+Entity: caprover | Cap: Web GUI for ease of access and convenience | Evid: ✔ Web GUI for ease of access and convenience
+ | Reason: Unclassified/No rule matched
+Entity: caprover | Cap: Database installation via dropdown selection | Evid: -   A developer who likes installing MariaDB, MySQL, MongoDB and etc on their server by selecting fr | Reason: Unclassified/No rule matched
+Entity: caprover | Cap: Nginx-based load balancing | Evid: ✔ Nginx (fully customizable template) under the hood for load-balancing
+ | Reason: Unclassified/No rule matched
+Entity: unleash | Cap: Privacy by design compliance with GDPR and Schrems II | Evid: - Privacy by design (GDPR and Schrems II). End-user data never leaves your application.
+ | Reason: Unclassified/No rule matched
+Entity: unleash | Cap: Development workflow streamlining | Evid: Unleash is a powerful open-source solution for feature management. It streamlines your development w | Reason: Unclassified/No rule matched
+Entity: unleash | Cap: Software delivery acceleration | Evid: Unleash is a powerful open-source solution for feature management. It streamlines your development w | Reason: Unclassified/No rule matched
+Entity: unleash | Cap: Controlled feature rollout | Evid: Unleash is a powerful open-source solution for feature management. It streamlines your development w | Reason: Unclassified/No rule matched
+Entity: unleash | Cap: Feature flag overview across environments, applications, and services | Evid: - Get an overview of all feature flags across all your environments, applications and services
+ | Reason: Unclassified/No rule matched
+Entity: unleash | Cap: Enforce secure headers via HTTPS-only mode | Evid: - Enforce [OWASP's secure headers](https://owasp.org/www-project-secure-headers/) via the strict HTT | Reason: Unclassified/No rule matched
+Entity: unleash | Cap: Integrations with popular tools (Slack, Microsoft Teams, Datadog) | Evid: - Out-of-the-box integrations with popular tools ([Slack](https://docs.getunleash.io/integrate/slack | Reason: Unclassified/No rule matched
+Entity: unleash | Cap: Integration support via webhooks | Evid: - Out-of-the-box integrations with popular tools ([Slack](https://docs.getunleash.io/integrate/slack | Reason: Unclassified/No rule matched
+Entity: unleash | Cap: Role-based access control | Evid: - [role-based access control (RBAC)](https://docs.getunleash.io/concepts/rbac)
+ | Reason: Unclassified/No rule matched
+Entity: unleash | Cap: Test code with real production data | Evid: Feature flags in Unleash let you test your code with real production data, reducing the risk of nega | Reason: Unclassified/No rule matched
+Entity: unleash | Cap: Work on multiple features simultaneously | Evid: Feature flags in Unleash let you test your code with real production data, reducing the risk of nega | Reason: Unclassified/No rule matched
+Entity: unleash | Cap: Targeted releases using activation strategies to enable and disable features for certain users or segments | Evid: - Targeted releases using [activation strategies](https://docs.getunleash.io/concepts/activation-str | Reason: Unclassified/No rule matched
+Entity: unleash | Cap: Complete API-first automation | Evid: - API-first: _everything_ can be automated. No exceptions.
+ | Reason: Unclassified/No rule matched
+Entity: unleash | Cap: Supports multiple SDK languages | Evid: Unleash is the most popular open-source solution for feature flagging on GitHub. It supports 15 offi | Reason: Unclassified/No rule matched
+Entity: unleash | Cap: Allows custom SDK creation | Evid: Unleash is the most popular open-source solution for feature flagging on GitHub. It supports 15 offi | Reason: Unclassified/No rule matched
+Entity: unleash | Cap: Feature flag tagging | Evid: - Organize feature flags using [tags](https://docs.getunleash.io/concepts/feature-flags#tags)
+ | Reason: Unclassified/No rule matched
+Entity: unleash | Cap: Docker compatibility | Evid: - Run it via Docker with the [official Docker image](https://hub.docker.com/r/unleashorg/unleash-ser | Reason: Unclassified/No rule matched
+Entity: unleash | Cap: Node.js application support | Evid: - Run it via Docker with the [official Docker image](https://hub.docker.com/r/unleashorg/unleash-ser | Reason: Unclassified/No rule matched
+Entity: growthbook | Cap: Feature creation | Evid: - 🤖 MCP server to create features, start experiments, clean up stale flags, and more.
+ | Reason: Unclassified/No rule matched
+Entity: growthbook | Cap: Stale flag cleanup | Evid: - 🤖 MCP server to create features, start experiments, clean up stale flags, and more.
+ | Reason: Unclassified/No rule matched
+Entity: growthbook | Cap: Product analytics dashboard creation | Evid: - 📊 Built-in Product Analytics suite to build dashboards and share with your team.
+ | Reason: Unclassified/No rule matched
+Entity: growthbook | Cap: Flexible SQL-backed metric definitions | Evid: - 🎯 Flexible SQL-backed metric definitions. Simple conversion rates, ratios, quantiles, and more.
+ | Reason: Unclassified/No rule matched
+Entity: growthbook | Cap: World class experiment stats engine | Evid: - 🆎 World class experiment stats engine (CUPED, Sequential, Bayesian, Post-Strat, Bandits, SRM check | Reason: Unclassified/No rule matched
+Entity: growthbook | Cap: Webhook integration support | Evid: - 🔔 Webhooks and a full REST API for building integrations and custom workflows.
+ | Reason: Unclassified/No rule matched
+Entity: growthbook | Cap: REST API for custom workflows | Evid: - 🔔 Webhooks and a full REST API for building integrations and custom workflows.
+ | Reason: Unclassified/No rule matched
+Entity: growthbook | Cap: Feature flag advanced targeting | Evid: - 🏁 Feature flags with advanced targeting, gradual rollouts, and experiments
+ | Reason: Unclassified/No rule matched
+Entity: growthbook | Cap: Feature flag gradual rollouts | Evid: - 🏁 Feature flags with advanced targeting, gradual rollouts, and experiments
+ | Reason: Unclassified/No rule matched
+Entity: growthbook | Cap: Feature flag experiments | Evid: - 🏁 Feature flags with advanced targeting, gradual rollouts, and experiments
+ | Reason: Unclassified/No rule matched
+Entity: growthbook | Cap: Support for multiple programming languages via SDKs | Evid: - 💻 24 SDKs including [React](https://docs.growthbook.io/lib/react), [Python](https://docs.growthboo | Reason: Unclassified/No rule matched
+Entity: docling | Cap: Plain-text file parsing | Evid: - 📝 Parsing of plain-text files (`.txt`, `.text`) and Markdown supersets (`.qmd`, `.Rmd`)
+ | Reason: Unclassified/No rule matched
+Entity: docling | Cap: Markdown superset parsing | Evid: - 📝 Parsing of plain-text files (`.txt`, `.text`) and Markdown supersets (`.qmd`, `.Rmd`)
+ | Reason: Unclassified/No rule matched
+Entity: docling | Cap: Parsing of multiple document formats | Evid: - 🗂️ Parsing of [multiple document formats][supported_formats] including PDF, DOCX, PPTX, XLSX, HTML | Reason: Unclassified/No rule matched
+Entity: docling | Cap: Agentic AI integration support | Evid: - 🤖 Plug-and-play [integrations][integrations] incl. LangChain, LlamaIndex, Crew AI & Haystack for a | Reason: Unclassified/No rule matched
+Entity: docling | Cap: Detailed chart description generation | Evid: - 📊 Chart understanding (Barchart, Piechart, LinePlot): convert them into tables or code and add det | Reason: Unclassified/No rule matched
+Entity: docling | Cap: Support for multiple application-specific XML schemas | Evid: - 📜 Support for several application-specific XML schemas including [DocLang](https://doclang.ai), [U | Reason: Unclassified/No rule matched
+Entity: docling | Cap: Email file parsing | Evid: - 📧 Parsing of email files (`.eml`, `.msg`)
+ | Reason: Unclassified/No rule matched
+Entity: docling | Cap: Video file parsing | Evid: - 🎬 Parsing of video files (MP4, AVI, MOV, MKV, and WebM) with an ASR transcript and representative  | Reason: Unclassified/No rule matched
+Entity: docling | Cap: ASR transcript extraction | Evid: - 🎬 Parsing of video files (MP4, AVI, MOV, MKV, and WebM) with an ASR transcript and representative  | Reason: Unclassified/No rule matched
+Entity: docling | Cap: Keyframe extraction | Evid: - 🎬 Parsing of video files (MP4, AVI, MOV, MKV, and WebM) with an ASR transcript and representative  | Reason: Unclassified/No rule matched
+Entity: docling | Cap: Apple Pages document parsing | Evid: - 🍎 Parsing of Apple Pages (`.pages`) documents and Keynote (`.key`) presentations
+ | Reason: Unclassified/No rule matched
+Entity: docling | Cap: Apple Keynote presentation parsing | Evid: - 🍎 Parsing of Apple Pages (`.pages`) documents and Keynote (`.key`) presentations
+ | Reason: Unclassified/No rule matched
+Entity: docling | Cap: Advanced PDF understanding | Evid: - 📑 Advanced PDF understanding incl. page layout, reading order, table structure, code, formulas, im | Reason: Unclassified/No rule matched
+Entity: docling | Cap: Code extraction | Evid: - 📑 Advanced PDF understanding incl. page layout, reading order, table structure, code, formulas, im | Reason: Unclassified/No rule matched
+Entity: docling | Cap: ODT file parsing for text documents | Evid: - 📄 Parsing of ODF (OpenDocument Format) files for text documents (`.odt`), spreadsheets (`.ods`), a | Reason: Unclassified/No rule matched
+Entity: docling | Cap: ODP file parsing for presentations | Evid: - 📄 Parsing of ODF (OpenDocument Format) files for text documents (`.odt`), spreadsheets (`.ods`), a | Reason: Unclassified/No rule matched
+Entity: docling | Cap: XBRL financial report parsing | Evid: - 💼 Parsing of XBRL (eXtensible Business Reporting Language) documents for financial reports
+ | Reason: Unclassified/No rule matched
+Entity: docling | Cap: Audio support with Automatic Speech Recognition (ASR) models | Evid: - 🎙️ Audio support with Automatic Speech Recognition (ASR) models
+ | Reason: Unclassified/No rule matched
+Entity: faster_whisper | Cap: OpenAI compatible server | Evid: * [speaches](https://github.com/speaches-ai/speaches) is an OpenAI compatible server using `faster-w | Reason: Unclassified/No rule matched
+Entity: faster_whisper | Cap: Streaming support | Evid: * [speaches](https://github.com/speaches-ai/speaches) is an OpenAI compatible server using `faster-w | Reason: Unclassified/No rule matched
+Entity: faster_whisper | Cap: Live transcription support | Evid: * [speaches](https://github.com/speaches-ai/speaches) is an OpenAI compatible server using `faster-w | Reason: Unclassified/No rule matched
+Entity: faster_whisper | Cap: Audio transcription with batched inference | Evid: model = WhisperModel("turbo", device="cuda", compute_type="float16")
+batched_model = BatchedInferenc | Reason: Unclassified/No rule matched
+Entity: faster_whisper | Cap: High accuracy with low memory usage | Evid: This implementation is up to 4 times faster than [openai/whisper](https://github.com/openai/whisper) | Reason: Unclassified/No rule matched
+Entity: faster_whisper | Cap: Speed improvement over OpenAI Whisper | Evid: This implementation is up to 4 times faster than [openai/whisper](https://github.com/openai/whisper) | Reason: Unclassified/No rule matched
+Entity: faster_whisper | Cap: Multi-speaker speech to text | Evid: * [asr-sd-pipeline](https://github.com/hedrergudene/asr-sd-pipeline) provides a scalable, modular, e | Reason: Unclassified/No rule matched
+Entity: faster_whisper | Cap: Audio transcription with voice activity detection | Evid: ```python
+segments, _ = model.transcribe("audio.mp3", vad_filter=True)
+```
+ | Reason: Unclassified/No rule matched
+Entity: faster_whisper | Cap: API backend compatibility with OpenAI, HomeAssistant, and Konele | Evid: * [Whisper-FastAPI](https://github.com/heimoshuiyu/whisper-fastapi) whisper-fastapi is a very simple | Reason: Unclassified/No rule matched
+Entity: faster_whisper | Cap: Self-adaptive latency adjustment | Evid: * [Whisper-Streaming](https://github.com/ufal/whisper_streaming) implements real-time mode for offli | Reason: Unclassified/No rule matched
+Entity: faster_whisper | Cap: Voice transcription | Evid: * [Faster-Whisper-Transcriber](https://github.com/BBC-Esq/ctranslate2-faster-whisper-transcriber) is | Reason: Unclassified/No rule matched
+Entity: faster_whisper | Cap: Voice file transcription | Evid: * [Open-Lyrics](https://github.com/zh-plus/Open-Lyrics) is a Python library that transcribes voice f | Reason: Unclassified/No rule matched
+Entity: faster_whisper | Cap: Text translation into .lrc files | Evid: * [Open-Lyrics](https://github.com/zh-plus/Open-Lyrics) is a Python library that transcribes voice f | Reason: Unclassified/No rule matched
+Entity: whisper_cpp | Cap: Voice Activity Detection (VAD) support | Evid: ## Voice Activity Detection (VAD)
+Support for Voice Activity Detection (VAD) can be enabled using th | Reason: Unclassified/No rule matched
+Entity: whisper_cpp | Cap: Audio transcription | Evid: | Example                                             | Web                                   | Desc | Reason: Unclassified/No rule matched
+Entity: whisper_cpp | Cap: Voice command recognition | Evid: | Example                                             | Web                                   | Desc | Reason: Unclassified/No rule matched
+Entity: whisper_cpp | Cap: HTTP transcription server | Evid: | Example                                             | Web                                   | Desc | Reason: Unclassified/No rule matched
+Entity: whisper_cpp | Cap: Speech-to-text plugin | Evid: | Example                                             | Web                                   | Desc | Reason: Unclassified/No rule matched
+Entity: whisper_cpp | Cap: Audio-to-text conversion | Evid: | Example                                             | Web                                   | Desc | Reason: Unclassified/No rule matched
+Entity: whisper_cpp | Cap: Video transcription | Evid: | Example                                             | Web                                   | Desc | Reason: Unclassified/No rule matched
+Entity: whisper_cpp | Cap: Audio translation | Evid: | Example                                             | Web                                   | Desc | Reason: Unclassified/No rule matched
+Entity: whisper_cpp | Cap: Voice-controlled chess | Evid: | Example                                             | Web                                   | Desc | Reason: Unclassified/No rule matched
+Entity: whisper_cpp | Cap: Model conversion to ggml format | Evid: The command downloads the `base.en` model converted to custom `ggml` format and runs the inference o | Reason: Unclassified/No rule matched
+Entity: whisper_cpp | Cap: Batch audio file inference | Evid: The command downloads the `base.en` model converted to custom `ggml` format and runs the inference o | Reason: Unclassified/No rule matched
+Entity: whisper_cpp | Cap: AVX intrinsics support for x86 architectures | Evid: - AVX intrinsics support for x86 architectures
+ | Reason: Unclassified/No rule matched
+Entity: whisper_cpp | Cap: NPU encoder offloading | Evid: On AMD Ryzen™ AI 300 and 400 Series processors with a dedicated NPU, whisper.cpp can fully offload t | Reason: Unclassified/No rule matched
+Entity: whisper_cpp | Cap: Speech segment splitting based on duration | Evid: * --vad-max-speech-duration-s: Maximum speech duration in seconds. Speech segments
+longer than this  | Reason: Unclassified/No rule matched
+Entity: whisper_cpp | Cap: GPU workload acceleration via Vulkan API | Evid: ## Vulkan GPU support
+Cross-vendor solution which allows you to accelerate workload on your GPU.
+Fir | Reason: Unclassified/No rule matched
+Entity: whisper_cpp | Cap: CPU-only inference support | Evid: - Support for CPU-only inference
+ | Reason: Unclassified/No rule matched
+Entity: whisper_cpp | Cap: Model downloading from Hugging Face | Evid: The VitisAI script queries the [AMD Ryzen AI Whisper NPU collection on Hugging Face](https://hugging | Reason: Unclassified/No rule matched
+Entity: whisper_cpp | Cap: ARM NEON optimization | Evid: - Apple Silicon first-class citizen - optimized via ARM NEON, Accelerate framework, Metal and [Core  | Reason: Unclassified/No rule matched
+Entity: whisper_cpp | Cap: Accelerate framework support | Evid: - Apple Silicon first-class citizen - optimized via ARM NEON, Accelerate framework, Metal and [Core  | Reason: Unclassified/No rule matched
+Entity: whisper_cpp | Cap: Metal integration | Evid: - Apple Silicon first-class citizen - optimized via ARM NEON, Accelerate framework, Metal and [Core  | Reason: Unclassified/No rule matched
+Entity: whisper_cpp | Cap: Includes curl utility | Evid: 1. `ghcr.io/ggml-org/whisper.cpp:main`: This image includes the main executable file as well as `cur | Reason: Unclassified/No rule matched
+Entity: whisper_cpp | Cap: Includes ffmpeg utility | Evid: 1. `ghcr.io/ggml-org/whisper.cpp:main`: This image includes the main executable file as well as `cur | Reason: Unclassified/No rule matched
+Entity: whisper_cpp | Cap: Model conversion to GGML format | Evid: This model can be also be converted manually to ggml using the following command:
+```console
+$ pytho | Reason: Unclassified/No rule matched
+Entity: whisper_cpp | Cap: VAD model integration with Whisper | Evid: This model can be also be converted manually to ggml using the following command:
+```console
+$ pytho | Reason: Unclassified/No rule matched
+Entity: whisper_cpp | Cap: Plain C/C++ implementation without dependencies | Evid: - Plain C/C++ implementation without dependencies
+ | Reason: Unclassified/No rule matched
+Entity: whisper_cpp | Cap: Integer quantization of Whisper ggml models | Evid: `whisper.cpp` supports integer quantization of the Whisper `ggml` models.
+Quantized models require l | Reason: Unclassified/No rule matched
+Entity: whisperx | Cap: Speaker diarization | Evid: This repository provides fast automatic speech recognition (70x realtime with large-v2) with word-le | Reason: Unclassified/No rule matched
+Entity: whisperx | Cap: Single pass batching for transcription | Evid: 1. Transcription without timestamps. To enable single pass batching, whisper inference is performed  | Reason: Unclassified/No rule matched
+Entity: whisperx | Cap: Multispeaker speech recognition | Evid: - 👯‍♂️ Multispeaker ASR using speaker diarization from [pyannote-audio](https://github.com/pyannote/ | Reason: Unclassified/No rule matched
+Entity: whisperx | Cap: Language-specific phoneme ASR alignment | Evid: The phoneme ASR alignment model is _language-specific_, for tested languages these models are [autom | Reason: Unclassified/No rule matched
+Entity: whisperx | Cap: Automatic model selection from torchaudio pipelines or huggingface | Evid: The phoneme ASR alignment model is _language-specific_, for tested languages these models are [autom | Reason: Unclassified/No rule matched
+Entity: whisperx | Cap: Support for passing in the --language code | Evid: The phoneme ASR alignment model is _language-specific_, for tested languages these models are [autom | Reason: Unclassified/No rule matched
+Entity: whisperx | Cap: Model flush for low GPU memory resources | Evid: - [x] Model flush, for low gpu mem resources
+ | Reason: Unclassified/No rule matched
+Entity: whisperx | Cap: 70x speed-up support | Evid: - v3 released, 70x speed-up open-sourced. Using batched whisper with [faster-whisper](https://github | Reason: Unclassified/No rule matched
+Entity: whisperx | Cap: Batched whisper support | Evid: - v3 released, 70x speed-up open-sourced. Using batched whisper with [faster-whisper](https://github | Reason: Unclassified/No rule matched
+Entity: whisperx | Cap: Context-aware batching for improved punctuation and proper noun adherence | Evid: - Context-Aware Batching Released 2026: We successfully enable condition_on_previous_context within  | Reason: Unclassified/No rule matched
+Entity: whisperx | Cap: Support for multiple languages via Hugging Face models | Evid: Currently default models provided for `{en, fr, de, es, it}` via torchaudio pipelines and many other | Reason: Unclassified/No rule matched
+Entity: whisperx | Cap: Allow silero-vad as alternative VAD option | Evid: - [x] Allow silero-vad as alternative VAD option
+ | Reason: Unclassified/No rule matched
+Entity: whisperx | Cap: Speaker diarization support | Evid: To **enable Speaker Diarization**, include your Hugging Face access token (read) that you can genera | Reason: Unclassified/No rule matched
+Entity: whisperx | Cap: VAD-based segment transcription | Evid: 2. VAD-based segment transcription, unlike the buffered transcription of openai's. In the WhisperX p | Reason: Unclassified/No rule matched
+Entity: whisperx | Cap: Accurate batched inference | Evid: 2. VAD-based segment transcription, unlike the buffered transcription of openai's. In the WhisperX p | Reason: Unclassified/No rule matched
+Entity: whisperx | Cap: VAD preprocessing | Evid: - 🗣️ VAD preprocessing, reduces hallucination & batching with no WER degradation
+ | Reason: Unclassified/No rule matched
+Entity: whisperx | Cap: Reduces hallucination | Evid: - 🗣️ VAD preprocessing, reduces hallucination & batching with no WER degradation
+ | Reason: Unclassified/No rule matched
+Entity: whisperx | Cap: Supports batching | Evid: - 🗣️ VAD preprocessing, reduces hallucination & batching with no WER degradation
+ | Reason: Unclassified/No rule matched
+Entity: whisperx | Cap: No WER degradation | Evid: - 🗣️ VAD preprocessing, reduces hallucination & batching with no WER degradation
+ | Reason: Unclassified/No rule matched
+Entity: pyannote | Cap: Speaker diarization service | Evid: # Precision-2 premium speaker diarization service
+pipeline = Pipeline.from_pretrained(
+    "pyannote | Reason: Unclassified/No rule matched
+Entity: pyannote | Cap: Speaker diarization support | Evid: - :rocket: built-in support for [pyannoteAI](https://pyannote.ai) premium speaker diarization
+ | Reason: Unclassified/No rule matched
+Entity: pyannote | Cap: Audio analysis via remote server | Evid: output = pipeline("audio.wav")  # runs on pyannoteAI servers
+ | Reason: Unclassified/No rule matched
+Entity: pyannote | Cap: Speaker diarization | Evid: `pyannote.audio` is an open-source toolkit written in Python for speaker diarization. Based on [PyTo | Reason: Unclassified/No rule matched
+Entity: pyannote | Cap: Pretrained model usage | Evid: `pyannote.audio` is an open-source toolkit written in Python for speaker diarization. Based on [PyTo | Reason: Unclassified/No rule matched
+Entity: pyannote | Cap: Model fine-tuning | Evid: `pyannote.audio` is an open-source toolkit written in Python for speaker diarization. Based on [PyTo | Reason: Unclassified/No rule matched
+Entity: pyannote | Cap: Local audio processing | Evid: # apply pretrained pipeline (with optional progress hook)
+with ProgressHook() as hook:
+    output =  | Reason: Unclassified/No rule matched
+Entity: pyannote | Cap: Improved speaker counting | Evid: Compared to the [`3.1`](https://hf.co/pyannote/speaker-diarization-3.1) legacy pipeline, [`community | Reason: Unclassified/No rule matched
+Entity: pyannote | Cap: Improved speaker assignment | Evid: Compared to the [`3.1`](https://hf.co/pyannote/speaker-diarization-3.1) legacy pipeline, [`community | Reason: Unclassified/No rule matched
+Entity: pyannote | Cap: Enhanced accuracy | Evid: Compared to the [`3.1`](https://hf.co/pyannote/speaker-diarization-3.1) legacy pipeline, [`community | Reason: Unclassified/No rule matched
+Entity: pyannote | Cap: Increased processing speed | Evid: Compared to the [`3.1`](https://hf.co/pyannote/speaker-diarization-3.1) legacy pipeline, [`community | Reason: Unclassified/No rule matched
+Entity: valkey | Cap: RDMA module support | Evid: * RDMA module mode:
+    ```
+    ./src/valkey-server --protected-mode no \
+         --loadmodule src/ | Reason: Unclassified/No rule matched
+Entity: valkey | Cap: Background daemon setup | Evid: The script will ask you a few questions and will setup everything you need
+to run Valkey properly as | Reason: Unclassified/No rule matched
+Entity: valkey | Cap: Memory allocator configuration | Evid: Selecting a non-default memory allocator when building Valkey is done by setting
+the `MALLOC` enviro | Reason: Unclassified/No rule matched
+Entity: valkey | Cap: TLS module support | Evid: * TLS module mode:
+    ```
+    ./src/valkey-server --tls-port 6379 --port 0 \
+        --tls-cert-fil | Reason: Unclassified/No rule matched
+Entity: valkey | Cap: Throughput trend analysis across versions | Evid: Valkey Performance Dashboards provide a consolidated view of throughput trends across versions, help | Reason: Unclassified/No rule matched
+Entity: valkey | Cap: Validation of performance improvements | Evid: Valkey Performance Dashboards provide a consolidated view of throughput trends across versions, help | Reason: Unclassified/No rule matched
+Entity: valkey | Cap: Identification of performance regressions | Evid: Valkey Performance Dashboards provide a consolidated view of throughput trends across versions, help | Reason: Unclassified/No rule matched
+Entity: valkey | Cap: High-performance data structure server | Evid: Valkey is a high-performance data structure server that primarily serves key/value workloads.
+It sup | Reason: Unclassified/No rule matched
+Entity: valkey | Cap: Key/value workloads support | Evid: Valkey is a high-performance data structure server that primarily serves key/value workloads.
+It sup | Reason: Unclassified/No rule matched
+Entity: valkey | Cap: Native structure support | Evid: Valkey is a high-performance data structure server that primarily serves key/value workloads.
+It sup | Reason: Unclassified/No rule matched
+Entity: valkey | Cap: Extensible plugin system | Evid: Valkey is a high-performance data structure server that primarily serves key/value workloads.
+It sup | Reason: Unclassified/No rule matched

@@ -9,16 +9,20 @@ Your job is to extract concrete atomic properties from that block.
 You must strictly separate functional capabilities from deployment models.
 
 1. **capabilities**:
-   Functional things the solution can actually DO (e.g., "Multi-server management", "Database backups").
+   Functional things the solution can actually DO.
+   A NexusBase capability unit is a distinct, user-visible functional outcome or substantial property that can independently fulfill a real-world software requirement.
+   - It is NOT an individual CLI flag, tuning parameter, internal implementation detail, or minor variation of a feature.
+   - When a source block lists multiple sub-formats, layout elements (e.g., tables, images, headers), or minor variations of the same function, you MUST MERGE them into a single overarching capability (e.g., "Complex document layout extraction").
+   - When a source block lists multiple CLI subcommands for the same domain (e.g., list docs, list files, check status), MERGE them into a single capability (e.g., "Command-line document management").
+   - Do not split comma-separated lists into separate capabilities unless each item is a massive, independent sub-system.
 
 2. **deployment_models**:
    How the solution is deployed or hosted. Examples: "self_hosted", "cloud", "managed", "on_premises". Only emit when explicitly supported by the text. DO NOT put these in `capabilities`.
 
 ## Rules
-- A capability describes what the solution can concretely DO functionally.
+- A capability describes what the solution can concretely DO functionally at a high level.
 - Do NOT use the README's feature-group heading or marketing category as the capability label.
-- Split a block into multiple capabilities only when each is explicitly supported by the same block.
-- Do not mechanically create one capability for every comma-separated phrase if the phrase does not represent a meaningful independent capability.
+- Merge low-level details, flags, and variations into cohesive functional capabilities.
 - Do not invent functionality.
 - Do not create capabilities from generic technology names (e.g., "Python", "JavaScript", "Fast").
 - Do not ask to choose the source location. Do not reproduce the source text.

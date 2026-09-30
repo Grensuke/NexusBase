@@ -39,11 +39,11 @@ from pathlib import Path
 from datetime import datetime, timezone
 
 HERE = Path(__file__).parent
-PROMPT_PATH = HERE / 'NexusBase_capability_extraction_prompt_v0.2.md'
-PROMPT_STAGE2_PATH = HERE / 'NexusBase_capability_normalization_prompt_v0.2.md'
-BENCHMARK_PATH = HERE / 'benchmark.json'
-DEFAULT_OUT = HERE / 'NexusBase_extracted_capabilities_v0.2.json'
-DEFAULT_REPORT = HERE / 'NexusBase_extraction_report_v0.2.md'
+PROMPT_PATH = HERE / '01_extraction/inputs/NexusBase_capability_extraction_prompt_v0.2.md'
+PROMPT_STAGE2_PATH = HERE / '02_normalization/inputs/NexusBase_capability_normalization_prompt_v0.2.md'
+BENCHMARK_PATH = HERE / '04_benchmark/inputs/benchmark.json'
+DEFAULT_OUT = HERE / '01_extraction/outputs/NexusBase_extracted_capabilities_v0.2.json'
+DEFAULT_REPORT = HERE / '01_extraction/reports/NexusBase_extraction_report_v0.2.md'
 
 
 # ---------------------------------------------------------------------------
@@ -555,6 +555,8 @@ def main() -> None:
                     help='Output path for extracted catalog')
     ap.add_argument('--report', type=Path, default=DEFAULT_REPORT,
                     help='Output path for extraction report')
+    ap.add_argument('--resume', action='store_true',
+                    help='Resume extraction from the existing output file')
     args = ap.parse_args()
 
     # Entity discovery from benchmark.json — NOT from hand-authored catalog
@@ -577,8 +579,25 @@ def main() -> None:
         'entities': {},
     }
 
+    already_successful = set()
+    if args.resume and args.out.exists():
+        prev_data = json.loads(args.out.read_text(encoding='utf-8'))
+        for eid, ent in prev_data.get('entities', {}).items():
+            if ent.get('status') == 'extracted':
+                already_successful.add(eid)
+                results['entities'][eid] = ent
+                
+    pending = selected - already_successful
+    
+    if args.resume:
+        print("--- RESUME MODE ---")
+        print(f"Total target entities: {len(selected)}")
+        print(f"Already successful (preserved): {len(already_successful)}")
+        print(f"Pending/Retryable: {len(pending)}")
+        print("-------------------\n")
+
     for eid, entity in entities.items():
-        if eid not in selected:
+        if eid not in pending:
             continue
 
         repo = entity['repo']

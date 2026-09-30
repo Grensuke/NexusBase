@@ -1,0 +1,890 @@
+==================================================
+FULL 97-ITEM AUDIT
+==================================================
+- Entity: mineru
+  ID: 0d1fcf7c-9501-4810-8a1d-6e4720901175
+  Label: Remote API usage check
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B087
+  Evidence: 11. User asks for Remote API usage or limits: use `mineru usage --json`. 
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: ee83ef2e-9039-4a2a-9c08-af9b063e73ca
+  Label: Local parse server support for different quality levels
+  Class: A
+  Family: Unclassified functionality
+  Block ID: B194
+  Evidence: Use a local parse server when the user wants `basic`, `standard`, or `advance...
+  Reason: Matches keyword heuristic
+
+- Entity: mineru
+  ID: 904332fb-ed41-4584-b47b-345a748253bf
+  Label: Local document parsing by default
+  Class: A
+  Family: Unclassified functionality
+  Block ID: B142
+  Evidence: - By default, `mineru` parses documents locally. A document is sent for remot...
+  Reason: Matches keyword heuristic
+
+- Entity: mineru
+  ID: 96ada226-10cd-4b71-b910-a0dba81448b7
+  Label: Installation recommendation for uv
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B136
+  Evidence: If `uv`, `pipx`, `pip`, and `pip3` are all unavailable, or none of them can i...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: fbb2b142-8a36-4076-9a25-7ea402536cc8
+  Label: File forgetting without deletion
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B323
+  Evidence: Use `forget` to forget a file or folder from MinerU without deleting source f...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: 7d015fdc-4683-4bb0-b7e1-246e68a7eee1
+  Label: Independent model configuration for different model types
+  Class: B
+  Family: Unclassified functionality
+  Block ID: B016
+  Evidence: - **Independent model configuration**: ONNX or Torch for small models; llama....
+  Reason: Matches keyword heuristic
+
+- Entity: mineru
+  ID: 0efaf367-e994-4df2-a05f-541ff9d28898
+  Label: Fallback parser authorization
+  Class: A
+  Family: Unclassified functionality
+  Block ID: B166
+  Evidence:   - Explicitly authorize fallback to a non-MinerU parser. 
+  Reason: Matches keyword heuristic
+
+- Entity: mineru
+  ID: e91f687d-da82-4a4b-8d0d-bc6904dcf088
+  Label: PDF document parsing
+  Class: A
+  Family: Unclassified functionality
+  Block ID: B244
+  Evidence: ```bash mineru parse "report.pdf" --wait 180 --json ``` 
+  Reason: Matches keyword heuristic
+
+- Entity: mineru
+  ID: 16b612ec-ae12-4257-bbb0-dc399568c4d8
+  Label: Support for multiple hardware configurations
+  Class: B
+  Family: Unclassified functionality
+  Block ID: B214
+  Evidence: | Hardware | Recommended startup tier | Model engines | Extra | |---|---|---|...
+  Reason: Matches keyword heuristic
+
+- Entity: mineru
+  ID: 6b65b18b-8c67-47b9-9b81-cf86de831477
+  Label: Support for multiple model engines
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B214
+  Evidence: | Hardware | Recommended startup tier | Model engines | Extra | |---|---|---|...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: abba3f84-12eb-47bd-8d53-145ce5b94a56
+  Label: Support for custom installation of model engines
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B214
+  Evidence: | Hardware | Recommended startup tier | Model engines | Extra | |---|---|---|...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: 520c2c36-a90d-4c48-b223-6d2a195ac38d
+  Label: Remote document parsing with upload
+  Class: A
+  Family: Unclassified functionality
+  Block ID: B163
+  Evidence:   - Use remote parsing with `--remote`, which uploads the document and requir...
+  Reason: Matches keyword heuristic
+
+- Entity: mineru
+  ID: 45b49085-5d34-4ad2-8f6a-3001d21c65a1
+  Label: Discover files
+  Class: A
+  Family: Unclassified functionality
+  Block ID: B015
+  Evidence: - **Document library and agent reading**: discover files, cache results, sear...
+  Reason: Matches keyword heuristic
+
+- Entity: mineru
+  ID: 62c1eb36-4342-4f0d-a5d5-3ba3652b6e0e
+  Label: Continue by page or block
+  Class: A
+  Family: Unclassified functionality
+  Block ID: B015
+  Evidence: - **Document library and agent reading**: discover files, cache results, sear...
+  Reason: Matches keyword heuristic
+
+- Entity: mineru
+  ID: 2dcf7911-1376-44bf-b7d5-29ec4a0cf7c5
+  Label: Model download size varies by engine (0.8 GB to 3 GB)
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B180
+  Evidence: | Tier | Model engines | Model download | Min RAM required | Accelerator | |-...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: c649ae90-ce3c-42fb-8e5b-3ec5ba47a598
+  Label: RAM requirements vary by model engine (2 GB to 16 GB)
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B180
+  Evidence: | Tier | Model engines | Model download | Min RAM required | Accelerator | |-...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: 1f18c9f5-da77-4e6c-a9b1-c44091a87658
+  Label: Support for CPU and GPU/MPS accelerators
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B180
+  Evidence: | Tier | Model engines | Model download | Min RAM required | Accelerator | |-...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: 64ba8ce3-5984-4ea2-8a5a-972fcb66bd09
+  Label: Document content retrieval
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B098
+  Evidence: ```bash mineru search "liquidated damages" --min-tier basic --json mineru rea...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: 5e354732-5de4-423a-b4d1-393522b51e73
+  Label: File format parsing
+  Class: A
+  Family: Unclassified functionality
+  Block ID: B077
+  Evidence: 1. User provided a file path and wants content: read plain-text formats direc...
+  Reason: Matches keyword heuristic
+
+- Entity: mineru
+  ID: 33f19b9a-11a9-40ba-8c7b-4219a011163e
+  Label: Multi-tiered parsing for different performance and quality needs
+  Class: A
+  Family: Unclassified functionality
+  Block ID: B013
+  Evidence: - **Four parsing tiers**: Flash for fast previews and indexing, Basic for OCR...
+  Reason: Matches keyword heuristic
+
+- Entity: mineru
+  ID: 2bd2b610-1704-422a-a63a-7670eb718f0e
+  Label: Support for page/block continuation in long documents
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B055
+  Evidence: - Work with long documents using page/block continuation instead of loading t...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: e9dadf0c-f915-4bf6-8e2d-2f2f966817e7
+  Label: User choice-based recovery paths for errors
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B074
+  Evidence: - When a recoverable engine or configuration error requires a quality, privac...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: 2d5cc7e8-58f4-4afd-b3ad-f69307cb892c
+  Label: Support for different document parsing use cases based on quality and speed
+  Class: A
+  Family: Unclassified functionality
+  Block ID: B157
+  Evidence: | Tier | Chinese name | Quality and speed | Use for | |---|---|---|---| | `fl...
+  Reason: Matches keyword heuristic
+
+- Entity: mineru
+  ID: 972669d2-82fb-4dc7-8602-64a557eef6f1
+  Label: Document format conversion
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B029
+  Evidence: ```bash uv pip install -U "mineru>=4.0,<5" mineru-kit parse document.pdf -o d...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: 2772792b-7823-4d92-a87d-d32e5df748ce
+  Label: Document content parsing
+  Class: A
+  Family: Unclassified functionality
+  Block ID: B045
+  Evidence: MinerU is a command-line document reader for agents. It parses local document...
+  Reason: Matches keyword heuristic
+
+- Entity: mineru
+  ID: 6050c9d8-6a02-4b0e-b91a-6bb5fde51722
+  Label: Agent continuation by page or block
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B045
+  Evidence: MinerU is a command-line document reader for agents. It parses local document...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: fae83160-c08e-469c-8551-980896ca234d
+  Label: Citation support through locators
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B045
+  Evidence: MinerU is a command-line document reader for agents. It parses local document...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: 55c58393-d385-4aae-a756-cc6dd3847cc7
+  Label: Document parsing with tiered processing
+  Class: A
+  Family: Unclassified functionality
+  Block ID: B175
+  Evidence: ```bash mineru parse "paper.pdf" mineru parse "paper.pdf" --tier basic mineru...
+  Reason: Matches keyword heuristic
+
+- Entity: mineru
+  ID: 26345e1b-8f57-4e0f-bb04-9fdb69763743
+  Label: Multi-format document content extraction
+  Class: A
+  Family: Unclassified functionality
+  Block ID: B054
+  Evidence: - Extract content from PDFs, images, Word, PowerPoint, Excel, RTF, OpenDocume...
+  Reason: Matches keyword heuristic
+
+- Entity: mineru
+  ID: 598ce42d-3ddc-4633-9386-196527923ad6
+  Label: Forget a file or folder without deleting it
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B085
+  Evidence: 9. User asks MinerU to forget a file or folder without deleting it: use `mine...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: c2592294-d435-43ea-ae5d-79bdfaf74a80
+  Label: Targeted content retrieval using locators
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B080
+  Evidence: 4. User asks for a specific page or block after parsing: use `mineru read <lo...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: 07fbf725-81df-404e-ad82-7318277ee390
+  Label: Neural network-based parsing with multiple levels of complexity
+  Class: A
+  Family: Unclassified functionality
+  Block ID: B177
+  Evidence: MinerU use neural network models for local `basic`, `standard`, and `advanced...
+  Reason: Matches keyword heuristic
+
+- Entity: mineru
+  ID: d10440c3-96b3-4168-a810-94e4a1c04392
+  Label: Support for different model engines with additional features
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B177
+  Evidence: MinerU use neural network models for local `basic`, `standard`, and `advanced...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: a1606345-dee4-42c0-a218-e82901f4641c
+  Label: Python document library integration
+  Class: C
+  Family: Unclassified functionality
+  Block ID: B031
+  Evidence: `DoclibClient` drives the local document library from Python. Start the serve...
+  Reason: Matches keyword heuristic
+
+- Entity: mineru
+  ID: ea15e2e8-4a94-4106-831e-7a2919b8ff8e
+  Label: Configuration key retrieval and modification
+  Class: B
+  Family: Unclassified functionality
+  Block ID: B350
+  Evidence: ```bash mineru config get "<key>" mineru config set "<key>" "<value>" mineru ...
+  Reason: Matches keyword heuristic
+
+- Entity: mineru
+  ID: 71ac6ded-451a-4ad4-9334-39aa5a6f48d7
+  Label: Command-line entrypoint usage
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B069
+  Evidence: - Use `mineru` as the command entrypoint. 
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: da0a3c95-94f3-4d8f-93bc-0cfb7f3c4dc4
+  Label: Document summarization
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B051
+  Evidence: - Read, inspect, summarize, quote, cite, or answer questions about a local do...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: 0a07d53f-d8ef-4703-acca-36ec2448d7e7
+  Label: Document quoting
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B051
+  Evidence: - Read, inspect, summarize, quote, cite, or answer questions about a local do...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: 19ca2959-7d61-4d67-bfa9-7e5c051ef04b
+  Label: Document citing
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B051
+  Evidence: - Read, inspect, summarize, quote, cite, or answer questions about a local do...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: 1b3582a1-d119-4d37-aa4c-f1a9b9393342
+  Label: Document question answering
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B051
+  Evidence: - Read, inspect, summarize, quote, cite, or answer questions about a local do...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: 8ea24ac3-3d68-4ab7-b359-049706f3e24e
+  Label: PDF file parsing
+  Class: A
+  Family: Unclassified functionality
+  Block ID: B242
+  Evidence: ```bash mineru parse "report.pdf" --no-wait --json ``` 
+  Reason: Matches keyword heuristic
+
+- Entity: mineru
+  ID: 08067e2d-35fe-460f-bad9-11000b3c9560
+  Label: Support for NVIDIA GPU with `mineru[full]`
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B038
+  Evidence: The default install works out of the box: small models run ONNX CPU inference...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: 66dff1b3-f5a3-4f37-8702-134fa64fbcfb
+  Label: GPU build of torch must be installed separately on Windows
+  Class: C
+  Family: Unclassified functionality
+  Block ID: B038
+  Evidence: The default install works out of the box: small models run ONNX CPU inference...
+  Reason: Matches keyword heuristic
+
+- Entity: mineru
+  ID: bb723a56-d4a9-4117-b28d-292cd25c636e
+  Label: Default install on macOS is best-throughput package
+  Class: C
+  Family: Unclassified functionality
+  Block ID: B038
+  Evidence: The default install works out of the box: small models run ONNX CPU inference...
+  Reason: Matches keyword heuristic
+
+- Entity: mineru
+  ID: 6064930d-415d-4223-b127-4aeccbca722b
+  Label: Accelerated build of torch required for non-NVIDIA devices
+  Class: C
+  Family: Unclassified functionality
+  Block ID: B038
+  Evidence: The default install works out of the box: small models run ONNX CPU inference...
+  Reason: Matches keyword heuristic
+
+- Entity: mineru
+  ID: ade7b596-144e-40c7-abea-3f8917f0f88a
+  Label: Citation locator preservation
+  Class: A
+  Family: Unclassified functionality
+  Block ID: B072
+  Evidence: - Preserve locators for citations and follow-up reads. 
+  Reason: Matches keyword heuristic
+
+- Entity: mineru
+  ID: de61659a-a345-4bfc-9265-525009af5303
+  Label: WebUI interface support
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B029
+  Evidence: ```bash uv pip install -U "mineru>=4.0,<5" mineru-kit parse document.pdf -o d...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: bae1e471-de73-470d-b71c-ee124090b8e4
+  Label: Default limit to first 10 PDF pages
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B039
+  Evidence: For the document library and agent reading, use `mineru parse document.pdf --...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: ffe8efcb-4785-41a5-903e-7bf57f29eed5
+  Label: Stateless document parsing
+  Class: A
+  Family: Unclassified functionality
+  Block ID: B039
+  Evidence: For the document library and agent reading, use `mineru parse document.pdf --...
+  Reason: Matches keyword heuristic
+
+- Entity: mineru
+  ID: 9b4c406e-9867-4d46-85ca-39e568b149da
+  Label: Document conversion
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B012
+  Evidence: MinerU 4.0 brings document parsing, a local document library, and service too...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: 9cb18282-5f19-418b-bea7-18829fa3c667
+  Label: Application integration
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B012
+  Evidence: MinerU 4.0 brings document parsing, a local document library, and service too...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: 81b9ffd0-dc96-4024-b6cf-3d0b81e80b90
+  Label: Support for multiple rendering formats
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B018
+  Evidence: - **Structured results and rendering**: one document model supports nine rend...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: 60bb6482-5dfc-4630-8564-6bab65f51f40
+  Label: Force reparse of documents
+  Class: A
+  Family: Unclassified functionality
+  Block ID: B086
+  Evidence: 10. User asks to force a reparse: use `mineru parse --force` or `mineru inval...
+  Reason: Matches keyword heuristic
+
+- Entity: mineru
+  ID: ab259991-809a-4081-9cc0-370f6cf3adb0
+  Label: Document parse result caching
+  Class: A
+  Family: Unclassified functionality
+  Block ID: B336
+  Evidence: MinerU caches parse results for the same document and tier. 
+  Reason: Matches keyword heuristic
+
+- Entity: mineru
+  ID: fcb5370c-8dd4-42ba-99a7-f7cb24ae9bbd
+  Label: PDF cache invalidation
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B340
+  Evidence: ```bash mineru invalidate "report.pdf" mineru invalidate "report.pdf" --tier ...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: f32ff072-a358-4a15-9373-36351ff91938
+  Label: Precise document content extraction
+  Class: A
+  Family: Unclassified functionality
+  Block ID: B426
+  Evidence: @article{wang2024mineru,   title={Mineru: An open-source solution for precise...
+  Reason: Matches keyword heuristic
+
+- Entity: mineru
+  ID: 1bc3df0f-4751-4222-b089-0dd58c6b8b74
+  Label: Remote failure fallback to local execution
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B146
+  Evidence: - Remote failure may fall back to local if the request can still be satisfied...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: 0d64b153-2967-4a59-81c0-e3273d6357f1
+  Label: Local parsing prioritization
+  Class: A
+  Family: Unclassified functionality
+  Block ID: B143
+  Evidence: - Use local parsing first. If local parsing is not configured or cannot satis...
+  Reason: Matches keyword heuristic
+
+- Entity: mineru
+  ID: 68f57d42-3073-4cdc-ac47-228b3937a0dd
+  Label: Document locator support
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B268
+  Evidence: Use `mineru read` when a document has already been parsed or when the user gi...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: 79aa31fd-1b51-44ff-91f9-1f6c06f23216
+  Label: Watched directories support
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B037
+  Evidence: `DoclibClient` also covers search, watched directories, locators for page/blo...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: bb8c70bb-300f-4403-bc96-bc83303ef626
+  Label: Page/block continuation locators
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B037
+  Evidence: `DoclibClient` also covers search, watched directories, locators for page/blo...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: 4248df1b-5eab-4882-b4dd-25f5cc67e27e
+  Label: Result invalidation support
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B037
+  Evidence: `DoclibClient` also covers search, watched directories, locators for page/blo...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: a57ad9cf-d75b-491b-8931-0afcf517ec1a
+  Label: Easy data preparation with LLMs-based operators and pipelines
+  Class: D
+  Family: Unclassified functionality
+  Block ID: B432
+  Evidence: - [Easy Data Preparation with latest LLMs-based Operators and Pipelines](http...
+  Reason: Matches keyword heuristic
+
+- Entity: mineru
+  ID: 57a67bdf-4f01-4fc5-847d-5d1b88ab7b50
+  Label: PDF content extraction with limit
+  Class: A
+  Family: Unclassified functionality
+  Block ID: B240
+  Evidence: ```bash mineru parse "report.pdf" --limit 12000 ``` 
+  Reason: Matches keyword heuristic
+
+- Entity: mineru
+  ID: 2e2fae18-1044-44ff-bfea-dd4f9e60a9a2
+  Label: Remote document parsing
+  Class: A
+  Family: Unclassified functionality
+  Block ID: B148
+  Evidence: ```bash mineru parse "document.pdf" --remote ``` 
+  Reason: Matches keyword heuristic
+
+- Entity: mineru
+  ID: 9b81efa6-c66a-4414-b2ca-746a0eede58f
+  Label: Local parse server configuration
+  Class: A
+  Family: Unclassified functionality
+  Block ID: B164
+  Evidence:   - Start or configure a local parse server if the hardware supports it, whic...
+  Reason: Matches keyword heuristic
+
+- Entity: mineru
+  ID: a170d379-291e-47aa-b570-2052e477b430
+  Label: User-controlled document upload
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B144
+  Evidence: - Even if remote parsing is configured, do not upload a document until the us...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: cf382d0d-9434-4831-8f10-3aaa2128e644
+  Label: Document parsing and processing
+  Class: A
+  Family: Unclassified functionality
+  Block ID: B034
+  Evidence: client = DoclibClient() submit = client.ensure_parse(ParseRequest(path="paper...
+  Reason: Matches keyword heuristic
+
+- Entity: mineru
+  ID: 0878e60c-bc3b-4c52-9d89-63bcd64e16c7
+  Label: Unified toolset for integration and interaction
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B017
+  Evidence: - **Unified tools**: Python SDK, V1 API, stateless batch conversion, multi-se...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: a47082d0-5216-43be-a662-7c728793b820
+  Label: PDF page range parsing
+  Class: A
+  Family: Unclassified functionality
+  Block ID: B238
+  Evidence: ```bash mineru parse "report.pdf" --pages 1-10 mineru parse "report.pdf" --pa...
+  Reason: Matches keyword heuristic
+
+- Entity: mineru
+  ID: 16968da0-bf5a-498b-b1bb-f514522cff3f
+  Label: Full PDF parsing
+  Class: A
+  Family: Unclassified functionality
+  Block ID: B238
+  Evidence: ```bash mineru parse "report.pdf" --pages 1-10 mineru parse "report.pdf" --pa...
+  Reason: Matches keyword heuristic
+
+- Entity: mineru
+  ID: 5d605f78-a0fe-4a61-8af1-fa12f5d9b78d
+  Label: PDF page selection across multiple interfaces
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B236
+  Evidence: PDF page selection is shared across CLI, Doclib, API, Gradio and Python. See ...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: fd105dab-2b36-4d26-b566-090a68cd77df
+  Label: Anonymous usage analysis
+  Class: C
+  Family: Unclassified functionality
+  Block ID: B151
+  Evidence: MinerU may collect anonymous, locally aggregated usage and diagnostic telemet...
+  Reason: Matches keyword heuristic
+
+- Entity: mineru
+  ID: 48dd6c73-a43d-4c47-9c75-74b0563aee66
+  Label: Support for multiple document formats
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B062
+  Evidence: | Type | Extensions | |---|---| | PDF | `.pdf`, including scanned PDFs and ac...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: 001abd12-6c33-4a7f-8d99-117481f6d62b
+  Label: Support for scanned PDFs
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B062
+  Evidence: | Type | Extensions | |---|---| | PDF | `.pdf`, including scanned PDFs and ac...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: 7d61cc20-4813-449a-9512-92c263b70f33
+  Label: Support for academic papers
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B062
+  Evidence: | Type | Extensions | |---|---| | PDF | `.pdf`, including scanned PDFs and ac...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: 8dfa7a30-2dce-42c1-8ffa-8c460ed9024d
+  Label: Support for office document formats
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B062
+  Evidence: | Type | Extensions | |---|---| | PDF | `.pdf`, including scanned PDFs and ac...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: e33909db-37a0-429a-8946-085c9cda70fb
+  Label: Support for HTML documents
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B062
+  Evidence: | Type | Extensions | |---|---| | PDF | `.pdf`, including scanned PDFs and ac...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: 47144dde-aa5b-4827-b71b-5631aef6b684
+  Label: Support for CSV and TSV files
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B062
+  Evidence: | Type | Extensions | |---|---| | PDF | `.pdf`, including scanned PDFs and ac...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: 5bb07286-ec41-4f76-9c27-dcc6cd2ab7cf
+  Label: Model downloading by tier
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B221
+  Evidence: ```bash mineru-kit models download --tier <tier> mineru-kit models verify --t...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: 2761e7a6-61e1-400e-9bac-c190d7ae4502
+  Label: Model verification by tier
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B221
+  Evidence: ```bash mineru-kit models download --tier <tier> mineru-kit models verify --t...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: 6cb56fda-daaf-4761-a0b4-1123255aea0e
+  Label: File content display
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B299
+  Evidence: ```bash mineru show file "report.pdf" mineru show file "report.pdf" --json mi...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: ce72ebaa-374e-44cc-afd7-10e5e8cd3a17
+  Label: Document parsing
+  Class: D
+  Family: Unclassified functionality
+  Block ID: B299
+  Evidence: ```bash mineru show file "report.pdf" mineru show file "report.pdf" --json mi...
+  Reason: Matches keyword heuristic
+
+- Entity: mineru
+  ID: 546b40ab-6717-4bc0-b7f6-ccc9f1911a52
+  Label: Document scanning
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B299
+  Evidence: ```bash mineru show file "report.pdf" mineru show file "report.pdf" --json mi...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: mineru
+  ID: 0d5a5698-0197-41da-911e-c3b33080d1c3
+  Label: Local parsing of Office files at the flash tier
+  Class: A
+  Family: Unclassified functionality
+  Block ID: B063
+  Evidence: PDF and images support every quality tier (`flash`, `basic`, `standard`, `adv...
+  Reason: Matches keyword heuristic
+
+- Entity: mineru
+  ID: 455fbf60-2b40-4218-8fe3-92b711c8784f
+  Label: Whole document parsing for MHTML files
+  Class: A
+  Family: Unclassified functionality
+  Block ID: B063
+  Evidence: PDF and images support every quality tier (`flash`, `basic`, `standard`, `adv...
+  Reason: Matches keyword heuristic
+
+- Entity: pymupdf4llm
+  ID: 633f0223-da70-43ac-82de-e1dd79fb27c6
+  Label: Detection and preservation of bold, italic, monospace, and code blocks
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B059
+  Evidence: | Feature | Description | |---|---| | **Layout analysis** | Reconstructs natu...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: pymupdf4llm
+  ID: be8d2cee-c3ae-4f97-8f7a-33bd125bb72b
+  Label: Detection and inclusion of references to vector graphic elements
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B059
+  Evidence: | Feature | Description | |---|---| | **Layout analysis** | Reconstructs natu...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: pymupdf4llm
+  ID: 14a4273d-3611-445d-ba55-0e904d04038f
+  Label: Configurable exclusion of repetitive page headers and footers
+  Class: A
+  Family: Unclassified functionality
+  Block ID: B059
+  Evidence: | Feature | Description | |---|---| | **Layout analysis** | Reconstructs natu...
+  Reason: Matches keyword heuristic
+
+- Entity: pymupdf4llm
+  ID: d29248f5-4411-4635-95ce-1069bbd5d013
+  Label: Processing a subset of pages via the `pages` parameter
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B059
+  Evidence: | Feature | Description | |---|---| | **Layout analysis** | Reconstructs natu...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: pymupdf4llm
+  ID: 6d437ef8-f3d8-43b6-b0d3-8681a8b6482b
+  Label: PDF metadata extraction
+  Class: A
+  Family: Unclassified functionality
+  Block ID: B144
+  Evidence: ```python {     "metadata": {         "format": "PDF 1.7",         "title": "...
+  Reason: Matches keyword heuristic
+
+- Entity: pymupdf4llm
+  ID: 58237ed2-6cc4-40b2-879c-759378552a05
+  Label: Page count retrieval
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B144
+  Evidence: ```python {     "metadata": {         "format": "PDF 1.7",         "title": "...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: pymupdf4llm
+  ID: 02d52fc5-4de7-4101-a334-6e8d4dd87a65
+  Label: File path retrieval
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B144
+  Evidence: ```python {     "metadata": {         "format": "PDF 1.7",         "title": "...
+  Reason: No heuristic matched; requires manual review
+
+- Entity: pymupdf4llm
+  ID: c8766537-ba69-4d4d-a33d-e052948e46e6
+  Label: Selective page extraction
+  Class: A
+  Family: Unclassified functionality
+  Block ID: B113
+  Evidence: # Only extract pages 0, 1, and 5 md = pymupdf4llm.to_markdown("document.pdf",...
+  Reason: Matches keyword heuristic
+
+- Entity: pymupdf4llm
+  ID: 1336ff7b-d102-452f-aad7-b7c53ae79f88
+  Label: Extract headers
+  Class: A
+  Family: Unclassified functionality
+  Block ID: B006
+  Evidence: PyMuPDF4LLM is a lightweight extension for [PyMuPDF](https://github.com/pymup...
+  Reason: Matches keyword heuristic
+
+- Entity: pymupdf4llm
+  ID: d9b0f6a4-f806-4911-8625-0f32d839a933
+  Label: LlamaIndex and LangChain compatibility
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B018
+  Evidence: - **Framework integrations** — drop-in support for LlamaIndex and LangChain 
+  Reason: No heuristic matched; requires manual review
+
+- Entity: pymupdf4llm
+  ID: 38bd9cb7-b810-49af-a045-630f3f1744ca
+  Label: Document loading integration with LlamaIndex and LangChain
+  Class: E
+  Family: Unclassified functionality
+  Block ID: B095
+  Evidence: | Framework | Method | |---|---| | **LlamaIndex** | `pymupdf4llm.LlamaMarkdow...
+  Reason: No heuristic matched; requires manual review
+
+==================================================
+QUALITY METRICS
+==================================================
+A count: 33
+B count: 3
+C count: 5
+D count: 2
+E count: 54
+
+- possible invalid atomic capabilities: 2
+- possible metadata/configuration items: 3
+- possible implementation noise: 5
+- possible marketing/use-case noise: 2
+- ambiguous items requiring manual review: 54

@@ -25,8 +25,8 @@ import json, os, re, sys
 from collections import defaultdict
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-bench = json.load(open(os.path.join(HERE, "benchmark.json")))
-index = {s["id"]: s for s in json.load(open(os.path.join(HERE, "seed_index.json")))["solutions"]}
+bench = json.load(open(os.path.join(HERE, "04_benchmark/inputs/benchmark.json")))
+index = {s["id"]: s for s in json.load(open(os.path.join(HERE, "05_shared/inputs/seed_index.json")))["solutions"]}
 
 def norm(s): return re.sub(r"[^a-z0-9]", "", s.lower())
 NAME2ID = {norm(e["name"]): eid for eid, e in bench["entities"].items()}

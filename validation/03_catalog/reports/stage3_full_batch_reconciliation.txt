@@ -1,0 +1,32 @@
+==================================================
+1. RECONCILIATION TABLE
+==================================================
+Entity          | Raw   | Atomic | Meta | Disc | SumDest | Diff 
+-----------------------------------------------------------------
+glitchtip       | 7     | 6      | 1    | 0    | 7       | 0    
+sentry          | 1     | 1      | 0    | 0    | 1       | 0    
+bugsink         | 1     | 0      | 1    | 0    | 1       | 0    
+coolify         | 36    | 30     | 3    | 1    | 34      | 2    
+dokku           | 3     | 3      | 0    | 0    | 3       | 0    
+caprover        | 15    | 15     | 0    | 0    | 15      | 0    
+unleash         | 25    | 21     | 4    | 0    | 25      | 0    
+growthbook      | 13    | 13     | 0    | 0    | 13      | 0    
+docling         | 30    | 29     | 1    | 0    | 30      | 0    
+mineru          | 128   | 128    | 15   | 19   | 162     | -34  
+pymupdf4llm     | 42    | 40     | 0    | 7    | 47      | -5   
+faster_whisper  | 17    | 15     | 0    | 2    | 17      | 0    
+whisper_cpp     | 32    | 28     | 1    | 3    | 32      | 0    
+whisperx        | 23    | 19     | 0    | 4    | 23      | 0    
+pyannote        | 13    | 11     | 2    | 0    | 13      | 0    
+valkey          | 16    | 11     | 4    | 1    | 16      | 0    
+-----------------------------------------------------------------
+TOTAL           | 402   | 370    | 32   | 37   | 439     | -37  
+
+==================================================
+2. INVESTIGATING DISCREPANCY
+==================================================
+[coolify] Has 2 merged raw capabilities (which reduces atomic count).
+[caprover] Has duplicate capability IDs in raw!
+[mineru] Has duplicate capability IDs in raw!
+[mineru] Missing 86 raw IDs from destinations: {'complex_document_parsing', 'plain_text_file_reading', 'file_format_parsing_support', 'llama_cpp_vulkan_mode_support', 'config_key_retrieval', 'search_support', 'file_showing', 'model_download_support', 'low_quality_fast_parsing', 'telemetry_enable_disable', 'supports_llama_cpp', 'output_destination_specification', 'custom_installation_support', 'python_sdk_support', 'stateless_batch_conversion', 'supports_vllm_integration', 'command_line_document_listing', 'file_format_conversion', 'config_parsing_rule_addition', 'model_downloading', 'user_choice_based_recovery', 'agent_navigation_support', 'standard_quality_parsing', 'supports_mlx_integration', 'telemetry_enable', 'nvidia_gpu_optimization_support', 'document_retrieval', 'file_format_support', 'deployment_capability_level_explanation', 'document_file_discovery', 'support_follow_up_reads', 'document_block_image_retrieval', 'config_key_removal', 'search_result_limit', 'private_local_reading', 'multi_service_router', 'search_query_support', 'config_parsing_rule_removal', 'pdf_page_selection_shared', 'config_key_setting', 'page_block_continuation_support', 'supports_multiple_rendering_targets', 'model_configuration_support', 'v1_api_access', 'supports_onnx_inference', 'telemetry_disable', 'high_quality_difficult_documents', 'telemetry_flush', 'local_parsing_support', 'preserve_locators_for_citations', 'document_inspection', 'gradio_webui_interface', 'supports_multiple_input_formats', 'command_line_parse_status_checking', 'onnx_cpu_inference_support', 'non_nvidia_device_accelerated_build_support', 'ocr_scanned_documents', 'search_tier_filter', 'accelerator_recommendation', 'document_search_function', 'config_parsing_rule_list', 'ram_requirement_specification', 'model_verification', 'data_scanning', 'file_search_with_extensions', 'direct_reading_for_plain_text', 'document_location_stability', 'supports_lmdeploy_integration', 'search_type_filter', 'result_caching', 'command_line_json_output_for_docs', 'supports_pytorch_integration', 'file_search_by_name', 'file_search_with_keywords', 'tiered_parsing_options', 'file_search_with_format_output', 'windows_gpu_build_installation_support', 'image_format_specification', 'command_line_file_listing_with_extension_filter', 'command_line_scan_status_checking', 'webui_interface', 'visual_inspection_of_pages_and_blocks', 'local_parsing_for_flash_tier', 'macos_best_throughput_package_support', 'agent_reading_support', 'search_output_format'}
+[pymupdf4llm] Missing 24 raw IDs from destinations: {'document_conversion_to_json', 'optimized_for_vector_embeddings', 'selective_ocr_application', 'optimized_for_llm_ingestion', 'framework_integration_support', 'document_conversion_to_markdown', 'ocr_processing_time_reduction', 'selective_pages', 'ocr_for_non_selectable_text', 'support_for_headers', 'optimized_for_rag_pipelines', 'image_resolution_setting', 'image_directory_specification', 'image_extraction_from_pdf', 'support_for_images', 'extract_metadata', 'support_for_scanned_pages_with_ocr', 'image_format_specification', 'vector_graphics', 'page_navigation', 'one_import_three_output_formats', 'document_conversion_to_plain_text', 'support_for_tables', 'support_for_multi_column_layouts'}

@@ -1,0 +1,200 @@
+==================================================
+STAGE 3 VALIDATION/REGRESSION REPORT
+==================================================
+
+1. Number of positive tests passed (TEST 1): 10/10
+2. Number of negative tests passed (TEST 2+3): 5/6
+3. Any false positives: ['Retrieval vs Conversion identity']
+4. Any false negatives: []
+
+5. Suspicious capability classifications:
+
+6. All generated families:
+  [FAMILY] Unclassified functionality (Members: 59)
+    - Local parse server support for different quality levels
+    - Local document parsing by default
+    - File forgetting without deletion
+    - Independent model configuration for different model types
+    - Fallback parser authorization
+    - PDF document parsing
+    - Support for multiple hardware configurations
+    - Remote document parsing with upload
+    - Discover files
+    - Continue by page or block
+    - Document content retrieval
+    - File format parsing
+    - Multi-tiered parsing for different performance and quality needs
+    - Support for page/block continuation in long documents
+    - Support for different document parsing use cases based on quality and speed
+    - Document content parsing
+    - Agent continuation by page or block
+    - Citation support through locators
+    - Document parsing with tiered processing
+    - Multi-format document content extraction
+    - Forget a file or folder without deleting it
+    - Targeted content retrieval using locators
+    - Neural network-based parsing with multiple levels of complexity
+    - Python document library integration
+    - Configuration key retrieval and modification
+    - PDF file parsing
+    - GPU build of torch must be installed separately on Windows
+    - Default install on macOS is best-throughput package
+    - Accelerated build of torch required for non-NVIDIA devices
+    - Citation locator preservation
+    - WebUI interface support
+    - Stateless document parsing
+    - Support for multiple rendering formats
+    - Force reparse of documents
+    - Document parse result caching
+    - PDF cache invalidation
+    - Precise document content extraction
+    - Local parsing prioritization
+    - Document locator support
+    - Watched directories support
+    - Page/block continuation locators
+    - Result invalidation support
+    - Easy data preparation with LLMs-based operators and pipelines
+    - PDF content extraction with limit
+    - Remote document parsing
+    - Local parse server configuration
+    - Document parsing and processing
+    - PDF page range parsing
+    - Full PDF parsing
+    - PDF page selection across multiple interfaces
+    - Anonymous usage analysis
+    - Support for scanned PDFs
+    - Support for office document formats
+    - Support for HTML documents
+    - Support for CSV and TSV files
+    - File content display
+    - Document parsing
+    - Local parsing of Office files at the flash tier
+    - Whole document parsing for MHTML files
+  [FAMILY] Complex layout element extraction (Members: 15)
+    - Page or block image retrieval for visual inspection
+    - Table extraction
+    - Formula recognition
+    - Figure identification
+    - Complex page layout handling
+    - Document location referencing using stable identifiers
+    - Preserve stable citation locators
+    - Document parsing with adjustable quality and speed settings
+    - PDF page image support for page locators
+    - Identify the tool owning the resolved `mineru` executable
+    - Identify the Python environment containing the executable
+    - Image format extraction from document blocks
+    - OCR scanned PDFs or images
+    - Support for various image formats
+    - PDF and image support across quality tiers
+  [FAMILY] Format ingestion and input parsing (Members: 14)
+    - Local file reading
+    - Omit tier flag for normal reading quality
+    - Document library and agent reading
+    - Plain-text content reading
+    - Support for multiple input formats
+    - Command-line document reading
+    - Stable locator generation for follow-up reads
+    - Cached result retrieval for document reading
+    - Support for machine-readable output formats
+    - Agent reading
+    - Document locator reading
+    - Support for EPUB documents with internal links
+    - Direct reading of plain-text files without parsing
+    - Execute commands exactly as suggested unless modified by user input
+  [FAMILY] Search and query configuration (Members: 10)
+    - Support for searching multiple query types
+    - Ability to apply filters during search
+    - Search within indexed documents
+    - Document search by filename
+    - Document search
+    - Search content
+    - Document search with filters
+    - Search for documents by content
+    - Search with file type filtering
+    - Search functionality
+  [FAMILY] Output conversion and generation (Members: 8)
+    - Support for specifying output format
+    - Document content to Markdown conversion
+    - Search with customizable output format
+    - PDF to JSON conversion
+    - Document parsing with JSON output
+    - File content JSON output
+    - Document JSON output
+    - Scan JSON output
+  [FAMILY] Observability and telemetry (Members: 14)
+    - Server control and status monitoring
+    - Support for visual inspection when required
+    - Telemetry status checking
+    - Telemetry enablement
+    - Telemetry disablement
+    - Telemetry preview
+    - Telemetry data flushing
+    - User status and file/document status checking
+    - Server status monitoring
+    - Document inspection and analysis
+    - Telemetry status inspection
+    - Telemetry enablement control
+    - Unsent local telemetry data removal
+    - Diagnostic telemetry collection
+  [FAMILY] Operations and management (Members: 7)
+    - Python version management
+    - Managed local parse server
+    - Watched folder management
+    - Server tier deployment configuration
+    - Server configuration management
+    - Parsing rule configuration management
+    - Command-line document management
+  [FAMILY] Chunking mechanisms (Members: 3)
+    - Page-level chunking with full metadata per chunk
+    - Page chunking with metadata, TOC items, page boxes, and text
+    - Integration with text splitting tools for chunking
+  [FAMILY] Output conversion and generation (Members: 8)
+    - PDF to Markdown conversion
+    - Image saving to disk
+    - Extraction of embedded images and inlining references in Markdown output
+    - Multi-format output generation
+    - PDF to Markdown conversion with page-level chunking
+    - Convert documents into structured Markdown
+    - Generate JSON output
+    - Conversion of PDF documents to markdown format
+  [FAMILY] Complex layout element extraction (Members: 12)
+    - Image extraction from PDF
+    - Image format support (PNG, JPG, TIFF) with single-page extraction and optional OCR
+    - Heading hierarchy extraction from font size
+    - Natural reading order reconstruction across single and multi-column pages
+    - Table detection and conversion to GitHub-compatible Markdown
+    - Font size-based heading level mapping and custom header detection
+    - Automatic OCR of image-covered or illegible regions while skipping clean digital text
+    - Use of document's table of contents to derive heading hierarchy
+    - Handle multi-column layouts
+    - Extract tables
+    - Process images
+    - OCR for pages with no selectable text
+  [FAMILY] Format ingestion and input parsing (Members: 4)
+    - PDF format support with OCR for scanned pages
+    - XPS/OXPS format support with text and image extraction
+    - EPUB/MOBI/FB2 format support with chapter-aware extraction
+    - Office format support (DOCX, XLSX, PPTX, HWP) requiring PyMuPDF Pro
+  [FAMILY] OCR interpretation (Members: 3)
+    - Selective OCR processing based on page analysis
+    - Region-based OCR for text extraction
+    - Perform OCR on scanned pages
+  [FAMILY] Unclassified functionality (Members: 10)
+    - Detection and preservation of bold, italic, monospace, and code blocks
+    - Detection and inclusion of references to vector graphic elements
+    - Configurable exclusion of repetitive page headers and footers
+    - Processing a subset of pages via the `pages` parameter
+    - PDF metadata extraction
+    - Page count retrieval
+    - Selective page extraction
+    - Extract headers
+    - LlamaIndex and LangChain compatibility
+    - Document loading integration with LlamaIndex and LangChain
+
+7. Family members that look questionable:
+
+8. Data-integrity checks:
+  - All data integrity checks passed.
+
+9. Final conclusion:
+  FAIL

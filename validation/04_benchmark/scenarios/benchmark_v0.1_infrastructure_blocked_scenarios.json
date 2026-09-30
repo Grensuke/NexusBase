@@ -1,0 +1,413 @@
+[
+  {
+    "scenario_id": "S01",
+    "type": "observability",
+    "problem": "We're a 4-person team and want error tracking for our Python and JS apps. It must be self-hosted and have a genuinely open-source license.",
+    "interpreted_requirements": [
+      {
+        "name": "capture exceptions from app SDKs",
+        "priority": "must_have"
+      },
+      {
+        "name": "stack traces with issue grouping",
+        "priority": "must_have"
+      },
+      {
+        "name": "alerting",
+        "priority": "must_have"
+      },
+      {
+        "name": "low operational footprint",
+        "priority": "nice_to_have"
+      }
+    ],
+    "must_have_requirements": [
+      {
+        "name": "capture exceptions from app SDKs",
+        "priority": "must_have"
+      },
+      {
+        "name": "stack traces with issue grouping",
+        "priority": "must_have"
+      },
+      {
+        "name": "alerting",
+        "priority": "must_have"
+      }
+    ],
+    "constraints": {
+      "license": "osi_open_source",
+      "hosting": "self_hosted",
+      "cost": "free"
+    },
+    "expected_status": "paths",
+    "actual_status": "no_valid_path",
+    "duration_sec": 4.093684911727905,
+    "paths": [],
+    "source_availability_impact": false
+  },
+  {
+    "scenario_id": "S02",
+    "type": "deployment",
+    "problem": "I want a Heroku-like git-push deploy experience on a single cheap VPS I control, without running Kubernetes.",
+    "interpreted_requirements": [
+      {
+        "name": "deploy from git or container image",
+        "priority": "must_have"
+      },
+      {
+        "name": "runs on a single server",
+        "priority": "must_have"
+      },
+      {
+        "name": "automatic TLS/domains",
+        "priority": "nice_to_have"
+      }
+    ],
+    "must_have_requirements": [
+      {
+        "name": "deploy from git or container image",
+        "priority": "must_have"
+      },
+      {
+        "name": "runs on a single server",
+        "priority": "must_have"
+      }
+    ],
+    "constraints": {
+      "license": null,
+      "hosting": "self_hosted",
+      "cost": "free"
+    },
+    "expected_status": "paths",
+    "actual_status": "no_valid_path",
+    "duration_sec": 4.092433929443359,
+    "paths": [],
+    "source_availability_impact": false
+  },
+  {
+    "scenario_id": "S03",
+    "status": "SOURCE_UNAVAILABLE",
+    "blocked_entities": [
+      "uptime_kuma",
+      "gatus"
+    ]
+  },
+  {
+    "scenario_id": "S04",
+    "type": "feature-management",
+    "problem": "We need feature flags with gradual rollouts. We want to self-host and avoid vendor lock-in.",
+    "interpreted_requirements": [
+      {
+        "name": "boolean and percentage-rollout flags",
+        "priority": "must_have"
+      },
+      {
+        "name": "SDKs for common languages",
+        "priority": "must_have"
+      },
+      {
+        "name": "A/B experiment analysis",
+        "priority": "nice_to_have"
+      }
+    ],
+    "must_have_requirements": [
+      {
+        "name": "boolean and percentage-rollout flags",
+        "priority": "must_have"
+      },
+      {
+        "name": "SDKs for common languages",
+        "priority": "must_have"
+      }
+    ],
+    "constraints": {
+      "license": "osi_open_source",
+      "hosting": "self_hosted",
+      "cost": "free"
+    },
+    "expected_status": "paths",
+    "actual_status": "no_valid_path",
+    "duration_sec": 4.086792945861816,
+    "paths": [],
+    "source_availability_impact": true
+  },
+  {
+    "scenario_id": "S05",
+    "type": "documents",
+    "problem": "Convert PDFs to clean Markdown locally for an LLM ingestion pipeline in a commercial product. Free, and the license must not force us to open-source our app.",
+    "interpreted_requirements": [
+      {
+        "name": "PDF to Markdown/structured text",
+        "priority": "must_have"
+      },
+      {
+        "name": "table extraction",
+        "priority": "must_have"
+      },
+      {
+        "name": "runs fully locally",
+        "priority": "must_have"
+      }
+    ],
+    "must_have_requirements": [
+      {
+        "name": "PDF to Markdown/structured text",
+        "priority": "must_have"
+      },
+      {
+        "name": "table extraction",
+        "priority": "must_have"
+      },
+      {
+        "name": "runs fully locally",
+        "priority": "must_have"
+      }
+    ],
+    "constraints": {
+      "license": "permissive",
+      "hosting": "local",
+      "cost": "free"
+    },
+    "expected_status": "paths",
+    "actual_status": "no_valid_path",
+    "duration_sec": 4.09486198425293,
+    "paths": [],
+    "source_availability_impact": false
+  },
+  {
+    "scenario_id": "S06",
+    "type": "audio",
+    "problem": "Transcribe recorded interviews locally with timestamps. No cloud APIs, free.",
+    "interpreted_requirements": [
+      {
+        "name": "speech-to-text with timestamps",
+        "priority": "must_have"
+      },
+      {
+        "name": "runs offline",
+        "priority": "must_have"
+      },
+      {
+        "name": "reasonable speed on CPU or consumer GPU",
+        "priority": "nice_to_have"
+      }
+    ],
+    "must_have_requirements": [
+      {
+        "name": "speech-to-text with timestamps",
+        "priority": "must_have"
+      },
+      {
+        "name": "runs offline",
+        "priority": "must_have"
+      }
+    ],
+    "constraints": {
+      "license": null,
+      "hosting": "local",
+      "cost": "free"
+    },
+    "expected_status": "paths",
+    "actual_status": "no_valid_path",
+    "duration_sec": 4.071982145309448,
+    "paths": [],
+    "source_availability_impact": false
+  },
+  {
+    "scenario_id": "S07",
+    "type": "audio",
+    "problem": "Same as above, but I also need speaker labels (who said what), still fully local and free.",
+    "interpreted_requirements": [
+      {
+        "name": "speech-to-text with timestamps",
+        "priority": "must_have"
+      },
+      {
+        "name": "speaker diarization",
+        "priority": "must_have"
+      },
+      {
+        "name": "runs offline",
+        "priority": "must_have"
+      }
+    ],
+    "must_have_requirements": [
+      {
+        "name": "speech-to-text with timestamps",
+        "priority": "must_have"
+      },
+      {
+        "name": "speaker diarization",
+        "priority": "must_have"
+      },
+      {
+        "name": "runs offline",
+        "priority": "must_have"
+      }
+    ],
+    "constraints": {
+      "license": null,
+      "hosting": "local",
+      "cost": "free"
+    },
+    "expected_status": "paths",
+    "actual_status": "no_valid_path",
+    "duration_sec": 4.106863737106323,
+    "paths": [],
+    "source_availability_impact": false
+  },
+  {
+    "scenario_id": "S08",
+    "type": "data-store",
+    "problem": "We want a Redis-compatible cache for a new product, with a truly open-source license.",
+    "interpreted_requirements": [
+      {
+        "name": "Redis protocol compatibility",
+        "priority": "must_have"
+      },
+      {
+        "name": "OSI-approved license for the version recommended",
+        "priority": "must_have"
+      }
+    ],
+    "must_have_requirements": [
+      {
+        "name": "Redis protocol compatibility",
+        "priority": "must_have"
+      },
+      {
+        "name": "OSI-approved license for the version recommended",
+        "priority": "must_have"
+      }
+    ],
+    "constraints": {
+      "license": "osi_open_source",
+      "hosting": "self_hosted",
+      "cost": "free"
+    },
+    "expected_status": "paths",
+    "actual_status": "no_valid_path",
+    "duration_sec": 4.123834133148193,
+    "paths": [],
+    "source_availability_impact": true
+  },
+  {
+    "scenario_id": "S09",
+    "status": "SOURCE_UNAVAILABLE",
+    "blocked_entities": [
+      "opentofu"
+    ]
+  },
+  {
+    "scenario_id": "S10",
+    "status": "SOURCE_UNAVAILABLE",
+    "blocked_entities": [
+      "pg_fts",
+      "paradedb"
+    ]
+  },
+  {
+    "scenario_id": "S11",
+    "status": "SOURCE_UNAVAILABLE",
+    "blocked_entities": [
+      "scalar",
+      "redoc",
+      "swagger_ui"
+    ]
+  },
+  {
+    "scenario_id": "S12",
+    "status": "SOURCE_UNAVAILABLE",
+    "blocked_entities": [
+      "procrastinate"
+    ]
+  },
+  {
+    "scenario_id": "S13",
+    "type": "search-plus-ai",
+    "problem": "Build a private, searchable archive of my meeting recordings (transcribe plus semantic search). Local and free.",
+    "interpreted_requirements": [
+      {
+        "name": "speech-to-text",
+        "priority": "must_have"
+      },
+      {
+        "name": "semantic search over transcripts",
+        "priority": "must_have"
+      },
+      {
+        "name": "simple UI to browse and query",
+        "priority": "nice_to_have"
+      }
+    ],
+    "must_have_requirements": [
+      {
+        "name": "speech-to-text",
+        "priority": "must_have"
+      },
+      {
+        "name": "semantic search over transcripts",
+        "priority": "must_have"
+      }
+    ],
+    "constraints": {
+      "license": null,
+      "hosting": "local",
+      "cost": "free"
+    },
+    "expected_status": "potential_paths_only",
+    "actual_status": "no_valid_path",
+    "duration_sec": 4.0976128578186035,
+    "paths": [],
+    "source_availability_impact": true
+  },
+  {
+    "scenario_id": "S14",
+    "type": "failure-mode",
+    "problem": "Find a free, offline tool that automatically translates our 500k-line COBOL codebase to Java with guaranteed behavioral equivalence.",
+    "interpreted_requirements": [
+      {
+        "name": "automatic COBOL to Java translation",
+        "priority": "must_have"
+      },
+      {
+        "name": "guaranteed behavioral equivalence",
+        "priority": "must_have"
+      }
+    ],
+    "must_have_requirements": [
+      {
+        "name": "automatic COBOL to Java translation",
+        "priority": "must_have"
+      },
+      {
+        "name": "guaranteed behavioral equivalence",
+        "priority": "must_have"
+      }
+    ],
+    "constraints": {
+      "license": null,
+      "hosting": "local",
+      "cost": "free"
+    },
+    "expected_status": "no_valid_path",
+    "actual_status": "no_valid_path",
+    "duration_sec": 4.08604884147644,
+    "paths": [],
+    "source_availability_impact": false
+  },
+  {
+    "scenario_id": "S15",
+    "type": "failure-mode",
+    "problem": "I need something to manage my team's stuff.",
+    "interpreted_requirements": [],
+    "must_have_requirements": [],
+    "constraints": {},
+    "expected_status": "clarify",
+    "actual_status": "no_valid_path",
+    "duration_sec": 4.061985492706299,
+    "paths": [],
+    "source_availability_impact": false
+  }
+]

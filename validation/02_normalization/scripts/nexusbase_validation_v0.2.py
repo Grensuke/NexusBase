@@ -24,13 +24,13 @@ from pathlib import Path
 from datetime import datetime, timezone
 
 HERE = Path(__file__).parent
-BENCHMARK_PATH  = HERE / 'benchmark.json'
-SEED_INDEX_PATH = HERE / 'seed_index.json'
-DEFAULT_CATALOG = HERE / 'NexusBase_extracted_capabilities_v0.2.json'
-HAND_CATALOG    = HERE / 'NexusBase_capability_catalog_v0.1.json'
+BENCHMARK_PATH  = HERE / '04_benchmark/inputs/benchmark.json'
+SEED_INDEX_PATH = HERE / '05_shared/inputs/seed_index.json'
+DEFAULT_CATALOG = HERE / '01_extraction/outputs/NexusBase_extracted_capabilities_v0.2.json'
+HAND_CATALOG    = HERE / '03_catalog/outputs/NexusBase_capability_catalog_v0.1.json'
 
-OUT_MATRIX = HERE / 'NexusBase_all_entity_matching_matrix_v0.2.json'
-OUT_REPORT = HERE / 'NexusBase_validation_report_v0.2.md'
+OUT_MATRIX = HERE / '02_normalization/reports/NexusBase_all_entity_matching_matrix_v0.2.json'
+OUT_REPORT = HERE / '02_normalization/reports/NexusBase_validation_report_v0.2.md'
 
 
 # ---------------------------------------------------------------------------

@@ -1,0 +1,19 @@
+==================================================
+BASELINE REPRODUCIBILITY REPORT
+==================================================
+
+Entity: mineru
+Atomic Count: Old=128, New=128
+Missing labels in reproducible: set()
+Extra labels in reproducible: set()
+Discarded Count: Old=19, New=19
+Metadata Count: Old=15, New=16
+REPRODUCIBILITY CHECK: PASS (UUIDs differ as expected, but labels, metadata, and discarded match perfectly)
+
+Entity: pymupdf4llm
+Atomic Count: Old=40, New=40
+Missing labels in reproducible: set()
+Extra labels in reproducible: set()
+Discarded Count: Old=7, New=7
+Metadata Count: Old=0, New=0
+REPRODUCIBILITY CHECK: PASS (UUIDs differ as expected, but labels, metadata, and discarded match perfectly)

@@ -1,0 +1,284 @@
+{
+  "raw_expected": 209,
+  "atomic_by_entity": {
+    "mineru": 128,
+    "pymupdf4llm": 40
+  },
+  "total_atomic": 168,
+  "metadata_count": 15,
+  "discarded_count": 26,
+  "families_removed": 0,
+  "families_total": 13,
+  "items": [
+    {
+      "label": "Remote API usage check",
+      "class": "B",
+      "destination": "B"
+    },
+    {
+      "label": "Installation recommendation for uv",
+      "class": "B",
+      "destination": "B"
+    },
+    {
+      "label": "File forgetting without deletion",
+      "class": "A",
+      "destination": "A"
+    },
+    {
+      "label": "Support for multiple model engines",
+      "class": "B",
+      "destination": "B"
+    },
+    {
+      "label": "Support for custom installation of model engines",
+      "class": "B",
+      "destination": "B"
+    },
+    {
+      "label": "Model download size varies by engine (0.8 GB to 3 GB)",
+      "class": "B",
+      "destination": "B"
+    },
+    {
+      "label": "RAM requirements vary by model engine (2 GB to 16 GB)",
+      "class": "B",
+      "destination": "B"
+    },
+    {
+      "label": "Support for CPU and GPU/MPS accelerators",
+      "class": "B",
+      "destination": "B"
+    },
+    {
+      "label": "Document content retrieval",
+      "class": "A",
+      "destination": "A"
+    },
+    {
+      "label": "Support for page/block continuation in long documents",
+      "class": "A",
+      "destination": "A"
+    },
+    {
+      "label": "User choice-based recovery paths for errors",
+      "class": "B",
+      "destination": "B"
+    },
+    {
+      "label": "Document format conversion",
+      "class": "D",
+      "destination": "D"
+    },
+    {
+      "label": "Agent continuation by page or block",
+      "class": "A",
+      "destination": "A"
+    },
+    {
+      "label": "Citation support through locators",
+      "class": "A",
+      "destination": "A"
+    },
+    {
+      "label": "Forget a file or folder without deleting it",
+      "class": "A",
+      "destination": "A"
+    },
+    {
+      "label": "Targeted content retrieval using locators",
+      "class": "A",
+      "destination": "A"
+    },
+    {
+      "label": "Support for different model engines with additional features",
+      "class": "B",
+      "destination": "B"
+    },
+    {
+      "label": "Command-line entrypoint usage",
+      "class": "C",
+      "destination": "C"
+    },
+    {
+      "label": "Document summarization",
+      "class": "D",
+      "destination": "D"
+    },
+    {
+      "label": "Document quoting",
+      "class": "D",
+      "destination": "D"
+    },
+    {
+      "label": "Document citing",
+      "class": "D",
+      "destination": "D"
+    },
+    {
+      "label": "Document question answering",
+      "class": "D",
+      "destination": "D"
+    },
+    {
+      "label": "Support for NVIDIA GPU with `mineru[full]`",
+      "class": "B",
+      "destination": "B"
+    },
+    {
+      "label": "WebUI interface support",
+      "class": "A",
+      "destination": "A"
+    },
+    {
+      "label": "Default limit to first 10 PDF pages",
+      "class": "B",
+      "destination": "B"
+    },
+    {
+      "label": "Document conversion",
+      "class": "D",
+      "destination": "D"
+    },
+    {
+      "label": "Application integration",
+      "class": "D",
+      "destination": "D"
+    },
+    {
+      "label": "Support for multiple rendering formats",
+      "class": "A",
+      "destination": "A"
+    },
+    {
+      "label": "PDF cache invalidation",
+      "class": "A",
+      "destination": "A"
+    },
+    {
+      "label": "Remote failure fallback to local execution",
+      "class": "B",
+      "destination": "B"
+    },
+    {
+      "label": "Document locator support",
+      "class": "A",
+      "destination": "A"
+    },
+    {
+      "label": "Watched directories support",
+      "class": "A",
+      "destination": "A"
+    },
+    {
+      "label": "Page/block continuation locators",
+      "class": "A",
+      "destination": "A"
+    },
+    {
+      "label": "Result invalidation support",
+      "class": "A",
+      "destination": "A"
+    },
+    {
+      "label": "User-controlled document upload",
+      "class": "B",
+      "destination": "B"
+    },
+    {
+      "label": "Unified toolset for integration and interaction",
+      "class": "D",
+      "destination": "D"
+    },
+    {
+      "label": "PDF page selection across multiple interfaces",
+      "class": "A",
+      "destination": "A"
+    },
+    {
+      "label": "Support for multiple document formats",
+      "class": "D",
+      "destination": "D"
+    },
+    {
+      "label": "Support for scanned PDFs",
+      "class": "A",
+      "destination": "A"
+    },
+    {
+      "label": "Support for academic papers",
+      "class": "D",
+      "destination": "D"
+    },
+    {
+      "label": "Support for office document formats",
+      "class": "A",
+      "destination": "A"
+    },
+    {
+      "label": "Support for HTML documents",
+      "class": "A",
+      "destination": "A"
+    },
+    {
+      "label": "Support for CSV and TSV files",
+      "class": "A",
+      "destination": "A"
+    },
+    {
+      "label": "Model downloading by tier",
+      "class": "B",
+      "destination": "B"
+    },
+    {
+      "label": "Model verification by tier",
+      "class": "B",
+      "destination": "B"
+    },
+    {
+      "label": "File content display",
+      "class": "A",
+      "destination": "A"
+    },
+    {
+      "label": "Document scanning",
+      "class": "D",
+      "destination": "D"
+    },
+    {
+      "label": "Detection and preservation of bold, italic, monospace, and code blocks",
+      "class": "A",
+      "destination": "A"
+    },
+    {
+      "label": "Detection and inclusion of references to vector graphic elements",
+      "class": "A",
+      "destination": "A"
+    },
+    {
+      "label": "Processing a subset of pages via the `pages` parameter",
+      "class": "A",
+      "destination": "A"
+    },
+    {
+      "label": "Page count retrieval",
+      "class": "A",
+      "destination": "A"
+    },
+    {
+      "label": "File path retrieval",
+      "class": "C",
+      "destination": "C"
+    },
+    {
+      "label": "LlamaIndex and LangChain compatibility",
+      "class": "A",
+      "destination": "A"
+    },
+    {
+      "label": "Document loading integration with LlamaIndex and LangChain",
+      "class": "A",
+      "destination": "A"
+    }
+  ]
+}

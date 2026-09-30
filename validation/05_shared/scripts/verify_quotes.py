@@ -1,7 +1,7 @@
 import json, os, re, urllib.request, urllib.error, collections, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-cat = json.load(open(os.path.join(HERE, "NexusBase_capability_catalog_v0.1.json")))
+cat = json.load(open(os.path.join(HERE, "03_catalog/outputs/NexusBase_capability_catalog_v0.1.json")))
 
 def raw_candidates(url):
     url = url.split("?")[0]
@@ -62,4 +62,4 @@ for r in [r for r in rows if r[4] != "verbatim"][:40]:
 print("\nShort high-confidence quotes:")
 for r in short:
     if r[2]=="high": print(f"  {r[0]}/{r[1]} :: \"{r[5]}\"")
-json.dump([dict(zip(["entity","cap","conf","words","status","quote","url"], r)) for r in rows], open(os.path.join(HERE, "verify_results.json"),"w"), indent=1)
+json.dump([dict(zip(["entity","cap","conf","words","status","quote","url"], r)) for r in rows], open(os.path.join(HERE, "05_shared/reports/verify_results.json"),"w"), indent=1)
