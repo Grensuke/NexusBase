@@ -34,7 +34,7 @@ function PathCard({ path, index }: { path: SolutionPath, index: number }) {
   const primaryCapability = path.evidence?.[0]?.capability || "Core Processing";
   
   return (
-    <div className="flex flex-col h-full bg-surface border border-strong-border transition-all duration-700 animate-in fade-in" style={{ animationFillMode: "both", animationDelay: `${index * 100}ms` }}>
+    <div className="mb-6 lg:mb-0 row-span-2 grid grid-rows-[subgrid] bg-surface border border-strong-border transition-all duration-700 animate-in fade-in" style={{ animationFillMode: "both", animationDelay: `${index * 100}ms` }}>
       <div className="p-6 md:p-8 flex flex-col h-full">
         {/* PATH IDENTITY */}
         <div className="flex items-center gap-3 mb-4">
@@ -513,7 +513,7 @@ export default function DiscoverPage() {
                 <ComparisonTable data={data} />
               ) : (
                 /* Side-by-side Card View */
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-0">
                   {data.solution_paths?.map((path, idx) => (
                     <PathCard key={idx} path={path} index={idx} />
                   ))}
