@@ -34,21 +34,24 @@ function PathCard({ path, index }: { path: SolutionPath, index: number }) {
   const primaryCapability = path.evidence?.[0]?.capability || "Core Processing";
   
   return (
-    <div className="mb-6 lg:mb-0 row-span-2 grid grid-rows-[subgrid] bg-surface border border-strong-border transition-all duration-700 animate-in fade-in" style={{ animationFillMode: "both", animationDelay: `${index * 100}ms` }}>
-      <div className="p-6 md:p-8 flex flex-col h-full">
+    <div className="mb-6 lg:mb-0 row-span-2 grid grid-rows-[subgrid] bg-surface border border-strong-border transition-all duration-500 animate-in fade-in" style={{ animationFillMode: "both", animationDelay: `${index * 50}ms` }}>
+      <div className="p-5 md:p-6 flex flex-col h-full">
         {/* PATH IDENTITY */}
-        <div className="flex items-center gap-3 mb-4">
-           <span className="text-[10px] font-mono font-semibold tracking-[0.15em] uppercase text-secondary-ink">PATH {(index+1).toString().padStart(2, '0')}</span>
-           <span className="text-[10px] font-mono tracking-widest uppercase text-muted-text truncate">{types}</span>
+        <div className="flex flex-col gap-1.5 mb-4">
+           <div className="flex items-center gap-2">
+             <span className="text-[10px] font-mono font-semibold tracking-[0.15em] uppercase text-primary-ink">PATH {(index+1).toString().padStart(2, '0')}</span>
+             <span className="text-[10px] font-mono tracking-widest uppercase text-secondary-ink truncate">{types}</span>
+           </div>
+           <h4 className="text-[20px] font-bold tracking-tight text-primary-ink leading-tight mt-1">
+             {names}
+           </h4>
+           <div className="text-[13px] font-medium text-primary-ink">{primaryCapability}</div>
+           <div className="text-[11px] font-mono text-muted-text mt-1">{techIds}</div>
         </div>
-        <h4 className="text-[22px] font-bold tracking-tight text-primary-ink leading-tight mb-2">
-          {names}
-        </h4>
-        <div className="text-[11px] font-mono text-muted-text mb-2">{techIds}</div>
-        <div className="text-[13px] font-medium text-secondary-ink mb-6 pb-6 border-b border-border">{primaryCapability}</div>
+        <div className="w-full h-px bg-border mb-6" />
 
         {/* METRICS / REQUIREMENTS / CONSTRAINTS */}
-        <div className="flex-1 flex flex-col gap-6">
+        <div className="flex-1 flex flex-col gap-5">
           <div className="flex flex-col gap-3">
              <div className="text-[10px] font-mono font-semibold tracking-[0.15em] uppercase text-secondary-ink flex items-center justify-between">
                 <span>Requirements</span>
@@ -71,11 +74,11 @@ function PathCard({ path, index }: { path: SolutionPath, index: number }) {
           </div>
 
           {(path.constraints_states?.length || 0) > 0 && (
-             <div className="flex flex-col gap-3 pt-6 border-t border-border">
-                <div className="text-[10px] font-mono font-semibold tracking-[0.15em] uppercase text-secondary-ink">Constraints</div>
-                <div className="flex flex-col gap-2">
+             <div className="flex flex-col gap-2.5 pt-5 border-t border-border">
+                <div className="text-[10px] font-mono font-semibold tracking-[0.15em] uppercase text-secondary-ink">Constraint</div>
+                <div className="flex flex-col gap-1.5">
                   {path.constraints_states?.map((c, i) => (
-                    <div key={i} className="flex items-start gap-2 text-[13px] font-medium text-primary-ink leading-relaxed">
+                    <div key={i} className="flex items-start gap-2 text-[12px] font-medium text-primary-ink leading-relaxed">
                       <span className={`shrink-0 mt-0.5 ${getStatusTreatment(c.status)}`}>
                         {c.status === 'SATISFIED' ? '✓' : c.status === 'VIOLATED' ? '✕' : '○'}
                       </span>
@@ -88,9 +91,17 @@ function PathCard({ path, index }: { path: SolutionPath, index: number }) {
         </div>
 
         {/* STATUS & ACTIONS */}
-        <div className="mt-8 pt-6 border-t border-border flex flex-col gap-6">
-           <div className={`font-mono text-[11px] font-semibold tracking-[0.15em] uppercase ${getStatusTreatment(path.status)}`}>
-              {path.status.replace(/_/g, ' ')}
+        <div className="mt-6 pt-5 border-t border-border flex flex-col gap-5">
+           <div className="flex flex-col gap-1">
+             <div className={`font-mono text-[11px] font-semibold tracking-[0.15em] uppercase ${getStatusTreatment(path.status)}`}>
+                {path.status.replace(/_/g, ' ')}
+             </div>
+             <div className="text-[12px] font-medium text-secondary-ink">
+                {path.status === 'VALID' ? `${reqsCovered} / ${reqsTotal} requirements` :
+                 path.status === 'PARTIAL' ? `${reqsTotal - reqsCovered} requirement(s) unmet` :
+                 path.status === 'CONSTRAINT_VIOLATED' ? 'Constraint violation' :
+                 'Insufficient evidence'}
+             </div>
            </div>
 
            <div className="flex flex-col gap-4 w-full">
@@ -130,9 +141,9 @@ function PathCard({ path, index }: { path: SolutionPath, index: number }) {
       
       {/* EXPANDED ANALYSIS (Inline) */}
       <div 
-        className={`overflow-hidden transition-all duration-500 ease-in-out bg-muted-surface ${expanded ? 'max-h-[3000px] opacity-100 border-t border-strong-border' : 'max-h-0 opacity-0'}`}
+        className={`overflow-hidden transition-all duration-300 ease-in-out bg-muted-surface ${expanded ? 'max-h-[3000px] opacity-100 border-t border-strong-border' : 'max-h-0 opacity-0'}`}
       >
-        <div className="p-6 md:p-8 space-y-10">
+        <div className="p-5 md:p-6 space-y-8">
             
             {(path.constraints_states?.length || 0) > 0 && (
               <div>
@@ -352,7 +363,7 @@ export default function DiscoverPage() {
 
   return (
     <div className="flex-1 w-full flex flex-col font-sans bg-background min-h-screen">
-      <div className="max-w-[1200px] mx-auto w-full px-6 md:px-8 py-16 space-y-16 md:space-y-24">
+      <div className="max-w-[1200px] mx-auto w-full px-6 md:px-8 py-12 md:py-16 space-y-12 md:space-y-16">
         
         {/* Editor Input Area */}
         <section className="space-y-6 md:space-y-8 animate-in slide-in-from-bottom-4 duration-700">
@@ -405,14 +416,14 @@ export default function DiscoverPage() {
 
         {/* Loading Pipeline State */}
         {loading && (
-          <section className="py-12 animate-in fade-in duration-500 flex flex-col items-center">
-            <div className="w-full max-w-2xl border border-strong-border bg-surface p-8">
-              <div className="text-[11px] font-mono font-semibold tracking-[0.15em] uppercase text-secondary-ink flex items-center gap-4 mb-8">
-                <Activity className="w-4 h-4 text-primary animate-pulse" /> 
-                <span>Analytical Pipeline Running</span>
+          <section className="animate-in fade-in duration-300 flex flex-col items-start -mt-2 md:-mt-4">
+            <div className="w-full max-w-[500px] border border-strong-border bg-surface p-5">
+              <div className="text-[10px] font-mono font-semibold tracking-[0.15em] uppercase text-secondary-ink flex items-center gap-3 mb-4">
+                <Activity className="w-3.5 h-3.5 text-primary animate-pulse" /> 
+                <span>Analytical Pipeline</span>
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-y-5 gap-x-8 font-mono text-[12px] text-muted-text">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-2.5 gap-x-6 font-mono text-[11px] text-muted-text">
                 {[
                   "Understanding problem",
                   "Extracting requirements",
@@ -421,19 +432,18 @@ export default function DiscoverPage() {
                   "Verifying evidence",
                   "Constructing paths"
                 ].map((step, idx) => {
-                   // Remap 6 visual steps to our 5 progress tick states roughly
                    const normalizedIdx = Math.floor(idx * (5 / 6));
                    const isActive = progressStep === normalizedIdx;
                    const isDone = progressStep > normalizedIdx;
                    
                    return (
-                    <div key={idx} className={`flex items-center gap-4 transition-all duration-300 ${isActive ? 'text-primary-ink' : isDone ? 'text-secondary-ink' : 'text-muted-text opacity-50'}`}>
+                    <div key={idx} className={`flex items-center gap-3 transition-all duration-200 ${isActive ? 'text-primary-ink' : isDone ? 'text-secondary-ink' : 'text-muted-text opacity-50'}`}>
                       {isActive ? (
-                        <Loader2 className="w-3.5 h-3.5 animate-spin text-primary shrink-0" />
+                        <Loader2 className="w-3 h-3 animate-spin text-primary shrink-0" />
                       ) : isDone ? (
-                        <CheckCircle2 className="w-3.5 h-3.5 text-verified shrink-0" />
+                        <CheckCircle2 className="w-3 h-3 text-verified shrink-0" />
                       ) : (
-                        <div className="w-3.5 h-3.5 border border-strong-border rounded-none shrink-0" />
+                        <div className="w-3 h-3 border border-strong-border rounded-none shrink-0" />
                       )}
                       <span className={isActive ? 'opacity-100 font-bold uppercase tracking-wider' : 'opacity-100 uppercase tracking-wider'}>{step}</span>
                     </div>
@@ -446,21 +456,23 @@ export default function DiscoverPage() {
 
         {/* Results Workspace */}
         {data && !loading && (
-          <div className="animate-in fade-in duration-700 space-y-16">
+          <div className="animate-in fade-in slide-in-from-bottom-2 duration-500 space-y-10 md:space-y-12">
             
             {/* UNDERSTOOD - Compact Global Summary */}
-            <section className="bg-muted-surface border border-border p-6 flex flex-col md:flex-row md:items-center justify-between gap-6">
-              <div className="space-y-2">
-                 <div className="text-[10px] font-mono font-semibold tracking-[0.15em] text-secondary-ink uppercase mb-3">Understood</div>
-                 <div className="flex flex-wrap items-center gap-3">
-                   {data.problem_analysis.requirements?.map((req, i) => (
-                      <span key={i} className="text-[14px] font-medium text-primary-ink bg-surface px-3 py-1.5 border border-strong-border">{req}</span>
+            <section className="bg-muted-surface border border-border p-5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div className="flex flex-col gap-1.5">
+                 <div className="text-[10px] font-mono font-semibold tracking-[0.15em] text-secondary-ink uppercase">Understood</div>
+                 <div className="text-[14px] font-medium text-primary-ink leading-relaxed">
+                   {data.problem_analysis.requirements?.map((req, i, arr) => (
+                      <span key={i}>
+                        {req}
+                        {i < arr.length - 1 && <span className="text-border mx-2">·</span>}
+                      </span>
                    ))}
                  </div>
               </div>
-              <div className="flex flex-col items-start md:items-end gap-1 mt-4 md:mt-0 pt-4 md:pt-0 border-t md:border-t-0 border-border">
-                 <span className="text-[13px] font-medium text-secondary-ink">{data.problem_analysis.requirements?.length || 0} requirements</span>
-                 <span className="text-[13px] font-medium text-secondary-ink">{(data.problem_analysis.must_have_requirements?.length || 0) + (data.problem_analysis.constraints?.length || 0)} constraints</span>
+              <div className="flex flex-col md:items-end text-[12px] font-mono text-secondary-ink pt-2 md:pt-0">
+                 <span>{data.problem_analysis.requirements?.length || 0} requirements · {(data.problem_analysis.must_have_requirements?.length || 0) + (data.problem_analysis.constraints?.length || 0)} constraints</span>
               </div>
             </section>
 
