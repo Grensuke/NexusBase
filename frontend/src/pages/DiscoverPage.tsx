@@ -1,18 +1,16 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { discoverProblem } from "../api/client";
 import type { DiscoverResponse, SolutionPath } from "../types/discovery";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { Loader2, Search, CheckCircle2, XCircle, ChevronRight, Activity, RefreshCw, ExternalLink, GitBranch, ArrowRight } from "lucide-react";
+import { Loader2, Search, CheckCircle2, XCircle, ChevronRight, Activity, RefreshCw, ExternalLink, GitBranch, ArrowRight, LayoutGrid, Columns3 } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import remarkBreaks from "remark-breaks";
 
-function PathCard({ path, index, isRejected }: { path: SolutionPath, index: number, isRejected: boolean }) {
+function PathCard({ path, index }: { path: SolutionPath, index: number }) {
   const [expanded, setExpanded] = useState(false);
-  const contentRef = useRef<HTMLDivElement>(null);
   
-  const capabilitiesCount = path.evidence?.length || 0;
   const reqsTotal = (path.requirements_covered?.length || 0) + (path.requirements_missing?.length || 0);
   const reqsCovered = path.requirements_covered?.length || 0;
   
@@ -33,176 +31,274 @@ function PathCard({ path, index, isRejected }: { path: SolutionPath, index: numb
   const names = path.candidates_meta?.map(m => m.name).join(" + ") || path.solutions.join(" + ");
   const types = (path.modalities || []).filter(Boolean).map(m => m.replace(/_/g, ' ')).join(" + ");
   const techIds = path.solutions.join(" + ");
+  const primaryCapability = path.evidence?.[0]?.capability || "Core Processing";
   
   return (
-    <div className={`border-t border-strong-border py-12 transition-all duration-700 animate-in fade-in ${isRejected ? 'opacity-60 hover:opacity-100 grayscale hover:grayscale-0' : ''}`} style={{ animationFillMode: "both", animationDelay: `${index * 150}ms` }}>
-      
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
-        {/* COLUMN 1: Candidate Identity */}
-        <div className="lg:col-span-4 flex flex-col gap-1 pr-6">
-           <div className="flex items-center gap-3 mb-3">
-              <span className="text-[11px] font-mono font-semibold tracking-[0.15em] uppercase text-secondary-ink">PATH {(index+1).toString().padStart(2, '0')}</span>
-              <span className="text-[10px] font-mono tracking-widest uppercase text-muted-text">{types}</span>
+    <div className="mb-6 lg:mb-0 row-span-2 grid grid-rows-[subgrid] bg-surface border border-strong-border transition-all duration-500 animate-in fade-in" style={{ animationFillMode: "both", animationDelay: `${index * 50}ms` }}>
+      <div className="p-5 md:p-6 flex flex-col h-full">
+        {/* PATH IDENTITY */}
+        <div className="flex flex-col gap-1.5 mb-4">
+           <div className="flex items-center gap-2">
+             <span className="text-[10px] font-mono font-semibold tracking-[0.15em] uppercase text-primary-ink">PATH {(index+1).toString().padStart(2, '0')}</span>
+             <span className="text-[10px] font-mono tracking-widest uppercase text-secondary-ink truncate">{types}</span>
            </div>
-           <h4 className="text-2xl md:text-[28px] font-bold tracking-tight text-primary-ink leading-tight mb-2">
+           <h4 className="text-[20px] font-bold tracking-tight text-primary-ink leading-tight mt-1">
              {names}
            </h4>
-           <div className="text-xs font-mono text-muted-text">{techIds}</div>
+           <div className="text-[13px] font-medium text-primary-ink">{primaryCapability}</div>
+           <div className="text-[11px] font-mono text-muted-text mt-1">{techIds}</div>
         </div>
-        
-        {/* COLUMN 2: Metrics */}
-        <div className="lg:col-span-5 flex flex-col">
-           <div className="grid grid-cols-[120px_1fr] gap-y-4 text-[14px]">
-              <div className="text-secondary-ink font-medium">Capabilities</div>
-              <div className="font-semibold text-primary-ink">{capabilitiesCount} <span className="text-muted-text font-mono text-[10px] ml-2 tracking-widest uppercase">identified</span></div>
-              
-              <div className="text-secondary-ink font-medium">Requirements</div>
-              <div className="font-semibold text-primary-ink">{reqsCovered} / {reqsTotal} <span className="text-muted-text font-mono text-[10px] ml-2 tracking-widest uppercase">covered</span></div>
-              
-              <div className="text-secondary-ink font-medium pt-3 border-t border-border mt-1">Constraints</div>
-              <div className="pt-3 border-t border-border mt-1 flex flex-col gap-2">
-                {path.constraints_states?.slice(0, 3).map((c, i) => (
-                  <div key={i} className="flex items-center justify-between">
-                    <span className="truncate pr-4 font-medium text-primary-ink">{c.constraint}</span>
-                    <span className={`text-[10px] font-mono font-semibold tracking-widest uppercase shrink-0 ${getStatusTreatment(c.status)}`}>
-                      {c.status === 'SATISFIED' ? '✓' : c.status === 'VIOLATED' ? '✕' : '○'} {c.status}
-                    </span>
+        <div className="w-full h-px bg-border mb-6" />
+
+        {/* METRICS / REQUIREMENTS / CONSTRAINTS */}
+        <div className="flex-1 flex flex-col gap-5">
+          <div className="flex flex-col gap-3">
+             <div className="text-[10px] font-mono font-semibold tracking-[0.15em] uppercase text-secondary-ink flex items-center justify-between">
+                <span>Requirements</span>
+                <span className="text-muted-text font-normal">{reqsCovered} / {reqsTotal}</span>
+             </div>
+             <div className="flex flex-col gap-2">
+                {path.requirements_covered?.map((req, i) => (
+                  <div key={`cov-${i}`} className="flex items-start gap-2 text-[13px] font-medium text-primary-ink leading-relaxed">
+                    <span className="text-verified shrink-0 mt-0.5">✓</span>
+                    <span>{req}</span>
                   </div>
                 ))}
-                {(path.constraints_states?.length || 0) === 0 && (
-                  <span className="text-muted-text italic">None detected</span>
-                )}
-                {(path.constraints_states?.length || 0) > 3 && (
-                  <div className="text-[10px] text-muted-text font-mono mt-1">+{path.constraints_states!.length - 3} more constraints</div>
-                )}
-              </div>
-           </div>
-        </div>
-        
-        {/* COLUMN 3: Status & Action */}
-        <div className="lg:col-span-3 flex flex-col items-start lg:items-end gap-6 border-t border-border pt-4 lg:pt-0 lg:border-t-0">
-           <div className={`font-mono text-[11px] font-semibold tracking-[0.15em] uppercase ${getStatusTreatment(path.status)}`}>
-              {path.status.replace(/_/g, ' ')}
-           </div>
-           
-           <button 
-             onClick={() => setExpanded(!expanded)} 
-             className="text-[13px] font-bold text-primary-ink hover:text-primary transition-colors flex items-center group bg-transparent border-none p-0 cursor-pointer"
-           >
-             {expanded ? 'Hide Analysis' : 'View Analysis'} 
-             <ChevronRight className={`w-4 h-4 ml-1.5 transition-transform duration-300 ${expanded ? 'rotate-90' : 'group-hover:translate-x-1'}`} />
-           </button>
-
-           <div className="flex flex-col items-start lg:items-end gap-3 mt-auto pt-6 w-full">
-               {path.candidates_meta?.map((meta, i) => (
-                  <div key={i} className="flex flex-wrap lg:flex-col lg:items-end gap-3 w-full">
-                    {meta.modality === 'web_application' && meta.website_url ? (
-                      <a href={meta.website_url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-bold text-primary-ink hover:text-primary transition-colors group">
-                        Open Website <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-                      </a>
-                    ) : (
-                      <>
-                        {meta.documentation_url && <a href={meta.documentation_url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-semibold text-secondary-ink hover:text-primary-ink transition-colors group">Documentation <ExternalLink className="w-3.5 h-3.5 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" /></a>}
-                        {meta.install_url && <a href={meta.install_url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-bold text-primary-ink hover:text-primary transition-colors group">Install <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" /></a>}
-                        {meta.download_url && <a href={meta.download_url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-bold text-primary-ink hover:text-primary transition-colors group">Download <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" /></a>}
-                        {meta.repository_url && <a href={meta.repository_url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-semibold text-secondary-ink hover:text-primary-ink transition-colors group">Repository <GitBranch className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" /></a>}
-                        {meta.official_url && !meta.website_url && !meta.repository_url && <a href={meta.official_url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-semibold text-secondary-ink hover:text-primary-ink transition-colors group">Official Site <ExternalLink className="w-3.5 h-3.5 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" /></a>}
-                      </>
-                    )}
+                {path.requirements_missing?.map((req, i) => (
+                  <div key={`miss-${i}`} className="flex items-start gap-2 text-[13px] font-medium text-muted-text leading-relaxed opacity-75">
+                    <span className="shrink-0 mt-0.5">○</span>
+                    <span>{req}</span>
                   </div>
-               ))}
+                ))}
+             </div>
+          </div>
+
+          {(path.constraints_states?.length || 0) > 0 && (
+             <div className="flex flex-col gap-2.5 pt-5 border-t border-border">
+                <div className="text-[10px] font-mono font-semibold tracking-[0.15em] uppercase text-secondary-ink">Constraint</div>
+                <div className="flex flex-col gap-1.5">
+                  {path.constraints_states?.map((c, i) => (
+                    <div key={i} className="flex items-start gap-2 text-[12px] font-medium text-primary-ink leading-relaxed">
+                      <span className={`shrink-0 mt-0.5 ${getStatusTreatment(c.status)}`}>
+                        {c.status === 'SATISFIED' ? '✓' : c.status === 'VIOLATED' ? '✕' : '○'}
+                      </span>
+                      <span>{c.constraint}</span>
+                    </div>
+                  ))}
+                </div>
+             </div>
+          )}
+        </div>
+
+        {/* STATUS & ACTIONS */}
+        <div className="mt-6 pt-5 border-t border-border flex flex-col gap-5">
+           <div className="flex flex-col gap-1">
+             <div className={`font-mono text-[11px] font-semibold tracking-[0.15em] uppercase ${getStatusTreatment(path.status)}`}>
+                {path.status.replace(/_/g, ' ')}
+             </div>
+             <div className="text-[12px] font-medium text-secondary-ink">
+                {path.status === 'VALID' ? `${reqsCovered} / ${reqsTotal} requirements` :
+                 path.status === 'PARTIAL' ? `${reqsTotal - reqsCovered} requirement(s) unmet` :
+                 path.status === 'CONSTRAINT_VIOLATED' ? 'Constraint violation' :
+                 'Insufficient evidence'}
+             </div>
+           </div>
+
+           <div className="flex flex-col gap-4 w-full">
+              {/* Primary Actions */}
+              {path.candidates_meta?.map((meta, i) => (
+                <div key={i} className="flex flex-col gap-3">
+                  {meta.modality === 'web_application' && meta.website_url ? (
+                    <a href={meta.website_url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-[14px] font-bold text-primary-ink hover:text-primary transition-colors group">
+                      Open Website <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                    </a>
+                  ) : (
+                    <>
+                      {meta.install_url && <a href={meta.install_url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-[14px] font-bold text-primary-ink hover:text-primary transition-colors group">Install <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" /></a>}
+                      {meta.download_url && <a href={meta.download_url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-[14px] font-bold text-primary-ink hover:text-primary transition-colors group">Download <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" /></a>}
+                      
+                      <div className="flex flex-wrap items-center gap-4 mt-1">
+                        {meta.documentation_url && <a href={meta.documentation_url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-xs font-semibold text-secondary-ink hover:text-primary-ink transition-colors group">Documentation <ExternalLink className="w-3 h-3 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" /></a>}
+                        {meta.repository_url && <a href={meta.repository_url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-xs font-semibold text-secondary-ink hover:text-primary-ink transition-colors group">Repository <GitBranch className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" /></a>}
+                        {meta.official_url && !meta.website_url && !meta.repository_url && <a href={meta.official_url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-xs font-semibold text-secondary-ink hover:text-primary-ink transition-colors group">Official Site <ExternalLink className="w-3 h-3 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" /></a>}
+                      </div>
+                    </>
+                  )}
+                </div>
+              ))}
+              
+              {/* Secondary View Analysis Action */}
+              <button 
+                onClick={() => setExpanded(!expanded)} 
+                className="text-[13px] font-bold text-secondary-ink hover:text-primary-ink transition-colors flex items-center group bg-transparent border-none p-0 cursor-pointer w-fit mt-2"
+              >
+                {expanded ? 'Hide Analysis' : 'View Analysis'} 
+                <ChevronRight className={`w-3.5 h-3.5 ml-1.5 transition-transform duration-300 ${expanded ? 'rotate-90' : 'group-hover:translate-x-1'}`} />
+              </button>
            </div>
         </div>
       </div>
       
-      {/* EXPANDED ANALYSIS */}
+      {/* EXPANDED ANALYSIS (Inline) */}
       <div 
-        className={`grid overflow-hidden transition-[grid-template-rows,opacity] duration-300 ease-in-out ${expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
+        className={`overflow-hidden transition-all duration-300 ease-in-out bg-muted-surface ${expanded ? 'max-h-[3000px] opacity-100 border-t border-strong-border' : 'max-h-0 opacity-0'}`}
       >
-        <div className="min-h-0">
-          <div className="mt-12 pt-12 border-t border-border grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16" ref={contentRef}>
+        <div className="p-5 md:p-6 space-y-8">
             
-            {/* Expanded Left Column: Requirements & Constraints */}
-            <div className="lg:col-span-4 space-y-12 pr-6">
-              {(path.requirements_missing?.length || 0) > 0 && (
-                <div>
-                  <div className="text-[11px] font-mono font-semibold tracking-[0.15em] uppercase text-secondary-ink mb-6 flex items-center gap-3">
-                    <span className="w-6 h-px bg-strong-border" />
-                    Unmet Requirements
-                  </div>
-                  <ul className="space-y-4 pl-8 border-l border-violated">
-                    {path.requirements_missing.map((req, i) => (
-                      <li key={i} className="text-[14px] font-medium text-violated leading-relaxed">
-                        {req}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
+            {(path.constraints_states?.length || 0) > 0 && (
               <div>
-                <div className="text-[11px] font-mono font-semibold tracking-[0.15em] uppercase text-secondary-ink mb-6 flex items-center gap-3">
-                  <span className="w-6 h-px bg-strong-border" />
+                <div className="text-[10px] font-mono font-semibold tracking-[0.15em] uppercase text-secondary-ink mb-4 flex items-center gap-3">
+                  <span className="w-4 h-px bg-strong-border" />
                   Constraint Verification
                 </div>
-                <div className="space-y-6">
+                <div className="space-y-4">
                   {path.constraints_states?.map((c, i) => (
-                    <div key={i} className="flex flex-col gap-2">
+                    <div key={i} className="flex flex-col gap-1.5 pl-7 border-l-2 border-strong-border">
                       <div className="flex items-start justify-between gap-4">
-                        <span className="text-[14px] font-semibold text-primary-ink leading-relaxed">{c.constraint}</span>
+                        <span className="text-[13px] font-semibold text-primary-ink leading-relaxed">{c.constraint}</span>
                         {getConstraintIcon(c.status)}
                       </div>
-                      {c.reason && <p className="text-xs text-secondary-ink font-medium leading-relaxed mt-1 font-mono">{c.reason}</p>}
+                      {c.reason && <p className="text-[11px] text-secondary-ink font-medium leading-relaxed font-mono">{c.reason}</p>}
                     </div>
                   ))}
-                  {(path.constraints_states?.length || 0) === 0 && (
-                    <div className="text-sm text-muted-text italic">No constraints verified for this path.</div>
-                  )}
                 </div>
               </div>
-            </div>
+            )}
             
-            {/* Expanded Right Column: Evidence */}
-            <div className="lg:col-span-8 space-y-12">
-                <div className="text-[11px] font-mono font-semibold tracking-[0.15em] uppercase text-secondary-ink flex items-center justify-between border-b border-border pb-4">
+            <div className="space-y-6">
+                <div className="text-[10px] font-mono font-semibold tracking-[0.15em] uppercase text-secondary-ink flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                     <span className="w-6 h-px bg-strong-border" />
+                     <span className="w-4 h-px bg-strong-border" />
                      Source-Backed Evidence
                   </div>
-                  <span className="text-muted-text font-normal tracking-widest">{path.evidence?.length || 0} EXCERPTS</span>
                 </div>
                 
-                <div className="space-y-12">
+                <div className="space-y-8">
                   {path.evidence?.map((ev, i) => (
-                    <div key={i} className="space-y-4 relative">
-                      {/* Evidence Metadata */}
-                      <div className="flex items-center gap-2 text-[11px] font-mono mb-2">
+                    <div key={i} className="space-y-3 relative pl-7 border-l-2 border-strong-border">
+                      <div className="flex items-center gap-2 text-[10px] font-mono">
                         <span className="text-secondary-ink uppercase tracking-widest">{ev.entity}</span>
-                        <ChevronRight className="w-3 h-3 text-border" />
+                        <ChevronRight className="w-2.5 h-2.5 text-border" />
                         <span className="text-primary-ink uppercase font-semibold tracking-widest">{ev.capability}</span>
                       </div>
-                      
-                      {/* Evidence Content (Editorial/Code Block) */}
-                      <div className="pl-6 border-l-2 border-strong-border">
-                         <div className="prose prose-sm max-w-none font-mono text-[13px] leading-[1.6] prose-p:my-2 prose-pre:my-0 prose-pre:bg-muted-surface prose-pre:border prose-pre:border-border prose-pre:p-4 prose-pre:rounded-none prose-pre:text-secondary-ink text-secondary-ink">
-                           <ReactMarkdown remarkPlugins={[remarkGfm, remarkBreaks]}>
-                             {ev.evidence}
-                           </ReactMarkdown>
-                         </div>
+                      <div className="prose prose-sm max-w-none font-mono text-[12px] leading-[1.6] prose-p:my-1 prose-pre:my-0 prose-pre:bg-surface prose-pre:border prose-pre:border-border prose-pre:p-3 prose-pre:rounded-none prose-pre:text-secondary-ink text-secondary-ink">
+                        <ReactMarkdown remarkPlugins={[remarkGfm, remarkBreaks]}>
+                          {ev.evidence}
+                        </ReactMarkdown>
                       </div>
-                      <div className="pl-6 mt-3">
-                         <span className="text-[10px] font-mono tracking-widest uppercase text-muted-text bg-surface border border-border px-2 py-1">SOURCE VERIFIED</span>
+                      <div className="mt-2">
+                         <span className="text-[9px] font-mono tracking-widest uppercase text-muted-text bg-surface border border-border px-1.5 py-0.5">SOURCE VERIFIED</span>
                       </div>
                     </div>
                   ))}
                   {(path.evidence?.length || 0) === 0 && (
-                     <div className="text-sm text-muted-text italic">No specific capability evidence extracted.</div>
+                     <div className="text-xs text-muted-text italic pl-7 border-l-2 border-transparent">No specific capability evidence extracted.</div>
                   )}
                 </div>
             </div>
+
           </div>
-        </div>
       </div>
+    </div>
+  );
+}
+
+function ComparisonTable({ data }: { data: DiscoverResponse }) {
+  const allPaths = data.solution_paths || [];
+  
+  // Extract all unique requirements
+  const allReqs = Array.from(new Set(allPaths.flatMap(p => [
+    ...(p.requirements_covered || []),
+    ...(p.requirements_missing || [])
+  ])));
+  
+  // Extract all unique constraints
+  const allConstraints = Array.from(new Set(allPaths.flatMap(p => 
+    p.constraints_states?.map(c => c.constraint) || []
+  )));
+
+  const getStatusTreatment = (status: string) => {
+     if (status === 'VALID' || status === 'SATISFIED') return "text-verified bg-verified-soft";
+     if (status === 'UNKNOWN') return "text-unknown bg-unknown-soft";
+     if (status === 'VIOLATED' || status === 'CONSTRAINT_VIOLATED' || status === 'LLM_OUTPUT_INVALID') return "text-violated bg-violated-soft";
+     if (status === 'PARTIAL') return "text-warning bg-warning-soft";
+     return "text-primary-ink bg-muted-surface";
+  };
+
+  return (
+    <div className="w-full overflow-x-auto border border-strong-border bg-surface animate-in fade-in duration-500">
+      <table className="w-full text-left text-[13px] min-w-[800px]">
+        <thead>
+          <tr>
+            <th className="p-4 border-b border-r border-border bg-muted-surface w-[250px] font-mono text-[10px] uppercase tracking-widest text-secondary-ink font-semibold">Dimension</th>
+            {allPaths.map((p, i) => (
+              <th key={i} className="p-4 border-b border-border bg-surface">
+                <div className="font-mono text-[10px] tracking-[0.15em] text-muted-text uppercase mb-1">Path {(i+1).toString().padStart(2, '0')}</div>
+                <div className="font-bold text-primary-ink text-[15px] truncate max-w-[200px]">
+                  {p.candidates_meta?.map(m => m.name).join(" + ") || p.solutions.join(" + ")}
+                </div>
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {/* Status Row */}
+          <tr>
+            <td className="p-4 border-b border-r border-border font-semibold text-primary-ink">Status</td>
+            {allPaths.map((p, i) => (
+              <td key={i} className="p-4 border-b border-border">
+                <span className={`inline-flex font-mono text-[10px] font-semibold tracking-widest uppercase px-2 py-1 ${getStatusTreatment(p.status)}`}>
+                  {p.status.replace(/_/g, ' ')}
+                </span>
+              </td>
+            ))}
+          </tr>
+
+          {/* Requirements Rows */}
+          {allReqs.map((req, reqIdx) => (
+            <tr key={`req-${reqIdx}`}>
+              <td className="p-4 border-b border-r border-border font-medium text-secondary-ink truncate max-w-[250px]" title={req}>{req}</td>
+              {allPaths.map((p, pIdx) => {
+                const isCovered = p.requirements_covered?.includes(req);
+                return (
+                  <td key={`req-${reqIdx}-${pIdx}`} className="p-4 border-b border-border">
+                    {isCovered ? (
+                      <CheckCircle2 className="w-4 h-4 text-verified" />
+                    ) : (
+                      <span className="text-muted-text font-semibold text-[11px] tracking-widest uppercase">○</span>
+                    )}
+                  </td>
+                );
+              })}
+            </tr>
+          ))}
+
+          {/* Constraints Rows */}
+          {allConstraints.map((constraint, cIdx) => (
+            <tr key={`c-${cIdx}`}>
+              <td className="p-4 border-b border-r border-border font-medium text-secondary-ink truncate max-w-[250px]" title={constraint}>{constraint}</td>
+              {allPaths.map((p, pIdx) => {
+                const cState = p.constraints_states?.find(c => c.constraint === constraint);
+                return (
+                  <td key={`c-${cIdx}-${pIdx}`} className="p-4 border-b border-border">
+                    {cState ? (
+                      cState.status === 'SATISFIED' ? (
+                        <CheckCircle2 className="w-4 h-4 text-verified" />
+                      ) : cState.status === 'VIOLATED' ? (
+                        <XCircle className="w-4 h-4 text-violated" />
+                      ) : (
+                        <span className="text-unknown font-semibold text-[11px] tracking-widest uppercase">○</span>
+                      )
+                    ) : (
+                      <span className="text-border">-</span>
+                    )}
+                  </td>
+                );
+              })}
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
@@ -213,6 +309,7 @@ export default function DiscoverPage() {
   const [data, setData] = useState<DiscoverResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [progressStep, setProgressStep] = useState(0);
+  const [isComparing, setIsComparing] = useState(false);
 
   useEffect(() => {
     let interval: ReturnType<typeof setInterval>;
@@ -232,6 +329,7 @@ export default function DiscoverPage() {
     setLoading(true);
     setError(null);
     setData(null);
+    setIsComparing(false);
 
     try {
       const result = await discoverProblem(problem);
@@ -254,21 +352,27 @@ export default function DiscoverPage() {
     setProblem("");
     setData(null);
     setError(null);
+    setIsComparing(false);
   };
 
-  const viablePaths = data?.solution_paths?.filter(p => p.status !== 'CONSTRAINT_VIOLATED' && p.status !== 'LLM_OUTPUT_INVALID') || [];
-  const rejectedPaths = data?.solution_paths?.filter(p => p.status === 'CONSTRAINT_VIOLATED' || p.status === 'LLM_OUTPUT_INVALID') || [];
+  const hasDataOrLoading = data !== null || loading;
+  const inputHeightClass = hasDataOrLoading ? "min-h-[80px]" : "min-h-[160px] md:min-h-[200px]";
+  
+  const viableCount = data?.solution_paths?.filter(p => p.status !== 'CONSTRAINT_VIOLATED' && p.status !== 'LLM_OUTPUT_INVALID').length || 0;
+  const violatedCount = (data?.solution_paths?.length || 0) - viableCount;
 
   return (
     <div className="flex-1 w-full flex flex-col font-sans bg-background min-h-screen">
-      <div className="max-w-[1200px] mx-auto w-full px-6 md:px-8 py-16 md:py-24 space-y-24 md:space-y-32">
+      <div className="max-w-[1200px] mx-auto w-full px-6 md:px-8 py-12 md:py-16 space-y-12 md:space-y-16">
         
         {/* Editor Input Area */}
         <section className="space-y-6 md:space-y-8 animate-in slide-in-from-bottom-4 duration-700">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-border pb-6">
             <div>
               <h2 className="text-3xl font-bold tracking-tight text-primary-ink mb-2">Analytical Workspace</h2>
-              <p className="text-[15px] text-secondary-ink font-medium">Define your architecture need, technical problem, or software requirement.</p>
+              {!hasDataOrLoading && (
+                 <p className="text-[15px] text-secondary-ink font-medium">Describe your architecture need, technical problem, or software requirement.</p>
+              )}
             </div>
             {data && (
               <button onClick={reset} className="text-xs font-bold text-secondary-ink hover:text-primary-ink transition-colors flex items-center group uppercase tracking-widest font-mono shrink-0 mb-1">
@@ -280,18 +384,18 @@ export default function DiscoverPage() {
           <div className="relative group flex flex-col">
             <Textarea
               placeholder="e.g., I need to convert PDF files into Markdown locally..."
-              className="min-h-[160px] md:min-h-[180px] resize-none bg-surface text-base md:text-lg shadow-sm focus-visible:ring-0 focus-visible:ring-offset-0 rounded-none p-6 md:p-8 leading-[1.6] border-strong-border transition-colors focus:border-primary-ink hover:border-primary-ink/50 text-primary-ink placeholder:text-muted-text"
+              className={`${inputHeightClass} resize-none bg-surface text-base md:text-lg shadow-sm focus-visible:ring-0 focus-visible:ring-offset-0 rounded-none p-6 leading-[1.6] border-strong-border transition-all duration-500 focus:border-primary-ink hover:border-primary-ink/50 text-primary-ink placeholder:text-muted-text`}
               value={problem}
               onChange={(e) => setProblem(e.target.value)}
               onKeyDown={handleKeyDown}
               disabled={loading}
             />
-            <div className="absolute bottom-6 right-6 flex items-center gap-6">
+            <div className={`absolute right-6 flex items-center gap-6 transition-all duration-500 ${hasDataOrLoading ? 'bottom-4' : 'bottom-6'}`}>
               <span className="text-[10px] text-muted-text hidden sm:inline-block font-mono tracking-widest uppercase">⌘ + ENTER</span>
               <Button 
                 onClick={handleDiscover} 
                 disabled={loading || !problem.trim()}
-                className="rounded-none bg-primary-ink text-surface hover:bg-primary-ink/90 px-8 shadow-none font-bold transition-all h-12 text-[14px]"
+                className={`rounded-none bg-primary-ink text-surface hover:bg-primary-ink/90 shadow-none font-bold transition-all ${hasDataOrLoading ? 'px-6 h-10 text-[13px]' : 'px-8 h-12 text-[14px]'}`}
               >
                 {loading ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Search className="w-4 h-4 mr-2" />}
                 Analyze
@@ -312,34 +416,39 @@ export default function DiscoverPage() {
 
         {/* Loading Pipeline State */}
         {loading && (
-          <section className="py-16 md:py-24 animate-in fade-in duration-500 flex justify-center">
-            <div className="w-full max-w-lg space-y-10">
-              <div className="text-[11px] font-mono font-semibold tracking-[0.15em] uppercase text-secondary-ink flex items-center justify-center gap-4">
-                <span className="w-12 h-px bg-strong-border" />
-                <Activity className="w-4 h-4 text-primary animate-pulse" /> 
-                <span>Analytical Pipeline Running</span>
-                <span className="w-12 h-px bg-strong-border" />
+          <section className="animate-in fade-in duration-300 flex flex-col items-start -mt-2 md:-mt-4">
+            <div className="w-full max-w-[500px] border border-strong-border bg-surface p-5">
+              <div className="text-[10px] font-mono font-semibold tracking-[0.15em] uppercase text-secondary-ink flex items-center gap-3 mb-4">
+                <Activity className="w-3.5 h-3.5 text-primary animate-pulse" /> 
+                <span>Analytical Pipeline</span>
               </div>
               
-              <div className="space-y-8 font-mono text-[13px] text-muted-text flex flex-col items-center">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-2.5 gap-x-6 font-mono text-[11px] text-muted-text">
                 {[
                   "Understanding problem",
-                  "Extracting requirements & constraints",
+                  "Extracting requirements",
                   "Retrieving candidates",
-                  "Evaluating capabilities & evidence",
-                  "Constructing solution paths"
-                ].map((step, idx) => (
-                  <div key={idx} className={`flex items-center gap-5 transition-all duration-500 ${progressStep === idx ? 'text-primary-ink scale-[1.02]' : progressStep > idx ? 'text-secondary-ink' : 'text-muted-text opacity-40'}`}>
-                    {progressStep === idx ? (
-                      <Loader2 className="w-4 h-4 animate-spin text-primary shrink-0" />
-                    ) : progressStep > idx ? (
-                      <CheckCircle2 className="w-4 h-4 text-verified shrink-0" />
-                    ) : (
-                      <div className="w-4 h-4 border border-strong-border rounded-none shrink-0" />
-                    )}
-                    <span className={progressStep === idx ? 'opacity-100 font-bold tracking-widest uppercase' : 'opacity-100 tracking-widest uppercase'}>{step}</span>
-                  </div>
-                ))}
+                  "Evaluating capabilities",
+                  "Verifying evidence",
+                  "Constructing paths"
+                ].map((step, idx) => {
+                   const normalizedIdx = Math.floor(idx * (5 / 6));
+                   const isActive = progressStep === normalizedIdx;
+                   const isDone = progressStep > normalizedIdx;
+                   
+                   return (
+                    <div key={idx} className={`flex items-center gap-3 transition-all duration-200 ${isActive ? 'text-primary-ink' : isDone ? 'text-secondary-ink' : 'text-muted-text opacity-50'}`}>
+                      {isActive ? (
+                        <Loader2 className="w-3 h-3 animate-spin text-primary shrink-0" />
+                      ) : isDone ? (
+                        <CheckCircle2 className="w-3 h-3 text-verified shrink-0" />
+                      ) : (
+                        <div className="w-3 h-3 border border-strong-border rounded-none shrink-0" />
+                      )}
+                      <span className={isActive ? 'opacity-100 font-bold uppercase tracking-wider' : 'opacity-100 uppercase tracking-wider'}>{step}</span>
+                    </div>
+                   );
+                })}
               </div>
             </div>
           </section>
@@ -347,125 +456,79 @@ export default function DiscoverPage() {
 
         {/* Results Workspace */}
         {data && !loading && (
-          <div className="animate-in fade-in duration-700 space-y-24 md:space-y-32">
+          <div className="animate-in fade-in slide-in-from-bottom-2 duration-500 space-y-10 md:space-y-12">
             
-            {/* Problem Understanding Section */}
-            <section className="space-y-12">
-              <div className="text-[11px] font-mono font-semibold tracking-[0.15em] text-secondary-ink uppercase flex items-center gap-4">
-                 <span className="w-12 h-[1px] bg-strong-border"></span>
-                 Problem Understanding
+            {/* UNDERSTOOD - Compact Global Summary */}
+            <section className="bg-muted-surface border border-border p-5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div className="flex flex-col gap-1.5">
+                 <div className="text-[10px] font-mono font-semibold tracking-[0.15em] text-secondary-ink uppercase">Understood</div>
+                 <div className="text-[14px] font-medium text-primary-ink leading-relaxed">
+                   {data.problem_analysis.requirements?.map((req, i, arr) => (
+                      <span key={i}>
+                        {req}
+                        {i < arr.length - 1 && <span className="text-border mx-2">·</span>}
+                      </span>
+                   ))}
+                 </div>
               </div>
-              
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 border-t border-strong-border pt-10 items-start">
-                {/* Requirements Column */}
-                <div className="space-y-8">
-                  <div className="text-[11px] font-mono font-semibold text-secondary-ink uppercase tracking-widest">Requirements</div>
-                  <div className="space-y-6">
-                    {(data.problem_analysis.requirements || []).map((req, i) => {
-                      const isMustHave = data.problem_analysis.must_have_requirements?.includes(req);
-                      return (
-                        <div key={i} className="flex items-start gap-4">
-                          <span className="text-muted-text font-mono text-[11px] font-semibold mt-1 w-6 shrink-0">{(i+1).toString().padStart(2, '0')}</span>
-                          <div className="flex flex-col gap-2">
-                             <span className="text-[15px] font-medium text-primary-ink leading-relaxed">{req}</span>
-                             {isMustHave && (
-                               <span className="text-[10px] font-mono font-semibold tracking-widest text-primary uppercase">MUST HAVE</span>
-                             )}
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-
-                {/* Constraints Column */}
-                <div className="space-y-8">
-                  <div className="text-[11px] font-mono font-semibold text-secondary-ink uppercase tracking-widest">Constraints</div>
-                  <div className="space-y-6">
-                    {(data.problem_analysis.constraints?.length || 0) > 0 ? (
-                      (data.problem_analysis.constraints || []).map((c, i) => (
-                        <div key={i} className="flex items-start gap-4">
-                          <span className="text-muted-text font-mono text-[11px] font-semibold mt-1 w-6 shrink-0">{(i+1).toString().padStart(2, '0')}</span>
-                          <span className="text-[15px] font-medium text-primary-ink leading-relaxed">{c}</span>
-                        </div>
-                      ))
-                    ) : (
-                      <div className="text-[15px] text-muted-text font-medium italic pl-10">No strict constraints detected.</div>
-                    )}
-                  </div>
-                </div>
+              <div className="flex flex-col md:items-end text-[12px] font-mono text-secondary-ink pt-2 md:pt-0">
+                 <span>{data.problem_analysis.requirements?.length || 0} requirements · {(data.problem_analysis.must_have_requirements?.length || 0) + (data.problem_analysis.constraints?.length || 0)} constraints</span>
               </div>
             </section>
 
-            {/* Discovery Summary & Solution Paths */}
-            <section className="space-y-16 md:space-y-24">
-              
-              {/* Discovery Summary - Vertical Flow */}
-              <div className="flex flex-col items-center text-center gap-12 mb-16 border-t border-strong-border pt-16">
-                 <div className="text-[11px] font-mono font-semibold tracking-[0.15em] text-secondary-ink uppercase flex items-center justify-center gap-4 w-full">
-                    <span className="flex-1 h-px bg-border max-w-[100px]" />
-                    Discovery Summary
-                    <span className="flex-1 h-px bg-border max-w-[100px]" />
-                 </div>
-                 
-                 <div className="flex flex-col items-center gap-12 w-full max-w-sm mx-auto relative">
-                    <div className="absolute top-10 bottom-10 left-1/2 w-px bg-border -translate-x-1/2 -z-10" />
-                    
-                    <div className="bg-background px-6 py-2 flex flex-col items-center gap-2 relative z-10">
-                      <div className="text-[56px] font-bold tracking-tight text-primary-ink leading-none">{data.candidates?.length || 0}</div>
-                      <div className="text-[10px] font-mono font-semibold tracking-widest uppercase text-secondary-ink">Candidates Discovered</div>
-                    </div>
-                    
-                    <div className="bg-background px-6 py-2 flex flex-col items-center gap-2 relative z-10">
-                      <div className="text-[56px] font-bold tracking-tight text-primary leading-none">{viablePaths.length}</div>
-                      <div className="text-[10px] font-mono font-semibold tracking-widest uppercase text-primary">Viable Paths</div>
-                    </div>
-                    
-                    <div className="bg-background px-6 py-2 flex flex-col items-center gap-2 relative z-10">
-                      <div className="text-[56px] font-bold tracking-tight text-muted-text leading-none">{rejectedPaths.length}</div>
-                      <div className="text-[10px] font-mono font-semibold tracking-widest uppercase text-muted-text">Alternatives</div>
-                    </div>
-                 </div>
+            {/* DISCOVERY RESULTS - Single horizontal baseline */}
+            <section className="border-t border-b border-strong-border py-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+               <div className="text-[11px] font-mono font-semibold tracking-[0.15em] text-secondary-ink uppercase">Discovery Results</div>
+               <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-[14px] font-medium text-secondary-ink">
+                  <span className="text-primary-ink font-bold">{data.candidates?.length || 0}</span> candidates discovered
+                  <span className="text-border mx-2">|</span>
+                  <span className="text-primary-ink font-bold">{data.solution_paths?.length || 0}</span> paths
+                  <span className="text-border mx-2">|</span>
+                  <span className="text-verified font-bold">{viableCount}</span> viable
+                  <span className="text-border mx-2">|</span>
+                  <span className="text-violated font-bold">{violatedCount}</span> constraint-violating
+               </div>
+            </section>
+
+            {/* SOLUTION PATHS - Core Delivery */}
+            <section className="space-y-8">
+              <div className="flex items-center justify-between">
+                <h3 className="text-2xl font-bold tracking-tight text-primary-ink">Solution Paths</h3>
+                
+                {/* Compare Toggle */}
+                {(data.solution_paths?.length || 0) > 1 && (
+                  <div className="flex items-center bg-muted-surface border border-strong-border p-1">
+                    <button 
+                      onClick={() => setIsComparing(false)}
+                      className={`flex items-center gap-2 px-4 py-2 text-[12px] font-bold transition-colors ${!isComparing ? 'bg-surface text-primary-ink shadow-sm border border-border' : 'text-secondary-ink hover:text-primary-ink'}`}
+                    >
+                      <Columns3 className="w-4 h-4" /> Cards
+                    </button>
+                    <button 
+                      onClick={() => setIsComparing(true)}
+                      className={`flex items-center gap-2 px-4 py-2 text-[12px] font-bold transition-colors ${isComparing ? 'bg-surface text-primary-ink shadow-sm border border-border' : 'text-secondary-ink hover:text-primary-ink'}`}
+                    >
+                      <LayoutGrid className="w-4 h-4" /> Compare
+                    </button>
+                  </div>
+                )}
               </div>
 
-              {/* Solution Paths Render */}
               {(data.solution_paths?.length || 0) === 0 ? (
-                <div className="py-24 text-center border-t border-strong-border">
-                  <XCircle className="w-12 h-12 text-muted-text mx-auto mb-6" />
-                  <p className="font-bold text-xl text-primary-ink mb-3">No candidate paths found.</p>
-                  <p className="text-[16px] font-medium text-secondary-ink">The discovery engine could not find any software matching all requirements and constraints.</p>
+                <div className="py-24 text-center border border-strong-border bg-surface">
+                  <XCircle className="w-8 h-8 text-muted-text mx-auto mb-4" />
+                  <p className="font-bold text-lg text-primary-ink mb-2">No candidate paths found.</p>
+                  <p className="text-[15px] font-medium text-secondary-ink">The discovery engine could not find any software matching all requirements and constraints.</p>
                 </div>
+              ) : isComparing ? (
+                /* Matrix View */
+                <ComparisonTable data={data} />
               ) : (
-                <div className="space-y-0">
-                  {/* VIABLE PATHS */}
-                  {viablePaths.length > 0 && (
-                    <div className="flex flex-col">
-                      <div className="text-[11px] font-mono font-semibold tracking-[0.15em] text-primary uppercase flex items-center gap-4 mb-6">
-                         <span className="w-12 h-[1px] bg-primary"></span>
-                         Viable Solutions
-                      </div>
-                      <div className="flex flex-col border-b border-strong-border">
-                        {viablePaths.map((path, pIdx) => (
-                          <PathCard key={`viable-${pIdx}`} path={path} index={pIdx} isRejected={false} />
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {/* REJECTED PATHS */}
-                  {rejectedPaths.length > 0 && (
-                    <div className="pt-32">
-                      <div className="text-[11px] font-mono font-semibold tracking-[0.15em] text-secondary-ink uppercase flex items-center gap-4 mb-6">
-                         <span className="w-12 h-[1px] bg-strong-border"></span>
-                         Rejected Alternatives
-                      </div>
-                      <div className="flex flex-col border-b border-strong-border">
-                        {rejectedPaths.map((path, pIdx) => (
-                          <PathCard key={`rejected-${pIdx}`} path={path} index={viablePaths.length + pIdx} isRejected={true} />
-                        ))}
-                      </div>
-                    </div>
-                  )}
+                /* Side-by-side Card View */
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-0">
+                  {data.solution_paths?.map((path, idx) => (
+                    <PathCard key={idx} path={path} index={idx} />
+                  ))}
                 </div>
               )}
             </section>
