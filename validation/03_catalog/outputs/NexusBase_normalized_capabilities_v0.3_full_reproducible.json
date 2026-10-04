@@ -1957,7 +1957,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/opendatalab/MinerU/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "| Tier | Chinese name | Quality and speed | Use for |\n|---|---|---|---|\n| `flash` | \u6781\u901f\u89e3\u6790 | Lowest quality; fastest | Discovery, preview, and indexing; never default final reading quality |\n| `basic` | \u57fa\u7840\u89e3\u6790 | Basic quality; moderate speed | Private local reading or lower-resource local parsing |\n| `standard` | \u6807\u51c6\u89e3\u6790 | Standard high quality; similar speed to `basic` on suitable hardware | Default for normal active reading and complex documents |\n| `advanced` | \u9ad8\u7ea7\u89e3\u6790 | Standard quality on ordinary documents and better quality on difficult documents; slowest | Difficult documents and maximum-quality work when the user accepts a longer wait |\n",
+              "quote": "| Tier | Chinese name | Quality and speed | Use for |\n|---|---|---|---|\n| `flash` | 极速解析 | Lowest quality; fastest | Discovery, preview, and indexing; never default final reading quality |\n| `basic` | 基础解析 | Basic quality; moderate speed | Private local reading or lower-resource local parsing |\n| `standard` | 标准解析 | Standard high quality; similar speed to `basic` on suitable hardware | Default for normal active reading and complex documents |\n| `advanced` | 高级解析 | Standard quality on ordinary documents and better quality on difficult documents; slowest | Difficult documents and maximum-quality work when the user accepts a longer wait |\n",
               "start": 26467,
               "end": 27111,
               "match_mode": "block_derived",
@@ -1973,7 +1973,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/opendatalab/MinerU/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "| Tier | Chinese name | Quality and speed | Use for |\n|---|---|---|---|\n| `flash` | \u6781\u901f\u89e3\u6790 | Lowest quality; fastest | Discovery, preview, and indexing; never default final reading quality |\n| `basic` | \u57fa\u7840\u89e3\u6790 | Basic quality; moderate speed | Private local reading or lower-resource local parsing |\n| `standard` | \u6807\u51c6\u89e3\u6790 | Standard high quality; similar speed to `basic` on suitable hardware | Default for normal active reading and complex documents |\n| `advanced` | \u9ad8\u7ea7\u89e3\u6790 | Standard quality on ordinary documents and better quality on difficult documents; slowest | Difficult documents and maximum-quality work when the user accepts a longer wait |\n",
+              "quote": "| Tier | Chinese name | Quality and speed | Use for |\n|---|---|---|---|\n| `flash` | 极速解析 | Lowest quality; fastest | Discovery, preview, and indexing; never default final reading quality |\n| `basic` | 基础解析 | Basic quality; moderate speed | Private local reading or lower-resource local parsing |\n| `standard` | 标准解析 | Standard high quality; similar speed to `basic` on suitable hardware | Default for normal active reading and complex documents |\n| `advanced` | 高级解析 | Standard quality on ordinary documents and better quality on difficult documents; slowest | Difficult documents and maximum-quality work when the user accepts a longer wait |\n",
               "start": 26467,
               "end": 27111,
               "match_mode": "block_derived",
@@ -2001,7 +2001,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/opendatalab/MinerU/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "| Tier | Chinese name | Quality and speed | Use for |\n|---|---|---|---|\n| `flash` | \u6781\u901f\u89e3\u6790 | Lowest quality; fastest | Discovery, preview, and indexing; never default final reading quality |\n| `basic` | \u57fa\u7840\u89e3\u6790 | Basic quality; moderate speed | Private local reading or lower-resource local parsing |\n| `standard` | \u6807\u51c6\u89e3\u6790 | Standard high quality; similar speed to `basic` on suitable hardware | Default for normal active reading and complex documents |\n| `advanced` | \u9ad8\u7ea7\u89e3\u6790 | Standard quality on ordinary documents and better quality on difficult documents; slowest | Difficult documents and maximum-quality work when the user accepts a longer wait |\n",
+              "quote": "| Tier | Chinese name | Quality and speed | Use for |\n|---|---|---|---|\n| `flash` | 极速解析 | Lowest quality; fastest | Discovery, preview, and indexing; never default final reading quality |\n| `basic` | 基础解析 | Basic quality; moderate speed | Private local reading or lower-resource local parsing |\n| `standard` | 标准解析 | Standard high quality; similar speed to `basic` on suitable hardware | Default for normal active reading and complex documents |\n| `advanced` | 高级解析 | Standard quality on ordinary documents and better quality on difficult documents; slowest | Difficult documents and maximum-quality work when the user accepts a longer wait |\n",
               "start": 26467,
               "end": 27111,
               "match_mode": "block_derived",
@@ -2017,7 +2017,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/opendatalab/MinerU/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "| Tier | Chinese name | Quality and speed | Use for |\n|---|---|---|---|\n| `flash` | \u6781\u901f\u89e3\u6790 | Lowest quality; fastest | Discovery, preview, and indexing; never default final reading quality |\n| `basic` | \u57fa\u7840\u89e3\u6790 | Basic quality; moderate speed | Private local reading or lower-resource local parsing |\n| `standard` | \u6807\u51c6\u89e3\u6790 | Standard high quality; similar speed to `basic` on suitable hardware | Default for normal active reading and complex documents |\n| `advanced` | \u9ad8\u7ea7\u89e3\u6790 | Standard quality on ordinary documents and better quality on difficult documents; slowest | Difficult documents and maximum-quality work when the user accepts a longer wait |\n",
+              "quote": "| Tier | Chinese name | Quality and speed | Use for |\n|---|---|---|---|\n| `flash` | 极速解析 | Lowest quality; fastest | Discovery, preview, and indexing; never default final reading quality |\n| `basic` | 基础解析 | Basic quality; moderate speed | Private local reading or lower-resource local parsing |\n| `standard` | 标准解析 | Standard high quality; similar speed to `basic` on suitable hardware | Default for normal active reading and complex documents |\n| `advanced` | 高级解析 | Standard quality on ordinary documents and better quality on difficult documents; slowest | Difficult documents and maximum-quality work when the user accepts a longer wait |\n",
               "start": 26467,
               "end": 27111,
               "match_mode": "block_derived",
@@ -4113,7 +4113,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/opendatalab/MinerU/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "`DoclibClient` also covers search, watched directories, locators for\npage/block continuation, and result invalidation \u2014 see\n`help(DoclibClient)` or the [SDK and API guide](https://opendatalab.github.io/MinerU/usage/sdk_api/).\n",
+              "quote": "`DoclibClient` also covers search, watched directories, locators for\npage/block continuation, and result invalidation — see\n`help(DoclibClient)` or the [SDK and API guide](https://opendatalab.github.io/MinerU/usage/sdk_api/).\n",
               "start": 13148,
               "end": 13374,
               "match_mode": "block_derived",
@@ -4129,7 +4129,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/opendatalab/MinerU/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "`DoclibClient` also covers search, watched directories, locators for\npage/block continuation, and result invalidation \u2014 see\n`help(DoclibClient)` or the [SDK and API guide](https://opendatalab.github.io/MinerU/usage/sdk_api/).\n",
+              "quote": "`DoclibClient` also covers search, watched directories, locators for\npage/block continuation, and result invalidation — see\n`help(DoclibClient)` or the [SDK and API guide](https://opendatalab.github.io/MinerU/usage/sdk_api/).\n",
               "start": 13148,
               "end": 13374,
               "match_mode": "block_derived",
@@ -4157,7 +4157,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/opendatalab/MinerU/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "`DoclibClient` also covers search, watched directories, locators for\npage/block continuation, and result invalidation \u2014 see\n`help(DoclibClient)` or the [SDK and API guide](https://opendatalab.github.io/MinerU/usage/sdk_api/).\n",
+              "quote": "`DoclibClient` also covers search, watched directories, locators for\npage/block continuation, and result invalidation — see\n`help(DoclibClient)` or the [SDK and API guide](https://opendatalab.github.io/MinerU/usage/sdk_api/).\n",
               "start": 13148,
               "end": 13374,
               "match_mode": "block_derived",
@@ -4173,7 +4173,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/opendatalab/MinerU/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "`DoclibClient` also covers search, watched directories, locators for\npage/block continuation, and result invalidation \u2014 see\n`help(DoclibClient)` or the [SDK and API guide](https://opendatalab.github.io/MinerU/usage/sdk_api/).\n",
+              "quote": "`DoclibClient` also covers search, watched directories, locators for\npage/block continuation, and result invalidation — see\n`help(DoclibClient)` or the [SDK and API guide](https://opendatalab.github.io/MinerU/usage/sdk_api/).\n",
               "start": 13148,
               "end": 13374,
               "match_mode": "block_derived",
@@ -4201,7 +4201,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/opendatalab/MinerU/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "`DoclibClient` also covers search, watched directories, locators for\npage/block continuation, and result invalidation \u2014 see\n`help(DoclibClient)` or the [SDK and API guide](https://opendatalab.github.io/MinerU/usage/sdk_api/).\n",
+              "quote": "`DoclibClient` also covers search, watched directories, locators for\npage/block continuation, and result invalidation — see\n`help(DoclibClient)` or the [SDK and API guide](https://opendatalab.github.io/MinerU/usage/sdk_api/).\n",
               "start": 13148,
               "end": 13374,
               "match_mode": "block_derived",
@@ -4217,7 +4217,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/opendatalab/MinerU/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "`DoclibClient` also covers search, watched directories, locators for\npage/block continuation, and result invalidation \u2014 see\n`help(DoclibClient)` or the [SDK and API guide](https://opendatalab.github.io/MinerU/usage/sdk_api/).\n",
+              "quote": "`DoclibClient` also covers search, watched directories, locators for\npage/block continuation, and result invalidation — see\n`help(DoclibClient)` or the [SDK and API guide](https://opendatalab.github.io/MinerU/usage/sdk_api/).\n",
               "start": 13148,
               "end": 13374,
               "match_mode": "block_derived",
@@ -4245,7 +4245,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/opendatalab/MinerU/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "`DoclibClient` also covers search, watched directories, locators for\npage/block continuation, and result invalidation \u2014 see\n`help(DoclibClient)` or the [SDK and API guide](https://opendatalab.github.io/MinerU/usage/sdk_api/).\n",
+              "quote": "`DoclibClient` also covers search, watched directories, locators for\npage/block continuation, and result invalidation — see\n`help(DoclibClient)` or the [SDK and API guide](https://opendatalab.github.io/MinerU/usage/sdk_api/).\n",
               "start": 13148,
               "end": 13374,
               "match_mode": "block_derived",
@@ -4261,7 +4261,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/opendatalab/MinerU/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "`DoclibClient` also covers search, watched directories, locators for\npage/block continuation, and result invalidation \u2014 see\n`help(DoclibClient)` or the [SDK and API guide](https://opendatalab.github.io/MinerU/usage/sdk_api/).\n",
+              "quote": "`DoclibClient` also covers search, watched directories, locators for\npage/block continuation, and result invalidation — see\n`help(DoclibClient)` or the [SDK and API guide](https://opendatalab.github.io/MinerU/usage/sdk_api/).\n",
               "start": 13148,
               "end": 13374,
               "match_mode": "block_derived",
@@ -4773,7 +4773,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/opendatalab/MinerU/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "PDF page selection is shared across CLI, Doclib, API, Gradio and Python. See the [page-range syntax and historical result compatibility](docs/next/page-ranges.md). New requests use the current syntax; stored positive page ranges using ASCII `~` remain readable without rebuilding Doclib caches. Fullwidth `\uff5e` and negative page-number notation are not supported.\n",
+              "quote": "PDF page selection is shared across CLI, Doclib, API, Gradio and Python. See the [page-range syntax and historical result compatibility](docs/next/page-ranges.md). New requests use the current syntax; stored positive page ranges using ASCII `~` remain readable without rebuilding Doclib caches. Fullwidth `～` and negative page-number notation are not supported.\n",
               "start": 36879,
               "end": 37241,
               "match_mode": "block_derived",
@@ -4789,7 +4789,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/opendatalab/MinerU/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "PDF page selection is shared across CLI, Doclib, API, Gradio and Python. See the [page-range syntax and historical result compatibility](docs/next/page-ranges.md). New requests use the current syntax; stored positive page ranges using ASCII `~` remain readable without rebuilding Doclib caches. Fullwidth `\uff5e` and negative page-number notation are not supported.\n",
+              "quote": "PDF page selection is shared across CLI, Doclib, API, Gradio and Python. See the [page-range syntax and historical result compatibility](docs/next/page-ranges.md). New requests use the current syntax; stored positive page ranges using ASCII `~` remain readable without rebuilding Doclib caches. Fullwidth `～` and negative page-number notation are not supported.\n",
               "start": 36879,
               "end": 37241,
               "match_mode": "block_derived",
@@ -7277,7 +7277,10 @@
           "heuristic_quality_passed": true,
           "validated_at": "2026-09-29T18:36:31+00:00"
         }
-      ]
+      ],
+      "official_url": "https://github.com/opendatalab/MinerU",
+      "repository_url": "https://github.com/opendatalab/MinerU",
+      "documentation_url": "https://mineru.readthedocs.io/"
     },
     "pymupdf4llm": {
       "entity_id": "pymupdf4llm",
@@ -7298,7 +7301,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/pymupdf/pymupdf4llm/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- **Page chunking** \u2014 chunk output by page with full metadata per chunk, ready for vector stores\n",
+              "quote": "- **Page chunking** — chunk output by page with full metadata per chunk, ready for vector stores\n",
               "start": 3802,
               "end": 3899,
               "match_mode": "block_derived",
@@ -7314,7 +7317,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/pymupdf/pymupdf4llm/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- **Page chunking** \u2014 chunk output by page with full metadata per chunk, ready for vector stores\n",
+              "quote": "- **Page chunking** — chunk output by page with full metadata per chunk, ready for vector stores\n",
               "start": 3802,
               "end": 3899,
               "match_mode": "block_derived",
@@ -7474,7 +7477,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/pymupdf/pymupdf4llm/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "| Format | Notes |\n|---|---|\n| **PDF** | Full support including scanned pages (via OCR) |\n| **XPS / OXPS** | Text and image extraction |\n| **EPUB / MOBI / FB2** | Chapter-aware extraction |\n| **Images** (PNG, JPG, TIFF\u2026) | Single-page extraction with optional OCR |\n| **Office** (DOCX, XLSX, PPTX, HWP) | Requires **PyMuPDF Pro** |\n",
+              "quote": "| Format | Notes |\n|---|---|\n| **PDF** | Full support including scanned pages (via OCR) |\n| **XPS / OXPS** | Text and image extraction |\n| **EPUB / MOBI / FB2** | Chapter-aware extraction |\n| **Images** (PNG, JPG, TIFF…) | Single-page extraction with optional OCR |\n| **Office** (DOCX, XLSX, PPTX, HWP) | Requires **PyMuPDF Pro** |\n",
               "start": 15713,
               "end": 16045,
               "match_mode": "block_derived",
@@ -7490,7 +7493,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/pymupdf/pymupdf4llm/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "| Format | Notes |\n|---|---|\n| **PDF** | Full support including scanned pages (via OCR) |\n| **XPS / OXPS** | Text and image extraction |\n| **EPUB / MOBI / FB2** | Chapter-aware extraction |\n| **Images** (PNG, JPG, TIFF\u2026) | Single-page extraction with optional OCR |\n| **Office** (DOCX, XLSX, PPTX, HWP) | Requires **PyMuPDF Pro** |\n",
+              "quote": "| Format | Notes |\n|---|---|\n| **PDF** | Full support including scanned pages (via OCR) |\n| **XPS / OXPS** | Text and image extraction |\n| **EPUB / MOBI / FB2** | Chapter-aware extraction |\n| **Images** (PNG, JPG, TIFF…) | Single-page extraction with optional OCR |\n| **Office** (DOCX, XLSX, PPTX, HWP) | Requires **PyMuPDF Pro** |\n",
               "start": 15713,
               "end": 16045,
               "match_mode": "block_derived",
@@ -7518,7 +7521,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/pymupdf/pymupdf4llm/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "| Format | Notes |\n|---|---|\n| **PDF** | Full support including scanned pages (via OCR) |\n| **XPS / OXPS** | Text and image extraction |\n| **EPUB / MOBI / FB2** | Chapter-aware extraction |\n| **Images** (PNG, JPG, TIFF\u2026) | Single-page extraction with optional OCR |\n| **Office** (DOCX, XLSX, PPTX, HWP) | Requires **PyMuPDF Pro** |\n",
+              "quote": "| Format | Notes |\n|---|---|\n| **PDF** | Full support including scanned pages (via OCR) |\n| **XPS / OXPS** | Text and image extraction |\n| **EPUB / MOBI / FB2** | Chapter-aware extraction |\n| **Images** (PNG, JPG, TIFF…) | Single-page extraction with optional OCR |\n| **Office** (DOCX, XLSX, PPTX, HWP) | Requires **PyMuPDF Pro** |\n",
               "start": 15713,
               "end": 16045,
               "match_mode": "block_derived",
@@ -7534,7 +7537,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/pymupdf/pymupdf4llm/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "| Format | Notes |\n|---|---|\n| **PDF** | Full support including scanned pages (via OCR) |\n| **XPS / OXPS** | Text and image extraction |\n| **EPUB / MOBI / FB2** | Chapter-aware extraction |\n| **Images** (PNG, JPG, TIFF\u2026) | Single-page extraction with optional OCR |\n| **Office** (DOCX, XLSX, PPTX, HWP) | Requires **PyMuPDF Pro** |\n",
+              "quote": "| Format | Notes |\n|---|---|\n| **PDF** | Full support including scanned pages (via OCR) |\n| **XPS / OXPS** | Text and image extraction |\n| **EPUB / MOBI / FB2** | Chapter-aware extraction |\n| **Images** (PNG, JPG, TIFF…) | Single-page extraction with optional OCR |\n| **Office** (DOCX, XLSX, PPTX, HWP) | Requires **PyMuPDF Pro** |\n",
               "start": 15713,
               "end": 16045,
               "match_mode": "block_derived",
@@ -7562,7 +7565,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/pymupdf/pymupdf4llm/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "| Format | Notes |\n|---|---|\n| **PDF** | Full support including scanned pages (via OCR) |\n| **XPS / OXPS** | Text and image extraction |\n| **EPUB / MOBI / FB2** | Chapter-aware extraction |\n| **Images** (PNG, JPG, TIFF\u2026) | Single-page extraction with optional OCR |\n| **Office** (DOCX, XLSX, PPTX, HWP) | Requires **PyMuPDF Pro** |\n",
+              "quote": "| Format | Notes |\n|---|---|\n| **PDF** | Full support including scanned pages (via OCR) |\n| **XPS / OXPS** | Text and image extraction |\n| **EPUB / MOBI / FB2** | Chapter-aware extraction |\n| **Images** (PNG, JPG, TIFF…) | Single-page extraction with optional OCR |\n| **Office** (DOCX, XLSX, PPTX, HWP) | Requires **PyMuPDF Pro** |\n",
               "start": 15713,
               "end": 16045,
               "match_mode": "block_derived",
@@ -7578,7 +7581,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/pymupdf/pymupdf4llm/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "| Format | Notes |\n|---|---|\n| **PDF** | Full support including scanned pages (via OCR) |\n| **XPS / OXPS** | Text and image extraction |\n| **EPUB / MOBI / FB2** | Chapter-aware extraction |\n| **Images** (PNG, JPG, TIFF\u2026) | Single-page extraction with optional OCR |\n| **Office** (DOCX, XLSX, PPTX, HWP) | Requires **PyMuPDF Pro** |\n",
+              "quote": "| Format | Notes |\n|---|---|\n| **PDF** | Full support including scanned pages (via OCR) |\n| **XPS / OXPS** | Text and image extraction |\n| **EPUB / MOBI / FB2** | Chapter-aware extraction |\n| **Images** (PNG, JPG, TIFF…) | Single-page extraction with optional OCR |\n| **Office** (DOCX, XLSX, PPTX, HWP) | Requires **PyMuPDF Pro** |\n",
               "start": 15713,
               "end": 16045,
               "match_mode": "block_derived",
@@ -7606,7 +7609,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/pymupdf/pymupdf4llm/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "| Format | Notes |\n|---|---|\n| **PDF** | Full support including scanned pages (via OCR) |\n| **XPS / OXPS** | Text and image extraction |\n| **EPUB / MOBI / FB2** | Chapter-aware extraction |\n| **Images** (PNG, JPG, TIFF\u2026) | Single-page extraction with optional OCR |\n| **Office** (DOCX, XLSX, PPTX, HWP) | Requires **PyMuPDF Pro** |\n",
+              "quote": "| Format | Notes |\n|---|---|\n| **PDF** | Full support including scanned pages (via OCR) |\n| **XPS / OXPS** | Text and image extraction |\n| **EPUB / MOBI / FB2** | Chapter-aware extraction |\n| **Images** (PNG, JPG, TIFF…) | Single-page extraction with optional OCR |\n| **Office** (DOCX, XLSX, PPTX, HWP) | Requires **PyMuPDF Pro** |\n",
               "start": 15713,
               "end": 16045,
               "match_mode": "block_derived",
@@ -7622,7 +7625,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/pymupdf/pymupdf4llm/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "| Format | Notes |\n|---|---|\n| **PDF** | Full support including scanned pages (via OCR) |\n| **XPS / OXPS** | Text and image extraction |\n| **EPUB / MOBI / FB2** | Chapter-aware extraction |\n| **Images** (PNG, JPG, TIFF\u2026) | Single-page extraction with optional OCR |\n| **Office** (DOCX, XLSX, PPTX, HWP) | Requires **PyMuPDF Pro** |\n",
+              "quote": "| Format | Notes |\n|---|---|\n| **PDF** | Full support including scanned pages (via OCR) |\n| **XPS / OXPS** | Text and image extraction |\n| **EPUB / MOBI / FB2** | Chapter-aware extraction |\n| **Images** (PNG, JPG, TIFF…) | Single-page extraction with optional OCR |\n| **Office** (DOCX, XLSX, PPTX, HWP) | Requires **PyMuPDF Pro** |\n",
               "start": 15713,
               "end": 16045,
               "match_mode": "block_derived",
@@ -7650,7 +7653,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/pymupdf/pymupdf4llm/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "| Format | Notes |\n|---|---|\n| **PDF** | Full support including scanned pages (via OCR) |\n| **XPS / OXPS** | Text and image extraction |\n| **EPUB / MOBI / FB2** | Chapter-aware extraction |\n| **Images** (PNG, JPG, TIFF\u2026) | Single-page extraction with optional OCR |\n| **Office** (DOCX, XLSX, PPTX, HWP) | Requires **PyMuPDF Pro** |\n",
+              "quote": "| Format | Notes |\n|---|---|\n| **PDF** | Full support including scanned pages (via OCR) |\n| **XPS / OXPS** | Text and image extraction |\n| **EPUB / MOBI / FB2** | Chapter-aware extraction |\n| **Images** (PNG, JPG, TIFF…) | Single-page extraction with optional OCR |\n| **Office** (DOCX, XLSX, PPTX, HWP) | Requires **PyMuPDF Pro** |\n",
               "start": 15713,
               "end": 16045,
               "match_mode": "block_derived",
@@ -7666,7 +7669,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/pymupdf/pymupdf4llm/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "| Format | Notes |\n|---|---|\n| **PDF** | Full support including scanned pages (via OCR) |\n| **XPS / OXPS** | Text and image extraction |\n| **EPUB / MOBI / FB2** | Chapter-aware extraction |\n| **Images** (PNG, JPG, TIFF\u2026) | Single-page extraction with optional OCR |\n| **Office** (DOCX, XLSX, PPTX, HWP) | Requires **PyMuPDF Pro** |\n",
+              "quote": "| Format | Notes |\n|---|---|\n| **PDF** | Full support including scanned pages (via OCR) |\n| **XPS / OXPS** | Text and image extraction |\n| **EPUB / MOBI / FB2** | Chapter-aware extraction |\n| **Images** (PNG, JPG, TIFF…) | Single-page extraction with optional OCR |\n| **Office** (DOCX, XLSX, PPTX, HWP) | Requires **PyMuPDF Pro** |\n",
               "start": 15713,
               "end": 16045,
               "match_mode": "block_derived",
@@ -7694,7 +7697,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/pymupdf/pymupdf4llm/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "PyMuPDF4LLM applies OCR selectively \u2014 only where it is actually needed. Rather than blindly sending every page through an OCR engine (slow and counterproductive on clean text), or naively skipping OCR on mixed documents (leaving scanned regions unreadable), it analyses each page first and makes a targeted decision. This selective approach typically reduces OCR processing time by around 50%.\n",
+              "quote": "PyMuPDF4LLM applies OCR selectively — only where it is actually needed. Rather than blindly sending every page through an OCR engine (slow and counterproductive on clean text), or naively skipping OCR on mixed documents (leaving scanned regions unreadable), it analyses each page first and makes a targeted decision. This selective approach typically reduces OCR processing time by around 50%.\n",
               "start": 7520,
               "end": 7914,
               "match_mode": "block_derived",
@@ -7710,7 +7713,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/pymupdf/pymupdf4llm/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "PyMuPDF4LLM applies OCR selectively \u2014 only where it is actually needed. Rather than blindly sending every page through an OCR engine (slow and counterproductive on clean text), or naively skipping OCR on mixed documents (leaving scanned regions unreadable), it analyses each page first and makes a targeted decision. This selective approach typically reduces OCR processing time by around 50%.\n",
+              "quote": "PyMuPDF4LLM applies OCR selectively — only where it is actually needed. Rather than blindly sending every page through an OCR engine (slow and counterproductive on clean text), or naively skipping OCR on mixed documents (leaving scanned regions unreadable), it analyses each page first and makes a targeted decision. This selective approach typically reduces OCR processing time by around 50%.\n",
               "start": 7520,
               "end": 7914,
               "match_mode": "block_derived",
@@ -7738,7 +7741,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/pymupdf/pymupdf4llm/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "- `#` \u2013 `######` headings derived from font size hierarchy\n",
+              "quote": "- `#` – `######` headings derived from font size hierarchy\n",
               "start": 14688,
               "end": 14747,
               "match_mode": "block_derived",
@@ -7754,7 +7757,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/pymupdf/pymupdf4llm/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "- `#` \u2013 `######` headings derived from font size hierarchy\n",
+              "quote": "- `#` – `######` headings derived from font size hierarchy\n",
               "start": 14688,
               "end": 14747,
               "match_mode": "block_derived",
@@ -8266,7 +8269,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/pymupdf/pymupdf4llm/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "- **One import, three output formats** \u2014 Markdown, JSON, and plain text out of the box\n",
+              "quote": "- **One import, three output formats** — Markdown, JSON, and plain text out of the box\n",
               "start": 3399,
               "end": 3486,
               "match_mode": "block_derived",
@@ -8282,7 +8285,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/pymupdf/pymupdf4llm/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "- **One import, three output formats** \u2014 Markdown, JSON, and plain text out of the box\n",
+              "quote": "- **One import, three output formats** — Markdown, JSON, and plain text out of the box\n",
               "start": 3399,
               "end": 3486,
               "match_mode": "block_derived",
@@ -8442,7 +8445,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/pymupdf/pymupdf4llm/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "- **Smart OCR** \u2014 automatically OCRs only the regions that need it, skipping clean text\n",
+              "quote": "- **Smart OCR** — automatically OCRs only the regions that need it, skipping clean text\n",
               "start": 3638,
               "end": 3726,
               "match_mode": "block_derived",
@@ -8458,7 +8461,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/pymupdf/pymupdf4llm/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "- **Smart OCR** \u2014 automatically OCRs only the regions that need it, skipping clean text\n",
+              "quote": "- **Smart OCR** — automatically OCRs only the regions that need it, skipping clean text\n",
               "start": 3638,
               "end": 3726,
               "match_mode": "block_derived",
@@ -8530,7 +8533,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/pymupdf/pymupdf4llm/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "PyMuPDF4LLM is a lightweight extension for [PyMuPDF](https://github.com/pymupdf/PyMuPDF) that converts documents into structured Markdown, JSON, and plain text optimised for RAG pipelines, vector embeddings, and LLM ingestion. It handles multi-column layouts, tables, images, headers, and scanned pages with automatic OCR \u2014 all powered by the MuPDF C engine.\n",
+              "quote": "PyMuPDF4LLM is a lightweight extension for [PyMuPDF](https://github.com/pymupdf/PyMuPDF) that converts documents into structured Markdown, JSON, and plain text optimised for RAG pipelines, vector embeddings, and LLM ingestion. It handles multi-column layouts, tables, images, headers, and scanned pages with automatic OCR — all powered by the MuPDF C engine.\n",
               "start": 2461,
               "end": 2820,
               "match_mode": "block_derived",
@@ -8546,7 +8549,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/pymupdf/pymupdf4llm/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "PyMuPDF4LLM is a lightweight extension for [PyMuPDF](https://github.com/pymupdf/PyMuPDF) that converts documents into structured Markdown, JSON, and plain text optimised for RAG pipelines, vector embeddings, and LLM ingestion. It handles multi-column layouts, tables, images, headers, and scanned pages with automatic OCR \u2014 all powered by the MuPDF C engine.\n",
+              "quote": "PyMuPDF4LLM is a lightweight extension for [PyMuPDF](https://github.com/pymupdf/PyMuPDF) that converts documents into structured Markdown, JSON, and plain text optimised for RAG pipelines, vector embeddings, and LLM ingestion. It handles multi-column layouts, tables, images, headers, and scanned pages with automatic OCR — all powered by the MuPDF C engine.\n",
               "start": 2461,
               "end": 2820,
               "match_mode": "block_derived",
@@ -8574,7 +8577,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/pymupdf/pymupdf4llm/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "PyMuPDF4LLM is a lightweight extension for [PyMuPDF](https://github.com/pymupdf/PyMuPDF) that converts documents into structured Markdown, JSON, and plain text optimised for RAG pipelines, vector embeddings, and LLM ingestion. It handles multi-column layouts, tables, images, headers, and scanned pages with automatic OCR \u2014 all powered by the MuPDF C engine.\n",
+              "quote": "PyMuPDF4LLM is a lightweight extension for [PyMuPDF](https://github.com/pymupdf/PyMuPDF) that converts documents into structured Markdown, JSON, and plain text optimised for RAG pipelines, vector embeddings, and LLM ingestion. It handles multi-column layouts, tables, images, headers, and scanned pages with automatic OCR — all powered by the MuPDF C engine.\n",
               "start": 2461,
               "end": 2820,
               "match_mode": "block_derived",
@@ -8590,7 +8593,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/pymupdf/pymupdf4llm/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "PyMuPDF4LLM is a lightweight extension for [PyMuPDF](https://github.com/pymupdf/PyMuPDF) that converts documents into structured Markdown, JSON, and plain text optimised for RAG pipelines, vector embeddings, and LLM ingestion. It handles multi-column layouts, tables, images, headers, and scanned pages with automatic OCR \u2014 all powered by the MuPDF C engine.\n",
+              "quote": "PyMuPDF4LLM is a lightweight extension for [PyMuPDF](https://github.com/pymupdf/PyMuPDF) that converts documents into structured Markdown, JSON, and plain text optimised for RAG pipelines, vector embeddings, and LLM ingestion. It handles multi-column layouts, tables, images, headers, and scanned pages with automatic OCR — all powered by the MuPDF C engine.\n",
               "start": 2461,
               "end": 2820,
               "match_mode": "block_derived",
@@ -8618,7 +8621,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/pymupdf/pymupdf4llm/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "PyMuPDF4LLM is a lightweight extension for [PyMuPDF](https://github.com/pymupdf/PyMuPDF) that converts documents into structured Markdown, JSON, and plain text optimised for RAG pipelines, vector embeddings, and LLM ingestion. It handles multi-column layouts, tables, images, headers, and scanned pages with automatic OCR \u2014 all powered by the MuPDF C engine.\n",
+              "quote": "PyMuPDF4LLM is a lightweight extension for [PyMuPDF](https://github.com/pymupdf/PyMuPDF) that converts documents into structured Markdown, JSON, and plain text optimised for RAG pipelines, vector embeddings, and LLM ingestion. It handles multi-column layouts, tables, images, headers, and scanned pages with automatic OCR — all powered by the MuPDF C engine.\n",
               "start": 2461,
               "end": 2820,
               "match_mode": "block_derived",
@@ -8634,7 +8637,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/pymupdf/pymupdf4llm/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "PyMuPDF4LLM is a lightweight extension for [PyMuPDF](https://github.com/pymupdf/PyMuPDF) that converts documents into structured Markdown, JSON, and plain text optimised for RAG pipelines, vector embeddings, and LLM ingestion. It handles multi-column layouts, tables, images, headers, and scanned pages with automatic OCR \u2014 all powered by the MuPDF C engine.\n",
+              "quote": "PyMuPDF4LLM is a lightweight extension for [PyMuPDF](https://github.com/pymupdf/PyMuPDF) that converts documents into structured Markdown, JSON, and plain text optimised for RAG pipelines, vector embeddings, and LLM ingestion. It handles multi-column layouts, tables, images, headers, and scanned pages with automatic OCR — all powered by the MuPDF C engine.\n",
               "start": 2461,
               "end": 2820,
               "match_mode": "block_derived",
@@ -8662,7 +8665,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/pymupdf/pymupdf4llm/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "PyMuPDF4LLM is a lightweight extension for [PyMuPDF](https://github.com/pymupdf/PyMuPDF) that converts documents into structured Markdown, JSON, and plain text optimised for RAG pipelines, vector embeddings, and LLM ingestion. It handles multi-column layouts, tables, images, headers, and scanned pages with automatic OCR \u2014 all powered by the MuPDF C engine.\n",
+              "quote": "PyMuPDF4LLM is a lightweight extension for [PyMuPDF](https://github.com/pymupdf/PyMuPDF) that converts documents into structured Markdown, JSON, and plain text optimised for RAG pipelines, vector embeddings, and LLM ingestion. It handles multi-column layouts, tables, images, headers, and scanned pages with automatic OCR — all powered by the MuPDF C engine.\n",
               "start": 2461,
               "end": 2820,
               "match_mode": "block_derived",
@@ -8678,7 +8681,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/pymupdf/pymupdf4llm/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "PyMuPDF4LLM is a lightweight extension for [PyMuPDF](https://github.com/pymupdf/PyMuPDF) that converts documents into structured Markdown, JSON, and plain text optimised for RAG pipelines, vector embeddings, and LLM ingestion. It handles multi-column layouts, tables, images, headers, and scanned pages with automatic OCR \u2014 all powered by the MuPDF C engine.\n",
+              "quote": "PyMuPDF4LLM is a lightweight extension for [PyMuPDF](https://github.com/pymupdf/PyMuPDF) that converts documents into structured Markdown, JSON, and plain text optimised for RAG pipelines, vector embeddings, and LLM ingestion. It handles multi-column layouts, tables, images, headers, and scanned pages with automatic OCR — all powered by the MuPDF C engine.\n",
               "start": 2461,
               "end": 2820,
               "match_mode": "block_derived",
@@ -8706,7 +8709,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/pymupdf/pymupdf4llm/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "PyMuPDF4LLM is a lightweight extension for [PyMuPDF](https://github.com/pymupdf/PyMuPDF) that converts documents into structured Markdown, JSON, and plain text optimised for RAG pipelines, vector embeddings, and LLM ingestion. It handles multi-column layouts, tables, images, headers, and scanned pages with automatic OCR \u2014 all powered by the MuPDF C engine.\n",
+              "quote": "PyMuPDF4LLM is a lightweight extension for [PyMuPDF](https://github.com/pymupdf/PyMuPDF) that converts documents into structured Markdown, JSON, and plain text optimised for RAG pipelines, vector embeddings, and LLM ingestion. It handles multi-column layouts, tables, images, headers, and scanned pages with automatic OCR — all powered by the MuPDF C engine.\n",
               "start": 2461,
               "end": 2820,
               "match_mode": "block_derived",
@@ -8722,7 +8725,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/pymupdf/pymupdf4llm/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "PyMuPDF4LLM is a lightweight extension for [PyMuPDF](https://github.com/pymupdf/PyMuPDF) that converts documents into structured Markdown, JSON, and plain text optimised for RAG pipelines, vector embeddings, and LLM ingestion. It handles multi-column layouts, tables, images, headers, and scanned pages with automatic OCR \u2014 all powered by the MuPDF C engine.\n",
+              "quote": "PyMuPDF4LLM is a lightweight extension for [PyMuPDF](https://github.com/pymupdf/PyMuPDF) that converts documents into structured Markdown, JSON, and plain text optimised for RAG pipelines, vector embeddings, and LLM ingestion. It handles multi-column layouts, tables, images, headers, and scanned pages with automatic OCR — all powered by the MuPDF C engine.\n",
               "start": 2461,
               "end": 2820,
               "match_mode": "block_derived",
@@ -8750,7 +8753,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/pymupdf/pymupdf4llm/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "PyMuPDF4LLM is a lightweight extension for [PyMuPDF](https://github.com/pymupdf/PyMuPDF) that converts documents into structured Markdown, JSON, and plain text optimised for RAG pipelines, vector embeddings, and LLM ingestion. It handles multi-column layouts, tables, images, headers, and scanned pages with automatic OCR \u2014 all powered by the MuPDF C engine.\n",
+              "quote": "PyMuPDF4LLM is a lightweight extension for [PyMuPDF](https://github.com/pymupdf/PyMuPDF) that converts documents into structured Markdown, JSON, and plain text optimised for RAG pipelines, vector embeddings, and LLM ingestion. It handles multi-column layouts, tables, images, headers, and scanned pages with automatic OCR — all powered by the MuPDF C engine.\n",
               "start": 2461,
               "end": 2820,
               "match_mode": "block_derived",
@@ -8766,7 +8769,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/pymupdf/pymupdf4llm/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "PyMuPDF4LLM is a lightweight extension for [PyMuPDF](https://github.com/pymupdf/PyMuPDF) that converts documents into structured Markdown, JSON, and plain text optimised for RAG pipelines, vector embeddings, and LLM ingestion. It handles multi-column layouts, tables, images, headers, and scanned pages with automatic OCR \u2014 all powered by the MuPDF C engine.\n",
+              "quote": "PyMuPDF4LLM is a lightweight extension for [PyMuPDF](https://github.com/pymupdf/PyMuPDF) that converts documents into structured Markdown, JSON, and plain text optimised for RAG pipelines, vector embeddings, and LLM ingestion. It handles multi-column layouts, tables, images, headers, and scanned pages with automatic OCR — all powered by the MuPDF C engine.\n",
               "start": 2461,
               "end": 2820,
               "match_mode": "block_derived",
@@ -8794,7 +8797,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/pymupdf/pymupdf4llm/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "PyMuPDF4LLM is a lightweight extension for [PyMuPDF](https://github.com/pymupdf/PyMuPDF) that converts documents into structured Markdown, JSON, and plain text optimised for RAG pipelines, vector embeddings, and LLM ingestion. It handles multi-column layouts, tables, images, headers, and scanned pages with automatic OCR \u2014 all powered by the MuPDF C engine.\n",
+              "quote": "PyMuPDF4LLM is a lightweight extension for [PyMuPDF](https://github.com/pymupdf/PyMuPDF) that converts documents into structured Markdown, JSON, and plain text optimised for RAG pipelines, vector embeddings, and LLM ingestion. It handles multi-column layouts, tables, images, headers, and scanned pages with automatic OCR — all powered by the MuPDF C engine.\n",
               "start": 2461,
               "end": 2820,
               "match_mode": "block_derived",
@@ -8810,7 +8813,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/pymupdf/pymupdf4llm/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "PyMuPDF4LLM is a lightweight extension for [PyMuPDF](https://github.com/pymupdf/PyMuPDF) that converts documents into structured Markdown, JSON, and plain text optimised for RAG pipelines, vector embeddings, and LLM ingestion. It handles multi-column layouts, tables, images, headers, and scanned pages with automatic OCR \u2014 all powered by the MuPDF C engine.\n",
+              "quote": "PyMuPDF4LLM is a lightweight extension for [PyMuPDF](https://github.com/pymupdf/PyMuPDF) that converts documents into structured Markdown, JSON, and plain text optimised for RAG pipelines, vector embeddings, and LLM ingestion. It handles multi-column layouts, tables, images, headers, and scanned pages with automatic OCR — all powered by the MuPDF C engine.\n",
               "start": 2461,
               "end": 2820,
               "match_mode": "block_derived",
@@ -8882,7 +8885,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/pymupdf/pymupdf4llm/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- **Framework integrations** \u2014 drop-in support for LlamaIndex and LangChain\n",
+              "quote": "- **Framework integrations** — drop-in support for LlamaIndex and LangChain\n",
               "start": 3726,
               "end": 3802,
               "match_mode": "block_derived",
@@ -8898,7 +8901,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/pymupdf/pymupdf4llm/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- **Framework integrations** \u2014 drop-in support for LlamaIndex and LangChain\n",
+              "quote": "- **Framework integrations** — drop-in support for LlamaIndex and LangChain\n",
               "start": 3726,
               "end": 3802,
               "match_mode": "block_derived",
@@ -9137,7 +9140,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/pymupdf/pymupdf4llm/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "PyMuPDF4LLM applies OCR selectively \u2014 only where it is actually needed. Rather than blindly sending every page through an OCR engine (slow and counterproductive on clean text), or naively skipping OCR on mixed documents (leaving scanned regions unreadable), it analyses each page first and makes a targeted decision. This selective approach typically reduces OCR processing time by around 50%.\n",
+              "quote": "PyMuPDF4LLM applies OCR selectively — only where it is actually needed. Rather than blindly sending every page through an OCR engine (slow and counterproductive on clean text), or naively skipping OCR on mixed documents (leaving scanned regions unreadable), it analyses each page first and makes a targeted decision. This selective approach typically reduces OCR processing time by around 50%.\n",
               "start": 7520,
               "end": 7914,
               "match_mode": "block_derived",
@@ -9160,7 +9163,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/pymupdf/pymupdf4llm/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "**Turn PDF and other documents into clean, LLM-ready data \u2014 in one line of code. No GPU, no Cloud, no Tokens required.**\n",
+              "quote": "**Turn PDF and other documents into clean, LLM-ready data — in one line of code. No GPU, no Cloud, no Tokens required.**\n",
               "start": 2339,
               "end": 2460,
               "match_mode": "block_derived",
@@ -9183,7 +9186,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/pymupdf/pymupdf4llm/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "PyMuPDF4LLM is a lightweight extension for [PyMuPDF](https://github.com/pymupdf/PyMuPDF) that converts documents into structured Markdown, JSON, and plain text optimised for RAG pipelines, vector embeddings, and LLM ingestion. It handles multi-column layouts, tables, images, headers, and scanned pages with automatic OCR \u2014 all powered by the MuPDF C engine.\n",
+              "quote": "PyMuPDF4LLM is a lightweight extension for [PyMuPDF](https://github.com/pymupdf/PyMuPDF) that converts documents into structured Markdown, JSON, and plain text optimised for RAG pipelines, vector embeddings, and LLM ingestion. It handles multi-column layouts, tables, images, headers, and scanned pages with automatic OCR — all powered by the MuPDF C engine.\n",
               "start": 2461,
               "end": 2820,
               "match_mode": "block_derived",
@@ -9206,7 +9209,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/pymupdf/pymupdf4llm/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "PyMuPDF4LLM is a lightweight extension for [PyMuPDF](https://github.com/pymupdf/PyMuPDF) that converts documents into structured Markdown, JSON, and plain text optimised for RAG pipelines, vector embeddings, and LLM ingestion. It handles multi-column layouts, tables, images, headers, and scanned pages with automatic OCR \u2014 all powered by the MuPDF C engine.\n",
+              "quote": "PyMuPDF4LLM is a lightweight extension for [PyMuPDF](https://github.com/pymupdf/PyMuPDF) that converts documents into structured Markdown, JSON, and plain text optimised for RAG pipelines, vector embeddings, and LLM ingestion. It handles multi-column layouts, tables, images, headers, and scanned pages with automatic OCR — all powered by the MuPDF C engine.\n",
               "start": 2461,
               "end": 2820,
               "match_mode": "block_derived",
@@ -9229,7 +9232,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/pymupdf/pymupdf4llm/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "PyMuPDF4LLM is a lightweight extension for [PyMuPDF](https://github.com/pymupdf/PyMuPDF) that converts documents into structured Markdown, JSON, and plain text optimised for RAG pipelines, vector embeddings, and LLM ingestion. It handles multi-column layouts, tables, images, headers, and scanned pages with automatic OCR \u2014 all powered by the MuPDF C engine.\n",
+              "quote": "PyMuPDF4LLM is a lightweight extension for [PyMuPDF](https://github.com/pymupdf/PyMuPDF) that converts documents into structured Markdown, JSON, and plain text optimised for RAG pipelines, vector embeddings, and LLM ingestion. It handles multi-column layouts, tables, images, headers, and scanned pages with automatic OCR — all powered by the MuPDF C engine.\n",
               "start": 2461,
               "end": 2820,
               "match_mode": "block_derived",
@@ -9316,7 +9319,12 @@
         }
       ],
       "metadata_capabilities": [],
-      "deployment_models": []
+      "deployment_models": [],
+      "modality": "local_library",
+      "official_url": "https://github.com/pymupdf/PyMuPDF",
+      "repository_url": "https://github.com/pymupdf/PyMuPDF",
+      "install_url": "https://pypi.org/project/pymupdf4llm/",
+      "documentation_url": "https://pymupdf.readthedocs.io/"
     },
     "glitchtip": {
       "entity_id": "glitchtip",
@@ -11447,7 +11455,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/caprover/caprover/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "\u2714 Docker Swarm under the hood for containerization and clustering\n",
+              "quote": "✔ Docker Swarm under the hood for containerization and clustering\n",
               "start": 1552,
               "end": 1618,
               "match_mode": "block_derived",
@@ -11463,7 +11471,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/caprover/caprover/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "\u2714 Docker Swarm under the hood for containerization and clustering\n",
+              "quote": "✔ Docker Swarm under the hood for containerization and clustering\n",
               "start": 1552,
               "end": 1618,
               "match_mode": "block_derived",
@@ -11491,7 +11499,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/caprover/caprover/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "\u2714 Docker Swarm under the hood for containerization and clustering\n",
+              "quote": "✔ Docker Swarm under the hood for containerization and clustering\n",
               "start": 1552,
               "end": 1618,
               "match_mode": "block_derived",
@@ -11507,7 +11515,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/caprover/caprover/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "\u2714 Docker Swarm under the hood for containerization and clustering\n",
+              "quote": "✔ Docker Swarm under the hood for containerization and clustering\n",
               "start": 1552,
               "end": 1618,
               "match_mode": "block_derived",
@@ -11843,7 +11851,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/caprover/caprover/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "\u2714 Web GUI for ease of access and convenience\n",
+              "quote": "✔ Web GUI for ease of access and convenience\n",
               "start": 1447,
               "end": 1492,
               "match_mode": "block_derived",
@@ -11859,7 +11867,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/caprover/caprover/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "\u2714 Web GUI for ease of access and convenience\n",
+              "quote": "✔ Web GUI for ease of access and convenience\n",
               "start": 1447,
               "end": 1492,
               "match_mode": "block_derived",
@@ -11887,7 +11895,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/caprover/caprover/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "\u2714 CLI for automation and scripting\n",
+              "quote": "✔ CLI for automation and scripting\n",
               "start": 1411,
               "end": 1446,
               "match_mode": "block_derived",
@@ -11903,7 +11911,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/caprover/caprover/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "\u2714 CLI for automation and scripting\n",
+              "quote": "✔ CLI for automation and scripting\n",
               "start": 1411,
               "end": 1446,
               "match_mode": "block_derived",
@@ -11975,7 +11983,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/caprover/caprover/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "\u2714 Nginx (fully customizable template) under the hood for load-balancing\n",
+              "quote": "✔ Nginx (fully customizable template) under the hood for load-balancing\n",
               "start": 1619,
               "end": 1691,
               "match_mode": "block_derived",
@@ -11991,7 +11999,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/caprover/caprover/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "\u2714 Nginx (fully customizable template) under the hood for load-balancing\n",
+              "quote": "✔ Nginx (fully customizable template) under the hood for load-balancing\n",
               "start": 1619,
               "end": 1691,
               "match_mode": "block_derived",
@@ -12063,7 +12071,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/caprover/caprover/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "\u2714 Let's Encrypt under the hood for free SSL (HTTPS)\n",
+              "quote": "✔ Let's Encrypt under the hood for free SSL (HTTPS)\n",
               "start": 1692,
               "end": 1744,
               "match_mode": "block_derived",
@@ -12079,7 +12087,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/caprover/caprover/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "\u2714 Let's Encrypt under the hood for free SSL (HTTPS)\n",
+              "quote": "✔ Let's Encrypt under the hood for free SSL (HTTPS)\n",
               "start": 1692,
               "end": 1744,
               "match_mode": "block_derived",
@@ -13276,7 +13284,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/growthbook/growthbook/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83e\udd16 MCP server to create features, start experiments, clean up stale flags, and more.\n",
+              "quote": "- 🤖 MCP server to create features, start experiments, clean up stale flags, and more.\n",
               "start": 3047,
               "end": 3133,
               "match_mode": "block_derived",
@@ -13292,7 +13300,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/growthbook/growthbook/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83e\udd16 MCP server to create features, start experiments, clean up stale flags, and more.\n",
+              "quote": "- 🤖 MCP server to create features, start experiments, clean up stale flags, and more.\n",
               "start": 3047,
               "end": 3133,
               "match_mode": "block_derived",
@@ -13320,7 +13328,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/growthbook/growthbook/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83e\udd16 MCP server to create features, start experiments, clean up stale flags, and more.\n",
+              "quote": "- 🤖 MCP server to create features, start experiments, clean up stale flags, and more.\n",
               "start": 3047,
               "end": 3133,
               "match_mode": "block_derived",
@@ -13336,7 +13344,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/growthbook/growthbook/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83e\udd16 MCP server to create features, start experiments, clean up stale flags, and more.\n",
+              "quote": "- 🤖 MCP server to create features, start experiments, clean up stale flags, and more.\n",
               "start": 3047,
               "end": 3133,
               "match_mode": "block_derived",
@@ -13364,7 +13372,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/growthbook/growthbook/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83e\udd16 MCP server to create features, start experiments, clean up stale flags, and more.\n",
+              "quote": "- 🤖 MCP server to create features, start experiments, clean up stale flags, and more.\n",
               "start": 3047,
               "end": 3133,
               "match_mode": "block_derived",
@@ -13380,7 +13388,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/growthbook/growthbook/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83e\udd16 MCP server to create features, start experiments, clean up stale flags, and more.\n",
+              "quote": "- 🤖 MCP server to create features, start experiments, clean up stale flags, and more.\n",
               "start": 3047,
               "end": 3133,
               "match_mode": "block_derived",
@@ -13408,7 +13416,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/growthbook/growthbook/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "- \ud83d\udcca Built-in Product Analytics suite to build dashboards and share with your team.\n",
+              "quote": "- 📊 Built-in Product Analytics suite to build dashboards and share with your team.\n",
               "start": 2796,
               "end": 2879,
               "match_mode": "block_derived",
@@ -13424,7 +13432,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/growthbook/growthbook/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "- \ud83d\udcca Built-in Product Analytics suite to build dashboards and share with your team.\n",
+              "quote": "- 📊 Built-in Product Analytics suite to build dashboards and share with your team.\n",
               "start": 2796,
               "end": 2879,
               "match_mode": "block_derived",
@@ -13452,7 +13460,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/growthbook/growthbook/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83c\udfaf Flexible SQL-backed metric definitions. Simple conversion rates, ratios, quantiles, and more.\n",
+              "quote": "- 🎯 Flexible SQL-backed metric definitions. Simple conversion rates, ratios, quantiles, and more.\n",
               "start": 2698,
               "end": 2796,
               "match_mode": "block_derived",
@@ -13468,7 +13476,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/growthbook/growthbook/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83c\udfaf Flexible SQL-backed metric definitions. Simple conversion rates, ratios, quantiles, and more.\n",
+              "quote": "- 🎯 Flexible SQL-backed metric definitions. Simple conversion rates, ratios, quantiles, and more.\n",
               "start": 2698,
               "end": 2796,
               "match_mode": "block_derived",
@@ -13496,7 +13504,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/growthbook/growthbook/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "- \ud83c\udd8e World class experiment stats engine (CUPED, Sequential, Bayesian, Post-Strat, Bandits, SRM checks).\n",
+              "quote": "- 🆎 World class experiment stats engine (CUPED, Sequential, Bayesian, Post-Strat, Bandits, SRM checks).\n",
               "start": 2446,
               "end": 2550,
               "match_mode": "block_derived",
@@ -13512,7 +13520,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/growthbook/growthbook/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "- \ud83c\udd8e World class experiment stats engine (CUPED, Sequential, Bayesian, Post-Strat, Bandits, SRM checks).\n",
+              "quote": "- 🆎 World class experiment stats engine (CUPED, Sequential, Bayesian, Post-Strat, Bandits, SRM checks).\n",
               "start": 2446,
               "end": 2550,
               "match_mode": "block_derived",
@@ -13540,7 +13548,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/growthbook/growthbook/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83d\udd14 Webhooks and a full REST API for building integrations and custom workflows.\n",
+              "quote": "- 🔔 Webhooks and a full REST API for building integrations and custom workflows.\n",
               "start": 2966,
               "end": 3047,
               "match_mode": "block_derived",
@@ -13556,7 +13564,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/growthbook/growthbook/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83d\udd14 Webhooks and a full REST API for building integrations and custom workflows.\n",
+              "quote": "- 🔔 Webhooks and a full REST API for building integrations and custom workflows.\n",
               "start": 2966,
               "end": 3047,
               "match_mode": "block_derived",
@@ -13584,7 +13592,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/growthbook/growthbook/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83d\udd14 Webhooks and a full REST API for building integrations and custom workflows.\n",
+              "quote": "- 🔔 Webhooks and a full REST API for building integrations and custom workflows.\n",
               "start": 2966,
               "end": 3047,
               "match_mode": "block_derived",
@@ -13600,7 +13608,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/growthbook/growthbook/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83d\udd14 Webhooks and a full REST API for building integrations and custom workflows.\n",
+              "quote": "- 🔔 Webhooks and a full REST API for building integrations and custom workflows.\n",
               "start": 2966,
               "end": 3047,
               "match_mode": "block_derived",
@@ -13628,7 +13636,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/growthbook/growthbook/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "- \ud83c\udfc1 Feature flags with advanced targeting, gradual rollouts, and experiments\n",
+              "quote": "- 🏁 Feature flags with advanced targeting, gradual rollouts, and experiments\n",
               "start": 2109,
               "end": 2186,
               "match_mode": "block_derived",
@@ -13644,7 +13652,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/growthbook/growthbook/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "- \ud83c\udfc1 Feature flags with advanced targeting, gradual rollouts, and experiments\n",
+              "quote": "- 🏁 Feature flags with advanced targeting, gradual rollouts, and experiments\n",
               "start": 2109,
               "end": 2186,
               "match_mode": "block_derived",
@@ -13672,7 +13680,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/growthbook/growthbook/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "- \ud83c\udfc1 Feature flags with advanced targeting, gradual rollouts, and experiments\n",
+              "quote": "- 🏁 Feature flags with advanced targeting, gradual rollouts, and experiments\n",
               "start": 2109,
               "end": 2186,
               "match_mode": "block_derived",
@@ -13688,7 +13696,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/growthbook/growthbook/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "- \ud83c\udfc1 Feature flags with advanced targeting, gradual rollouts, and experiments\n",
+              "quote": "- 🏁 Feature flags with advanced targeting, gradual rollouts, and experiments\n",
               "start": 2109,
               "end": 2186,
               "match_mode": "block_derived",
@@ -13716,7 +13724,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/growthbook/growthbook/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "- \ud83c\udfc1 Feature flags with advanced targeting, gradual rollouts, and experiments\n",
+              "quote": "- 🏁 Feature flags with advanced targeting, gradual rollouts, and experiments\n",
               "start": 2109,
               "end": 2186,
               "match_mode": "block_derived",
@@ -13732,7 +13740,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/growthbook/growthbook/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "- \ud83c\udfc1 Feature flags with advanced targeting, gradual rollouts, and experiments\n",
+              "quote": "- 🏁 Feature flags with advanced targeting, gradual rollouts, and experiments\n",
               "start": 2109,
               "end": 2186,
               "match_mode": "block_derived",
@@ -13760,7 +13768,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/growthbook/growthbook/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \u2744\ufe0f Warehouse Native. Query 11 data sources including BigQuery, Snowflake, and Databricks. [View all](https://docs.growthbook.io/app/datasources).\n",
+              "quote": "- ❄️ Warehouse Native. Query 11 data sources including BigQuery, Snowflake, and Databricks. [View all](https://docs.growthbook.io/app/datasources).\n",
               "start": 2550,
               "end": 2698,
               "match_mode": "block_derived",
@@ -13776,7 +13784,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/growthbook/growthbook/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \u2744\ufe0f Warehouse Native. Query 11 data sources including BigQuery, Snowflake, and Databricks. [View all](https://docs.growthbook.io/app/datasources).\n",
+              "quote": "- ❄️ Warehouse Native. Query 11 data sources including BigQuery, Snowflake, and Databricks. [View all](https://docs.growthbook.io/app/datasources).\n",
               "start": 2550,
               "end": 2698,
               "match_mode": "block_derived",
@@ -13804,7 +13812,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/growthbook/growthbook/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83d\udcbb 24 SDKs including [React](https://docs.growthbook.io/lib/react), [Python](https://docs.growthbook.io/lib/python), [Android](https://docs.growthbook.io/lib/kotlin), and [iOS](https://docs.growthbook.io/lib/swift). [View all](https://docs.growthbook.io/lib)\n",
+              "quote": "- 💻 24 SDKs including [React](https://docs.growthbook.io/lib/react), [Python](https://docs.growthbook.io/lib/python), [Android](https://docs.growthbook.io/lib/kotlin), and [iOS](https://docs.growthbook.io/lib/swift). [View all](https://docs.growthbook.io/lib)\n",
               "start": 2186,
               "end": 2446,
               "match_mode": "block_derived",
@@ -13820,7 +13828,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/growthbook/growthbook/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83d\udcbb 24 SDKs including [React](https://docs.growthbook.io/lib/react), [Python](https://docs.growthbook.io/lib/python), [Android](https://docs.growthbook.io/lib/kotlin), and [iOS](https://docs.growthbook.io/lib/swift). [View all](https://docs.growthbook.io/lib)\n",
+              "quote": "- 💻 24 SDKs including [React](https://docs.growthbook.io/lib/react), [Python](https://docs.growthbook.io/lib/python), [Android](https://docs.growthbook.io/lib/kotlin), and [iOS](https://docs.growthbook.io/lib/swift). [View all](https://docs.growthbook.io/lib)\n",
               "start": 2186,
               "end": 2446,
               "match_mode": "block_derived",
@@ -13877,7 +13885,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83d\udcdd Parsing of plain-text files (`.txt`, `.text`) and Markdown supersets (`.qmd`, `.Rmd`)\n",
+              "quote": "- 📝 Parsing of plain-text files (`.txt`, `.text`) and Markdown supersets (`.qmd`, `.Rmd`)\n",
               "start": 4709,
               "end": 4799,
               "match_mode": "block_derived",
@@ -13893,7 +13901,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83d\udcdd Parsing of plain-text files (`.txt`, `.text`) and Markdown supersets (`.qmd`, `.Rmd`)\n",
+              "quote": "- 📝 Parsing of plain-text files (`.txt`, `.text`) and Markdown supersets (`.qmd`, `.Rmd`)\n",
               "start": 4709,
               "end": 4799,
               "match_mode": "block_derived",
@@ -13921,7 +13929,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83d\udcdd Parsing of plain-text files (`.txt`, `.text`) and Markdown supersets (`.qmd`, `.Rmd`)\n",
+              "quote": "- 📝 Parsing of plain-text files (`.txt`, `.text`) and Markdown supersets (`.qmd`, `.Rmd`)\n",
               "start": 4709,
               "end": 4799,
               "match_mode": "block_derived",
@@ -13937,7 +13945,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83d\udcdd Parsing of plain-text files (`.txt`, `.text`) and Markdown supersets (`.qmd`, `.Rmd`)\n",
+              "quote": "- 📝 Parsing of plain-text files (`.txt`, `.text`) and Markdown supersets (`.qmd`, `.Rmd`)\n",
               "start": 4709,
               "end": 4799,
               "match_mode": "block_derived",
@@ -13965,7 +13973,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83d\uddc2\ufe0f Parsing of [multiple document formats][supported_formats] including PDF, DOCX, PPTX, XLSX, HTML, EPUB, Apple Pages, WAV, MP3, WebVTT, Box Notes, email formats (EML, MSG), images (PNG, TIFF, JPEG, ...), LaTeX, DocLang, plain text, and more\n",
+              "quote": "- 🗂️ Parsing of [multiple document formats][supported_formats] including PDF, DOCX, PPTX, XLSX, HTML, EPUB, Apple Pages, WAV, MP3, WebVTT, Box Notes, email formats (EML, MSG), images (PNG, TIFF, JPEG, ...), LaTeX, DocLang, plain text, and more\n",
               "start": 2604,
               "end": 2848,
               "match_mode": "block_derived",
@@ -13981,7 +13989,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83d\uddc2\ufe0f Parsing of [multiple document formats][supported_formats] including PDF, DOCX, PPTX, XLSX, HTML, EPUB, Apple Pages, WAV, MP3, WebVTT, Box Notes, email formats (EML, MSG), images (PNG, TIFF, JPEG, ...), LaTeX, DocLang, plain text, and more\n",
+              "quote": "- 🗂️ Parsing of [multiple document formats][supported_formats] including PDF, DOCX, PPTX, XLSX, HTML, EPUB, Apple Pages, WAV, MP3, WebVTT, Box Notes, email formats (EML, MSG), images (PNG, TIFF, JPEG, ...), LaTeX, DocLang, plain text, and more\n",
               "start": 2604,
               "end": 2848,
               "match_mode": "block_derived",
@@ -14009,7 +14017,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "- \ud83e\udd16 Plug-and-play [integrations][integrations] incl. LangChain, LlamaIndex, Crew AI & Haystack for agentic AI\n",
+              "quote": "- 🤖 Plug-and-play [integrations][integrations] incl. LangChain, LlamaIndex, Crew AI & Haystack for agentic AI\n",
               "start": 3551,
               "end": 3661,
               "match_mode": "block_derived",
@@ -14025,7 +14033,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "- \ud83e\udd16 Plug-and-play [integrations][integrations] incl. LangChain, LlamaIndex, Crew AI & Haystack for agentic AI\n",
+              "quote": "- 🤖 Plug-and-play [integrations][integrations] incl. LangChain, LlamaIndex, Crew AI & Haystack for agentic AI\n",
               "start": 3551,
               "end": 3661,
               "match_mode": "block_derived",
@@ -14053,7 +14061,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83d\udcca Chart understanding (Barchart, Piechart, LinePlot): convert them into tables or code and add detailed descriptions\n",
+              "quote": "- 📊 Chart understanding (Barchart, Piechart, LinePlot): convert them into tables or code and add detailed descriptions\n",
               "start": 4799,
               "end": 4918,
               "match_mode": "block_derived",
@@ -14069,7 +14077,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83d\udcca Chart understanding (Barchart, Piechart, LinePlot): convert them into tables or code and add detailed descriptions\n",
+              "quote": "- 📊 Chart understanding (Barchart, Piechart, LinePlot): convert them into tables or code and add detailed descriptions\n",
               "start": 4799,
               "end": 4918,
               "match_mode": "block_derived",
@@ -14097,7 +14105,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83d\udcca Chart understanding (Barchart, Piechart, LinePlot): convert them into tables or code and add detailed descriptions\n",
+              "quote": "- 📊 Chart understanding (Barchart, Piechart, LinePlot): convert them into tables or code and add detailed descriptions\n",
               "start": 4799,
               "end": 4918,
               "match_mode": "block_derived",
@@ -14113,7 +14121,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83d\udcca Chart understanding (Barchart, Piechart, LinePlot): convert them into tables or code and add detailed descriptions\n",
+              "quote": "- 📊 Chart understanding (Barchart, Piechart, LinePlot): convert them into tables or code and add detailed descriptions\n",
               "start": 4799,
               "end": 4918,
               "match_mode": "block_derived",
@@ -14141,7 +14149,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83d\udcdc Support for several application-specific XML schemas including [DocLang](https://doclang.ai), [USPTO](https://www.uspto.gov/patents) patents, [JATS](https://jats.nlm.nih.gov/) articles, and [XBRL](https://www.xbrl.org/) financial reports.\n",
+              "quote": "- 📜 Support for several application-specific XML schemas including [DocLang](https://doclang.ai), [USPTO](https://www.uspto.gov/patents) patents, [JATS](https://jats.nlm.nih.gov/) articles, and [XBRL](https://www.xbrl.org/) financial reports.\n",
               "start": 3228,
               "end": 3471,
               "match_mode": "block_derived",
@@ -14157,7 +14165,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83d\udcdc Support for several application-specific XML schemas including [DocLang](https://doclang.ai), [USPTO](https://www.uspto.gov/patents) patents, [JATS](https://jats.nlm.nih.gov/) articles, and [XBRL](https://www.xbrl.org/) financial reports.\n",
+              "quote": "- 📜 Support for several application-specific XML schemas including [DocLang](https://doclang.ai), [USPTO](https://www.uspto.gov/patents) patents, [JATS](https://jats.nlm.nih.gov/) articles, and [XBRL](https://www.xbrl.org/) financial reports.\n",
               "start": 3228,
               "end": 3471,
               "match_mode": "block_derived",
@@ -14185,7 +14193,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83d\udce7 Parsing of email files (`.eml`, `.msg`)\n",
+              "quote": "- 📧 Parsing of email files (`.eml`, `.msg`)\n",
               "start": 4519,
               "end": 4563,
               "match_mode": "block_derived",
@@ -14201,7 +14209,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83d\udce7 Parsing of email files (`.eml`, `.msg`)\n",
+              "quote": "- 📧 Parsing of email files (`.eml`, `.msg`)\n",
               "start": 4519,
               "end": 4563,
               "match_mode": "block_derived",
@@ -14229,7 +14237,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "- \ud83d\udcbb Simple and convenient CLI\n",
+              "quote": "- 💻 Simple and convenient CLI\n",
               "start": 4143,
               "end": 4173,
               "match_mode": "block_derived",
@@ -14245,7 +14253,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "- \ud83d\udcbb Simple and convenient CLI\n",
+              "quote": "- 💻 Simple and convenient CLI\n",
               "start": 4143,
               "end": 4173,
               "match_mode": "block_derived",
@@ -14273,7 +14281,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83c\udfac Parsing of video files (MP4, AVI, MOV, MKV, and WebM) with an ASR transcript and representative keyframes\n",
+              "quote": "- 🎬 Parsing of video files (MP4, AVI, MOV, MKV, and WebM) with an ASR transcript and representative keyframes\n",
               "start": 4190,
               "end": 4300,
               "match_mode": "block_derived",
@@ -14289,7 +14297,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83c\udfac Parsing of video files (MP4, AVI, MOV, MKV, and WebM) with an ASR transcript and representative keyframes\n",
+              "quote": "- 🎬 Parsing of video files (MP4, AVI, MOV, MKV, and WebM) with an ASR transcript and representative keyframes\n",
               "start": 4190,
               "end": 4300,
               "match_mode": "block_derived",
@@ -14317,7 +14325,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83c\udfac Parsing of video files (MP4, AVI, MOV, MKV, and WebM) with an ASR transcript and representative keyframes\n",
+              "quote": "- 🎬 Parsing of video files (MP4, AVI, MOV, MKV, and WebM) with an ASR transcript and representative keyframes\n",
               "start": 4190,
               "end": 4300,
               "match_mode": "block_derived",
@@ -14333,7 +14341,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83c\udfac Parsing of video files (MP4, AVI, MOV, MKV, and WebM) with an ASR transcript and representative keyframes\n",
+              "quote": "- 🎬 Parsing of video files (MP4, AVI, MOV, MKV, and WebM) with an ASR transcript and representative keyframes\n",
               "start": 4190,
               "end": 4300,
               "match_mode": "block_derived",
@@ -14361,7 +14369,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83c\udfac Parsing of video files (MP4, AVI, MOV, MKV, and WebM) with an ASR transcript and representative keyframes\n",
+              "quote": "- 🎬 Parsing of video files (MP4, AVI, MOV, MKV, and WebM) with an ASR transcript and representative keyframes\n",
               "start": 4190,
               "end": 4300,
               "match_mode": "block_derived",
@@ -14377,7 +14385,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83c\udfac Parsing of video files (MP4, AVI, MOV, MKV, and WebM) with an ASR transcript and representative keyframes\n",
+              "quote": "- 🎬 Parsing of video files (MP4, AVI, MOV, MKV, and WebM) with an ASR transcript and representative keyframes\n",
               "start": 4190,
               "end": 4300,
               "match_mode": "block_derived",
@@ -14405,7 +14413,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83c\udf4e Parsing of Apple Pages (`.pages`) documents and Keynote (`.key`) presentations\n",
+              "quote": "- 🍎 Parsing of Apple Pages (`.pages`) documents and Keynote (`.key`) presentations\n",
               "start": 4626,
               "end": 4709,
               "match_mode": "block_derived",
@@ -14421,7 +14429,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83c\udf4e Parsing of Apple Pages (`.pages`) documents and Keynote (`.key`) presentations\n",
+              "quote": "- 🍎 Parsing of Apple Pages (`.pages`) documents and Keynote (`.key`) presentations\n",
               "start": 4626,
               "end": 4709,
               "match_mode": "block_derived",
@@ -14449,7 +14457,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83c\udf4e Parsing of Apple Pages (`.pages`) documents and Keynote (`.key`) presentations\n",
+              "quote": "- 🍎 Parsing of Apple Pages (`.pages`) documents and Keynote (`.key`) presentations\n",
               "start": 4626,
               "end": 4709,
               "match_mode": "block_derived",
@@ -14465,7 +14473,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83c\udf4e Parsing of Apple Pages (`.pages`) documents and Keynote (`.key`) presentations\n",
+              "quote": "- 🍎 Parsing of Apple Pages (`.pages`) documents and Keynote (`.key`) presentations\n",
               "start": 4626,
               "end": 4709,
               "match_mode": "block_derived",
@@ -14493,7 +14501,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "- \ud83d\udcd1 Advanced PDF understanding incl. page layout, reading order, table structure, code, formulas, image classification, and more\n",
+              "quote": "- 📑 Advanced PDF understanding incl. page layout, reading order, table structure, code, formulas, image classification, and more\n",
               "start": 2848,
               "end": 2977,
               "match_mode": "block_derived",
@@ -14509,7 +14517,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "- \ud83d\udcd1 Advanced PDF understanding incl. page layout, reading order, table structure, code, formulas, image classification, and more\n",
+              "quote": "- 📑 Advanced PDF understanding incl. page layout, reading order, table structure, code, formulas, image classification, and more\n",
               "start": 2848,
               "end": 2977,
               "match_mode": "block_derived",
@@ -14537,7 +14545,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "- \ud83d\udcd1 Advanced PDF understanding incl. page layout, reading order, table structure, code, formulas, image classification, and more\n",
+              "quote": "- 📑 Advanced PDF understanding incl. page layout, reading order, table structure, code, formulas, image classification, and more\n",
               "start": 2848,
               "end": 2977,
               "match_mode": "block_derived",
@@ -14553,7 +14561,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "- \ud83d\udcd1 Advanced PDF understanding incl. page layout, reading order, table structure, code, formulas, image classification, and more\n",
+              "quote": "- 📑 Advanced PDF understanding incl. page layout, reading order, table structure, code, formulas, image classification, and more\n",
               "start": 2848,
               "end": 2977,
               "match_mode": "block_derived",
@@ -14581,7 +14589,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "- \ud83d\udcd1 Advanced PDF understanding incl. page layout, reading order, table structure, code, formulas, image classification, and more\n",
+              "quote": "- 📑 Advanced PDF understanding incl. page layout, reading order, table structure, code, formulas, image classification, and more\n",
               "start": 2848,
               "end": 2977,
               "match_mode": "block_derived",
@@ -14597,7 +14605,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "- \ud83d\udcd1 Advanced PDF understanding incl. page layout, reading order, table structure, code, formulas, image classification, and more\n",
+              "quote": "- 📑 Advanced PDF understanding incl. page layout, reading order, table structure, code, formulas, image classification, and more\n",
               "start": 2848,
               "end": 2977,
               "match_mode": "block_derived",
@@ -14625,7 +14633,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "- \ud83d\udcd1 Advanced PDF understanding incl. page layout, reading order, table structure, code, formulas, image classification, and more\n",
+              "quote": "- 📑 Advanced PDF understanding incl. page layout, reading order, table structure, code, formulas, image classification, and more\n",
               "start": 2848,
               "end": 2977,
               "match_mode": "block_derived",
@@ -14641,7 +14649,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "- \ud83d\udcd1 Advanced PDF understanding incl. page layout, reading order, table structure, code, formulas, image classification, and more\n",
+              "quote": "- 📑 Advanced PDF understanding incl. page layout, reading order, table structure, code, formulas, image classification, and more\n",
               "start": 2848,
               "end": 2977,
               "match_mode": "block_derived",
@@ -14669,7 +14677,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "- \ud83d\udcd1 Advanced PDF understanding incl. page layout, reading order, table structure, code, formulas, image classification, and more\n",
+              "quote": "- 📑 Advanced PDF understanding incl. page layout, reading order, table structure, code, formulas, image classification, and more\n",
               "start": 2848,
               "end": 2977,
               "match_mode": "block_derived",
@@ -14685,7 +14693,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "- \ud83d\udcd1 Advanced PDF understanding incl. page layout, reading order, table structure, code, formulas, image classification, and more\n",
+              "quote": "- 📑 Advanced PDF understanding incl. page layout, reading order, table structure, code, formulas, image classification, and more\n",
               "start": 2848,
               "end": 2977,
               "match_mode": "block_derived",
@@ -14713,7 +14721,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "- \ud83d\udcd1 Advanced PDF understanding incl. page layout, reading order, table structure, code, formulas, image classification, and more\n",
+              "quote": "- 📑 Advanced PDF understanding incl. page layout, reading order, table structure, code, formulas, image classification, and more\n",
               "start": 2848,
               "end": 2977,
               "match_mode": "block_derived",
@@ -14729,7 +14737,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "- \ud83d\udcd1 Advanced PDF understanding incl. page layout, reading order, table structure, code, formulas, image classification, and more\n",
+              "quote": "- 📑 Advanced PDF understanding incl. page layout, reading order, table structure, code, formulas, image classification, and more\n",
               "start": 2848,
               "end": 2977,
               "match_mode": "block_derived",
@@ -14757,7 +14765,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "- \ud83d\udcd1 Advanced PDF understanding incl. page layout, reading order, table structure, code, formulas, image classification, and more\n",
+              "quote": "- 📑 Advanced PDF understanding incl. page layout, reading order, table structure, code, formulas, image classification, and more\n",
               "start": 2848,
               "end": 2977,
               "match_mode": "block_derived",
@@ -14773,7 +14781,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "- \ud83d\udcd1 Advanced PDF understanding incl. page layout, reading order, table structure, code, formulas, image classification, and more\n",
+              "quote": "- 📑 Advanced PDF understanding incl. page layout, reading order, table structure, code, formulas, image classification, and more\n",
               "start": 2848,
               "end": 2977,
               "match_mode": "block_derived",
@@ -14801,7 +14809,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83d\udcc4 Parsing of ODF (OpenDocument Format) files for text documents (`.odt`), spreadsheets (`.ods`), and presentations (`.odp`)\n",
+              "quote": "- 📄 Parsing of ODF (OpenDocument Format) files for text documents (`.odt`), spreadsheets (`.ods`), and presentations (`.odp`)\n",
               "start": 4300,
               "end": 4426,
               "match_mode": "block_derived",
@@ -14817,7 +14825,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83d\udcc4 Parsing of ODF (OpenDocument Format) files for text documents (`.odt`), spreadsheets (`.ods`), and presentations (`.odp`)\n",
+              "quote": "- 📄 Parsing of ODF (OpenDocument Format) files for text documents (`.odt`), spreadsheets (`.ods`), and presentations (`.odp`)\n",
               "start": 4300,
               "end": 4426,
               "match_mode": "block_derived",
@@ -14845,7 +14853,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83d\udcc4 Parsing of ODF (OpenDocument Format) files for text documents (`.odt`), spreadsheets (`.ods`), and presentations (`.odp`)\n",
+              "quote": "- 📄 Parsing of ODF (OpenDocument Format) files for text documents (`.odt`), spreadsheets (`.ods`), and presentations (`.odp`)\n",
               "start": 4300,
               "end": 4426,
               "match_mode": "block_derived",
@@ -14861,7 +14869,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83d\udcc4 Parsing of ODF (OpenDocument Format) files for text documents (`.odt`), spreadsheets (`.ods`), and presentations (`.odp`)\n",
+              "quote": "- 📄 Parsing of ODF (OpenDocument Format) files for text documents (`.odt`), spreadsheets (`.ods`), and presentations (`.odp`)\n",
               "start": 4300,
               "end": 4426,
               "match_mode": "block_derived",
@@ -14889,7 +14897,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83d\udcc4 Parsing of ODF (OpenDocument Format) files for text documents (`.odt`), spreadsheets (`.ods`), and presentations (`.odp`)\n",
+              "quote": "- 📄 Parsing of ODF (OpenDocument Format) files for text documents (`.odt`), spreadsheets (`.ods`), and presentations (`.odp`)\n",
               "start": 4300,
               "end": 4426,
               "match_mode": "block_derived",
@@ -14905,7 +14913,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83d\udcc4 Parsing of ODF (OpenDocument Format) files for text documents (`.odt`), spreadsheets (`.ods`), and presentations (`.odp`)\n",
+              "quote": "- 📄 Parsing of ODF (OpenDocument Format) files for text documents (`.odt`), spreadsheets (`.ods`), and presentations (`.odp`)\n",
               "start": 4300,
               "end": 4426,
               "match_mode": "block_derived",
@@ -14933,7 +14941,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83d\udcda Parsing of EPUB (Electronic Publication) files for e-books\n",
+              "quote": "- 📚 Parsing of EPUB (Electronic Publication) files for e-books\n",
               "start": 4563,
               "end": 4626,
               "match_mode": "block_derived",
@@ -14949,7 +14957,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83d\udcda Parsing of EPUB (Electronic Publication) files for e-books\n",
+              "quote": "- 📚 Parsing of EPUB (Electronic Publication) files for e-books\n",
               "start": 4563,
               "end": 4626,
               "match_mode": "block_derived",
@@ -14977,7 +14985,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83d\udcbc Parsing of XBRL (eXtensible Business Reporting Language) documents for financial reports\n",
+              "quote": "- 💼 Parsing of XBRL (eXtensible Business Reporting Language) documents for financial reports\n",
               "start": 4426,
               "end": 4519,
               "match_mode": "block_derived",
@@ -14993,7 +15001,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83d\udcbc Parsing of XBRL (eXtensible Business Reporting Language) documents for financial reports\n",
+              "quote": "- 💼 Parsing of XBRL (eXtensible Business Reporting Language) documents for financial reports\n",
               "start": 4426,
               "end": 4519,
               "match_mode": "block_derived",
@@ -15021,7 +15029,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \u21aa\ufe0f Various [export formats][supported_formats] and options, including Markdown, HTML, WebVTT, DocLang, [DocTags](https://arxiv.org/abs/2503.11576) and lossless JSON\n",
+              "quote": "- ↪️ Various [export formats][supported_formats] and options, including Markdown, HTML, WebVTT, DocLang, [DocTags](https://arxiv.org/abs/2503.11576) and lossless JSON\n",
               "start": 3061,
               "end": 3228,
               "match_mode": "block_derived",
@@ -15037,7 +15045,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \u21aa\ufe0f Various [export formats][supported_formats] and options, including Markdown, HTML, WebVTT, DocLang, [DocTags](https://arxiv.org/abs/2503.11576) and lossless JSON\n",
+              "quote": "- ↪️ Various [export formats][supported_formats] and options, including Markdown, HTML, WebVTT, DocLang, [DocTags](https://arxiv.org/abs/2503.11576) and lossless JSON\n",
               "start": 3061,
               "end": 3228,
               "match_mode": "block_derived",
@@ -15065,7 +15073,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83c\udf99\ufe0f Audio support with Automatic Speech Recognition (ASR) models\n",
+              "quote": "- 🎙️ Audio support with Automatic Speech Recognition (ASR) models\n",
               "start": 3847,
               "end": 3913,
               "match_mode": "block_derived",
@@ -15081,7 +15089,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83c\udf99\ufe0f Audio support with Automatic Speech Recognition (ASR) models\n",
+              "quote": "- 🎙️ Audio support with Automatic Speech Recognition (ASR) models\n",
               "start": 3847,
               "end": 3913,
               "match_mode": "block_derived",
@@ -15109,7 +15117,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83d\udd0d Extensive OCR support for scanned PDFs and images\n",
+              "quote": "- 🔍 Extensive OCR support for scanned PDFs and images\n",
               "start": 3661,
               "end": 3715,
               "match_mode": "block_derived",
@@ -15125,7 +15133,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83d\udd0d Extensive OCR support for scanned PDFs and images\n",
+              "quote": "- 🔍 Extensive OCR support for scanned PDFs and images\n",
               "start": 3661,
               "end": 3715,
               "match_mode": "block_derived",
@@ -15198,7 +15206,7 @@
           "evidence": {
             "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
             "evidence_type": "explicit_statement",
-            "quote": "- \ud83c\udf10 Run Docling as a service with the [API server](https://docling-project.github.io/docling/usage/api_server/) (docling-serve)\n",
+            "quote": "- 🌐 Run Docling as a service with the [API server](https://docling-project.github.io/docling/usage/api_server/) (docling-serve)\n",
             "start": 4015,
             "end": 4143,
             "match_mode": "block_derived",
@@ -15221,7 +15229,7 @@
           "evidence": {
             "source_url": "https://raw.githubusercontent.com/docling-project/docling/HEAD/README.md",
             "evidence_type": "explicit_statement",
-            "quote": "- \ud83c\udf10 Run Docling as a service with the [API server](https://docling-project.github.io/docling/usage/api_server/) (docling-serve)\n",
+            "quote": "- 🌐 Run Docling as a service with the [API server](https://docling-project.github.io/docling/usage/api_server/) (docling-serve)\n",
             "start": 4015,
             "end": 4143,
             "match_mode": "block_derived",
@@ -16520,7 +16528,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/ggml-org/whisper.cpp/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "On AMD Ryzen\u2122 AI 300 and 400 Series processors with a dedicated NPU, whisper.cpp can fully offload the Whisper encoder to the NPU via VitisAI, delivering significant speedup over CPU-only inference.\n",
+              "quote": "On AMD Ryzen™ AI 300 and 400 Series processors with a dedicated NPU, whisper.cpp can fully offload the Whisper encoder to the NPU via VitisAI, delivering significant speedup over CPU-only inference.\n",
               "start": 13124,
               "end": 13323,
               "match_mode": "block_derived",
@@ -16536,7 +16544,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/ggml-org/whisper.cpp/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "On AMD Ryzen\u2122 AI 300 and 400 Series processors with a dedicated NPU, whisper.cpp can fully offload the Whisper encoder to the NPU via VitisAI, delivering significant speedup over CPU-only inference.\n",
+              "quote": "On AMD Ryzen™ AI 300 and 400 Series processors with a dedicated NPU, whisper.cpp can fully offload the Whisper encoder to the NPU via VitisAI, delivering significant speedup over CPU-only inference.\n",
               "start": 13124,
               "end": 13323,
               "match_mode": "block_derived",
@@ -17468,7 +17476,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/m-bain/whisperX/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83d\udc6f\u200d\u2642\ufe0f Multispeaker ASR using speaker diarization from [pyannote-audio](https://github.com/pyannote/pyannote-audio) (speaker ID labels)\n",
+              "quote": "- 👯‍♂️ Multispeaker ASR using speaker diarization from [pyannote-audio](https://github.com/pyannote/pyannote-audio) (speaker ID labels)\n",
               "start": 2370,
               "end": 2506,
               "match_mode": "block_derived",
@@ -17484,7 +17492,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/m-bain/whisperX/HEAD/README.md",
               "evidence_type": "explicit_statement",
-              "quote": "- \ud83d\udc6f\u200d\u2642\ufe0f Multispeaker ASR using speaker diarization from [pyannote-audio](https://github.com/pyannote/pyannote-audio) (speaker ID labels)\n",
+              "quote": "- 👯‍♂️ Multispeaker ASR using speaker diarization from [pyannote-audio](https://github.com/pyannote/pyannote-audio) (speaker ID labels)\n",
               "start": 2370,
               "end": 2506,
               "match_mode": "block_derived",
@@ -18040,7 +18048,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/m-bain/whisperX/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "- \ud83d\udde3\ufe0f VAD preprocessing, reduces hallucination & batching with no WER degradation\n",
+              "quote": "- 🗣️ VAD preprocessing, reduces hallucination & batching with no WER degradation\n",
               "start": 2506,
               "end": 2587,
               "match_mode": "block_derived",
@@ -18056,7 +18064,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/m-bain/whisperX/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "- \ud83d\udde3\ufe0f VAD preprocessing, reduces hallucination & batching with no WER degradation\n",
+              "quote": "- 🗣️ VAD preprocessing, reduces hallucination & batching with no WER degradation\n",
               "start": 2506,
               "end": 2587,
               "match_mode": "block_derived",
@@ -18084,7 +18092,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/m-bain/whisperX/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "- \ud83d\udde3\ufe0f VAD preprocessing, reduces hallucination & batching with no WER degradation\n",
+              "quote": "- 🗣️ VAD preprocessing, reduces hallucination & batching with no WER degradation\n",
               "start": 2506,
               "end": 2587,
               "match_mode": "block_derived",
@@ -18100,7 +18108,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/m-bain/whisperX/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "- \ud83d\udde3\ufe0f VAD preprocessing, reduces hallucination & batching with no WER degradation\n",
+              "quote": "- 🗣️ VAD preprocessing, reduces hallucination & batching with no WER degradation\n",
               "start": 2506,
               "end": 2587,
               "match_mode": "block_derived",
@@ -18128,7 +18136,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/m-bain/whisperX/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "- \ud83d\udde3\ufe0f VAD preprocessing, reduces hallucination & batching with no WER degradation\n",
+              "quote": "- 🗣️ VAD preprocessing, reduces hallucination & batching with no WER degradation\n",
               "start": 2506,
               "end": 2587,
               "match_mode": "block_derived",
@@ -18144,7 +18152,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/m-bain/whisperX/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "- \ud83d\udde3\ufe0f VAD preprocessing, reduces hallucination & batching with no WER degradation\n",
+              "quote": "- 🗣️ VAD preprocessing, reduces hallucination & batching with no WER degradation\n",
               "start": 2506,
               "end": 2587,
               "match_mode": "block_derived",
@@ -18172,7 +18180,7 @@
             {
               "source_url": "https://raw.githubusercontent.com/m-bain/whisperX/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "- \ud83d\udde3\ufe0f VAD preprocessing, reduces hallucination & batching with no WER degradation\n",
+              "quote": "- 🗣️ VAD preprocessing, reduces hallucination & batching with no WER degradation\n",
               "start": 2506,
               "end": 2587,
               "match_mode": "block_derived",
@@ -18188,7 +18196,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/m-bain/whisperX/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "- \ud83d\udde3\ufe0f VAD preprocessing, reduces hallucination & batching with no WER degradation\n",
+              "quote": "- 🗣️ VAD preprocessing, reduces hallucination & batching with no WER degradation\n",
               "start": 2506,
               "end": 2587,
               "match_mode": "block_derived",
@@ -18285,7 +18293,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/m-bain/whisperX/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "- \u26a1\ufe0f Batched inference for 70x realtime transcription using whisper large-v2\n",
+              "quote": "- ⚡️ Batched inference for 70x realtime transcription using whisper large-v2\n",
               "start": 2100,
               "end": 2177,
               "match_mode": "block_derived",
@@ -18308,7 +18316,7 @@
             "evidence": {
               "source_url": "https://raw.githubusercontent.com/m-bain/whisperX/HEAD/README.md",
               "evidence_type": "descriptive_context",
-              "quote": "- \ud83c\udfaf Accurate word-level timestamps using wav2vec2 alignment\n",
+              "quote": "- 🎯 Accurate word-level timestamps using wav2vec2 alignment\n",
               "start": 2310,
               "end": 2370,
               "match_mode": "block_derived",
@@ -19809,6 +19817,27 @@
       "discarded": [],
       "metadata_capabilities": [],
       "deployment_models": []
+    },
+    "web_pdf_converter": {
+      "entity_id": "web_pdf_converter",
+      "name": "Web PDF Converter",
+      "status": "extracted",
+      "modality": "web_application",
+      "atomic_capabilities": [
+        {
+          "capability_id": "pdf_to_markdown",
+          "label": "PDF → Markdown conversion",
+          "evidence": [
+            {
+              "quote": "Convert your PDF files to Markdown instantly in your browser.",
+              "source_url": "https://example.com/docs"
+            }
+          ]
+        }
+      ],
+      "metadata_capabilities": [],
+      "official_url": "https://pdf2md.morethan.io/",
+      "website_url": "https://pdf2md.morethan.io/"
     }
   }
 }

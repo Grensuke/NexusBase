@@ -10,8 +10,21 @@ export interface ConstraintState {
   source_block?: string;
 }
 
+export interface CandidateMeta {
+  entity_id: string;
+  name: string;
+  modality?: string;
+  official_url?: string;
+  website_url?: string;
+  repository_url?: string;
+  documentation_url?: string;
+  install_url?: string;
+  download_url?: string;
+}
+
 export interface SolutionPath {
   solutions: string[];
+  candidates_meta: CandidateMeta[];
   requirements_covered: string[];
   requirements_missing: string[];
   must_have_status: 'VALID' | 'INVALID';
@@ -19,7 +32,8 @@ export interface SolutionPath {
   evidence: any[];
   trade_offs: Record<string, string>;
   compatibility: 'VERIFIED' | 'UNVERIFIED' | 'INCOMPATIBLE' | 'N/A';
-  status: 'VALID' | 'PARTIAL' | 'INVALID' | 'LLM_OUTPUT_INVALID';
+  status: 'VALID' | 'CONSTRAINT_VIOLATED' | 'PARTIAL' | 'UNKNOWN' | 'INSUFFICIENT_EVIDENCE' | 'LLM_OUTPUT_INVALID';
+  modalities?: string[];
 }
 
 export const determineCompatibility = (entities: string[]): 'VERIFIED' | 'UNVERIFIED' | 'INCOMPATIBLE' | 'N/A' => {
@@ -197,13 +211,41 @@ export const createSolutionPaths = (
     const constraintsStates = verifyConstraints(analysis, ev, ent);
     const requiredConstraintsValid = !constraintsStates.some(c => c.status === 'VIOLATED');
 
-    let status: 'VALID' | 'PARTIAL' | 'INVALID' = 'INVALID';
-    if (mustHaveValid && requiredConstraintsValid) {
-      status = missingReqs.length === 0 ? 'VALID' : 'PARTIAL';
+    let status: 'VALID' | 'CONSTRAINT_VIOLATED' | 'PARTIAL' | 'UNKNOWN' | 'INSUFFICIENT_EVIDENCE' = 'VALID';
+    const hasViolatedConstraint = constraintsStates.some(c => c.status === 'VIOLATED');
+    const hasUnknownConstraint = constraintsStates.some(c => c.status === 'UNKNOWN');
+    const hasMissingReqs = missingReqs.length > 0;
+
+    if (hasViolatedConstraint) {
+      status = 'CONSTRAINT_VIOLATED';
+    } else if (hasMissingReqs) {
+      status = 'PARTIAL';
+    } else if (hasUnknownConstraint) {
+      status = 'UNKNOWN';
+    } else {
+      status = 'VALID';
     }
+    
+    // Add missing requirements to INSUFFICIENT_EVIDENCE if no capabilities mapped
+    if (evidenceList.length === 0) {
+       status = 'INSUFFICIENT_EVIDENCE';
+    }
+
+    const candidateMeta: CandidateMeta = {
+      entity_id: ent.entity_id,
+      name: ent.name,
+      modality: ent.modality,
+      official_url: ent.official_url,
+      website_url: ent.website_url,
+      repository_url: ent.repository_url,
+      documentation_url: ent.documentation_url,
+      install_url: ent.install_url,
+      download_url: ent.download_url
+    };
 
     paths.push({
       solutions: [ent.entity_id],
+      candidates_meta: [candidateMeta],
       requirements_covered: Array.from(reqsCovered),
       requirements_missing: missingReqs,
       must_have_status: mustHaveValid ? 'VALID' : 'INVALID',
@@ -215,7 +257,8 @@ export const createSolutionPaths = (
         setup_complexity: 'UNKNOWN'
       },
       compatibility: 'N/A',
-      status
+      status,
+      modalities: ent.modality ? [ent.modality] : []
     });
   }
 
@@ -269,13 +312,28 @@ export const createSolutionPaths = (
       }
 
       const requiredConstraintsValid = !mergedConstraints.some(c => c.status === 'VIOLATED');
-      let status: 'VALID' | 'PARTIAL' | 'INVALID' = 'INVALID';
-      if (mustHaveValid && requiredConstraintsValid) {
-        status = missingReqs.length === 0 ? 'VALID' : 'PARTIAL';
+      let status: 'VALID' | 'CONSTRAINT_VIOLATED' | 'PARTIAL' | 'UNKNOWN' | 'INSUFFICIENT_EVIDENCE' = 'VALID';
+      
+      const hasViolatedConstraint = mergedConstraints.some(c => c.status === 'VIOLATED');
+      const hasUnknownConstraint = mergedConstraints.some(c => c.status === 'UNKNOWN');
+      const hasMissingReqs = missingReqs.length > 0;
+      
+      if (hasViolatedConstraint) {
+        status = 'CONSTRAINT_VIOLATED';
+      } else if (hasMissingReqs) {
+        status = 'PARTIAL';
+      } else if (hasUnknownConstraint) {
+        status = 'UNKNOWN';
+      } else {
+        status = 'VALID';
       }
+      
+      const cMeta1: CandidateMeta | undefined = p1.candidates_meta?.[0];
+      const cMeta2: CandidateMeta | undefined = p2.candidates_meta?.[0];
 
       paths.push({
         solutions: [p1.solutions[0], p2.solutions[0]],
+        candidates_meta: [cMeta1, cMeta2].filter(Boolean) as CandidateMeta[],
         requirements_covered: Array.from(combinedCovered),
         requirements_missing: missingReqs,
         must_have_status: mustHaveValid ? 'VALID' : 'INVALID',
@@ -287,19 +345,41 @@ export const createSolutionPaths = (
           setup_complexity: 'Higher'
         },
         compatibility: comp,
-        status
+        status,
+        modalities: [p1.modalities?.[0] || '', p2.modalities?.[0] || ''].filter(Boolean)
       });
     }
   }
 
   return paths.sort((a, b) => {
-    if (a.status === 'VALID' && b.status !== 'VALID') return -1;
-    if (b.status === 'VALID' && a.status !== 'VALID') return 1;
-    if (a.status === 'PARTIAL' && b.status !== 'PARTIAL') return -1;
-    if (b.status === 'PARTIAL' && a.status !== 'PARTIAL') return 1;
+    // 1. Web Application priority
+    const aIsWeb = a.modalities?.includes('web_application');
+    const bIsWeb = b.modalities?.includes('web_application');
+    if (aIsWeb && !bIsWeb) return -1;
+    if (bIsWeb && !aIsWeb) return 1;
+
+    // 2. Validity priority
+    const validityScore = (s: string) => {
+      if (s === 'VALID') return 4;
+      if (s === 'PARTIAL') return 3;
+      if (s === 'UNKNOWN') return 2;
+      if (s === 'INSUFFICIENT_EVIDENCE') return 1;
+      return 0; // CONSTRAINT_VIOLATED, LLM_OUTPUT_INVALID
+    };
+    
+    const aScore = validityScore(a.status);
+    const bScore = validityScore(b.status);
+    
+    if (aScore !== bScore) {
+      return bScore - aScore;
+    }
+
+    // 3. Coverage Priority
     if (a.requirements_covered.length !== b.requirements_covered.length) {
       return b.requirements_covered.length - a.requirements_covered.length;
     }
+    
+    // 4. Fewest tools
     return a.solutions.length - b.solutions.length;
   });
 };

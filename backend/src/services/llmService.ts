@@ -172,7 +172,8 @@ ${JSON.stringify(analysis.requirements, null, 2)}
 </REQUIREMENTS>
 
 INSTRUCTIONS:
-1. Select which entities in the catalog best satisfy the requirements.
+1. Select which entities in the catalog match the core functional requirements of the problem. 
+IMPORTANT: DO NOT omit or filter out an entity just because it violates an operational constraint (e.g., "locally", "offline", "free"). If an entity provides the core functionality (like converting a PDF), YOU MUST include it in the selected_candidates. The constraint system will independently mark it as violated later.
 2. For each requirement, map it to the specific capability IDs from the selected entities. DO NOT invent IDs.
 3. For constraints, identify the capability_id or metadata that is relevant to checking this constraint (or leave source_id empty if none exist).
 4. Output your response as a valid JSON object matching this schema exactly:

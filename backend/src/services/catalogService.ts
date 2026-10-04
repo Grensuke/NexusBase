@@ -11,6 +11,13 @@ export interface Entity {
   entity_id: string;
   name: string;
   status: string;
+  modality?: string;
+  official_url?: string;
+  website_url?: string;
+  repository_url?: string;
+  documentation_url?: string;
+  install_url?: string;
+  download_url?: string;
   atomic_capabilities: Capability[];
   metadata_capabilities: Capability[];
 }
