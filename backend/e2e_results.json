@@ -1,0 +1,776 @@
+[
+  {
+    "problem_analysis": {
+      "interpreted_problem": "Convert PDF files into Markdown format on a local machine.",
+      "requirements": [
+        "PDF to Markdown conversion",
+        "Local execution without internet connectivity"
+      ],
+      "must_have_requirements": [
+        "Convert PDF files to Markdown format"
+      ],
+      "constraints": [
+        "Must run locally without relying on external services"
+      ]
+    },
+    "candidates": [
+      {
+        "entity_id": "pymupdf4llm",
+        "name": "pymupdf4llm",
+        "score": 0.22720089917730282,
+        "matched_terms": [
+          "convert",
+          "pdf",
+          "markdown",
+          "conversion"
+        ],
+        "matched_capabilities": [
+          "Convert documents into structured Markdown",
+          "PDF to Markdown conversion",
+          "Image extraction from PDF",
+          "Image saving to disk",
+          "PDF format support with OCR for scanned pages",
+          "XPS/OXPS format support with text and image extraction",
+          "EPUB/MOBI/FB2 format support with chapter-aware extraction",
+          "Image format support (PNG, JPG, TIFF) with single-page extraction and optional OCR",
+          "Office format support (DOCX, XLSX, PPTX, HWP) requiring PyMuPDF Pro",
+          "PDF metadata extraction",
+          "Page count retrieval",
+          "PDF to Markdown conversion with page-level chunking",
+          "Selective page extraction",
+          "Document loading integration with LlamaIndex and LangChain",
+          "Conversion of PDF documents to markdown format",
+          "Integration with text splitting tools for chunking",
+          "Natural reading order reconstruction across single and multi-column pages",
+          "Table detection and conversion to GitHub-compatible Markdown",
+          "Font size-based heading level mapping and custom header detection",
+          "Detection and preservation of bold, italic, monospace, and code blocks",
+          "Extraction of embedded images and inlining references in Markdown output",
+          "Detection and inclusion of references to vector graphic elements",
+          "Page chunking with metadata, TOC items, page boxes, and text",
+          "Automatic OCR of image-covered or illegible regions while skipping clean digital text",
+          "Configurable exclusion of repetitive page headers and footers",
+          "Processing a subset of pages via the `pages` parameter",
+          "Use of document's table of contents to derive heading hierarchy",
+          "Multi-format output generation",
+          "Generate JSON output",
+          "Handle multi-column layouts",
+          "Extract tables",
+          "Process images",
+          "Extract headers",
+          "Perform OCR on scanned pages"
+        ]
+      },
+      {
+        "entity_id": "mineru",
+        "name": "mineru",
+        "score": 0.1694355825243854,
+        "matched_terms": [
+          "convert",
+          "pdf",
+          "markdown",
+          "locally",
+          "conversion",
+          "local",
+          "execution",
+          "must",
+          "run"
+        ],
+        "matched_capabilities": [
+          "Document content to Markdown conversion",
+          "Support for searching multiple query types",
+          "Ability to apply filters during search",
+          "Support for specifying output format",
+          "PDF document parsing",
+          "Search for documents by content",
+          "Search with file type filtering",
+          "Search with customizable output format",
+          "Support for multiple input formats",
+          "PDF page image support for page locators",
+          "Document parsing with tiered processing",
+          "PDF to JSON conversion",
+          "PDF file parsing",
+          "WebUI interface support",
+          "Document parsing with JSON output",
+          "Stateless document parsing",
+          "Support for multiple rendering formats",
+          "PDF cache invalidation",
+          "PDF content extraction with limit",
+          "Remote document parsing",
+          "Document parsing and processing",
+          "PDF page range parsing",
+          "Full PDF parsing",
+          "PDF page selection across multiple interfaces",
+          "Command-line document management",
+          "Support for scanned PDFs",
+          "Support for various image formats",
+          "Support for office document formats",
+          "Support for EPUB documents with internal links",
+          "Support for HTML documents",
+          "Support for CSV and TSV files",
+          "File content display",
+          "File content JSON output",
+          "Document parsing",
+          "Document JSON output",
+          "Scan JSON output",
+          "PDF and image support across quality tiers",
+          "Local parsing of Office files at the flash tier",
+          "Whole document parsing for MHTML files",
+          "Direct reading of plain-text files without parsing",
+          "Default limit to first 10 PDF pages",
+          "Local document parsing by default",
+          "Anonymous usage analysis",
+          "Diagnostic telemetry collection",
+          "Agent reading",
+          "Local file reading",
+          "Local parse server support for different quality levels",
+          "Managed local parse server",
+          "Document parsing with adjustable quality and speed settings",
+          "Support for different document parsing use cases based on quality and speed",
+          "Command-line document reading",
+          "Document content parsing",
+          "Agent continuation by page or block",
+          "Stable locator generation for follow-up reads",
+          "Citation support through locators",
+          "Neural network-based parsing with multiple levels of complexity",
+          "Python document library integration",
+          "Server configuration management",
+          "Server status monitoring",
+          "Document inspection and analysis",
+          "Telemetry status inspection",
+          "Telemetry enablement control",
+          "Unsent local telemetry data removal",
+          "Local parsing prioritization",
+          "Local parse server configuration",
+          "Remote failure fallback to local execution",
+          "GPU build of torch must be installed separately on Windows",
+          "Default install on macOS is best-throughput package",
+          "Accelerated build of torch required for non-NVIDIA devices",
+          "Plain-text content reading",
+          "File format parsing",
+          "Document locator reading",
+          "Execute commands exactly as suggested unless modified by user input"
+        ]
+      },
+      {
+        "entity_id": "docling",
+        "name": "docling",
+        "score": 0.13206818460411499,
+        "matched_terms": [
+          "convert",
+          "pdf",
+          "markdown",
+          "conversion"
+        ],
+        "matched_capabilities": [
+          "Chart conversion to tables and code",
+          "Detailed chart description generation",
+          "Parsing of multiple document formats",
+          "Advanced PDF understanding",
+          "Page layout analysis",
+          "Reading order analysis",
+          "Table structure analysis",
+          "Code extraction",
+          "Formula recognition",
+          "Image classification",
+          "Plain-text file parsing",
+          "Markdown superset parsing",
+          "Support for multiple export formats"
+        ]
+      },
+      {
+        "entity_id": "pyannote",
+        "name": "pyannote",
+        "score": 0.052090450004642956,
+        "matched_terms": [
+          "locally",
+          "local"
+        ],
+        "matched_capabilities": [
+          "Local audio processing"
+        ]
+      },
+      {
+        "entity_id": "unleash",
+        "name": "unleash",
+        "score": 0.023670495939937475,
+        "matched_terms": [
+          "run",
+          "services"
+        ],
+        "matched_capabilities": [
+          "Docker compatibility",
+          "Node.js application support",
+          "Feature flag overview across environments, applications, and services"
+        ]
+      },
+      {
+        "entity_id": "whisper_cpp",
+        "name": "whisper_cpp",
+        "score": 0.0233520802966898,
+        "matched_terms": [
+          "convert",
+          "conversion"
+        ],
+        "matched_capabilities": [
+          "Model conversion to GGML format",
+          "VAD model integration with Whisper",
+          "Audio-to-text conversion",
+          "Model conversion to ggml format"
+        ]
+      },
+      {
+        "entity_id": "coolify",
+        "name": "coolify",
+        "score": 0.02127367814268525,
+        "matched_terms": [
+          "run",
+          "services"
+        ],
+        "matched_capabilities": [
+          "Managed database deployment",
+          "One-click service deployment",
+          "Persistent storage support",
+          "Generated credentials provisioning"
+        ]
+      },
+      {
+        "entity_id": "glitchtip",
+        "name": "glitchtip",
+        "score": 0.00483129086100421,
+        "matched_terms": [
+          "run"
+        ],
+        "matched_capabilities": [
+          "Privacy respect"
+        ]
+      }
+    ],
+    "solution_paths": [
+      {
+        "solutions": [
+          "mineru"
+        ],
+        "requirements_covered": [
+          "PDF to Markdown conversion",
+          "Local execution without internet connectivity"
+        ],
+        "requirements_missing": [],
+        "must_have_status": "INVALID",
+        "constraints_states": [
+          {
+            "constraint": "Must run locally without relying on external services",
+            "status": "SATISFIED",
+            "evidence": "Use `mineru parse` for the first active read from a local file path.\n",
+            "reason": "Supported by explicit catalog evidence in local_file_reading.",
+            "source_entity": "mineru",
+            "source_block": "local_file_reading"
+          }
+        ],
+        "evidence": [
+          {
+            "entity": "mineru",
+            "capability": "Document content to Markdown conversion",
+            "evidence": "- Convert document content into Markdown for analysis.\n"
+          },
+          {
+            "entity": "mineru",
+            "capability": "Local file reading",
+            "evidence": "Use `mineru parse` for the first active read from a local file path.\n"
+          }
+        ],
+        "trade_offs": {
+          "coverage": "2/2",
+          "tools": "1",
+          "setup_complexity": "UNKNOWN"
+        },
+        "compatibility": "N/A",
+        "status": "INVALID"
+      }
+    ],
+    "status": "NO_VALID_SOLUTION_PATH"
+  },
+  {
+    "problem_analysis": {
+      "interpreted_problem": "Transcribe audio locally without sending data to a cloud service.",
+      "requirements": [
+        "Transcribe audio on the local device",
+        "Ensure no data is sent to cloud services"
+      ],
+      "must_have_requirements": [
+        "Transcribe audio on the local device",
+        "Ensure no data is sent to cloud services"
+      ],
+      "constraints": []
+    },
+    "candidates": [
+      {
+        "entity_id": "pyannote",
+        "name": "pyannote",
+        "score": 0.2511435736886258,
+        "matched_terms": [
+          "audio",
+          "locally",
+          "service",
+          "local"
+        ],
+        "matched_capabilities": [
+          "Audio analysis via remote server",
+          "Speaker diarization",
+          "Pretrained model usage",
+          "Model fine-tuning",
+          "Local audio processing",
+          "Speaker diarization service"
+        ]
+      },
+      {
+        "entity_id": "faster_whisper",
+        "name": "faster_whisper",
+        "score": 0.11924836215940014,
+        "matched_terms": [
+          "transcribe",
+          "audio",
+          "device"
+        ],
+        "matched_capabilities": [
+          "Audio transcription with batched inference",
+          "Audio transcription with voice activity detection"
+        ]
+      },
+      {
+        "entity_id": "whisper_cpp",
+        "name": "whisper_cpp",
+        "score": 0.10854570231598816,
+        "matched_terms": [
+          "transcribe",
+          "audio"
+        ],
+        "matched_capabilities": [
+          "Audio transcription",
+          "Voice command recognition",
+          "HTTP transcription server",
+          "Speech-to-text plugin",
+          "Audio-to-text conversion",
+          "Video transcription",
+          "Audio translation",
+          "Voice-controlled chess",
+          "Batch audio file inference"
+        ]
+      },
+      {
+        "entity_id": "coolify",
+        "name": "coolify",
+        "score": 0.06388851815451307,
+        "matched_terms": [
+          "cloud",
+          "service",
+          "services"
+        ],
+        "matched_capabilities": [
+          "Cloud server deployment",
+          "Cloud deployment",
+          "One-click service deployment",
+          "Managed database deployment",
+          "Persistent storage support",
+          "Generated credentials provisioning"
+        ]
+      },
+      {
+        "entity_id": "unleash",
+        "name": "unleash",
+        "score": 0.05120380404711712,
+        "matched_terms": [
+          "cloud",
+          "services"
+        ],
+        "matched_capabilities": [
+          "Cloud hosting (any cloud)",
+          "Feature flag overview across environments, applications, and services"
+        ]
+      },
+      {
+        "entity_id": "mineru",
+        "name": "mineru",
+        "score": 0.043422636755576866,
+        "matched_terms": [
+          "locally",
+          "sending",
+          "service",
+          "local",
+          "device",
+          "ensure",
+          "sent"
+        ],
+        "matched_capabilities": [
+          "Local document parsing by default",
+          "Anonymous usage analysis",
+          "Diagnostic telemetry collection",
+          "PDF and image support across quality tiers",
+          "Local parsing of Office files at the flash tier",
+          "Whole document parsing for MHTML files",
+          "Direct reading of plain-text files without parsing",
+          "Local parse server support for different quality levels",
+          "Agent reading",
+          "Local file reading",
+          "Managed local parse server",
+          "Document parsing with adjustable quality and speed settings",
+          "Support for different document parsing use cases based on quality and speed",
+          "Command-line document reading",
+          "Document content parsing",
+          "Agent continuation by page or block",
+          "Stable locator generation for follow-up reads",
+          "Citation support through locators",
+          "Neural network-based parsing with multiple levels of complexity",
+          "Python document library integration",
+          "Server configuration management",
+          "Server status monitoring",
+          "Document inspection and analysis",
+          "Telemetry status inspection",
+          "Telemetry enablement control",
+          "Unsent local telemetry data removal",
+          "Local parsing prioritization",
+          "Local parse server configuration",
+          "Remote failure fallback to local execution",
+          "GPU build of torch must be installed separately on Windows",
+          "Default install on macOS is best-throughput package",
+          "Accelerated build of torch required for non-NVIDIA devices",
+          "Document parsing and processing"
+        ]
+      },
+      {
+        "entity_id": "docling",
+        "name": "docling",
+        "score": 0.03344454609843283,
+        "matched_terms": [
+          "audio"
+        ],
+        "matched_capabilities": [
+          "Audio support with Automatic Speech Recognition (ASR) models"
+        ]
+      },
+      {
+        "entity_id": "whisperx",
+        "name": "whisperx",
+        "score": 0.007370527453066889,
+        "matched_terms": [
+          "audio"
+        ],
+        "matched_capabilities": [
+          "Multispeaker speech recognition"
+        ]
+      }
+    ],
+    "solution_paths": [
+      {
+        "solutions": [
+          "pyannote"
+        ],
+        "requirements_covered": [
+          "Transcribe audio on the local device",
+          "Ensure no data is sent to cloud services"
+        ],
+        "requirements_missing": [],
+        "must_have_status": "VALID",
+        "constraints_states": [],
+        "evidence": [
+          {
+            "entity": "pyannote",
+            "capability": "Local audio processing",
+            "evidence": "# apply pretrained pipeline (with optional progress hook)\nwith ProgressHook() as hook:\n    output = pipeline(\"audio.wav\", hook=hook)  # runs locally\n"
+          }
+        ],
+        "trade_offs": {
+          "coverage": "2/2",
+          "tools": "1",
+          "setup_complexity": "UNKNOWN"
+        },
+        "compatibility": "N/A",
+        "status": "VALID"
+      },
+      {
+        "solutions": [
+          "whisper_cpp"
+        ],
+        "requirements_covered": [
+          "Transcribe audio on the local device",
+          "Ensure no data is sent to cloud services"
+        ],
+        "requirements_missing": [],
+        "must_have_status": "VALID",
+        "constraints_states": [],
+        "evidence": [
+          {
+            "entity": "whisper_cpp",
+            "capability": "Audio transcription",
+            "evidence": "| Example                                             | Web                                   | Description                                                                                                                     |\n| --------------------------------------------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |\n| [whisper-cli](examples/cli)                         | [whisper.wasm](examples/whisper.wasm) | Tool for translating and transcribing audio using Whisper                                                                       |\n| [whisper-bench](examples/bench)                     | [bench.wasm](examples/bench.wasm)     | Benchmark the performance of Whisper on your machine                                                                            |\n| [whisper-stream](examples/stream)                   | [stream.wasm](examples/stream.wasm)   | Real-time transcription of raw microphone capture                                                                               |\n| [whisper-command](examples/command)                 | [command.wasm](examples/command.wasm) | Basic voice assistant example for receiving voice commands from the mic                                                         |\n| [whisper-server](examples/server)                   |                                       | HTTP transcription server with OAI-like API                                                                                     |\n| [whisper-talk-llama](examples/talk-llama)           |                                       | Talk with a LLaMA bot                                                                                                           |\n| [whisper.objc](examples/whisper.objc)               |                                       | iOS mobile application using whisper.cpp                                                                                        |\n| [whisper.swiftui](examples/whisper.swiftui)         |                                       | SwiftUI iOS / macOS application using whisper.cpp                                                                               |\n| [whisper.android](examples/whisper.android)         |                                       | Android mobile application using whisper.cpp                                                                                    |\n| [whisper.nvim](examples/whisper.nvim)               |                                       | Speech-to-text plugin for Neovim                                                                                                |\n| [generate-karaoke.sh](examples/generate-karaoke.sh) |                                       | Helper script to easily [generate a karaoke video](https://youtu.be/uj7hVta4blM) of raw audio capture                           |\n| [livestream.sh](examples/livestream.sh)             |                                       | [Livestream audio transcription](https://github.com/ggml-org/whisper.cpp/issues/185)                                            |\n| [yt-wsp.sh](examples/yt-wsp.sh)                     |                                       | Download + transcribe and/or translate any VOD [(original)](https://gist.github.com/DaniruKun/96f763ec1a037cc92fe1a059b643b818) |\n| [wchess](examples/wchess)                           | [wchess.wasm](examples/wchess)        | Voice-controlled chess                                                                                                          |\n"
+          },
+          {
+            "entity": "whisper_cpp",
+            "capability": "Voice Activity Detection (VAD) support",
+            "evidence": "## Voice Activity Detection (VAD)\nSupport for Voice Activity Detection (VAD) can be enabled using the `--vad`\nargument to `whisper-cli`. In addition to this option a VAD model is also\nrequired.\n"
+          }
+        ],
+        "trade_offs": {
+          "coverage": "2/2",
+          "tools": "1",
+          "setup_complexity": "UNKNOWN"
+        },
+        "compatibility": "N/A",
+        "status": "VALID"
+      }
+    ],
+    "status": "VALID_PATHS_FOUND"
+  },
+  {
+    "problem_analysis": {
+      "interpreted_problem": "The task involves two steps: first, extracting information from PDF documents, and second, using a separate tool to process the extracted data.",
+      "requirements": [
+        "Extract information from PDF documents",
+        "Use another tool to process the extracted information"
+      ],
+      "must_have_requirements": [
+        "Extract information from PDF documents"
+      ],
+      "constraints": []
+    },
+    "candidates": [
+      {
+        "entity_id": "mineru",
+        "name": "mineru",
+        "score": 0.15288758328304738,
+        "matched_terms": [
+          "pdf",
+          "documents"
+        ],
+        "matched_capabilities": [
+          "Support for searching multiple query types",
+          "Ability to apply filters during search",
+          "Support for specifying output format",
+          "PDF document parsing",
+          "Search for documents by content",
+          "Search with file type filtering",
+          "Search with customizable output format",
+          "Support for multiple input formats",
+          "PDF page image support for page locators",
+          "Document parsing with tiered processing",
+          "PDF to JSON conversion",
+          "PDF file parsing",
+          "WebUI interface support",
+          "Document parsing with JSON output",
+          "Stateless document parsing",
+          "Support for multiple rendering formats",
+          "PDF cache invalidation",
+          "PDF content extraction with limit",
+          "Remote document parsing",
+          "Document parsing and processing",
+          "PDF page range parsing",
+          "Full PDF parsing",
+          "PDF page selection across multiple interfaces",
+          "Command-line document management",
+          "Support for scanned PDFs",
+          "Support for various image formats",
+          "Support for office document formats",
+          "Support for EPUB documents with internal links",
+          "Support for HTML documents",
+          "Support for CSV and TSV files",
+          "File content display",
+          "File content JSON output",
+          "Document parsing",
+          "Document JSON output",
+          "Scan JSON output",
+          "PDF and image support across quality tiers",
+          "Local parsing of Office files at the flash tier",
+          "Whole document parsing for MHTML files",
+          "Direct reading of plain-text files without parsing",
+          "Default limit to first 10 PDF pages",
+          "OCR text processing",
+          "Table extraction",
+          "Formula recognition",
+          "Figure identification",
+          "Complex page layout handling",
+          "Local document parsing by default",
+          "Search within indexed documents",
+          "Document search",
+          "Support for page/block continuation in long documents",
+          "Document parsing with adjustable quality and speed settings",
+          "Support for different document parsing use cases based on quality and speed",
+          "Command-line document reading",
+          "Document content parsing",
+          "Agent continuation by page or block",
+          "Stable locator generation for follow-up reads",
+          "Citation support through locators",
+          "Force reparse of documents"
+        ]
+      },
+      {
+        "entity_id": "pymupdf4llm",
+        "name": "pymupdf4llm",
+        "score": 0.12611613230224664,
+        "matched_terms": [
+          "pdf",
+          "documents",
+          "extracted"
+        ],
+        "matched_capabilities": [
+          "PDF to Markdown conversion",
+          "Image extraction from PDF",
+          "Image saving to disk",
+          "PDF format support with OCR for scanned pages",
+          "XPS/OXPS format support with text and image extraction",
+          "EPUB/MOBI/FB2 format support with chapter-aware extraction",
+          "Image format support (PNG, JPG, TIFF) with single-page extraction and optional OCR",
+          "Office format support (DOCX, XLSX, PPTX, HWP) requiring PyMuPDF Pro",
+          "PDF metadata extraction",
+          "Page count retrieval",
+          "PDF to Markdown conversion with page-level chunking",
+          "Selective page extraction",
+          "Document loading integration with LlamaIndex and LangChain",
+          "Conversion of PDF documents to markdown format",
+          "Integration with text splitting tools for chunking",
+          "Selective OCR processing based on page analysis",
+          "Convert documents into structured Markdown",
+          "Generate JSON output",
+          "Handle multi-column layouts",
+          "Extract tables",
+          "Process images",
+          "Extract headers",
+          "Perform OCR on scanned pages"
+        ]
+      },
+      {
+        "entity_id": "docling",
+        "name": "docling",
+        "score": 0.12453416466320227,
+        "matched_terms": [
+          "pdf",
+          "documents"
+        ],
+        "matched_capabilities": [
+          "Parsing of multiple document formats",
+          "Advanced PDF understanding",
+          "Page layout analysis",
+          "Reading order analysis",
+          "Table structure analysis",
+          "Code extraction",
+          "Formula recognition",
+          "Image classification",
+          "Apple Pages document parsing",
+          "Apple Keynote presentation parsing",
+          "ODT file parsing for text documents",
+          "ODS file parsing for spreadsheets",
+          "ODP file parsing for presentations",
+          "XBRL financial report parsing"
+        ]
+      }
+    ],
+    "solution_paths": [
+      {
+        "solutions": [
+          "mineru"
+        ],
+        "requirements_covered": [
+          "Extract information from PDF documents"
+        ],
+        "requirements_missing": [
+          "Use another tool to process the extracted information"
+        ],
+        "must_have_status": "VALID",
+        "constraints_states": [],
+        "evidence": [
+          {
+            "entity": "mineru",
+            "capability": "PDF document parsing",
+            "evidence": "```bash\nmineru parse \"report.pdf\" --wait 180 --json\n```\n"
+          },
+          {
+            "entity": "mineru",
+            "capability": "PDF file parsing",
+            "evidence": "```bash\nmineru parse \"report.pdf\" --no-wait --json\n```\n"
+          },
+          {
+            "entity": "mineru",
+            "capability": "PDF to JSON conversion",
+            "evidence": "```bash\nmineru parse \"report.pdf\" --json\n```\n"
+          }
+        ],
+        "trade_offs": {
+          "coverage": "1/2",
+          "tools": "1",
+          "setup_complexity": "UNKNOWN"
+        },
+        "compatibility": "N/A",
+        "status": "PARTIAL"
+      },
+      {
+        "solutions": [
+          "pymupdf4llm"
+        ],
+        "requirements_covered": [
+          "Extract information from PDF documents"
+        ],
+        "requirements_missing": [
+          "Use another tool to process the extracted information"
+        ],
+        "must_have_status": "VALID",
+        "constraints_states": [],
+        "evidence": [
+          {
+            "entity": "pymupdf4llm",
+            "capability": "PDF to Markdown conversion",
+            "evidence": "md = pymupdf4llm.to_markdown(\n    \"document.pdf\",\n    write_images=True,        # save extracted images to disk\n    image_path=\"./images\",    # directory for saved images\n    image_format=\"png\",       # output format\n    dpi=150,                  # image resolution\n)\n```\n"
+          },
+          {
+            "entity": "pymupdf4llm",
+            "capability": "PDF format support with OCR for scanned pages",
+            "evidence": "| Format | Notes |\n|---|---|\n| **PDF** | Full support including scanned pages (via OCR) |\n| **XPS / OXPS** | Text and image extraction |\n| **EPUB / MOBI / FB2** | Chapter-aware extraction |\n| **Images** (PNG, JPG, TIFF…) | Single-page extraction with optional OCR |\n| **Office** (DOCX, XLSX, PPTX, HWP) | Requires **PyMuPDF Pro** |\n"
+          },
+          {
+            "entity": "pymupdf4llm",
+            "capability": "Extract tables",
+            "evidence": "PyMuPDF4LLM is a lightweight extension for [PyMuPDF](https://github.com/pymupdf/PyMuPDF) that converts documents into structured Markdown, JSON, and plain text optimised for RAG pipelines, vector embeddings, and LLM ingestion. It handles multi-column layouts, tables, images, headers, and scanned pages with automatic OCR — all powered by the MuPDF C engine.\n"
+          }
+        ],
+        "trade_offs": {
+          "coverage": "1/2",
+          "tools": "1",
+          "setup_complexity": "UNKNOWN"
+        },
+        "compatibility": "N/A",
+        "status": "PARTIAL"
+      },
+      {
+        "solutions": [
+          "docling"
+        ],
+        "requirements_covered": [
+          "Extract information from PDF documents"
+        ],
+        "requirements_missing": [
+          "Use another tool to process the extracted information"
+        ],
+        "must_have_status": "VALID",
+        "constraints_states": [],
+        "evidence": [
+          {
+            "entity": "docling",
+            "capability": "Advanced PDF understanding",
+            "evidence": "- 📑 Advanced PDF understanding incl. page layout, reading order, table structure, code, formulas, image classification, and more\n"
+          },
+          {
+            "entity": "docling",
+            "capability": "Parsing of multiple document formats",
+            "evidence": "- 🗂️ Parsing of [multiple document formats][supported_formats] including PDF, DOCX, PPTX, XLSX, HTML, EPUB, Apple Pages, WAV, MP3, WebVTT, Box Notes, email formats (EML, MSG), images (PNG, TIFF, JPEG, ...), LaTeX, DocLang, plain text, and more\n"
+          }
+        ],
+        "trade_offs": {
+          "coverage": "1/2",
+          "tools": "1",
+          "setup_complexity": "UNKNOWN"
+        },
+        "compatibility": "N/A",
+        "status": "PARTIAL"
+      }
+    ],
+    "status": "PARTIAL_COVERAGE"
+  }
+]
