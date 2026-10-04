@@ -130,10 +130,9 @@ function PathCard({ path, index }: { path: SolutionPath, index: number }) {
       
       {/* EXPANDED ANALYSIS (Inline) */}
       <div 
-        className={`grid overflow-hidden transition-[grid-template-rows,opacity] duration-300 ease-in-out bg-muted-surface ${expanded ? 'grid-rows-[1fr] opacity-100 border-t border-strong-border' : 'grid-rows-[0fr] opacity-0'}`}
+        className={`overflow-hidden transition-all duration-500 ease-in-out bg-muted-surface ${expanded ? 'max-h-[3000px] opacity-100 border-t border-strong-border' : 'max-h-0 opacity-0'}`}
       >
-        <div className="min-h-0">
-          <div className="p-6 md:p-8 space-y-10">
+        <div className="p-6 md:p-8 space-y-10">
             
             {(path.constraints_states?.length || 0) > 0 && (
               <div>
@@ -188,7 +187,6 @@ function PathCard({ path, index }: { path: SolutionPath, index: number }) {
             </div>
 
           </div>
-        </div>
       </div>
     </div>
   );
@@ -515,7 +513,7 @@ export default function DiscoverPage() {
                 <ComparisonTable data={data} />
               ) : (
                 /* Side-by-side Card View */
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {data.solution_paths?.map((path, idx) => (
                     <PathCard key={idx} path={path} index={idx} />
                   ))}
