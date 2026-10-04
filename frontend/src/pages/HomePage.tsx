@@ -1,34 +1,44 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle2, Search, ChevronRight, HardDrive, ShieldCheck, Zap, XCircle } from "lucide-react";
+import { ArrowRight, Search } from "lucide-react";
 
 export default function HomePage() {
+  const [demoStep, setDemoStep] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setDemoStep((prev) => (prev < 4 ? prev + 1 : 4));
+    }, 800);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <div className="flex flex-col animate-in fade-in duration-700 font-sans">
       {/* Hero Section */}
-      <section className="py-24 w-full border-b border-border bg-background relative overflow-hidden">
+      <section className="py-24 md:py-32 w-full border-b border-border bg-background relative overflow-hidden">
         <div className="max-w-[1200px] mx-auto px-6 md:px-8 flex flex-col lg:flex-row items-center gap-16 relative z-10">
-          <div className="flex-1 space-y-8 animate-in slide-in-from-bottom-4 duration-700">
-            <div className="inline-flex items-center gap-3">
+          <div className="flex-1 space-y-8">
+            <div className="inline-flex items-center gap-3 animate-in slide-in-from-bottom-4 duration-500 fill-mode-both" style={{ animationDelay: '150ms' }}>
                <span className="w-8 h-[1px] bg-strong-border"></span>
-               <span className="text-xs font-mono font-medium tracking-[0.1em] text-secondary-ink uppercase">Analytical Software Discovery</span>
+               <span className="text-[11px] font-mono font-bold tracking-[0.15em] text-secondary-ink uppercase">Analytical Software Discovery</span>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-[56px] font-medium tracking-tight text-primary-ink leading-[1.1]">
+            <h1 className="text-4xl md:text-5xl lg:text-[56px] font-bold tracking-tight text-primary-ink leading-[1.1] animate-in slide-in-from-bottom-4 duration-500 fill-mode-both" style={{ animationDelay: '250ms' }}>
               Find software by the capabilities your problem actually requires.
             </h1>
-            <p className="text-lg text-secondary-ink leading-relaxed max-w-2xl font-medium">
+            <p className="text-lg text-secondary-ink leading-relaxed max-w-2xl font-medium animate-in slide-in-from-bottom-4 duration-500 fill-mode-both" style={{ animationDelay: '350ms' }}>
               NexusBase decomposes a technical problem into requirements,
               discovers relevant software capabilities, verifies evidence,
               checks constraints, and constructs solution paths.
             </p>
-            <div className="flex flex-wrap items-center gap-4 pt-4">
+            <div className="flex flex-wrap items-center gap-4 pt-4 animate-in slide-in-from-bottom-4 duration-500 fill-mode-both" style={{ animationDelay: '450ms' }}>
               <Link to="/discover">
-                <Button size="lg" className="rounded-none bg-primary-ink text-surface hover:bg-primary-ink/90 px-8 h-12 text-base font-semibold transition-all">
-                  Start a Discovery <ArrowRight className="ml-2 w-4 h-4" />
+                <Button size="lg" className="rounded-none bg-primary-ink text-surface hover:bg-primary-ink/90 px-8 h-12 text-[15px] font-bold transition-all group">
+                  Start a Discovery <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
               <a href="#how-it-works">
-                <Button variant="ghost" size="lg" className="rounded-none text-secondary-ink hover:text-primary-ink px-8 h-12 text-base font-semibold">
+                <Button variant="ghost" size="lg" className="rounded-none text-secondary-ink hover:text-primary-ink px-8 h-12 text-[15px] font-bold transition-colors">
                   See How It Works
                 </Button>
               </a>
@@ -36,175 +46,168 @@ export default function HomePage() {
           </div>
           
           {/* Technical Diagram UI */}
-          <div className="flex-1 w-full max-w-md hidden lg:flex flex-col select-none border border-strong-border bg-surface shadow-sm overflow-hidden animate-in slide-in-from-right-8 duration-700 delay-150 fill-mode-both">
+          <div className="flex-1 w-full max-w-md hidden lg:flex flex-col select-none border border-strong-border bg-surface shadow-sm overflow-hidden animate-in fade-in duration-1000 fill-mode-both" style={{ animationDelay: '300ms' }}>
             <div className="p-6 border-b border-border bg-muted-surface relative">
               <div className="absolute top-0 right-0 p-4">
-                <span className="text-[10px] font-mono tracking-widest uppercase bg-surface border border-border text-secondary-ink px-2 py-1">Live Example</span>
+                <span className="text-[10px] font-mono tracking-widest uppercase bg-surface border border-border text-secondary-ink px-2 py-1">Live Demo</span>
               </div>
-              <div className="text-[11px] font-mono text-secondary-ink uppercase tracking-widest mb-3 flex items-center gap-2">
+              <div className="text-[11px] font-mono font-semibold text-secondary-ink uppercase tracking-widest mb-3 flex items-center gap-2">
                 <Search className="w-3.5 h-3.5" /> Problem Query
               </div>
-              <div className="text-base font-medium leading-relaxed text-primary-ink">
+              <div className="text-base font-semibold leading-relaxed text-primary-ink">
                 "I need to convert PDF files into Markdown locally."
               </div>
             </div>
             
-            <div className="p-0">
-              <div className="text-[11px] font-mono font-semibold tracking-widest uppercase text-secondary-ink px-6 pt-6 pb-4">Discovered Modalities</div>
-              
-              <div className="space-y-0 pb-4">
-                {/* PATH 01 */}
-                <div className="px-6 py-4 transition-colors hover:bg-muted-surface group flex flex-col gap-2 border-l-2 border-transparent">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                       <span className="text-[11px] font-mono text-muted-text tracking-wider">PATH 01</span>
-                       <span className="text-[11px] font-mono font-semibold tracking-wider uppercase text-secondary-ink">Web Application</span>
-                    </div>
-                    <XCircle className="w-4 h-4 text-destructive opacity-50 group-hover:opacity-100 transition-opacity" />
-                  </div>
-                  <div className="flex flex-col gap-1">
-                    <span className="text-base font-semibold text-primary-ink">Web PDF Converter</span>
-                    <span className="text-xs text-destructive font-mono">✕ Local constraint violated</span>
-                  </div>
+            <div className="p-0 bg-surface">
+              <div className="px-6 py-6 space-y-5">
+                
+                {/* Stage 1: Requirements */}
+                <div className={`transition-all duration-500 transform ${demoStep >= 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}>
+                   <div className="text-[10px] font-mono font-semibold tracking-widest uppercase text-secondary-ink mb-2">Requirements</div>
+                   <div className="flex items-center gap-3">
+                     <span className="text-xs font-medium text-primary-ink bg-muted-surface px-2 py-1 border border-border">PDF → Markdown</span>
+                     <span className="text-xs font-medium text-primary-ink bg-muted-surface px-2 py-1 border border-border">Local execution</span>
+                   </div>
                 </div>
 
-                <div className="mx-6 h-px bg-border" />
-
-                {/* PATH 02 */}
-                <div className="px-6 py-4 transition-colors hover:bg-muted-surface group flex flex-col gap-2 border-l-2 border-primary bg-primary/5">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                       <span className="text-[11px] font-mono text-primary/70 tracking-wider">PATH 02</span>
-                       <span className="text-[11px] font-mono font-semibold tracking-wider uppercase text-primary">Local Library</span>
-                    </div>
-                    <CheckCircle2 className="w-4 h-4 text-primary" />
-                  </div>
-                  <div className="flex flex-col gap-1">
-                    <span className="text-base font-semibold text-primary-ink">PyMuPDF4LLM</span>
-                    <span className="text-xs text-primary font-mono">✓ Valid</span>
-                  </div>
+                {/* Stage 2: Discovery */}
+                <div className={`transition-all duration-500 transform ${demoStep >= 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}>
+                   <div className="text-[10px] font-mono font-semibold tracking-widest uppercase text-secondary-ink mb-2">Discovery</div>
+                   <div className="text-xs font-medium text-primary-ink flex items-center gap-2">
+                     <div className="w-1.5 h-1.5 rounded-full bg-primary" /> 7 candidates evaluated
+                   </div>
                 </div>
 
-                <div className="mx-6 h-px bg-border" />
-
-                {/* PATH 03 */}
-                <div className="px-6 py-4 transition-colors hover:bg-muted-surface group flex flex-col gap-2 border-l-2 border-transparent">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                       <span className="text-[11px] font-mono text-muted-text tracking-wider">PATH 03</span>
-                       <span className="text-[11px] font-mono font-semibold tracking-wider uppercase text-secondary-ink">Desktop App</span>
-                    </div>
-                    <CheckCircle2 className="w-4 h-4 text-secondary-ink opacity-50 group-hover:opacity-100 transition-opacity" />
-                  </div>
-                  <div className="flex flex-col gap-1">
-                    <span className="text-base font-semibold text-primary-ink">MinerU</span>
-                    <span className="text-xs text-secondary-ink font-mono">✓ Valid</span>
-                  </div>
+                {/* Stage 3: Verification */}
+                <div className={`transition-all duration-500 transform ${demoStep >= 3 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}>
+                   <div className="text-[10px] font-mono font-semibold tracking-widest uppercase text-secondary-ink mb-2">Verification</div>
+                   <div className="flex flex-col gap-2">
+                     <div className="flex items-center justify-between text-xs">
+                        <span className="font-mono text-muted-text">web_pdf_converter</span>
+                        <span className="text-violated font-mono text-[10px] uppercase tracking-widest">Violated</span>
+                     </div>
+                     <div className="flex items-center justify-between text-xs">
+                        <span className="font-mono text-primary-ink">pymupdf4llm</span>
+                        <span className="text-verified font-mono text-[10px] uppercase tracking-widest">Satisfied</span>
+                     </div>
+                   </div>
                 </div>
+
+                {/* Stage 4: Paths */}
+                <div className={`transition-all duration-500 transform border-t border-border pt-4 mt-2 ${demoStep >= 4 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}>
+                   <div className="text-[10px] font-mono font-semibold tracking-widest uppercase text-secondary-ink mb-1">Solution Paths</div>
+                   <div className="text-xl font-semibold text-primary-ink">2 viable paths found</div>
+                </div>
+
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* How It Works - Analytical Pipeline */}
+      {/* How It Works - Analytical Pipeline (Demoing actual product concepts) */}
       <section id="how-it-works" className="py-24 w-full border-b border-border bg-surface">
         <div className="max-w-[1200px] mx-auto px-6 md:px-8">
           <div className="flex flex-col gap-6 max-w-3xl mb-16">
-             <div className="text-[11px] font-mono font-semibold tracking-widest text-secondary-ink uppercase flex items-center gap-3">
+             <div className="text-[11px] font-mono font-semibold tracking-[0.15em] text-secondary-ink uppercase flex items-center gap-3">
                <span className="w-8 h-[1px] bg-strong-border"></span>
                How it works
              </div>
-            <h2 className="text-3xl font-semibold tracking-tight text-primary-ink">An analytical approach to software discovery.</h2>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-primary-ink">An analytical approach to software discovery.</h2>
             <p className="text-secondary-ink text-lg leading-relaxed font-medium">A strict pipeline that eliminates hallucination and relies on source-backed technical evidence.</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-5 gap-0 border border-strong-border bg-surface">
              <PipelineStage 
                step="01" 
-               icon={<Search className="w-5 h-5" />} 
-               title="Problem" 
-               desc="Describe the technical task." 
-               delay={0}
+               title="PROBLEM" 
+               desc="&quot;I need to convert PDFs locally.&quot;" 
              />
              <PipelineStage 
                step="02" 
-               icon={<ShieldCheck className="w-5 h-5" />} 
-               title="Requirements" 
-               desc="Extract functional and operational needs." 
-               delay={100}
+               title="REQUIREMENTS" 
+               desc="PDF → Markdown, Local execution" 
              />
              <PipelineStage 
                step="03" 
-               icon={<Zap className="w-5 h-5" />} 
-               title="Capabilities" 
-               desc="Match requirements to atomic software capabilities." 
-               delay={200}
+               title="CAPABILITIES" 
+               desc="cap_pdf_to_markdown" 
              />
              <PipelineStage 
                step="04" 
-               icon={<HardDrive className="w-5 h-5" />} 
-               title="Constraints" 
-               desc="Verify hard requirements deterministically." 
-               delay={300}
+               title="CONSTRAINTS" 
+               desc="OFFLINE ✓ SATISFIED" 
              />
              <PipelineStage 
                step="05" 
-               icon={<CheckCircle2 className="w-5 h-5" />} 
-               title="Paths" 
-               desc="Construct viable solution approaches." 
-               delay={400}
+               title="PATHS" 
+               desc="2 viable paths constructed" 
              />
           </div>
         </div>
       </section>
 
-      {/* Trust & Evidence */}
-      <section className="py-24 w-full border-b border-border bg-background">
+      {/* From Problem To Decision - Transformation Section */}
+      <section className="py-32 w-full border-b border-border bg-background">
         <div className="max-w-[1200px] mx-auto px-6 md:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-            <div className="space-y-8">
-              <div className="text-[11px] font-mono font-semibold tracking-widest text-secondary-ink uppercase flex items-center gap-3">
-                 <span className="w-8 h-[1px] bg-strong-border"></span>
-                 Verification
-              </div>
-              <h2 className="text-3xl font-semibold tracking-tight text-primary-ink">Generated reasoning vs. Source-backed evidence.</h2>
-              <p className="text-lg text-secondary-ink leading-relaxed font-medium">
-                Most AI assistants simply output a generated recommendation. NexusBase separates the reasoning from the facts. It links every requirement to a specific software capability, which is then backed by verbatim technical evidence.
-              </p>
-              <p className="text-lg text-secondary-ink leading-relaxed font-medium">
-                If a constraint cannot be verified by evidence, it is marked as UNKNOWN, failing the solution path gracefully.
-              </p>
+          <div className="text-center mb-20 space-y-6">
+             <div className="text-[11px] font-mono font-semibold tracking-[0.15em] text-secondary-ink uppercase inline-flex items-center gap-3">
+               <span className="w-8 h-[1px] bg-strong-border"></span>
+               Transformation
+               <span className="w-8 h-[1px] bg-strong-border"></span>
+             </div>
+             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-primary-ink">From Problem To Decision</h2>
+          </div>
+
+          <div className="flex flex-col items-center max-w-2xl mx-auto space-y-8 relative">
+            {/* Connection Line */}
+            <div className="absolute left-1/2 top-8 bottom-8 w-px bg-strong-border -translate-x-1/2 z-0 hidden md:block"></div>
+
+            {/* Step 1 */}
+            <div className="bg-surface border border-border p-6 w-full max-w-md relative z-10 text-center">
+              <div className="text-[10px] font-mono font-semibold tracking-widest text-secondary-ink uppercase mb-3">User Problem</div>
+              <div className="text-sm font-semibold text-primary-ink">"I need to convert PDF files into Markdown locally."</div>
             </div>
-            
-            {/* Example Evidence Block */}
-            <div className="bg-surface border border-strong-border p-8 hover:border-primary-ink transition-colors">
-              <div className="text-[11px] font-mono font-semibold text-secondary-ink uppercase tracking-widest mb-6 flex items-center gap-2">
-                <span>PyMuPDF4LLM</span>
-                <ChevronRight className="w-3.5 h-3.5 text-border" />
-                <span className="text-primary-ink">PDF to Markdown conversion</span>
+
+            {/* Step 2 */}
+            <div className="bg-surface border border-border p-6 w-full max-w-md relative z-10 text-center">
+              <div className="text-[10px] font-mono font-semibold tracking-widest text-secondary-ink uppercase mb-3">Extracted Requirements</div>
+              <div className="flex items-center justify-center gap-4 text-sm font-medium text-primary-ink">
+                <span className="bg-muted-surface px-3 py-1 border border-border">PDF → Markdown</span>
+                <span className="bg-muted-surface px-3 py-1 border border-border">Local execution</span>
               </div>
-              
-              <div className="text-xs text-muted-text bg-muted-surface border border-border p-5 font-mono leading-relaxed mb-8">
-                <div className="text-muted-text/70 mb-4"># Source-backed evidence</div>
-                md = pymupdf4llm.to_markdown(<br/>
-                &nbsp;&nbsp;"document.pdf",<br/>
-                &nbsp;&nbsp;write_images=True<br/>
-                )
+            </div>
+
+            {/* Step 3 */}
+            <div className="bg-surface border border-border p-6 w-full max-w-md relative z-10 text-center">
+              <div className="text-[10px] font-mono font-semibold tracking-widest text-secondary-ink uppercase mb-3">Discovered</div>
+              <div className="text-sm font-medium text-secondary-ink space-x-3">
+                <span>Web Application</span>
+                <span className="text-strong-border">|</span>
+                <span>Local Library</span>
+                <span className="text-strong-border">|</span>
+                <span>Desktop Tool</span>
               </div>
-              
-              <div className="flex flex-col gap-3">
-                <div className="text-[11px] font-mono font-semibold tracking-widest uppercase text-secondary-ink mb-2">Constraint Verification</div>
-                <div className="flex items-center justify-between border border-border p-4 bg-surface">
-                  <div className="flex items-center gap-3">
-                    <CheckCircle2 className="w-4 h-4 text-verified" />
-                    <span className="font-mono text-xs font-semibold text-primary-ink">Local execution without internet dependency</span>
-                  </div>
-                  <span className="shrink-0 text-[10px] font-mono tracking-widest uppercase text-verified ml-4">
-                    SATISFIED
-                  </span>
-                </div>
+            </div>
+
+            {/* Step 4 */}
+            <div className="bg-surface border border-border p-6 w-full max-w-md relative z-10 text-center">
+              <div className="text-[10px] font-mono font-semibold tracking-widest text-secondary-ink uppercase mb-3">Verified</div>
+              <div className="text-sm font-medium text-secondary-ink space-x-4">
+                <span>Capabilities</span>
+                <span className="text-strong-border">•</span>
+                <span>Evidence</span>
+                <span className="text-strong-border">•</span>
+                <span>Constraints</span>
               </div>
+            </div>
+
+            {/* Step 5 */}
+            <div className="bg-surface border border-primary-ink p-8 w-full max-w-md relative z-10 text-center shadow-sm">
+              <div className="text-[10px] font-mono font-semibold tracking-widest text-secondary-ink uppercase mb-3">Decision</div>
+              <div className="text-2xl font-bold text-primary-ink mb-1">2 viable paths</div>
+              <div className="text-xs font-mono text-muted-text">1 rejected alternative</div>
             </div>
           </div>
         </div>
@@ -212,9 +215,9 @@ export default function HomePage() {
 
       {/* CTA */}
       <section className="py-32 w-full text-center flex flex-col items-center bg-surface">
-        <h2 className="text-3xl font-semibold tracking-tight text-primary-ink mb-8">Ready to find the right tool?</h2>
+        <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-primary-ink mb-10">Ready to find the right tool?</h2>
         <Link to="/discover">
-          <Button size="lg" className="rounded-none bg-primary-ink text-surface hover:bg-primary-ink/90 px-10 h-14 text-base font-semibold shadow-none transition-all group">
+          <Button size="lg" className="rounded-none bg-primary-ink text-surface hover:bg-primary-ink/90 px-10 h-14 text-base font-bold shadow-none transition-all group">
             Start a Discovery <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Button>
         </Link>
@@ -223,18 +226,12 @@ export default function HomePage() {
   );
 }
 
-function PipelineStage({ step, icon, title, desc, delay }: { step: string, icon: React.ReactNode, title: string, desc: string, delay: number }) {
+function PipelineStage({ step, title, desc }: { step: string, title: string, desc: string }) {
   return (
-    <div 
-      className="p-8 flex flex-col gap-5 border-b md:border-b-0 md:border-r border-strong-border last:border-0 hover:bg-muted-surface transition-colors group cursor-default"
-      style={{ animationFillMode: "both", animationDelay: `${delay}ms` }}
-    >
-      <div className="flex items-center justify-between text-secondary-ink group-hover:text-primary transition-colors">
-        {icon}
-        <span className="font-mono text-xs font-semibold opacity-50 group-hover:opacity-100 transition-opacity">{step}</span>
-      </div>
+    <div className="p-8 flex flex-col gap-5 border-b md:border-b-0 md:border-r border-strong-border last:border-0 bg-surface">
+      <div className="font-mono text-[11px] font-semibold text-secondary-ink uppercase tracking-widest">{step}</div>
       <div>
-        <h3 className="text-lg font-semibold tracking-tight mb-2 text-primary-ink group-hover:text-primary transition-colors">{title}</h3>
+        <h3 className="text-sm font-bold tracking-tight mb-2 text-primary-ink">{title}</h3>
         <p className="text-sm font-medium text-secondary-ink leading-relaxed">{desc}</p>
       </div>
     </div>
