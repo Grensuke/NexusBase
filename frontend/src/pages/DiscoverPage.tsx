@@ -34,7 +34,7 @@ function PathCard({ path, index }: { path: SolutionPath, index: number }) {
   const primaryCapability = path.evidence?.[0]?.capability || "Core Processing";
   
   return (
-    <div className="mb-6 lg:mb-0 row-span-2 grid grid-rows-[subgrid] bg-surface border border-strong-border transition-all duration-500 animate-in fade-in" style={{ animationFillMode: "both", animationDelay: `${index * 50}ms` }}>
+    <div className="flex flex-col bg-surface border border-strong-border transition-all duration-500 animate-in fade-in h-full" style={{ animationFillMode: "both", animationDelay: `${index * 50}ms` }}>
       <div className="p-5 md:p-6 flex flex-col h-full">
         {/* PATH IDENTITY */}
         <div className="flex flex-col gap-1.5 mb-4">
@@ -358,8 +358,11 @@ export default function DiscoverPage() {
   const hasDataOrLoading = data !== null || loading;
   const inputHeightClass = hasDataOrLoading ? "min-h-[80px]" : "min-h-[160px] md:min-h-[200px]";
   
-  const viableCount = data?.solution_paths?.filter(p => p.status !== 'CONSTRAINT_VIOLATED' && p.status !== 'LLM_OUTPUT_INVALID').length || 0;
-  const violatedCount = (data?.solution_paths?.length || 0) - viableCount;
+  const validCount = data?.solution_paths?.filter(p => p.status === 'VALID').length || 0;
+  const partialCount = data?.solution_paths?.filter(p => p.status === 'PARTIAL').length || 0;
+  const unknownCount = data?.solution_paths?.filter(p => p.status === 'UNKNOWN').length || 0;
+  const violatedCount = data?.solution_paths?.filter(p => p.status === 'CONSTRAINT_VIOLATED').length || 0;
+  const insufficientCount = data?.solution_paths?.filter(p => p.status === 'INSUFFICIENT_EVIDENCE').length || 0;
 
   return (
     <div className="flex-1 w-full flex flex-col font-sans bg-background min-h-screen">
@@ -484,7 +487,11 @@ export default function DiscoverPage() {
                   <span className="text-border mx-2">|</span>
                   <span className="text-primary-ink font-bold">{data.solution_paths?.length || 0}</span> paths
                   <span className="text-border mx-2">|</span>
-                  <span className="text-verified font-bold">{viableCount}</span> viable
+                  <span className="text-verified font-bold">{validCount}</span> viable
+                  <span className="text-border mx-2">|</span>
+                  <span className="text-warning font-bold">{partialCount}</span> partial
+                  <span className="text-border mx-2">|</span>
+                  <span className="text-unknown font-bold">{unknownCount}</span> unknown
                   <span className="text-border mx-2">|</span>
                   <span className="text-violated font-bold">{violatedCount}</span> constraint-violating
                </div>
@@ -525,7 +532,12 @@ export default function DiscoverPage() {
                 <ComparisonTable data={data} />
               ) : (
                 /* Side-by-side Card View */
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-0">
+                <div className={
+                  data.solution_paths?.length === 1 ? "grid grid-cols-1 max-w-2xl mx-auto gap-6" :
+                  data.solution_paths?.length === 2 ? "grid grid-cols-1 lg:grid-cols-2 max-w-5xl mx-auto gap-6" :
+                  data.solution_paths?.length === 4 ? "grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6" :
+                  "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                }>
                   {data.solution_paths?.map((path, idx) => (
                     <PathCard key={idx} path={path} index={idx} />
                   ))}

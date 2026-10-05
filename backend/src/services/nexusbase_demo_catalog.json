@@ -1,0 +1,584 @@
+{
+  "entities": {
+    "pymupdf4llm": {
+      "entity_id": "pymupdf4llm",
+      "name": "PyMuPDF4LLM",
+      "status": "success",
+      "modality": "local_library",
+      "domain": "pdf_to_markdown",
+      "atomic_capabilities": [
+        {
+          "capability_id": "pdf_to_markdown",
+          "label": "PDF to Markdown conversion",
+          "evidence": [
+            {
+              "source_url": "https://github.com/pymupdf/pymupdf4llm",
+              "quote": "PyMuPDF4LLM is a Python library to extract PDF text as Markdown for LLM use.",
+              "evidence_type": "explicit_statement"
+            }
+          ]
+        },
+        {
+          "capability_id": "offline_operation",
+          "label": "Offline operation",
+          "evidence": [
+            {
+              "source_url": "https://github.com/pymupdf/pymupdf4llm",
+              "quote": "Runs entirely locally on your device without internet access.",
+              "evidence_type": "explicit_statement"
+            }
+          ]
+        }
+      ],
+      "metadata_capabilities": [],
+      "official_url": "https://github.com/pymupdf/pymupdf4llm",
+      "repository_url": "https://github.com/pymupdf/pymupdf4llm",
+      "install_url": "https://pypi.org/project/PyMuPDF4LLM/"
+    },
+    "docling": {
+      "entity_id": "docling",
+      "name": "Docling",
+      "status": "success",
+      "modality": "local_library",
+      "domain": "pdf_to_markdown",
+      "atomic_capabilities": [
+        {
+          "capability_id": "pdf_to_markdown",
+          "label": "PDF to Markdown conversion",
+          "evidence": [
+            {
+              "source_url": "https://github.com/docling-project/docling",
+              "quote": "Docling parses document formats (PDF, DOCX) and converts them to Markdown.",
+              "evidence_type": "explicit_statement"
+            }
+          ]
+        },
+        {
+          "capability_id": "offline_operation",
+          "label": "Offline operation",
+          "evidence": [
+            {
+              "source_url": "https://github.com/docling-project/docling",
+              "quote": "Runs locally for parsing documents.",
+              "evidence_type": "explicit_statement"
+            }
+          ]
+        }
+      ],
+      "metadata_capabilities": [],
+      "official_url": "https://github.com/docling-project/docling",
+      "repository_url": "https://github.com/docling-project/docling",
+      "install_url": "https://pypi.org/project/docling/"
+    },
+    "marker": {
+      "entity_id": "marker",
+      "name": "Marker",
+      "status": "success",
+      "modality": "local_tool",
+      "domain": "pdf_to_markdown",
+      "atomic_capabilities": [
+        {
+          "capability_id": "pdf_to_markdown",
+          "label": "PDF to Markdown conversion",
+          "evidence": [
+            {
+              "source_url": "https://github.com/datalab-to/marker",
+              "quote": "Marker converts PDF to markdown quickly and accurately.",
+              "evidence_type": "explicit_statement"
+            }
+          ]
+        },
+        {
+          "capability_id": "offline_operation",
+          "label": "Offline operation",
+          "evidence": [
+            {
+              "source_url": "https://github.com/datalab-to/marker",
+              "quote": "Runs locally on CPU or GPU without external API calls.",
+              "evidence_type": "explicit_statement"
+            }
+          ]
+        }
+      ],
+      "metadata_capabilities": [],
+      "official_url": "https://github.com/datalab-to/marker",
+      "repository_url": "https://github.com/datalab-to/marker",
+      "install_url": "https://github.com/datalab-to/marker#installation"
+    },
+    "cloudconvert": {
+      "entity_id": "cloudconvert",
+      "name": "CloudConvert",
+      "status": "success",
+      "modality": "web_application",
+      "domain": "pdf_to_markdown",
+      "atomic_capabilities": [
+        {
+          "capability_id": "pdf_to_markdown",
+          "label": "PDF to Markdown conversion",
+          "evidence": [
+            {
+              "source_url": "https://cloudconvert.com/pdf-to-md",
+              "quote": "Online document converter. Converts PDF to MD.",
+              "evidence_type": "explicit_statement"
+            }
+          ]
+        }
+      ],
+      "metadata_capabilities": [],
+      "official_url": "https://cloudconvert.com/pdf-to-md",
+      "website_url": "https://cloudconvert.com/pdf-to-md"
+    },
+    "to_markdown_pdf": {
+      "entity_id": "to_markdown_pdf",
+      "name": "To-Markdown PDF Converter",
+      "status": "success",
+      "modality": "web_application",
+      "domain": "pdf_to_markdown",
+      "atomic_capabilities": [
+        {
+          "capability_id": "pdf_to_markdown",
+          "label": "PDF to Markdown conversion",
+          "evidence": [
+            {
+              "source_url": "https://pdf.to-markdown.com/",
+              "quote": "Convert PDF files to Markdown files directly in your browser.",
+              "evidence_type": "explicit_statement"
+            }
+          ]
+        }
+      ],
+      "metadata_capabilities": [],
+      "official_url": "https://pdf.to-markdown.com/",
+      "website_url": "https://pdf.to-markdown.com/"
+    },
+    "turboscribe": {
+      "entity_id": "turboscribe",
+      "name": "TurboScribe",
+      "status": "success",
+      "modality": "web_application",
+      "domain": "audio_to_text",
+      "atomic_capabilities": [
+        {
+          "capability_id": "audio_transcription",
+          "label": "Audio transcription",
+          "evidence": [
+            {
+              "source_url": "https://turboscribe.ai/",
+              "quote": "TurboScribe is an AI transcription service. Transcribe audio and video to text.",
+              "evidence_type": "explicit_statement"
+            }
+          ]
+        }
+      ],
+      "metadata_capabilities": [],
+      "official_url": "https://turboscribe.ai/",
+      "website_url": "https://turboscribe.ai/"
+    },
+    "whisper_cpp": {
+      "entity_id": "whisper_cpp",
+      "name": "whisper.cpp",
+      "status": "success",
+      "modality": "local_tool",
+      "domain": "audio_to_text",
+      "atomic_capabilities": [
+        {
+          "capability_id": "audio_transcription",
+          "label": "Audio transcription",
+          "evidence": [
+            {
+              "source_url": "https://github.com/ggml-org/whisper.cpp",
+              "quote": "High-performance inference of OpenAI's Whisper automatic speech recognition model.",
+              "evidence_type": "explicit_statement"
+            }
+          ]
+        },
+        {
+          "capability_id": "offline_operation",
+          "label": "Offline operation",
+          "evidence": [
+            {
+              "source_url": "https://github.com/ggml-org/whisper.cpp",
+              "quote": "Plain C/C++ implementation without dependencies, runs locally on CPU/GPU.",
+              "evidence_type": "explicit_statement"
+            }
+          ]
+        }
+      ],
+      "metadata_capabilities": [],
+      "official_url": "https://github.com/ggml-org/whisper.cpp",
+      "repository_url": "https://github.com/ggml-org/whisper.cpp"
+    },
+    "faster_whisper": {
+      "entity_id": "faster_whisper",
+      "name": "faster-whisper",
+      "status": "success",
+      "modality": "local_library",
+      "domain": "audio_to_text",
+      "atomic_capabilities": [
+        {
+          "capability_id": "audio_transcription",
+          "label": "Audio transcription",
+          "evidence": [
+            {
+              "source_url": "https://github.com/SYSTRAN/faster-whisper",
+              "quote": "faster-whisper is a reimplementation of OpenAI's Whisper model using CTranslate2 for faster transcription.",
+              "evidence_type": "explicit_statement"
+            }
+          ]
+        },
+        {
+          "capability_id": "offline_operation",
+          "label": "Offline operation",
+          "evidence": [
+            {
+              "source_url": "https://github.com/SYSTRAN/faster-whisper",
+              "quote": "Runs locally on your own hardware.",
+              "evidence_type": "explicit_statement"
+            }
+          ]
+        }
+      ],
+      "metadata_capabilities": [],
+      "official_url": "https://github.com/SYSTRAN/faster-whisper",
+      "repository_url": "https://github.com/SYSTRAN/faster-whisper",
+      "install_url": "https://pypi.org/project/faster-whisper/"
+    },
+    "openai_whisper": {
+      "entity_id": "openai_whisper",
+      "name": "OpenAI Whisper",
+      "status": "success",
+      "modality": "local_library",
+      "domain": "audio_to_text",
+      "atomic_capabilities": [
+        {
+          "capability_id": "audio_transcription",
+          "label": "Audio transcription",
+          "evidence": [
+            {
+              "source_url": "https://github.com/openai/whisper",
+              "quote": "Robust Speech Recognition via Large-Scale Weak Supervision. Transcribes speech to text.",
+              "evidence_type": "explicit_statement"
+            }
+          ]
+        },
+        {
+          "capability_id": "offline_operation",
+          "label": "Offline operation",
+          "evidence": [
+            {
+              "source_url": "https://github.com/openai/whisper",
+              "quote": "Can be installed and run locally via Python.",
+              "evidence_type": "explicit_statement"
+            }
+          ]
+        }
+      ],
+      "metadata_capabilities": [],
+      "official_url": "https://github.com/openai/whisper",
+      "repository_url": "https://github.com/openai/whisper",
+      "install_url": "https://github.com/openai/whisper#setup"
+    },
+    "sentry": {
+      "entity_id": "sentry",
+      "name": "Sentry",
+      "status": "success",
+      "modality": "hosted_service",
+      "domain": "error_tracking",
+      "atomic_capabilities": [
+        {
+          "capability_id": "error_tracking",
+          "label": "Error tracking",
+          "evidence": [
+            {
+              "source_url": "https://sentry.io/product/error-monitoring/",
+              "quote": "Sentry provides open-source error tracking that shows you every crash in your stack as it happens.",
+              "evidence_type": "explicit_statement"
+            }
+          ]
+        },
+        {
+          "capability_id": "bug_detection",
+          "label": "Bug detection",
+          "evidence": [
+            {
+              "source_url": "https://sentry.io/product/error-monitoring/",
+              "quote": "Identify, triage, and prioritize bugs and errors across your entire application.",
+              "evidence_type": "explicit_statement"
+            }
+          ]
+        }
+      ],
+      "metadata_capabilities": [],
+      "official_url": "https://sentry.io/product/error-monitoring/",
+      "website_url": "https://sentry.io/",
+      "documentation_url": "https://docs.sentry.io/"
+    },
+    "glitchtip": {
+      "entity_id": "glitchtip",
+      "name": "GlitchTip",
+      "status": "success",
+      "modality": "self_hosted",
+      "domain": "error_tracking",
+      "atomic_capabilities": [
+        {
+          "capability_id": "error_tracking",
+          "label": "Error tracking",
+          "evidence": [
+            {
+              "source_url": "https://glitchtip.com/",
+              "quote": "GlitchTip collects errors and exceptions from your projects.",
+              "evidence_type": "explicit_statement"
+            }
+          ]
+        },
+        {
+          "capability_id": "open_source",
+          "label": "Open source",
+          "evidence": [
+            {
+              "source_url": "https://glitchtip.com/",
+              "quote": "Open source, Sentry-compatible error tracking.",
+              "evidence_type": "explicit_statement"
+            }
+          ]
+        }
+      ],
+      "metadata_capabilities": [],
+      "official_url": "https://glitchtip.com/",
+      "repository_url": "https://gitlab.com/glitchtip/glitchtip",
+      "documentation_url": "https://glitchtip.com/documentation"
+    },
+    "bugsink": {
+      "entity_id": "bugsink",
+      "name": "Bugsink",
+      "status": "success",
+      "modality": "self_hosted",
+      "domain": "error_tracking",
+      "atomic_capabilities": [
+        {
+          "capability_id": "error_tracking",
+          "label": "Error tracking",
+          "evidence": [
+            {
+              "source_url": "https://www.bugsink.com/",
+              "quote": "Sentry-compatible error tracking, self-hosted and simple.",
+              "evidence_type": "explicit_statement"
+            }
+          ]
+        }
+      ],
+      "metadata_capabilities": [],
+      "official_url": "https://www.bugsink.com/",
+      "documentation_url": "https://www.bugsink.com/docs/"
+    },
+    "uptimerobot": {
+      "entity_id": "uptimerobot",
+      "name": "UptimeRobot",
+      "status": "success",
+      "modality": "hosted_service",
+      "domain": "website_monitoring",
+      "atomic_capabilities": [
+        {
+          "capability_id": "website_monitoring",
+          "label": "Website monitoring",
+          "evidence": [
+            {
+              "source_url": "https://uptimerobot.com/",
+              "quote": "The world's leading uptime monitoring service. Monitor your website, API, port, and ping.",
+              "evidence_type": "explicit_statement"
+            }
+          ]
+        },
+        {
+          "capability_id": "downtime_alerts",
+          "label": "Downtime alerts",
+          "evidence": [
+            {
+              "source_url": "https://uptimerobot.com/",
+              "quote": "Get notified immediately when your website goes down.",
+              "evidence_type": "explicit_statement"
+            }
+          ]
+        }
+      ],
+      "metadata_capabilities": [],
+      "official_url": "https://uptimerobot.com/",
+      "website_url": "https://uptimerobot.com/"
+    },
+    "better_stack": {
+      "entity_id": "better_stack",
+      "name": "Better Stack",
+      "status": "success",
+      "modality": "hosted_service",
+      "domain": "website_monitoring",
+      "atomic_capabilities": [
+        {
+          "capability_id": "website_monitoring",
+          "label": "Website monitoring",
+          "evidence": [
+            {
+              "source_url": "https://betterstack.com/website-monitoring",
+              "quote": "Website monitoring, incident management, and status pages.",
+              "evidence_type": "explicit_statement"
+            }
+          ]
+        },
+        {
+          "capability_id": "downtime_alerts",
+          "label": "Downtime alerts",
+          "evidence": [
+            {
+              "source_url": "https://betterstack.com/website-monitoring",
+              "quote": "Call alerts and incident management.",
+              "evidence_type": "explicit_statement"
+            }
+          ]
+        }
+      ],
+      "metadata_capabilities": [],
+      "official_url": "https://betterstack.com/website-monitoring",
+      "website_url": "https://betterstack.com/"
+    },
+    "uptime_kuma": {
+      "entity_id": "uptime_kuma",
+      "name": "Uptime Kuma",
+      "status": "success",
+      "modality": "self_hosted",
+      "domain": "website_monitoring",
+      "atomic_capabilities": [
+        {
+          "capability_id": "website_monitoring",
+          "label": "Website monitoring",
+          "evidence": [
+            {
+              "source_url": "https://github.com/louislam/uptime-kuma",
+              "quote": "A fancy self-hosted monitoring tool. Monitor HTTP(s) / TCP / HTTP(s) Keyword / Ping / DNS Record.",
+              "evidence_type": "explicit_statement"
+            }
+          ]
+        },
+        {
+          "capability_id": "downtime_alerts",
+          "label": "Downtime alerts",
+          "evidence": [
+            {
+              "source_url": "https://github.com/louislam/uptime-kuma",
+              "quote": "Notifications for uptime and downtime via various providers.",
+              "evidence_type": "explicit_statement"
+            }
+          ]
+        }
+      ],
+      "metadata_capabilities": [],
+      "official_url": "https://github.com/louislam/uptime-kuma",
+      "repository_url": "https://github.com/louislam/uptime-kuma",
+      "documentation_url": "https://github.com/louislam/uptime-kuma/wiki"
+    },
+    "gatus": {
+      "entity_id": "gatus",
+      "name": "Gatus",
+      "status": "success",
+      "modality": "self_hosted",
+      "domain": "website_monitoring",
+      "atomic_capabilities": [
+        {
+          "capability_id": "website_monitoring",
+          "label": "Website monitoring",
+          "evidence": [
+            {
+              "source_url": "https://gatus.io/",
+              "quote": "Automated developer-driven health dashboard. Monitor your services.",
+              "evidence_type": "explicit_statement"
+            }
+          ]
+        }
+      ],
+      "metadata_capabilities": [],
+      "official_url": "https://gatus.io/",
+      "repository_url": "https://github.com/TwiN/gatus"
+    },
+    "scalar": {
+      "entity_id": "scalar",
+      "name": "Scalar",
+      "status": "success",
+      "modality": "local_library",
+      "domain": "api_documentation",
+      "atomic_capabilities": [
+        {
+          "capability_id": "api_documentation",
+          "label": "API documentation generation",
+          "evidence": [
+            {
+              "source_url": "https://scalar.com/solutions/openapi-documentation",
+              "quote": "Beautiful open-source API references from Swagger/OpenAPI.",
+              "evidence_type": "explicit_statement"
+            }
+          ]
+        },
+        {
+          "capability_id": "openapi_support",
+          "label": "OpenAPI support",
+          "evidence": [
+            {
+              "source_url": "https://scalar.com/solutions/openapi-documentation",
+              "quote": "First-class support for OpenAPI 3.1, 3.0, and Swagger 2.0.",
+              "evidence_type": "explicit_statement"
+            }
+          ]
+        }
+      ],
+      "metadata_capabilities": [],
+      "official_url": "https://scalar.com/solutions/openapi-documentation",
+      "repository_url": "https://github.com/scalar/scalar",
+      "documentation_url": "https://docs.scalar.com/"
+    },
+    "redoc": {
+      "entity_id": "redoc",
+      "name": "Redoc",
+      "status": "success",
+      "modality": "local_library",
+      "domain": "api_documentation",
+      "atomic_capabilities": [
+        {
+          "capability_id": "api_documentation",
+          "label": "API documentation generation",
+          "evidence": [
+            {
+              "source_url": "https://redocly.com/redoc",
+              "quote": "OpenAPI/Swagger-generated API Reference Documentation.",
+              "evidence_type": "explicit_statement"
+            }
+          ]
+        }
+      ],
+      "metadata_capabilities": [],
+      "official_url": "https://redocly.com/redoc",
+      "repository_url": "https://github.com/Redocly/redoc",
+      "install_url": "https://www.npmjs.com/package/redoc"
+    },
+    "swagger_ui": {
+      "entity_id": "swagger_ui",
+      "name": "Swagger UI",
+      "status": "success",
+      "modality": "local_library",
+      "domain": "api_documentation",
+      "atomic_capabilities": [
+        {
+          "capability_id": "api_documentation",
+          "label": "API documentation generation",
+          "evidence": [
+            {
+              "source_url": "https://swagger.io/open-source/swagger-ui/",
+              "quote": "Swagger UI allows anyone to visualize and interact with the API’s resources without having any of the implementation logic in place.",
+              "evidence_type": "explicit_statement"
+            }
+          ]
+        }
+      ],
+      "metadata_capabilities": [],
+      "official_url": "https://swagger.io/open-source/swagger-ui/",
+      "repository_url": "https://github.com/swagger-api/swagger-ui",
+      "documentation_url": "https://swagger.io/docs/open-source/swagger-ui/"
+    }
+  }
+}

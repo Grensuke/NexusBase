@@ -30,7 +30,7 @@ let catalogCache: Catalog | null = null;
 
 export const loadCatalog = (): Catalog => {
   if (catalogCache) return catalogCache;
-  const catalogPath = path.join(__dirname, '../../../validation/03_catalog/outputs/NexusBase_normalized_capabilities_v0.3_full_reproducible.json');
+  const catalogPath = path.join(__dirname, '../../src/services/nexusbase_demo_catalog.json');
   const data = fs.readFileSync(catalogPath, 'utf8');
   catalogCache = JSON.parse(data);
   return catalogCache!;

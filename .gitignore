@@ -24,3 +24,7 @@ secrets.json
 credentials.json
 *.key
 *.pem
+
+temp_files/
+Documentation_Team7_Final.docx
+~$*.docx

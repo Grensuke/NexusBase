@@ -30,7 +30,14 @@ app.post('/api/discover', async (req: Request, res: Response) => {
     }
 
     // Step 2: Retrieval
-    const retrievalResults = retrieveCandidates(problem, analysis.requirements, analysis.constraints, 8);
+    let retrievalResults = retrieveCandidates(problem, analysis.requirements, analysis.constraints, 8);
+    
+    if (retrievalResults.length > 0) {
+      const maxScore = retrievalResults[0].score;
+      const threshold = Math.max(0.01, maxScore * 0.15);
+      retrievalResults = retrievalResults.filter(r => r.score >= threshold).slice(0, 4);
+    }
+
     if (retrievalResults.length === 0) {
       return res.json({
         problem_analysis: analysis,

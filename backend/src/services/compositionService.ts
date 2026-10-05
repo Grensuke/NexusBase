@@ -130,27 +130,16 @@ export const createSolutionPaths = (
   const paths: SolutionPath[] = [];
   const candidateIds = new Set(retrievedCandidates.map(c => c.entity_id));
 
-  for (const ev of evaluations) {
-    // Validate schema robustly
-    if (!ev || typeof ev !== 'object') {
-      paths.push({ solutions: [], requirements_covered: [], requirements_missing: [], must_have_status: 'INVALID', constraints_states: [], evidence: [], trade_offs: {}, compatibility: 'N/A', status: 'LLM_OUTPUT_INVALID' });
-      continue;
-    }
+  for (const ent of retrievedCandidates) {
+    let ev = evaluations.find((e: any) => e && e.entity_id === ent.entity_id);
     
-    if (!ev.entity_id || !candidateIds.has(ev.entity_id)) {
-      console.log(`INVALID_LLM_OUTPUT: Entity ${ev.entity_id} missing or not in shortlist.`);
-      paths.push({ solutions: [], requirements_covered: [], requirements_missing: [], must_have_status: 'INVALID', constraints_states: [], evidence: [], trade_offs: {}, compatibility: 'N/A', status: 'LLM_OUTPUT_INVALID' });
-      continue;
-    }
-    
-    const ent = getEntity(ev.entity_id);
-    if (!ent) {
-      paths.push({ solutions: [], requirements_covered: [], requirements_missing: [], must_have_status: 'INVALID', constraints_states: [], evidence: [], trade_offs: {}, compatibility: 'N/A', status: 'LLM_OUTPUT_INVALID' });
-      continue;
-    }
-
     let rawCapIds: string[] = [];
     let rawReqs: string[] = [];
+    
+    if (!ev) {
+      console.log(`LLM dropped candidate ${ent.entity_id}, falling back to default.`);
+      ev = { entity_id: ent.entity_id, requirements_covered: [], capability_ids: [], constraint_checks: [] };
+    }
     
     // Legacy support alias if they used capability_matches
     if (ev.capability_matches && Array.isArray(ev.capability_matches)) {
@@ -161,32 +150,20 @@ export const createSolutionPaths = (
         }
       }
     } else {
-      if (!ev.capability_ids || !Array.isArray(ev.capability_ids)) {
-        console.log(`INVALID_LLM_OUTPUT: capability_ids is missing or not an array for ${ev.entity_id}`);
-        paths.push({ solutions: [ev.entity_id], requirements_covered: [], requirements_missing: [], must_have_status: 'INVALID', constraints_states: [], evidence: [], trade_offs: {}, compatibility: 'N/A', status: 'LLM_OUTPUT_INVALID' });
-        continue;
+      if (ev.capability_ids && Array.isArray(ev.capability_ids)) {
+        rawCapIds = ev.capability_ids;
       }
-      rawCapIds = ev.capability_ids;
       if (ev.requirements_covered && Array.isArray(ev.requirements_covered)) {
         rawReqs = ev.requirements_covered;
       }
     }
 
     // Validate capability_ids against catalog
-    let allValid = true;
     const verifiedCapIds: string[] = [];
     for (const cid of rawCapIds) {
-      if (typeof cid !== 'string' || !(ent.atomic_capabilities || []).some(c => c.capability_id === cid)) {
-        allValid = false;
-        console.log(`INVALID_LLM_OUTPUT: Capability ${cid} not found in entity ${ent.entity_id}`);
-        break;
+      if (typeof cid === 'string' && (ent.atomic_capabilities || []).some(c => c.capability_id === cid)) {
+        verifiedCapIds.push(cid);
       }
-      verifiedCapIds.push(cid);
-    }
-    
-    if (!allValid) {
-      paths.push({ solutions: [ev.entity_id], requirements_covered: [], requirements_missing: [], must_have_status: 'INVALID', constraints_states: [], evidence: [], trade_offs: {}, compatibility: 'N/A', status: 'LLM_OUTPUT_INVALID' });
-      continue;
     }
 
     const reqsCovered = new Set<string>(rawReqs);
@@ -203,6 +180,12 @@ export const createSolutionPaths = (
           });
         }
       }
+    }
+
+    // Discard candidates that fail relevance
+    if (reqsCovered.size === 0 || evidenceList.length === 0) {
+      console.log(`Candidate ${ent.entity_id} rejected as irrelevant (reqs: ${reqsCovered.size}, evidence: ${evidenceList.length}).`);
+      continue;
     }
 
     const missingReqs = analysis.requirements.filter(r => !reqsCovered.has(r));
@@ -224,11 +207,6 @@ export const createSolutionPaths = (
       status = 'UNKNOWN';
     } else {
       status = 'VALID';
-    }
-    
-    // Add missing requirements to INSUFFICIENT_EVIDENCE if no capabilities mapped
-    if (evidenceList.length === 0) {
-       status = 'INSUFFICIENT_EVIDENCE';
     }
 
     const candidateMeta: CandidateMeta = {
@@ -352,13 +330,7 @@ export const createSolutionPaths = (
   }
 
   return paths.sort((a, b) => {
-    // 1. Web Application priority
-    const aIsWeb = a.modalities?.includes('web_application');
-    const bIsWeb = b.modalities?.includes('web_application');
-    if (aIsWeb && !bIsWeb) return -1;
-    if (bIsWeb && !aIsWeb) return 1;
-
-    // 2. Validity priority
+    // 1. Validity priority
     const validityScore = (s: string) => {
       if (s === 'VALID') return 4;
       if (s === 'PARTIAL') return 3;
@@ -372,6 +344,21 @@ export const createSolutionPaths = (
     
     if (aScore !== bScore) {
       return bScore - aScore;
+    }
+
+    // 2. Modality priority
+    const getModalityScore = (mods?: string[]) => {
+      if (!mods) return 0;
+      if (mods.includes('web_application')) return 4;
+      if (mods.includes('local_library') || mods.includes('local_tool')) return 3;
+      if (mods.includes('desktop_application')) return 2;
+      if (mods.includes('cli') || mods.includes('api')) return 1;
+      return 0;
+    };
+    const aMod = getModalityScore(a.modalities);
+    const bMod = getModalityScore(b.modalities);
+    if (aMod !== bMod) {
+      return bMod - aMod;
     }
 
     // 3. Coverage Priority
